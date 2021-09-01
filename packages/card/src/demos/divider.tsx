@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Statistic } from 'antd';
+import { Statistic } from 'infrad';
 import ProCard from '@ant-design/pro-card';
 import RcResizeObserver from 'rc-resize-observer';
 

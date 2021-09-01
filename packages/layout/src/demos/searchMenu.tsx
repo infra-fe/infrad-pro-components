@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 import type { MenuDataItem } from '@ant-design/pro-layout';
 import ProLayout, { PageContainer } from '@ant-design/pro-layout';
-import { Input } from 'antd';
+import { Input } from 'infrad';
 import complexMenu from './complexMenu';
 
 const filterByMenuDate = (data: MenuDataItem[], keyWord: string): MenuDataItem[] =>

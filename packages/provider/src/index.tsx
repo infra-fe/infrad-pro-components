@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
-import { ConfigProvider as AntdConfigProvider } from 'antd';
-import zh_CN from 'antd/lib/locale/zh_CN';
+import { ConfigProvider as AntdConfigProvider } from 'infrad';
+import zh_CN from 'infrad/lib/locale/zh_CN';
 
 import arEG from './locale/ar_EG';
 import zhCN from './locale/zh_CN';

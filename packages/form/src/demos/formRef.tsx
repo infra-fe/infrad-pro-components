@@ -1,5 +1,5 @@
 import React, { useRef } from 'react';
-import { message, Button } from 'antd';
+import { message, Button } from 'infrad';
 import type { ProFormInstance } from '@ant-design/pro-form';
 import ProForm, { ProFormText } from '@ant-design/pro-form';
 

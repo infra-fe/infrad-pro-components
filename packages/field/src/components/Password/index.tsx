@@ -1,5 +1,5 @@
 import React from 'react';
-import { Input, Space } from 'antd';
+import { Input, Space } from 'infrad';
 import { EyeOutlined, EyeInvisibleOutlined } from '@ant-design/icons';
 import useMergedState from 'rc-util/lib/hooks/useMergedState';
 import { useIntl } from '@ant-design/pro-provider';

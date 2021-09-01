@@ -1,4 +1,4 @@
-import { DatePicker, TimePicker, ConfigProvider } from 'antd';
+import { DatePicker, TimePicker, ConfigProvider } from 'infrad';
 import React, { useState, useContext } from 'react';
 import moment from 'moment';
 import { FieldLabel, parseValueToMoment } from '@ant-design/pro-utils';

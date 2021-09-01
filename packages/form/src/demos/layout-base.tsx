@@ -9,7 +9,7 @@ import ProForm, {
   ProFormTextArea,
 } from '@ant-design/pro-form';
 import { BasicLayout, FooterToolbar, PageContainer } from '@ant-design/pro-layout';
-import { Card } from 'antd';
+import { Card } from 'infrad';
 import { SmileOutlined } from '@ant-design/icons';
 
 export default () => {

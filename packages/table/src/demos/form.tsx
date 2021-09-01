@@ -1,5 +1,5 @@
 import React, { useRef, useState } from 'react';
-import { Button } from 'antd';
+import { Button } from 'infrad';
 import type { ProColumns } from '@ant-design/pro-table';
 import ProTable from '@ant-design/pro-table';
 import type { ProFormInstance } from '@ant-design/pro-form';

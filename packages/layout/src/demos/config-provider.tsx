@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Button, ConfigProvider, Descriptions, Result, Avatar, Space, Statistic } from 'antd';
+import { Button, ConfigProvider, Descriptions, Result, Avatar, Space, Statistic } from 'infrad';
 import { LikeOutlined, UserOutlined } from '@ant-design/icons';
 
 import type { ProSettings } from '@ant-design/pro-layout';

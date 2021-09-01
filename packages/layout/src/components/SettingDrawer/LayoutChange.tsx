@@ -1,5 +1,5 @@
 import React from 'react';
-import { List, Tooltip, Select, Switch } from 'antd';
+import { List, Tooltip, Select, Switch } from 'infrad';
 import type { ProSettings } from '../../defaultSettings';
 import defaultSettings from '../../defaultSettings';
 import type { SettingItemProps } from './index';

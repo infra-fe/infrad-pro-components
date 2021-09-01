@@ -1,6 +1,6 @@
 ﻿import type { ProSchemaComponentTypes, UseEditableUtilType } from '@ant-design/pro-utils';
 import type { ProFieldEmptyText } from '@ant-design/pro-field';
-import type { TableColumnType } from 'antd';
+import type { TableColumnType } from 'infrad';
 import { runFunction } from '@ant-design/pro-utils';
 import { omitBoolean, omitUndefinedAndEmptyArr } from '@ant-design/pro-utils';
 import { proFieldParsingValueEnumToArray } from '@ant-design/pro-field';

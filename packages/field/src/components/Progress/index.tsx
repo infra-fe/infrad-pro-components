@@ -1,4 +1,4 @@
-import { Progress, InputNumber } from 'antd';
+import { Progress, InputNumber } from 'infrad';
 import toNumber from 'lodash.tonumber';
 import React, { useMemo } from 'react';
 

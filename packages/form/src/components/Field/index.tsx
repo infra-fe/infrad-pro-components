@@ -1,6 +1,6 @@
 import React from 'react';
 import ProField from '@ant-design/pro-field';
-import type { InputProps, SelectProps } from 'antd';
+import type { InputProps, SelectProps } from 'infrad';
 import type { ProSchema } from '@ant-design/pro-utils';
 import { runFunction } from '@ant-design/pro-utils';
 import createField from '../../BaseForm/createField';

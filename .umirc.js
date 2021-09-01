@@ -34,7 +34,7 @@ export default {
     [
       'import',
       {
-        libraryName: 'antd',
+        libraryName: 'infrad',
         libraryDirectory: 'es',
         style: true,
       },
@@ -123,10 +123,7 @@ export default {
   },
   ignoreMomentLocale: true,
   headScripts: ['https://gw.alipayobjects.com/os/antfincdn/fdj3WlJd5c/darkreader.js'],
-  links:
-    process.env.NODE_ENV === 'development'
-      ? ['https://gw.alipayobjects.com/os/lib/antd/4.6.6/dist/antd.css']
-      : [],
+  links: process.env.NODE_ENV === 'development' ? ['./node_modules/infrad/dist/antd.css'] : [],
   externals: { darkreader: 'window.DarkReader' },
   menus: {
     '/components': [

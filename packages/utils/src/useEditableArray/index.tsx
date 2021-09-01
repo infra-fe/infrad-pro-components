@@ -1,12 +1,12 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useCallback, useContext, useMemo, useRef, useState } from 'react';
-import type { GetRowKey } from 'antd/lib/table/interface';
+import type { GetRowKey } from 'infrad/lib/table/interface';
 import useMergedState from 'rc-util/lib/hooks/useMergedState';
-import type { FormInstance, FormProps } from 'antd';
-import useLazyKVMap from 'antd/lib/table/hooks/useLazyKVMap';
+import type { FormInstance, FormProps } from 'infrad';
+import useLazyKVMap from 'infrad/lib/table/hooks/useLazyKVMap';
 import { LoadingOutlined } from '@ant-design/icons';
 import { useIntl } from '@ant-design/pro-provider';
-import { message, Popconfirm } from 'antd';
+import { message, Popconfirm } from 'infrad';
 import ReactDOM from 'react-dom';
 import merge from 'lodash.merge';
 import set from 'rc-util/lib/utils/set';

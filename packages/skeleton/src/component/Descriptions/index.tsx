@@ -1,5 +1,5 @@
 import React from 'react';
-import { Skeleton, Card } from 'antd';
+import { Skeleton, Card } from 'infrad';
 import useMediaQuery from 'use-media-antd-query';
 import { PageHeaderSkeleton, Line } from '../List';
 

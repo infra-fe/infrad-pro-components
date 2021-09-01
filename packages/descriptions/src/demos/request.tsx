@@ -1,5 +1,5 @@
 import React, { useRef } from 'react';
-import { Button } from 'antd';
+import { Button } from 'infrad';
 
 import type { ProDescriptionsActionType } from '@ant-design/pro-descriptions';
 import ProDescriptions from '@ant-design/pro-descriptions';

@@ -1,5 +1,5 @@
 import React, { useMemo } from 'react';
-import { InputNumber } from 'antd';
+import { InputNumber } from 'infrad';
 import { useIntl } from '@ant-design/pro-provider';
 import type { ProFieldFC } from '../../index';
 

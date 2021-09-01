@@ -1,7 +1,7 @@
 import React from 'react';
 import { LightFilter, ProFormText } from '@ant-design/pro-form';
-import { Button, Radio, Space } from 'antd';
-import type { SizeType } from 'antd/lib/config-provider/SizeContext';
+import { Button, Radio, Space } from 'infrad';
+import type { SizeType } from 'infrad/lib/config-provider/SizeContext';
 
 export default () => {
   const [size, setSize] = React.useState<SizeType>('middle');

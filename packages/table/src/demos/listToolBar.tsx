@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Button, Badge, Tooltip } from 'antd';
+import { Button, Badge, Tooltip } from 'infrad';
 import { QuestionCircleOutlined } from '@ant-design/icons';
 import { LightFilter, ProFormDatePicker } from '@ant-design/pro-form';
 import type { ProColumns } from '@ant-design/pro-table';

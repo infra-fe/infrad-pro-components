@@ -1,5 +1,5 @@
-import { ConfigProvider, Input } from 'antd';
-import enUS from 'antd/lib/locale/en_US';
+import { ConfigProvider, Input } from 'infrad';
+import enUS from 'infrad/lib/locale/en_US';
 import ProForm, {
   StepsForm,
   ProFormSwitch,

@@ -2,7 +2,7 @@ import React, { useContext, useRef, useState } from 'react';
 import type { ProColumns } from '@ant-design/pro-table';
 import ProDescriptions from '@ant-design/pro-descriptions';
 import ProProvider from '@ant-design/pro-provider';
-import { Input, Space, Tag } from 'antd';
+import { Input, Space, Tag } from 'infrad';
 
 const valueEnum = {
   0: 'close',

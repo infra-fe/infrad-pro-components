@@ -1,7 +1,7 @@
 ﻿import React from 'react';
 import ProForm, { ProFormText, ProFormCheckbox, ProFormRadio } from '@ant-design/pro-form';
 
-import { Button } from 'antd';
+import { Button } from 'infrad';
 
 const layout = {
   labelCol: { span: 8 },

@@ -1,5 +1,5 @@
 ﻿import React from 'react';
-import { Space, Form, Typography } from 'antd';
+import { Space, Form, Typography } from 'infrad';
 import type {
   ProFieldValueType,
   ProSchemaComponentTypes,

@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { Space, ConfigProvider } from 'antd';
+import { Space, ConfigProvider } from 'infrad';
 import { RightOutlined } from '@ant-design/icons';
 import FieldContext from '../../FieldContext';
 import type { GroupProps } from '../../interface';

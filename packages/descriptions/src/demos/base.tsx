@@ -2,7 +2,7 @@ import React from 'react';
 import moment from 'moment';
 
 import ProDescriptions from '@ant-design/pro-descriptions';
-import { Button } from 'antd';
+import { Button } from 'infrad';
 
 export default () => {
   return (

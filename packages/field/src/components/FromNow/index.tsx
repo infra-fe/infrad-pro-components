@@ -1,4 +1,4 @@
-import { DatePicker, Tooltip } from 'antd';
+import { DatePicker, Tooltip } from 'infrad';
 import React from 'react';
 import { parseValueToMoment } from '@ant-design/pro-utils';
 import { useIntl } from '@ant-design/pro-provider';

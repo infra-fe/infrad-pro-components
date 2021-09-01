@@ -1,6 +1,6 @@
 import React from 'react';
 import ProField from '../Field';
-import type { RateProps } from 'antd';
+import type { RateProps } from 'infrad';
 import type { ProFormFieldItemProps } from '../../interface';
 /**
  * 评分组件

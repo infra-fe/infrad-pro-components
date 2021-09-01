@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { Avatar } from 'antd';
+import { Avatar } from 'infrad';
 import type {
   ProFieldValueType,
   ProFieldValueObjectType,

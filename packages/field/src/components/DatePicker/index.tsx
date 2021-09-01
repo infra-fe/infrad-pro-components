@@ -1,5 +1,5 @@
-import type { DatePickerProps } from 'antd';
-import { DatePicker, ConfigProvider } from 'antd';
+import type { DatePickerProps } from 'infrad';
+import { DatePicker, ConfigProvider } from 'infrad';
 import React, { useState, useContext } from 'react';
 import moment from 'moment';
 import { useIntl } from '@ant-design/pro-provider';

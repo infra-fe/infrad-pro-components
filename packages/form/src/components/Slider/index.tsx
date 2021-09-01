@@ -1,6 +1,6 @@
 import React from 'react';
-import type { SliderSingleProps } from 'antd';
-import { Slider } from 'antd';
+import type { SliderSingleProps } from 'infrad';
+import { Slider } from 'infrad';
 import type { ProFormFieldItemProps } from '../../interface';
 import createField from '../../BaseForm/createField';
 

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Tooltip } from 'antd';
+import { Tooltip } from 'infrad';
 import { CheckOutlined } from '@ant-design/icons';
 import classNames from 'classnames';
 

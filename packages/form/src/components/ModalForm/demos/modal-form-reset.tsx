@@ -1,5 +1,5 @@
 import React, { useRef, useState } from 'react';
-import { Button, message, Space } from 'antd';
+import { Button, message, Space } from 'infrad';
 import type { ProFormInstance } from '@ant-design/pro-form';
 import { ModalForm, ProFormText } from '@ant-design/pro-form';
 

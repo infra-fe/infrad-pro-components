@@ -1,5 +1,5 @@
 ﻿import React from 'react';
-import { Button, message } from 'antd';
+import { Button, message } from 'infrad';
 import ProForm, {
   ModalForm,
   ProFormText,

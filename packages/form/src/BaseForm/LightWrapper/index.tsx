@@ -7,7 +7,7 @@ import {
   dateArrayFormatter,
   dateFormatterMap,
 } from '@ant-design/pro-utils';
-import { ConfigProvider } from 'antd';
+import { ConfigProvider } from 'infrad';
 
 import './index.less';
 import type { LightFilterFooterRender } from '../../interface';

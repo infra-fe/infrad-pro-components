@@ -1,5 +1,5 @@
 import React from 'react';
-import { Switch, List } from 'antd';
+import { Switch, List } from 'infrad';
 import type { ProSettings } from '../../defaultSettings';
 import { getFormatMessage } from './index';
 import { renderLayoutSettingItem } from './LayoutChange';

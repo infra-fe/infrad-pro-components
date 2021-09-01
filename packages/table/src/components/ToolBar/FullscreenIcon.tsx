@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { FullscreenExitOutlined, FullscreenOutlined } from '@ant-design/icons';
-import { Tooltip } from 'antd';
+import { Tooltip } from 'infrad';
 import { useIntl } from '@ant-design/pro-provider';
 import { isBrowser } from '@ant-design/pro-utils';
 

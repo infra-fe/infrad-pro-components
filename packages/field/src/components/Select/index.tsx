@@ -8,8 +8,8 @@ import React, {
   useCallback,
   useEffect,
 } from 'react';
-import type { SelectProps } from 'antd';
-import { Space, Spin, ConfigProvider } from 'antd';
+import type { SelectProps } from 'infrad';
+import { Space, Spin, ConfigProvider } from 'infrad';
 import type {
   ProFieldRequestData,
   ProFieldValueEnumType,

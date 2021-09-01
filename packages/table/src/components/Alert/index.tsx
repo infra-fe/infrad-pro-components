@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { Alert, Space, ConfigProvider } from 'antd';
+import { Alert, Space, ConfigProvider } from 'infrad';
 import './index.less';
 import type { IntlType } from '@ant-design/pro-provider';
 import { useIntl } from '@ant-design/pro-provider';

@@ -1,5 +1,5 @@
 ﻿import React, { useState } from 'react';
-import { Button, Result } from 'antd';
+import { Button, Result } from 'infrad';
 
 import ProLayout, { PageContainer } from '@ant-design/pro-layout';
 import defaultProps from './_defaultProps';

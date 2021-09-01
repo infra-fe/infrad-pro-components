@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Card, Input, Tabs } from 'antd';
+import { Card, Input, Tabs } from 'infrad';
 import { UpOutlined, DownOutlined } from '@ant-design/icons';
 import ProForm, { QueryFilter, ProFormText, ProFormDatePicker } from '@ant-design/pro-form';
 import styles from './search-filter.module.less';

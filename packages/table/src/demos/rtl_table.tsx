@@ -1,11 +1,11 @@
 import React, { useRef } from 'react';
 import { PlusOutlined } from '@ant-design/icons';
-import { Button, Tag, Space, ConfigProvider } from 'antd';
+import { Button, Tag, Space, ConfigProvider } from 'infrad';
 import type { ProColumns, ActionType } from '@ant-design/pro-table';
 import ProTable, { TableDropdown } from '@ant-design/pro-table';
 import request from 'umi-request';
 
-import arEGIntl from 'antd/lib/locale/ar_EG';
+import arEGIntl from 'infrad/lib/locale/ar_EG';
 
 type GithubIssueItem = {
   url: string;

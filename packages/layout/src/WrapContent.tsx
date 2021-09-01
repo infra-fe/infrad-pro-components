@@ -1,6 +1,6 @@
 import type { CSSProperties } from 'react';
 import React from 'react';
-import { Layout } from 'antd';
+import { Layout } from 'infrad';
 import { ConfigProviderWrap } from '@ant-design/pro-provider';
 import { ErrorBoundary } from '@ant-design/pro-utils';
 

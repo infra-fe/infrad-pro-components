@@ -1,4 +1,4 @@
-import type { InternalNamePath, NamePath } from 'antd/lib/form/interface';
+import type { InternalNamePath, NamePath } from 'infrad/lib/form/interface';
 import moment from 'moment';
 import get from 'rc-util/lib/utils/get';
 import isNil from '../isNil';

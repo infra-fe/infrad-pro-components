@@ -2,9 +2,9 @@
 import type React from 'react';
 import { useCallback, useMemo } from 'react';
 import useMergedState from 'rc-util/lib/hooks/useMergedState';
-import type { FormInstance } from 'antd';
+import type { FormInstance } from 'infrad';
 import { useIntl } from '@ant-design/pro-provider';
-import { message } from 'antd';
+import { message } from 'infrad';
 import ReactDOM from 'react-dom';
 import type {
   ActionRenderConfig,

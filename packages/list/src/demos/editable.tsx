@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Tag, Space } from 'antd';
+import { Tag, Space } from 'infrad';
 import ProList from '@ant-design/pro-list';
 
 const defaultData = [

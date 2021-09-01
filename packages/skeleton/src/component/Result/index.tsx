@@ -1,5 +1,5 @@
 import React from 'react';
-import { Skeleton, Card, Space } from 'antd';
+import { Skeleton, Card, Space } from 'infrad';
 import { PageHeaderSkeleton } from '../List';
 
 type ResultPageSkeletonProps = {

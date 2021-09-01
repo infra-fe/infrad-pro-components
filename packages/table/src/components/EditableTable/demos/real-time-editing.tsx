@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import type { ProColumns } from '@ant-design/pro-table';
 import { EditableProTable } from '@ant-design/pro-table';
 import ProCard from '@ant-design/pro-card';
-import { Button } from 'antd';
+import { Button } from 'infrad';
 import { ProFormField } from '@ant-design/pro-form';
 
 type DataSourceType = {

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Button, Result, Avatar, Space, Tag } from 'antd';
+import { Button, Result, Avatar, Space, Tag } from 'infrad';
 import { CrownOutlined, LeftOutlined, UserOutlined, SmileOutlined } from '@ant-design/icons';
 import ProLayout from '@ant-design/pro-layout';
 

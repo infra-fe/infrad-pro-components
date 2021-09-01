@@ -1,6 +1,6 @@
 import type { CSSProperties } from 'react';
 import React from 'react';
-import { Badge } from 'antd';
+import { Badge } from 'infrad';
 import './index.less';
 
 type StatusProps = {

@@ -1,5 +1,5 @@
 import React from 'react';
-import type { SelectProps } from 'antd';
+import type { SelectProps } from 'infrad';
 import ProFormField from '../Field';
 import type { ProSchema } from '@ant-design/pro-utils';
 import { runFunction } from '@ant-design/pro-utils';

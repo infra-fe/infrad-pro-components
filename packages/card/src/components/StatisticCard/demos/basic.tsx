@@ -1,7 +1,7 @@
 import React from 'react';
 import { RightOutlined, EllipsisOutlined } from '@ant-design/icons';
 import { StatisticCard } from '@ant-design/pro-card';
-import { Space } from 'antd';
+import { Space } from 'infrad';
 
 const { Statistic } = StatisticCard;
 

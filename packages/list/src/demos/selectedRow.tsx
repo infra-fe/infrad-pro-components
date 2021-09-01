@@ -1,6 +1,6 @@
 import type { ReactText } from 'react';
 import React, { useState } from 'react';
-import { Progress, Button } from 'antd';
+import { Progress, Button } from 'infrad';
 import ProList from '@ant-design/pro-list';
 
 const dataSource = [

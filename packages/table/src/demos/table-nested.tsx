@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Tooltip, Tag } from 'antd';
+import { Button, Tooltip, Tag } from 'infrad';
 import { DownOutlined, QuestionCircleOutlined, EllipsisOutlined } from '@ant-design/icons';
 import type { ProColumns } from '@ant-design/pro-table';
 import ProTable from '@ant-design/pro-table';

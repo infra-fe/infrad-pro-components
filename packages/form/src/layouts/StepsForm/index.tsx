@@ -1,8 +1,8 @@
 import React, { useRef, useCallback, useEffect, useContext, useImperativeHandle } from 'react';
-import type { StepsProps, FormInstance } from 'antd';
-import { Form, Steps, ConfigProvider, Button, Space } from 'antd';
+import type { StepsProps, FormInstance } from 'infrad';
+import { Form, Steps, ConfigProvider, Button, Space } from 'infrad';
 import toArray from 'rc-util/lib/Children/toArray';
-import type { FormProviderProps } from 'antd/lib/form/context';
+import type { FormProviderProps } from 'infrad/lib/form/context';
 import useMergedState from 'rc-util/lib/hooks/useMergedState';
 import classNames from 'classnames';
 import { ConfigProviderWrap, useIntl } from '@ant-design/pro-provider';

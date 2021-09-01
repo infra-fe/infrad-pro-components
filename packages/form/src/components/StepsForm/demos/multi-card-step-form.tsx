@@ -10,7 +10,7 @@ import ProForm, {
 } from '@ant-design/pro-form';
 
 import ProCard from '@ant-design/pro-card';
-import { message } from 'antd';
+import { message } from 'infrad';
 
 const waitTime = (time: number = 100) => {
   return new Promise((resolve) => {

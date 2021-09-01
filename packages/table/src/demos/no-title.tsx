@@ -1,4 +1,4 @@
-import { Popconfirm, Space, Menu, Dropdown } from 'antd';
+import { Popconfirm, Space, Menu, Dropdown } from 'infrad';
 import React from 'react';
 import type { ProColumns } from '@ant-design/pro-table';
 import ProTable from '@ant-design/pro-table';

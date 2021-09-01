@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Button } from 'antd';
+import { Button } from 'infrad';
 import { RightOutlined } from '@ant-design/icons';
 import ProCard from '@ant-design/pro-card';
 

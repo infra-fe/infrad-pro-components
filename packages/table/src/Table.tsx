@@ -1,7 +1,7 @@
 /* eslint max-classes-per-file: ["error", 3] */
 import React, { useContext, useRef, useCallback, useMemo, useEffect } from 'react';
-import type { TablePaginationConfig } from 'antd';
-import { Table, ConfigProvider, Card } from 'antd';
+import type { TablePaginationConfig } from 'infrad';
+import { Table, ConfigProvider, Card } from 'infrad';
 
 import type { ParamsType } from '@ant-design/pro-provider';
 import { useIntl, ConfigProviderWrap } from '@ant-design/pro-provider';
@@ -12,7 +12,7 @@ import type {
   SorterResult,
   SortOrder,
   GetRowKey,
-} from 'antd/lib/table/interface';
+} from 'infrad/lib/table/interface';
 import {
   useDeepCompareEffect,
   omitUndefined,

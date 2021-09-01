@@ -1,6 +1,6 @@
 import React, { useContext, useEffect } from 'react';
-import type { DescriptionsProps, FormInstance, FormProps } from 'antd';
-import { Descriptions, Space, Form, ConfigProvider } from 'antd';
+import type { DescriptionsProps, FormInstance, FormProps } from 'infrad';
+import { Descriptions, Space, Form, ConfigProvider } from 'infrad';
 import { EditOutlined, CloseOutlined, CheckOutlined } from '@ant-design/icons';
 import toArray from 'rc-util/lib/Children/toArray';
 import ProForm, { ProFormField } from '@ant-design/pro-form';
@@ -25,7 +25,7 @@ import ProSkeleton from '@ant-design/pro-skeleton';
 import type { RequestData } from './useFetchData';
 import useFetchData from './useFetchData';
 import type { ProFieldFCMode } from '@ant-design/pro-utils';
-import type { LabelTooltipType } from 'antd/lib/form/FormItemLabel';
+import type { LabelTooltipType } from 'infrad/lib/form/FormItemLabel';
 
 import './index.less';
 

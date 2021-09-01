@@ -1,11 +1,11 @@
 import React, { useMemo, useContext, useRef, useImperativeHandle } from 'react';
-import type { ListProps, PaginationProps } from 'antd';
+import type { ListProps, PaginationProps } from 'infrad';
 import classNames from 'classnames';
 import type { ProTableProps, ProColumnType, ActionType } from '@ant-design/pro-table';
 import ProTable from '@ant-design/pro-table';
 import type { ParamsType } from '@ant-design/pro-provider';
-import { ConfigProvider } from 'antd';
-import type { LabelTooltipType } from 'antd/lib/form/FormItemLabel';
+import { ConfigProvider } from 'infrad';
+import type { LabelTooltipType } from 'infrad/lib/form/FormItemLabel';
 
 import ListView from './ListView';
 

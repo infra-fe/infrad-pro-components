@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { Grid, Tabs, ConfigProvider } from 'antd';
+import { Grid, Tabs, ConfigProvider } from 'infrad';
 import { RightOutlined } from '@ant-design/icons';
 import useMergedState from 'rc-util/lib/hooks/useMergedState';
 import { LabelIconTip } from '@ant-design/pro-utils';

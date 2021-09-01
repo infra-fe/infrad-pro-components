@@ -10,7 +10,7 @@ import ProForm, {
   ProFormSlider,
   ProFormUploadDragger,
 } from '@ant-design/pro-form';
-import { Button, Input } from 'antd';
+import { Button, Input } from 'infrad';
 
 const Demo = () => {
   const formRef = useRef();

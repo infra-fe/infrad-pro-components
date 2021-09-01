@@ -1,7 +1,7 @@
 import type { ReactNode } from 'react';
-import type { TabsProps } from 'antd';
-import type { TabPaneProps } from 'antd';
-import type { LabelTooltipType } from 'antd/lib/form/FormItemLabel';
+import type { TabsProps } from 'infrad';
+import type { TabPaneProps } from 'infrad';
+import type { LabelTooltipType } from 'infrad/lib/form/FormItemLabel';
 
 export type Breakpoint = 'xxl' | 'xl' | 'lg' | 'md' | 'sm' | 'xs';
 export type Gutter = number | Partial<Record<Breakpoint, number>>;

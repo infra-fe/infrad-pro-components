@@ -1,6 +1,6 @@
 ﻿import React, { useContext, useEffect, useMemo } from 'react';
-import type { FormItemProps } from 'antd';
-import { ConfigProvider, Form } from 'antd';
+import type { FormItemProps } from 'infrad';
+import { ConfigProvider, Form } from 'infrad';
 import { FormListContext } from '../List';
 import FieldContext from '../../FieldContext';
 import type { SearchTransformKeyFn } from '@ant-design/pro-utils';

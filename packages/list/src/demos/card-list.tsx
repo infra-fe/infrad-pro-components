@@ -1,5 +1,5 @@
 import React from 'react';
-import { Progress, Tag } from 'antd';
+import { Progress, Tag } from 'infrad';
 import ProList from '@ant-design/pro-list';
 
 const data = [

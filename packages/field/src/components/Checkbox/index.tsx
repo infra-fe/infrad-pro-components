@@ -1,7 +1,7 @@
 ﻿import React, { useContext, useImperativeHandle, useRef } from 'react';
-import { Checkbox, ConfigProvider, Space, Spin } from 'antd';
+import { Checkbox, ConfigProvider, Space, Spin } from 'infrad';
 import classNames from 'classnames';
-import type { CheckboxGroupProps } from 'antd/lib/checkbox';
+import type { CheckboxGroupProps } from 'infrad/lib/checkbox';
 import type { ProFieldFC } from '../../index';
 
 import './index.less';

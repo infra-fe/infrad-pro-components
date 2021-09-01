@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react';
-import { ConfigProvider } from 'antd';
+import { ConfigProvider } from 'infrad';
 import classNames from 'classnames';
 
 export type WaterMarkProps = {

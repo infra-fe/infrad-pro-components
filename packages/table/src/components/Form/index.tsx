@@ -1,5 +1,5 @@
 import React from 'react';
-import type { TablePaginationConfig } from 'antd';
+import type { TablePaginationConfig } from 'infrad';
 import omit from 'omit.js';
 import { omitUndefined, isDeepEqualReact } from '@ant-design/pro-utils';
 import type { ProTableProps, ActionType } from '../../typing';

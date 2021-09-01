@@ -1,5 +1,5 @@
 import React from 'react';
-import { Form, message } from 'antd';
+import { Form, message } from 'infrad';
 import ProForm, { ProFormText, ProFormSelect, ProFormDependency } from '@ant-design/pro-form';
 
 const waitTime = (time: number = 100) => {

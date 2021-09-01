@@ -1,11 +1,11 @@
 ﻿import type { ReactNode } from 'react';
 import React, { useContext, useRef, useMemo } from 'react';
-import type { ButtonProps } from 'antd';
+import type { ButtonProps } from 'infrad';
 import omit from 'omit.js';
-import { Button, Form, Tooltip, ConfigProvider } from 'antd';
-import type { FormListFieldData, FormListOperation, FormListProps } from 'antd/lib/form/FormList';
-import type { LabelTooltipType } from 'antd/lib/form/FormItemLabel';
-import type { NamePath } from 'antd/lib/form/interface';
+import { Button, Form, Tooltip, ConfigProvider } from 'infrad';
+import type { FormListFieldData, FormListOperation, FormListProps } from 'infrad/lib/form/FormList';
+import type { LabelTooltipType } from 'infrad/lib/form/FormItemLabel';
+import type { NamePath } from 'infrad/lib/form/interface';
 import { DeleteOutlined, PlusOutlined, CopyOutlined } from '@ant-design/icons';
 
 import './index.less';

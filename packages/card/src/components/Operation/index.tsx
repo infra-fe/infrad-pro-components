@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import classNames from 'classnames';
-import { ConfigProvider } from 'antd';
+import { ConfigProvider } from 'infrad';
 
 import './index.less';
 

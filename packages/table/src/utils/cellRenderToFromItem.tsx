@@ -1,5 +1,5 @@
 import React from 'react';
-import type { FormInstance, FormItemProps } from 'antd';
+import type { FormInstance, FormItemProps } from 'infrad';
 import type { ProFormFieldProps } from '@ant-design/pro-form';
 import ProForm, { ProFormField } from '@ant-design/pro-form';
 import type { ProFieldEmptyText } from '@ant-design/pro-field';

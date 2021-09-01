@@ -9,7 +9,7 @@ import ProForm, {
   ProFormDateRangePicker,
 } from '@ant-design/pro-form';
 import ProCard from '@ant-design/pro-card';
-import { Button, message } from 'antd';
+import { Button, message } from 'infrad';
 
 const waitTime = (time: number = 100) => {
   return new Promise((resolve) => {

@@ -1,9 +1,9 @@
 import { useContext, useEffect, useState } from 'react';
 import React from 'react';
-import type { SelectProps } from 'antd';
-import { Select, ConfigProvider } from 'antd';
+import type { SelectProps } from 'infrad';
+import { Select, ConfigProvider } from 'infrad';
 import classNames from 'classnames';
-import type { LabeledValue } from 'antd/es/select';
+import type { LabeledValue } from 'infrad/es/select';
 import type { RequestOptionsType } from '@ant-design/pro-utils';
 
 const { Option, OptGroup } = Select;

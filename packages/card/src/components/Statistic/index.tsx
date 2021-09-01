@@ -1,9 +1,9 @@
 import React, { useContext } from 'react';
 import classNames from 'classnames';
-import { Statistic as AntdStatistic, Tooltip, Badge } from 'antd';
-import type { BadgeProps } from 'antd/lib/badge';
-import type { StatisticProps as AntdStatisticProps } from 'antd/lib/statistic/Statistic';
-import { ConfigProvider } from 'antd';
+import { Statistic as AntdStatistic, Tooltip, Badge } from 'infrad';
+import type { BadgeProps } from 'infrad/lib/badge';
+import type { StatisticProps as AntdStatisticProps } from 'infrad/lib/statistic/Statistic';
+import { ConfigProvider } from 'infrad';
 import { QuestionCircleOutlined } from '@ant-design/icons';
 
 import './index.less';

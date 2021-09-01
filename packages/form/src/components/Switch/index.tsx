@@ -1,6 +1,6 @@
 import React from 'react';
 import ProField from '../Field';
-import type { SwitchProps } from 'antd';
+import type { SwitchProps } from 'infrad';
 import type { ProFormFieldItemProps } from '../../interface';
 
 export type ProFormSwitchProps = ProFormFieldItemProps<SwitchProps> & {

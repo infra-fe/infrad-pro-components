@@ -45,7 +45,7 @@
     "@types/react-color": "^3.0.4"
   },
   "peerDependencies": {
-    "antd": "4.x",
+    "infrad": "^4.16.12",
     "react": ">=16.9.0"
   }
 }

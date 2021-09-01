@@ -15,7 +15,7 @@ import type { ProColumnType } from '@ant-design/pro-table';
 import ProTable from '@ant-design/pro-table';
 import { useDebounceFn } from '@ant-design/pro-utils';
 import ProCard from '@ant-design/pro-card';
-import { Button } from 'antd';
+import { Button } from 'infrad';
 
 const valueTypeArray = [
   'password',

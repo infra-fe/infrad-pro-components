@@ -1,5 +1,5 @@
 import React from 'react';
-import { message } from 'antd';
+import { message } from 'infrad';
 import ProForm, {
   ProFormText,
   ProFormDateRangePicker,

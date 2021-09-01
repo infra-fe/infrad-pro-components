@@ -8,7 +8,7 @@ import ProForm, {
   ProFormTextArea,
   ProFormCheckbox,
 } from '@ant-design/pro-form';
-import { Button, message, Modal } from 'antd';
+import { Button, message, Modal } from 'infrad';
 import { PlusOutlined } from '@ant-design/icons';
 
 const waitTime = (time: number = 100) => {

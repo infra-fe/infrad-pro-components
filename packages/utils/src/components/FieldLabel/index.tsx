@@ -1,8 +1,8 @@
 import React, { useContext } from 'react';
 import { DownOutlined, CloseOutlined } from '@ant-design/icons';
 import classNames from 'classnames';
-import type { SizeType } from 'antd/lib/config-provider/SizeContext';
-import { ConfigProvider } from 'antd';
+import type { SizeType } from 'infrad/lib/config-provider/SizeContext';
+import { ConfigProvider } from 'infrad';
 import { useIntl } from '@ant-design/pro-provider';
 import './index.less';
 

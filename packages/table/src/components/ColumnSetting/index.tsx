@@ -6,10 +6,10 @@ import {
   VerticalAlignTopOutlined,
   VerticalAlignBottomOutlined,
 } from '@ant-design/icons';
-import type { TableColumnType } from 'antd';
-import { Checkbox, Tree, Popover, ConfigProvider, Tooltip } from 'antd';
+import type { TableColumnType } from 'infrad';
+import { Checkbox, Tree, Popover, ConfigProvider, Tooltip } from 'infrad';
 import classNames from 'classnames';
-import type { DataNode } from 'antd/lib/tree';
+import type { DataNode } from 'infrad/lib/tree';
 import omit from 'omit.js';
 
 import type { ColumnsState } from '../../container';

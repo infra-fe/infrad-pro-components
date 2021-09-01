@@ -1,6 +1,6 @@
 import React from 'react';
-import type { UploadProps, ButtonProps } from 'antd';
-import { Upload, Button } from 'antd';
+import type { UploadProps, ButtonProps } from 'infrad';
+import { Upload, Button } from 'infrad';
 import { UploadOutlined } from '@ant-design/icons';
 import type { ProFormFieldItemProps } from '../../interface';
 import createField from '../../BaseForm/createField';

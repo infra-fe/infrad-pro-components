@@ -1,6 +1,6 @@
 import React from 'react';
 import ProField from '../Field';
-import type { WeekPickerProps } from 'antd/lib/date-picker';
+import type { WeekPickerProps } from 'infrad/lib/date-picker';
 import type { ProFormFieldItemProps } from '../../interface';
 
 const valueType = 'dateWeek';

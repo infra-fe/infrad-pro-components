@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import type { ProCardTabPaneProps } from '../../type';
-import { Tabs, ConfigProvider } from 'antd';
+import { Tabs, ConfigProvider } from 'infrad';
 import classNames from 'classnames';
 import Card from '../Card';
 import './index.less';

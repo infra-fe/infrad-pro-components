@@ -7,7 +7,7 @@ import {
   TaobaoCircleOutlined,
   WeiboCircleOutlined,
 } from '@ant-design/icons';
-import { message, Tabs, Space } from 'antd';
+import { message, Tabs, Space } from 'infrad';
 import type { CSSProperties } from 'react';
 import { useState } from 'react';
 

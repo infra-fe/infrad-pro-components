@@ -33,7 +33,7 @@
     "rc-util": "^5.0.1"
   },
   "peerDependencies": {
-    "antd": "4.x",
+    "infrad": "^4.16.12",
     "react": ">=16.9.0"
   },
   "publishConfig": {

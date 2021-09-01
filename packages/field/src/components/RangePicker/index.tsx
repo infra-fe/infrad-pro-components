@@ -1,4 +1,4 @@
-import { DatePicker } from 'antd';
+import { DatePicker } from 'infrad';
 import React from 'react';
 import moment from 'moment';
 import { parseValueToMoment } from '@ant-design/pro-utils';

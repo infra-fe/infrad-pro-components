@@ -1,6 +1,6 @@
 import React from 'react';
-import type { FormInstance, ButtonProps } from 'antd';
-import { Button, Space } from 'antd';
+import type { FormInstance, ButtonProps } from 'infrad';
+import { Button, Space } from 'infrad';
 import omit from 'omit.js';
 import { useIntl } from '@ant-design/pro-provider';
 

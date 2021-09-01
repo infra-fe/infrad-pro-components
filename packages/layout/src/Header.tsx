@@ -2,7 +2,7 @@ import './Header.less';
 
 import React, { Component } from 'react';
 import classNames from 'classnames';
-import { Layout } from 'antd';
+import { Layout } from 'infrad';
 import type { GlobalHeaderProps } from './components/GlobalHeader';
 import GlobalHeader from './components/GlobalHeader';
 import TopNavHeader from './components/TopNavHeader';

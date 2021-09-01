@@ -6,8 +6,8 @@
   useMemo,
   useRef,
 } from 'react';
-import { Modal, ConfigProvider } from 'antd';
-import type { FormInstance, ModalProps, FormProps } from 'antd';
+import { Modal, ConfigProvider } from 'infrad';
+import type { FormInstance, ModalProps, FormProps } from 'infrad';
 import useMergedState from 'rc-util/lib/hooks/useMergedState';
 import omit from 'omit.js';
 import { createPortal } from 'react-dom';

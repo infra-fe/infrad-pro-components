@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Card, Menu, Descriptions } from 'antd';
+import { Card, Menu, Descriptions } from 'infrad';
 import type { ProColumns } from '@ant-design/pro-table';
 import ProTable from '@ant-design/pro-table';
 import { MailOutlined } from '@ant-design/icons';

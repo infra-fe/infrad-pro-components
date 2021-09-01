@@ -1,5 +1,5 @@
 ﻿import React from 'react';
-import { Button, message, Space } from 'antd';
+import { Button, message, Space } from 'infrad';
 import { ModalForm, ProFormText } from '@ant-design/pro-form';
 
 const waitTime = (time: number = 100) => {

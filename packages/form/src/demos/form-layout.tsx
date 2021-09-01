@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { message } from 'antd';
+import { message } from 'infrad';
 import ProForm, { ProFormText, ProFormRadio } from '@ant-design/pro-form';
 
 type LayoutType = Parameters<typeof ProForm>[0]['layout'];

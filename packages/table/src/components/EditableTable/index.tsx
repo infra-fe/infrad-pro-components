@@ -1,13 +1,13 @@
 ﻿import React, { useContext, useEffect, useImperativeHandle, useMemo, useRef } from 'react';
 import type { ParamsType } from '@ant-design/pro-provider';
-import type { ButtonProps } from 'antd';
-import { Button, Form } from 'antd';
+import type { ButtonProps } from 'infrad';
+import { Button, Form } from 'infrad';
 import useMergedState from 'rc-util/lib/hooks/useMergedState';
 import { PlusOutlined } from '@ant-design/icons';
 import { runFunction } from '@ant-design/pro-utils';
 import ProTable from '../../Table';
 import type { ProTableProps, ActionType } from '../../typing';
-import type { GetRowKey } from 'antd/lib/table/interface';
+import type { GetRowKey } from 'infrad/lib/table/interface';
 
 export type RecordCreatorProps<DataSourceType> = {
   record: DataSourceType | ((index: number, dataSource: DataSourceType[]) => DataSourceType);

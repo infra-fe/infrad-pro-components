@@ -1,6 +1,6 @@
 ﻿import React, { useContext, useMemo } from 'react';
-import type { FormInstance, FormItemProps } from 'antd';
-import { ConfigProvider } from 'antd';
+import type { FormInstance, FormItemProps } from 'infrad';
+import { ConfigProvider } from 'infrad';
 import type { BaseQueryFilterProps, ProFormProps } from '@ant-design/pro-form';
 import classNames from 'classnames';
 import omit from 'omit.js';

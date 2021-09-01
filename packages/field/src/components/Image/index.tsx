@@ -1,5 +1,5 @@
 import React from 'react';
-import { Image, Input } from 'antd';
+import { Image, Input } from 'infrad';
 import type { ProFieldFC } from '../../index';
 
 export type FieldImageProps = {
