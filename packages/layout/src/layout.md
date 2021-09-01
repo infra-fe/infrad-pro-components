@@ -197,7 +197,7 @@ menu 中支持了部分常用的 menu 配置， 可以帮助我们更好的管�
 RouteContext 可以提供 Layout 的内置的数据。例如 isMobile 和 collapsed，你可以消费这些数据来自定义一些行为。
 
 ```tsx | pure
-import { RouteContext, RouteContextType } from '@ant-design/pro-layout';
+import { RouteContext, RouteContextType } from 'infrad-pro-layout';
 
 const Page = () => (
   <RouteContext.Consumer>
@@ -221,7 +221,7 @@ GridContent 封装了 [等宽](https://preview.pro.ant.design/dashboard/analysis
 根据 router 信息来生成 menuData 和 breadcrumb。
 
 ```js | pure
-import { getMenuData } from '@ant-design/pro-layout';
+import { getMenuData } from 'infrad-pro-layout';
 
 const { breadcrumb, menuData } = getMenuData(routes, menu, formatMessage, menuDataRender);
 ```
@@ -238,7 +238,7 @@ const { breadcrumb, menuData } = getMenuData(routes, menu, formatMessage, menuDa
 getPageTitle 封装了根据 menuData 上生成的 title 的逻辑。
 
 ```js | pure
-import { getPageTitle } from '@ant-design/pro-layout';
+import { getPageTitle } from 'infrad-pro-layout';
 
 const title = getPageTitle({
   pathname,
@@ -260,7 +260,7 @@ const title = getPageTitle({
 ### Settings
 
 ```ts | pure
-// 可以通过 import { Settings } from '@ant-design/pro-layout/defaultSettings'
+// 可以通过 import { Settings } from 'infrad-pro-layout/defaultSettings'
 // 来获取这个类型
 export interface Settings {
   /** Theme for nav menu */
@@ -289,7 +289,7 @@ export interface Settings {
 ### MenuDataItem
 
 ```ts | pure
-// 可以通过 import { MenuDataItem } from '@ant-design/pro-layout'
+// 可以通过 import { MenuDataItem } from 'infrad-pro-layout'
 // 来获取这个类型
 
 export interface MenuDataItem {
@@ -309,7 +309,7 @@ export interface MenuDataItem {
 ### Route
 
 ```ts | pure
-// 可以通过 import { RouterTypes } from '@ant-design/pro-layout/lib/typings';
+// 可以通过 import { RouterTypes } from 'infrad-pro-layout/lib/typings';
 // 来获取这个类型
 export interface Route {
   path: string;
@@ -369,7 +369,7 @@ GridContent 是个简单的语法糖，封装了 ProLayout 的 `contentWidth` �
 RouteContext 提供一个可以根据 layout 的数据来进行一些操作, PageContainer 和 FooterToolbar 都是依赖 RouteContext 的数据来实现功能。
 
 ```tsx | pure
-import { RouteContext, RouteContextType } from '@ant-design/pro-layout';
+import { RouteContext, RouteContextType } from 'infrad-pro-layout';
 
 const Page = () => (
   <RouteContext.Consumer>
@@ -465,7 +465,7 @@ ProLayout 会自动生成菜单，同时根据 pathname 进行自动选中。配
 为了提供更多的功能，我们扩展了 routers 配置，增加了几个配置方便自定义，数据结构定义如下:
 
 ```ts | pure
-// 可以通过 import { MenuDataItem } from '@ant-design/pro-layout'
+// 可以通过 import { MenuDataItem } from 'infrad-pro-layout'
 // 来获取这个类型
 export interface MenuDataItem {
   children?: MenuDataItem[];

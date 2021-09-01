@@ -4,7 +4,7 @@ import type { SelectProps } from 'infrad';
 import { Select, ConfigProvider } from 'infrad';
 import classNames from 'classnames';
 import type { LabeledValue } from 'infrad/es/select';
-import type { RequestOptionsType } from '@ant-design/pro-utils';
+import type { RequestOptionsType } from 'infrad-pro-utils';
 
 const { Option, OptGroup } = Select;
 

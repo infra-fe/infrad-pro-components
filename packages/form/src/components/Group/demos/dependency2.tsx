@@ -4,7 +4,7 @@ import ProForm, {
   ProFormDependency,
   ProFormGroup,
   ProFormList,
-} from '@ant-design/pro-form';
+} from 'infrad-pro-form';
 import { Form } from 'infrad';
 import type { NamePath } from 'infrad/es/form/interface';
 

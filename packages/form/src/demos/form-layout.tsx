@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { message } from 'infrad';
-import ProForm, { ProFormText, ProFormRadio } from '@ant-design/pro-form';
+import ProForm, { ProFormText, ProFormRadio } from 'infrad-pro-form';
 
 type LayoutType = Parameters<typeof ProForm>[0]['layout'];
 

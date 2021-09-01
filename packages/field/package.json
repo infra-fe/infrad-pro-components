@@ -1,5 +1,5 @@
 {
-  "name": "@ant-design/pro-field",
+  "name": "infrad-pro-field",
   "version": "1.21.2",
   "description": "原子信息组件，统一 ProForm、ProTable、ProList、Filter 等组件里面的字段定义。",
   "homepage": "https://github.com/ant-design/pro-components/tree/master/packages/plugin-layout#readme",
@@ -28,9 +28,9 @@
     "ie >= 11"
   ],
   "dependencies": {
-    "@ant-design/icons": "^4.2.1",
-    "@ant-design/pro-provider": "1.4.17",
-    "@ant-design/pro-utils": "1.24.1",
+    "infra-design-icons": "^4.2.1",
+    "infrad-pro-provider": "1.4.17",
+    "infrad-pro-utils": "1.24.1",
     "classnames": "^2.2.6",
     "lodash.tonumber": "^4.0.3",
     "moment": "^2.27.0",

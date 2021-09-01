@@ -45,7 +45,7 @@ Each package is a separate component package, and is used in the following examp
 
 ```tsx
 import React from 'react';
-import ProForm, { ProFormText } from '@ant-design/pro-form';
+import ProForm, { ProFormText } from 'infrad-pro-form';
 
 export default () => {
   return (
@@ -63,9 +63,9 @@ export default () => {
 All our packages use less for style management and easy theme customization. If you don't have less-loader you can try to import css from `dist`.
 
 ```tsx | pure
-import '@ant-design/pro-form/dist/form.css';
-import '@ant-design/pro-table/dist/table.css';
-import '@ant-design/pro-layout/dist/layout.css';
+import 'infrad-pro-form/dist/form.css';
+import 'infrad-pro-table/dist/table.css';
+import 'infrad-pro-layout/dist/layout.css';
 ```
 
 It is recommended to use less, which allows for easy theme customization and on-demand loading.

@@ -4,7 +4,7 @@
   ProFormDateTimePicker,
   ProFormDateTimeRangePicker,
   ProFormTimePicker,
-} from '@ant-design/pro-form';
+} from 'infrad-pro-form';
 import React from 'react';
 
 export default () => {

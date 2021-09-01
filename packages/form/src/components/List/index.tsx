@@ -6,11 +6,11 @@ import { Button, Form, Tooltip, ConfigProvider } from 'infrad';
 import type { FormListFieldData, FormListOperation, FormListProps } from 'infrad/lib/form/FormList';
 import type { LabelTooltipType } from 'infrad/lib/form/FormItemLabel';
 import type { NamePath } from 'infrad/lib/form/interface';
-import { DeleteOutlined, PlusOutlined, CopyOutlined } from '@ant-design/icons';
+import { DeleteOutlined, PlusOutlined, CopyOutlined } from 'infra-design-icons';
 
 import './index.less';
 import get from 'rc-util/lib/utils/get';
-import { runFunction } from '@ant-design/pro-utils';
+import { runFunction } from 'infrad-pro-utils';
 
 type IconConfig = {
   Icon?: React.FC<any>;

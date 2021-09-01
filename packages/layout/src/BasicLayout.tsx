@@ -13,7 +13,7 @@ import {
   useDocumentTitle,
   isBrowser,
   useMountMergeState,
-} from '@ant-design/pro-utils';
+} from 'infrad-pro-utils';
 import Omit from 'omit.js';
 import useSWR, { mutate } from 'swr';
 import { getMatchMenu } from '@umijs/route-utils';

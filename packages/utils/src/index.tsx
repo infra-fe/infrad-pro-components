@@ -60,7 +60,7 @@ import type {
   ProFieldFCMode,
   ProFieldFCRenderProps,
   ProRenderFieldPropsType,
-} from '@ant-design/pro-provider';
+} from 'infrad-pro-provider';
 import ErrorBoundary from './components/ErrorBoundary';
 import dateArrayFormatter from './dateArrayFormatter';
 import ProFormContext from './components/ProFormContext';

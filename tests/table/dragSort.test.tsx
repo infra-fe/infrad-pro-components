@@ -1,8 +1,8 @@
 import { mount } from 'enzyme';
 import React from 'react';
-import { DragSortTable, ProColumns, ProColumnType } from '@ant-design/pro-table';
+import { DragSortTable, ProColumns, ProColumnType } from 'infrad-pro-table';
 import { waitForComponentToPaint } from '../util';
-import { MenuOutlined } from '@ant-design/icons';
+import { MenuOutlined } from 'infra-design-icons';
 import { sortData } from '../../packages/table/src/utils';
 
 describe('dragSort', () => {

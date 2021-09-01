@@ -1,8 +1,8 @@
 import React from 'react';
 
-import ProLayout, { PageContainer } from '@ant-design/pro-layout';
+import ProLayout, { PageContainer } from 'infrad-pro-layout';
 import { Avatar } from 'infrad';
-import { UserOutlined } from '@ant-design/icons';
+import { UserOutlined } from 'infra-design-icons';
 import complexMenu from './complexMenu';
 
 export default () => (

@@ -1,10 +1,10 @@
 ﻿import React, { useContext, useEffect, useImperativeHandle, useMemo, useRef } from 'react';
-import type { ParamsType } from '@ant-design/pro-provider';
+import type { ParamsType } from 'infrad-pro-provider';
 import type { ButtonProps } from 'infrad';
 import { Button, Form } from 'infrad';
 import useMergedState from 'rc-util/lib/hooks/useMergedState';
-import { PlusOutlined } from '@ant-design/icons';
-import { runFunction } from '@ant-design/pro-utils';
+import { PlusOutlined } from 'infra-design-icons';
+import { runFunction } from 'infrad-pro-utils';
 import ProTable from '../../Table';
 import type { ProTableProps, ActionType } from '../../typing';
 import type { GetRowKey } from 'infrad/lib/table/interface';

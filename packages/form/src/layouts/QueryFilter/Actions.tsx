@@ -1,9 +1,9 @@
 import React, { useContext } from 'react';
 import { Space, ConfigProvider } from 'infrad';
-import { DownOutlined } from '@ant-design/icons';
-import type { IntlType } from '@ant-design/pro-provider';
-import { useIntl } from '@ant-design/pro-provider';
-import { omitBoolean } from '@ant-design/pro-utils';
+import { DownOutlined } from 'infra-design-icons';
+import type { IntlType } from 'infrad-pro-provider';
+import { useIntl } from 'infrad-pro-provider';
+import { omitBoolean } from 'infrad-pro-utils';
 
 export type ActionsProps = {
   submitter: React.ReactNode;

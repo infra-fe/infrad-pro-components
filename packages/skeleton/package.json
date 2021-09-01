@@ -1,7 +1,7 @@
 {
-  "name": "@ant-design/pro-skeleton",
+  "name": "infrad-pro-skeleton",
   "version": "1.0.1",
-  "description": "@ant-design/pro-skeleton",
+  "description": "infrad-pro-skeleton",
   "keywords": [
     "antd",
     "admin",

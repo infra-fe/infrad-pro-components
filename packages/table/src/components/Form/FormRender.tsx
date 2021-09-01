@@ -1,12 +1,12 @@
 ﻿import React, { useContext, useMemo } from 'react';
 import type { FormInstance, FormItemProps } from 'infrad';
 import { ConfigProvider } from 'infrad';
-import type { BaseQueryFilterProps, ProFormProps } from '@ant-design/pro-form';
+import type { BaseQueryFilterProps, ProFormProps } from 'infrad-pro-form';
 import classNames from 'classnames';
 import omit from 'omit.js';
-import { BetaSchemaForm } from '@ant-design/pro-form';
+import { BetaSchemaForm } from 'infrad-pro-form';
 
-import type { ProSchemaComponentTypes } from '@ant-design/pro-utils';
+import type { ProSchemaComponentTypes } from 'infrad-pro-utils';
 import type { ActionType, ProColumns } from '../../typing';
 
 import './index.less';

@@ -1,11 +1,11 @@
 import React, { useContext, useRef, useState } from 'react';
-import type { ProFormColumnsType } from '@ant-design/pro-form';
-import { BetaSchemaForm } from '@ant-design/pro-form';
-import ProProvider from '@ant-design/pro-provider';
+import type { ProFormColumnsType } from 'infrad-pro-form';
+import { BetaSchemaForm } from 'infrad-pro-form';
+import ProProvider from 'infrad-pro-provider';
 import { Input, Space, Tag } from 'infrad';
-import ProTable from '@ant-design/pro-table';
-import ProDescriptions from '@ant-design/pro-descriptions';
-import ProCard from '@ant-design/pro-card';
+import ProTable from 'infrad-pro-table';
+import ProDescriptions from 'infrad-pro-descriptions';
+import ProCard from 'infrad-pro-card';
 
 const valueEnum = {
   0: 'close',

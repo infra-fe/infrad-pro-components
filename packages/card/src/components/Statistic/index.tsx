@@ -4,7 +4,7 @@ import { Statistic as AntdStatistic, Tooltip, Badge } from 'infrad';
 import type { BadgeProps } from 'infrad/lib/badge';
 import type { StatisticProps as AntdStatisticProps } from 'infrad/lib/statistic/Statistic';
 import { ConfigProvider } from 'infrad';
-import { QuestionCircleOutlined } from '@ant-design/icons';
+import { QuestionCircleOutlined } from 'infra-design-icons';
 
 import './index.less';
 

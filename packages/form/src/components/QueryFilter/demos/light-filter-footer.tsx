@@ -1,5 +1,5 @@
 import React from 'react';
-import { LightFilter, ProFormText } from '@ant-design/pro-form';
+import { LightFilter, ProFormText } from 'infrad-pro-form';
 import { Button, Radio, Space } from 'infrad';
 import type { SizeType } from 'infrad/lib/config-provider/SizeContext';
 

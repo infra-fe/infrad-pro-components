@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { Button, ConfigProvider, Descriptions, Result, Avatar, Space, Statistic } from 'infrad';
-import { LikeOutlined, UserOutlined } from '@ant-design/icons';
+import { LikeOutlined, UserOutlined } from 'infra-design-icons';
 
-import type { ProSettings } from '@ant-design/pro-layout';
-import ProLayout, { PageContainer, SettingDrawer } from '@ant-design/pro-layout';
+import type { ProSettings } from 'infrad-pro-layout';
+import ProLayout, { PageContainer, SettingDrawer } from 'infrad-pro-layout';
 import defaultProps from './_defaultProps';
 
 const content = (

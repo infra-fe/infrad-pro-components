@@ -1,6 +1,6 @@
-﻿import type { ProFieldEmptyText } from '@ant-design/pro-field';
-import type { ProFormProps, QueryFilterProps } from '@ant-design/pro-form';
-import type { ParamsType } from '@ant-design/pro-provider';
+﻿import type { ProFieldEmptyText } from 'infrad-pro-field';
+import type { ProFormProps, QueryFilterProps } from 'infrad-pro-form';
+import type { ParamsType } from 'infrad-pro-provider';
 import type {
   ProCoreActionType,
   ProSchema,
@@ -8,7 +8,7 @@ import type {
   SearchTransformKeyFn,
   ProTableEditableFnType,
   RowEditableConfig,
-} from '@ant-design/pro-utils';
+} from 'infrad-pro-utils';
 import type { CardProps } from 'infrad/lib/card';
 import type { SpinProps } from 'infrad/lib/spin';
 import type { TableProps } from 'infrad/lib/table';

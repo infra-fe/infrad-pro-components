@@ -3,7 +3,7 @@ import type React from 'react';
 import { useCallback, useMemo } from 'react';
 import useMergedState from 'rc-util/lib/hooks/useMergedState';
 import type { FormInstance } from 'infrad';
-import { useIntl } from '@ant-design/pro-provider';
+import { useIntl } from 'infrad-pro-provider';
 import { message } from 'infrad';
 import ReactDOM from 'react-dom';
 import type {

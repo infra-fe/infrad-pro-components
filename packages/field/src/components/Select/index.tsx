@@ -15,11 +15,11 @@ import type {
   ProFieldValueEnumType,
   ProSchemaValueEnumMap,
   ProSchemaValueEnumObj,
-} from '@ant-design/pro-utils';
+} from 'infrad-pro-utils';
 
-import { useDeepCompareEffect, useMountMergeState } from '@ant-design/pro-utils';
+import { useDeepCompareEffect, useMountMergeState } from 'infrad-pro-utils';
 import useSWR, { mutate } from 'swr';
-import { useIntl } from '@ant-design/pro-provider';
+import { useIntl } from 'infrad-pro-provider';
 
 import LightSelect from './LightSelect';
 import SearchSelect from './SearchSelect';

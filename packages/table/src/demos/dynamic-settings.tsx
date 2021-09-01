@@ -1,4 +1,4 @@
-import { DownOutlined } from '@ant-design/icons';
+import { DownOutlined } from 'infra-design-icons';
 import React, { useState } from 'react';
 import ProForm, {
   ProFormDigit,
@@ -10,11 +10,11 @@ import ProForm, {
   ProFormGroup,
   ProFormDependency,
   ProFormTextArea,
-} from '@ant-design/pro-form';
-import type { ProColumnType } from '@ant-design/pro-table';
-import ProTable from '@ant-design/pro-table';
-import { useDebounceFn } from '@ant-design/pro-utils';
-import ProCard from '@ant-design/pro-card';
+} from 'infrad-pro-form';
+import type { ProColumnType } from 'infrad-pro-table';
+import ProTable from 'infrad-pro-table';
+import { useDebounceFn } from 'infrad-pro-utils';
+import ProCard from 'infrad-pro-card';
 import { Button } from 'infrad';
 
 const valueTypeArray = [

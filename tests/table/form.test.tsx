@@ -1,8 +1,8 @@
 import { mount } from 'enzyme';
 import React from 'react';
 import { act } from 'react-dom/test-utils';
-import ProTable from '@ant-design/pro-table';
-import type { FormInstance } from 'antd';
+import ProTable from 'infrad-pro-table';
+import type { FormInstance } from 'infrad';
 import { waitForComponentToPaint } from '../util';
 
 describe('BasicTable Search', () => {

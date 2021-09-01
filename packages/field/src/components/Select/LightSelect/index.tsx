@@ -1,9 +1,9 @@
 import React, { useState, useContext, useMemo } from 'react';
 import type { SelectProps } from 'infrad';
 import { Select, Input, ConfigProvider } from 'infrad';
-import { SearchOutlined } from '@ant-design/icons';
+import { SearchOutlined } from 'infra-design-icons';
 import classNames from 'classnames';
-import { FieldLabel } from '@ant-design/pro-utils';
+import { FieldLabel } from 'infrad-pro-utils';
 
 import './index.less';
 

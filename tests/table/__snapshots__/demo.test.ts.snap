@@ -829,7 +829,7 @@ Array [
   >
     <div
       class="ant-space-item"
-      style="margin-right: 8px;"
+      style="margin-right: 16px;"
     >
       <button
         class="ant-btn ant-btn-primary"
@@ -7294,7 +7294,7 @@ exports[`table demos 📸 renders ./packages/table/src/demos/ListToolBar/menu.ts
           >
             <div
               class="ant-space-item"
-              style="margin-right: 8px;"
+              style="margin-right: 16px;"
             >
               <div
                 class="ant-pro-table-list-toolbar-title"
@@ -7311,7 +7311,7 @@ exports[`table demos 📸 renders ./packages/table/src/demos/ListToolBar/menu.ts
                 >
                   <div
                     class="ant-space-item"
-                    style="margin-right: 8px;"
+                    style="margin-right: 16px;"
                   >
                     全部事项
                   </div>
@@ -8358,7 +8358,7 @@ exports[`table demos 📸 renders ./packages/table/src/demos/ListToolBar/multipl
               >
                 <div
                   class="ant-space-item"
-                  style="margin-right: 8px;"
+                  style="margin-right: 16px;"
                 >
                   <button
                     class="ant-btn ant-dropdown-trigger"
@@ -9274,7 +9274,7 @@ exports[`table demos 📸 renders ./packages/table/src/demos/ListToolBar/no-titl
           >
             <div
               class="ant-space-item"
-              style="margin-right: 8px;"
+              style="margin-right: 16px;"
             >
               <div
                 class="ant-pro-table-list-toolbar-title"
@@ -13320,7 +13320,7 @@ exports[`table demos 📸 renders ./packages/table/src/demos/config-provider.tsx
                       >
                         <div
                           class="qixian-space-item"
-                          style="margin-right: 8px;"
+                          style="margin-right: 16px;"
                         >
                           <button
                             class="qixian-btn"
@@ -17647,7 +17647,7 @@ Array [
                         >
                           <div
                             class="ant-space-item"
-                            style="margin-right: 8px;"
+                            style="margin-right: 16px;"
                           >
                             <button
                               class="ant-btn"
@@ -19017,7 +19017,7 @@ exports[`table demos 📸 renders ./packages/table/src/demos/customization-value
                       >
                         <div
                           class="ant-space-item"
-                          style="margin-right: 8px;"
+                          style="margin-right: 16px;"
                         >
                           <button
                             class="ant-btn"
@@ -20183,7 +20183,7 @@ exports[`table demos 📸 renders ./packages/table/src/demos/dataSource.tsx corr
                       >
                         <div
                           class="ant-space-item"
-                          style="margin-right: 8px;"
+                          style="margin-right: 16px;"
                         >
                           <button
                             class="ant-btn"
@@ -20311,7 +20311,7 @@ exports[`table demos 📸 renders ./packages/table/src/demos/dataSource.tsx corr
               >
                 <div
                   class="ant-space-item"
-                  style="margin-right: 8px;"
+                  style="margin-right: 16px;"
                 >
                   <button
                     class="ant-btn ant-btn-dangerous"
@@ -20324,7 +20324,7 @@ exports[`table demos 📸 renders ./packages/table/src/demos/dataSource.tsx corr
                 </div>
                 <div
                   class="ant-space-item"
-                  style="margin-right: 8px;"
+                  style="margin-right: 16px;"
                 >
                   <button
                     class="ant-btn"
@@ -20337,7 +20337,7 @@ exports[`table demos 📸 renders ./packages/table/src/demos/dataSource.tsx corr
                 </div>
                 <div
                   class="ant-space-item"
-                  style="margin-right: 8px;"
+                  style="margin-right: 16px;"
                 >
                   <button
                     class="ant-btn ant-btn-primary"
@@ -21916,7 +21916,7 @@ exports[`table demos 📸 renders ./packages/table/src/demos/drag.tsx correctly 
                       >
                         <div
                           class="ant-space-item"
-                          style="margin-right: 8px;"
+                          style="margin-right: 16px;"
                         >
                           <button
                             class="ant-btn"
@@ -22626,7 +22626,7 @@ Array [
                         >
                           <div
                             class="ant-space-item"
-                            style="margin-right: 8px;"
+                            style="margin-right: 16px;"
                           >
                             <button
                               class="ant-btn"
@@ -23647,7 +23647,7 @@ exports[`table demos 📸 renders ./packages/table/src/demos/dynamic-settings.ts
                                 >
                                   <div
                                     class="ant-space-item"
-                                    style="margin-right: 8px;"
+                                    style="margin-right: 16px;"
                                   >
                                     <button
                                       class="ant-btn"
@@ -24977,7 +24977,6 @@ exports[`table demos 📸 renders ./packages/table/src/demos/dynamic-settings.ts
                                     aria-label="question-circle"
                                     class="anticon anticon-question-circle ant-form-item-tooltip"
                                     role="img"
-                                    title=""
                                   >
                                     <svg
                                       aria-hidden="true"
@@ -25046,7 +25045,6 @@ exports[`table demos 📸 renders ./packages/table/src/demos/dynamic-settings.ts
                                     aria-label="question-circle"
                                     class="anticon anticon-question-circle ant-form-item-tooltip"
                                     role="img"
-                                    title=""
                                   >
                                     <svg
                                       aria-hidden="true"
@@ -25164,7 +25162,6 @@ exports[`table demos 📸 renders ./packages/table/src/demos/dynamic-settings.ts
                                     aria-label="question-circle"
                                     class="anticon anticon-question-circle ant-form-item-tooltip"
                                     role="img"
-                                    title=""
                                   >
                                     <svg
                                       aria-hidden="true"
@@ -25233,7 +25230,6 @@ exports[`table demos 📸 renders ./packages/table/src/demos/dynamic-settings.ts
                                     aria-label="question-circle"
                                     class="anticon anticon-question-circle ant-form-item-tooltip"
                                     role="img"
-                                    title=""
                                   >
                                     <svg
                                       aria-hidden="true"
@@ -25302,7 +25298,6 @@ exports[`table demos 📸 renders ./packages/table/src/demos/dynamic-settings.ts
                                     aria-label="question-circle"
                                     class="anticon anticon-question-circle ant-form-item-tooltip"
                                     role="img"
-                                    title=""
                                   >
                                     <svg
                                       aria-hidden="true"
@@ -25371,7 +25366,6 @@ exports[`table demos 📸 renders ./packages/table/src/demos/dynamic-settings.ts
                                     aria-label="question-circle"
                                     class="anticon anticon-question-circle ant-form-item-tooltip"
                                     role="img"
-                                    title=""
                                   >
                                     <svg
                                       aria-hidden="true"
@@ -25439,7 +25433,6 @@ exports[`table demos 📸 renders ./packages/table/src/demos/dynamic-settings.ts
                                     aria-label="question-circle"
                                     class="anticon anticon-question-circle ant-form-item-tooltip"
                                     role="img"
-                                    title=""
                                   >
                                     <svg
                                       aria-hidden="true"
@@ -25595,7 +25588,6 @@ exports[`table demos 📸 renders ./packages/table/src/demos/dynamic-settings.ts
                                     aria-label="question-circle"
                                     class="anticon anticon-question-circle ant-form-item-tooltip"
                                     role="img"
-                                    title=""
                                   >
                                     <svg
                                       aria-hidden="true"
@@ -25685,7 +25677,6 @@ exports[`table demos 📸 renders ./packages/table/src/demos/dynamic-settings.ts
                                     aria-label="question-circle"
                                     class="anticon anticon-question-circle ant-form-item-tooltip"
                                     role="img"
-                                    title=""
                                   >
                                     <svg
                                       aria-hidden="true"
@@ -25775,7 +25766,6 @@ exports[`table demos 📸 renders ./packages/table/src/demos/dynamic-settings.ts
                                     aria-label="question-circle"
                                     class="anticon anticon-question-circle ant-form-item-tooltip"
                                     role="img"
-                                    title=""
                                   >
                                     <svg
                                       aria-hidden="true"
@@ -25844,7 +25834,6 @@ exports[`table demos 📸 renders ./packages/table/src/demos/dynamic-settings.ts
                                     aria-label="question-circle"
                                     class="anticon anticon-question-circle ant-form-item-tooltip"
                                     role="img"
-                                    title=""
                                   >
                                     <svg
                                       aria-hidden="true"
@@ -25913,7 +25902,6 @@ exports[`table demos 📸 renders ./packages/table/src/demos/dynamic-settings.ts
                                     aria-label="question-circle"
                                     class="anticon anticon-question-circle ant-form-item-tooltip"
                                     role="img"
-                                    title=""
                                   >
                                     <svg
                                       aria-hidden="true"
@@ -25982,7 +25970,6 @@ exports[`table demos 📸 renders ./packages/table/src/demos/dynamic-settings.ts
                                     aria-label="question-circle"
                                     class="anticon anticon-question-circle ant-form-item-tooltip"
                                     role="img"
-                                    title=""
                                   >
                                     <svg
                                       aria-hidden="true"
@@ -26050,7 +26037,6 @@ exports[`table demos 📸 renders ./packages/table/src/demos/dynamic-settings.ts
                                     aria-label="question-circle"
                                     class="anticon anticon-question-circle ant-form-item-tooltip"
                                     role="img"
-                                    title=""
                                   >
                                     <svg
                                       aria-hidden="true"
@@ -26340,7 +26326,7 @@ exports[`table demos 📸 renders ./packages/table/src/demos/form.tsx correctly 
                       >
                         <div
                           class="ant-space-item"
-                          style="margin-right: 8px;"
+                          style="margin-right: 16px;"
                         >
                           <button
                             class="ant-btn"
@@ -26408,7 +26394,7 @@ exports[`table demos 📸 renders ./packages/table/src/demos/form.tsx correctly 
               >
                 <div
                   class="ant-space-item"
-                  style="margin-right: 8px;"
+                  style="margin-right: 16px;"
                 >
                   <button
                     class="ant-btn"
@@ -26958,7 +26944,7 @@ exports[`table demos 📸 renders ./packages/table/src/demos/intl.tsx correctly 
                       >
                         <div
                           class="ant-space-item"
-                          style="margin-right: 8px;"
+                          style="margin-right: 16px;"
                         >
                           <button
                             class="ant-btn"
@@ -27046,7 +27032,7 @@ exports[`table demos 📸 renders ./packages/table/src/demos/intl.tsx correctly 
               >
                 <div
                   class="ant-space-item"
-                  style="margin-right: 8px;"
+                  style="margin-right: 16px;"
                 >
                   <span>
                     Basic Table
@@ -27973,7 +27959,7 @@ exports[`table demos 📸 renders ./packages/table/src/demos/lightfilter.tsx cor
               >
                 <div
                   class="ant-space-item"
-                  style="margin-right: 8px;"
+                  style="margin-right: 16px;"
                 >
                   <button
                     class="ant-btn"
@@ -29146,7 +29132,7 @@ exports[`table demos 📸 renders ./packages/table/src/demos/linkage_form.tsx co
                       >
                         <div
                           class="ant-space-item"
-                          style="margin-right: 8px;"
+                          style="margin-right: 16px;"
                         >
                           <button
                             class="ant-btn ant-btn-primary"
@@ -29159,7 +29145,7 @@ exports[`table demos 📸 renders ./packages/table/src/demos/linkage_form.tsx co
                         </div>
                         <div
                           class="ant-space-item"
-                          style="margin-right: 8px;"
+                          style="margin-right: 16px;"
                         >
                           <button
                             class="ant-btn"
@@ -29647,7 +29633,7 @@ exports[`table demos 📸 renders ./packages/table/src/demos/listToolBar.tsx cor
           >
             <div
               class="ant-space-item"
-              style="margin-right: 8px;"
+              style="margin-right: 16px;"
             >
               <div
                 class="ant-pro-table-list-toolbar-title"
@@ -31446,7 +31432,7 @@ exports[`table demos 📸 renders ./packages/table/src/demos/no-option.tsx corre
               >
                 <div
                   class="ant-space-item"
-                  style="margin-right: 8px;"
+                  style="margin-right: 16px;"
                 >
                   <button
                     class="ant-btn"
@@ -31459,7 +31445,7 @@ exports[`table demos 📸 renders ./packages/table/src/demos/no-option.tsx corre
                 </div>
                 <div
                   class="ant-space-item"
-                  style="margin-right: 8px;"
+                  style="margin-right: 16px;"
                 >
                   <button
                     class="ant-btn"
@@ -32785,7 +32771,7 @@ exports[`table demos 📸 renders ./packages/table/src/demos/no-title.tsx correc
                           >
                             <div
                               class="ant-space-item"
-                              style="margin-right: 8px;"
+                              style="margin-right: 16px;"
                             >
                               <span>
                                 <span
@@ -32884,7 +32870,7 @@ exports[`table demos 📸 renders ./packages/table/src/demos/no-title.tsx correc
                           >
                             <div
                               class="ant-space-item"
-                              style="margin-right: 8px;"
+                              style="margin-right: 16px;"
                             >
                               <span>
                                 <span
@@ -32983,7 +32969,7 @@ exports[`table demos 📸 renders ./packages/table/src/demos/no-title.tsx correc
                           >
                             <div
                               class="ant-space-item"
-                              style="margin-right: 8px;"
+                              style="margin-right: 16px;"
                             >
                               <span>
                                 <span
@@ -33082,7 +33068,7 @@ exports[`table demos 📸 renders ./packages/table/src/demos/no-title.tsx correc
                           >
                             <div
                               class="ant-space-item"
-                              style="margin-right: 8px;"
+                              style="margin-right: 16px;"
                             >
                               <span>
                                 <span
@@ -33181,7 +33167,7 @@ exports[`table demos 📸 renders ./packages/table/src/demos/no-title.tsx correc
                           >
                             <div
                               class="ant-space-item"
-                              style="margin-right: 8px;"
+                              style="margin-right: 16px;"
                             >
                               <span>
                                 <span
@@ -33469,7 +33455,7 @@ exports[`table demos 📸 renders ./packages/table/src/demos/normal.tsx correctl
               >
                 <div
                   class="ant-space-item"
-                  style="margin-right: 8px;"
+                  style="margin-right: 16px;"
                 >
                   <button
                     class="ant-btn"
@@ -33482,7 +33468,7 @@ exports[`table demos 📸 renders ./packages/table/src/demos/normal.tsx correctl
                 </div>
                 <div
                   class="ant-space-item"
-                  style="margin-right: 8px;"
+                  style="margin-right: 16px;"
                 >
                   <button
                     class="ant-btn"
@@ -34758,7 +34744,6 @@ exports[`table demos 📸 renders ./packages/table/src/demos/open-rules.tsx corr
                   aria-label="question-circle"
                   class="anticon anticon-question-circle ant-form-item-tooltip"
                   role="img"
-                  title=""
                 >
                   <svg
                     aria-hidden="true"
@@ -34958,7 +34943,7 @@ exports[`table demos 📸 renders ./packages/table/src/demos/open-rules.tsx corr
                       >
                         <div
                           class="ant-space-item"
-                          style="margin-right: 8px;"
+                          style="margin-right: 16px;"
                         >
                           <button
                             class="ant-btn"
@@ -36315,7 +36300,7 @@ exports[`table demos 📸 renders ./packages/table/src/demos/pollinga.tsx correc
                       >
                         <div
                           class="ant-space-item"
-                          style="margin-right: 8px;"
+                          style="margin-right: 16px;"
                         >
                           <button
                             class="ant-btn"
@@ -36989,7 +36974,7 @@ exports[`table demos 📸 renders ./packages/table/src/demos/renderTable.tsx cor
                       >
                         <div
                           class="ant-space-item"
-                          style="margin-right: 8px;"
+                          style="margin-right: 16px;"
                         >
                           <button
                             class="ant-btn"
@@ -38051,7 +38036,7 @@ exports[`table demos 📸 renders ./packages/table/src/demos/rtl_table.tsx corre
                       >
                         <div
                           class="ant-space-item"
-                          style="margin-left: 8px;"
+                          style="margin-left: 16px;"
                         >
                           <button
                             class="ant-btn ant-btn-rtl"
@@ -40089,7 +40074,7 @@ exports[`table demos 📸 renders ./packages/table/src/demos/search_option.tsx c
                       >
                         <div
                           class="ant-space-item"
-                          style="margin-right: 8px;"
+                          style="margin-right: 16px;"
                         >
                           <button
                             class="ant-btn ant-btn-primary"
@@ -40102,7 +40087,7 @@ exports[`table demos 📸 renders ./packages/table/src/demos/search_option.tsx c
                         </div>
                         <div
                           class="ant-space-item"
-                          style="margin-right: 8px;"
+                          style="margin-right: 16px;"
                         >
                           <button
                             class="ant-btn"
@@ -40626,7 +40611,6 @@ exports[`table demos 📸 renders ./packages/table/src/demos/single.tsx correctl
                   aria-label="question-circle"
                   class="anticon anticon-question-circle ant-form-item-tooltip"
                   role="img"
-                  title=""
                 >
                   <svg
                     aria-hidden="true"
@@ -40937,7 +40921,7 @@ exports[`table demos 📸 renders ./packages/table/src/demos/single.tsx correctl
                       >
                         <div
                           class="ant-space-item"
-                          style="margin-right: 8px;"
+                          style="margin-right: 16px;"
                         >
                           <button
                             class="ant-btn"
@@ -41035,7 +41019,7 @@ exports[`table demos 📸 renders ./packages/table/src/demos/single.tsx correctl
               >
                 <div
                   class="ant-space-item"
-                  style="margin-right: 8px;"
+                  style="margin-right: 16px;"
                 >
                   <button
                     class="ant-btn ant-btn-primary"
@@ -42613,7 +42597,7 @@ Array [
         >
           <div
             class="ant-space-item"
-            style="margin-right: 8px;"
+            style="margin-right: 16px;"
           >
             <button
               class="ant-btn"
@@ -42833,7 +42817,7 @@ Array [
                         >
                           <div
                             class="ant-space-item"
-                            style="margin-right: 8px;"
+                            style="margin-right: 16px;"
                           >
                             <button
                               class="ant-btn"
@@ -43370,7 +43354,6 @@ Array [
                     aria-label="question-circle"
                     class="anticon anticon-question-circle ant-form-item-tooltip"
                     role="img"
-                    title=""
                   >
                     <svg
                       aria-hidden="true"
@@ -43711,7 +43694,7 @@ Array [
                         >
                           <div
                             class="ant-space-item"
-                            style="margin-right: 8px;"
+                            style="margin-right: 16px;"
                           >
                             <button
                               class="ant-btn"
@@ -45031,7 +45014,7 @@ exports[`table demos 📸 renders ./packages/table/src/demos/split.tsx correctly
                     >
                       <div
                         class="ant-space-item"
-                        style="margin-right: 8px;"
+                        style="margin-right: 16px;"
                       >
                         <div
                           class="ant-pro-table-list-toolbar-title"
@@ -45994,7 +45977,7 @@ exports[`table demos 📸 renders ./packages/table/src/demos/table-nested.tsx co
               >
                 <div
                   class="ant-space-item"
-                  style="margin-right: 8px;"
+                  style="margin-right: 16px;"
                 >
                   <button
                     class="ant-btn"
@@ -46007,7 +45990,7 @@ exports[`table demos 📸 renders ./packages/table/src/demos/table-nested.tsx co
                 </div>
                 <div
                   class="ant-space-item"
-                  style="margin-right: 8px;"
+                  style="margin-right: 16px;"
                 >
                   <button
                     class="ant-btn"
@@ -47190,7 +47173,7 @@ exports[`table demos 📸 renders ./packages/table/src/demos/valueType.tsx corre
                       >
                         <div
                           class="ant-space-item"
-                          style="margin-right: 8px;"
+                          style="margin-right: 16px;"
                         >
                           <button
                             class="ant-btn"
@@ -47497,7 +47480,7 @@ exports[`table demos 📸 renders ./packages/table/src/demos/valueType.tsx corre
                           >
                             <div
                               class="ant-space-item"
-                              style="margin-right: 8px;"
+                              style="margin-right: 16px;"
                             >
                               <span>
                                 <span
@@ -47624,7 +47607,7 @@ exports[`table demos 📸 renders ./packages/table/src/demos/valueType.tsx corre
                           >
                             <div
                               class="ant-space-item"
-                              style="margin-right: 8px;"
+                              style="margin-right: 16px;"
                             >
                               <span>
                                 <span
@@ -48483,7 +48466,7 @@ exports[`table demos 📸 renders ./packages/table/src/demos/valueType_select.ts
                       >
                         <div
                           class="ant-space-item"
-                          style="margin-right: 8px;"
+                          style="margin-right: 16px;"
                         >
                           <button
                             class="ant-btn"
@@ -49658,7 +49641,7 @@ exports[`table demos 📸 renders ./packages/table/src/demos/valueTypeDate.tsx c
                       >
                         <div
                           class="ant-space-item"
-                          style="margin-right: 8px;"
+                          style="margin-right: 16px;"
                         >
                           <button
                             class="ant-btn"
@@ -50913,7 +50896,7 @@ exports[`table demos 📸 renders ./packages/table/src/demos/valueTypeNumber.tsx
                       >
                         <div
                           class="ant-space-item"
-                          style="margin-right: 8px;"
+                          style="margin-right: 16px;"
                         >
                           <button
                             class="ant-btn"

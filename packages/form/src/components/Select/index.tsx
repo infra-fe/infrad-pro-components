@@ -1,8 +1,8 @@
 import React from 'react';
 import type { SelectProps } from 'infrad';
 import ProFormField from '../Field';
-import type { ProSchema } from '@ant-design/pro-utils';
-import { runFunction } from '@ant-design/pro-utils';
+import type { ProSchema } from 'infrad-pro-utils';
+import { runFunction } from 'infrad-pro-utils';
 import type { ProFormFieldItemProps } from '../../interface';
 
 export type ProFormSelectProps<T = any> = ProFormFieldItemProps<

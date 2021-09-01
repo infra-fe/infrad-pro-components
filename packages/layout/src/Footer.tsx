@@ -1,4 +1,4 @@
-import { CopyrightOutlined, GithubOutlined } from '@ant-design/icons';
+import { CopyrightOutlined, GithubOutlined } from 'infra-design-icons';
 import { Layout } from 'infrad';
 import type { CSSProperties } from 'react';
 import React, { Fragment } from 'react';

@@ -1,12 +1,9 @@
 import React, { useRef } from 'react';
-import { InputNumber, Form } from 'antd';
-import type { RowEditableConfig } from '@ant-design/pro-utils';
+import { InputNumber, Form } from 'infrad';
+import type { RowEditableConfig } from 'infrad-pro-utils';
 import useMergedState from 'rc-util/lib/hooks/useMergedState';
-import type {
-  ProDescriptionsActionType,
-  ProDescriptionsItemProps,
-} from '@ant-design/pro-descriptions';
-import Descriptions from '@ant-design/pro-descriptions';
+import type { ProDescriptionsActionType, ProDescriptionsItemProps } from 'infrad-pro-descriptions';
+import Descriptions from 'infrad-pro-descriptions';
 import { mount, render } from 'enzyme';
 import { act } from 'react-dom/test-utils';
 import { waitForComponentToPaint } from '../util';

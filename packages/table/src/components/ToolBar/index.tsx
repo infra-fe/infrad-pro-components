@@ -1,10 +1,10 @@
 import React, { useEffect, useMemo } from 'react';
-import { ReloadOutlined, SettingOutlined } from '@ant-design/icons';
+import { ReloadOutlined, SettingOutlined } from 'infra-design-icons';
 import type { TableColumnType } from 'infrad';
 import { Tooltip } from 'infrad';
 import type { SearchProps } from 'infrad/lib/input';
-import type { IntlType } from '@ant-design/pro-provider';
-import { useIntl } from '@ant-design/pro-provider';
+import type { IntlType } from 'infrad-pro-provider';
+import { useIntl } from 'infrad-pro-provider';
 import type { ListToolBarProps } from '../ListToolBar';
 import ListToolBar from '../ListToolBar';
 import ColumnSetting from '../ColumnSetting';
@@ -13,7 +13,7 @@ import FullScreenIcon from './FullscreenIcon';
 import DensityIcon from './DensityIcon';
 import Container from '../../container';
 import type { ActionType, ProTableProps } from '../../typing';
-import { omitUndefined, isDeepEqualReact } from '@ant-design/pro-utils';
+import { omitUndefined, isDeepEqualReact } from 'infrad-pro-utils';
 import type { LabelTooltipType } from 'infrad/lib/form/FormItemLabel';
 
 type OptionSearchProps = Omit<SearchProps, 'onSearch'> & {

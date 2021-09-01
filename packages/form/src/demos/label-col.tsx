@@ -1,5 +1,5 @@
 ﻿import React from 'react';
-import ProForm, { ProFormText, ProFormCheckbox, ProFormRadio } from '@ant-design/pro-form';
+import ProForm, { ProFormText, ProFormCheckbox, ProFormRadio } from 'infrad-pro-form';
 
 import { Button } from 'infrad';
 

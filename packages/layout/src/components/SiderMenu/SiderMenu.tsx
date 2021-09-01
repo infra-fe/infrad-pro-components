@@ -3,7 +3,7 @@ import React from 'react';
 import { Layout, Menu } from 'infrad';
 import classNames from 'classnames';
 import type { SiderProps } from 'infrad/lib/layout/Sider';
-import { MenuUnfoldOutlined, MenuFoldOutlined } from '@ant-design/icons';
+import { MenuUnfoldOutlined, MenuFoldOutlined } from 'infra-design-icons';
 
 import './index.less';
 import type { WithFalse } from '../../typings';

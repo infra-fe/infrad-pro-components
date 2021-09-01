@@ -5,11 +5,11 @@ import type {
   ProSchemaComponentTypes,
   ProTableEditableFnType,
   UseEditableUtilType,
-} from '@ant-design/pro-utils';
-import { isNil, isDeepEqualReact } from '@ant-design/pro-utils';
-import type { ProFieldEmptyText } from '@ant-design/pro-field';
+} from 'infrad-pro-utils';
+import { isNil, isDeepEqualReact } from 'infrad-pro-utils';
+import type { ProFieldEmptyText } from 'infrad-pro-field';
 import cellRenderToFromItem from './cellRenderToFromItem';
-import { LabelIconTip } from '@ant-design/pro-utils';
+import { LabelIconTip } from 'infrad-pro-utils';
 import get from 'rc-util/lib/utils/get';
 
 import type { ActionType, ProColumns } from '../typing';

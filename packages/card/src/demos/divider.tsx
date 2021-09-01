@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Statistic } from 'infrad';
-import ProCard from '@ant-design/pro-card';
+import ProCard from 'infrad-pro-card';
 import RcResizeObserver from 'rc-resize-observer';
 
 const { Divider } = ProCard;

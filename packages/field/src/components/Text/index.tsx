@@ -1,6 +1,6 @@
 import { Input } from 'infrad';
 import React from 'react';
-import { useIntl } from '@ant-design/pro-provider';
+import { useIntl } from 'infrad-pro-provider';
 
 import type { ProFieldFC } from '../../index';
 

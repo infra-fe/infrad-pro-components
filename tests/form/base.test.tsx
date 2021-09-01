@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Input } from 'antd';
+import { Button, Input } from 'infrad';
 import ProForm, {
   ProFormText,
   ProFormCaptcha,
@@ -8,9 +8,9 @@ import ProForm, {
   ProFormSelect,
   ProFormColorPicker,
   ProFormField,
-} from '@ant-design/pro-form';
+} from 'infrad-pro-form';
 import { act } from 'react-dom/test-utils';
-import { FontSizeOutlined } from '@ant-design/icons';
+import { FontSizeOutlined } from 'infra-design-icons';
 
 import { mount } from 'enzyme';
 import { waitTime, waitForComponentToPaint } from '../util';

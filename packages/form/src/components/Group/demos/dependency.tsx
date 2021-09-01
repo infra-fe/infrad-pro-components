@@ -1,5 +1,5 @@
 ﻿import React from 'react';
-import ProForm, { ProFormList, ProFormText, ProFormDependency } from '@ant-design/pro-form';
+import ProForm, { ProFormList, ProFormText, ProFormDependency } from 'infrad-pro-form';
 
 const Demo = () => {
   return (

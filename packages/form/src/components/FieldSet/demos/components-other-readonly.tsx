@@ -11,7 +11,7 @@ import ProForm, {
   ProFormUploadButton,
   ProFormUploadDragger,
   ProFormFieldSet,
-} from '@ant-design/pro-form';
+} from 'infrad-pro-form';
 
 const Demo = () => (
   <div

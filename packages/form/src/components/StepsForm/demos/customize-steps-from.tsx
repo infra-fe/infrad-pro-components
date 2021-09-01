@@ -7,8 +7,8 @@ import ProForm, {
   ProFormTextArea,
   ProFormCheckbox,
   ProFormDateRangePicker,
-} from '@ant-design/pro-form';
-import ProCard from '@ant-design/pro-card';
+} from 'infrad-pro-form';
+import ProCard from 'infrad-pro-card';
 import { Button, message } from 'infrad';
 
 const waitTime = (time: number = 100) => {

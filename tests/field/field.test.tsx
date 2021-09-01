@@ -1,9 +1,9 @@
 import { render, mount } from 'enzyme';
-import { Button, Input } from 'antd';
+import { Button, Input } from 'infrad';
 import React from 'react';
 import moment from 'moment';
 import { act } from 'react-dom/test-utils';
-import Field from '@ant-design/pro-field';
+import Field from 'infrad-pro-field';
 
 import Demo from './fixtures/demo';
 import { waitForComponentToPaint, waitTime } from '../util';

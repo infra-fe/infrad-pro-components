@@ -1,8 +1,8 @@
 import { DatePicker } from 'infrad';
 import React from 'react';
 import moment from 'moment';
-import { parseValueToMoment } from '@ant-design/pro-utils';
-import { useIntl } from '@ant-design/pro-provider';
+import { parseValueToMoment } from 'infrad-pro-utils';
+import { useIntl } from 'infrad-pro-provider';
 import type { ProFieldFC } from '../../index';
 
 /**

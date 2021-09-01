@@ -3,7 +3,7 @@ import type { SwitchProps } from 'infrad';
 import { Switch } from 'infrad';
 import Omit from 'omit.js';
 import type { ProFieldFC } from '../../index';
-import { useIntl } from '@ant-design/pro-provider';
+import { useIntl } from 'infrad-pro-provider';
 
 /**
  * 评分组件

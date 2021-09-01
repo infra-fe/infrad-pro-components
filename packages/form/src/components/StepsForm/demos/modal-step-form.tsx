@@ -7,9 +7,9 @@ import ProForm, {
   ProFormSelect,
   ProFormTextArea,
   ProFormCheckbox,
-} from '@ant-design/pro-form';
+} from 'infrad-pro-form';
 import { Button, message, Modal } from 'infrad';
-import { PlusOutlined } from '@ant-design/icons';
+import { PlusOutlined } from 'infra-design-icons';
 
 const waitTime = (time: number = 100) => {
   return new Promise((resolve) => {

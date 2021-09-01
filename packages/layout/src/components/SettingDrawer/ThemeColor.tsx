@@ -1,6 +1,6 @@
 import './ThemeColor.less';
 
-import { CheckOutlined } from '@ant-design/icons';
+import { CheckOutlined } from 'infra-design-icons';
 
 import { Tooltip } from 'infrad';
 

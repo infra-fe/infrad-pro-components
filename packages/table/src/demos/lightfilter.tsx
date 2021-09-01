@@ -1,8 +1,8 @@
 import React from 'react';
 import { Button, Tooltip } from 'infrad';
-import { QuestionCircleOutlined } from '@ant-design/icons';
-import type { ProColumns } from '@ant-design/pro-table';
-import ProTable, { TableDropdown } from '@ant-design/pro-table';
+import { QuestionCircleOutlined } from 'infra-design-icons';
+import type { ProColumns } from 'infrad-pro-table';
+import ProTable, { TableDropdown } from 'infrad-pro-table';
 import moment from 'moment';
 
 export type TableListItem = {

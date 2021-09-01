@@ -1,4 +1,4 @@
-import type { MenuTheme } from 'antd/es/menu/MenuContext';
+import type { MenuTheme } from 'infrad/es/menu/MenuContext';
 
 export type ContentWidth = 'Fluid' | 'Fixed';
 

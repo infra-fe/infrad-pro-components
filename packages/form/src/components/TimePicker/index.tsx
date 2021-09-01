@@ -2,7 +2,7 @@ import React from 'react';
 import ProField from '../Field';
 import type { DatePickerProps } from 'infrad';
 import type { ProFormFieldItemProps } from '../../interface';
-import { dateArrayFormatter } from '@ant-design/pro-utils';
+import { dateArrayFormatter } from 'infrad-pro-utils';
 
 const valueType = 'time';
 

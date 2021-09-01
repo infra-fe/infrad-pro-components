@@ -1,11 +1,11 @@
 import { mount } from 'enzyme';
 import type { ReactText } from 'react';
 import React, { useState } from 'react';
-import ProList, { BaseProList } from '@ant-design/pro-list';
+import ProList, { BaseProList } from 'infrad-pro-list';
 import { act } from 'react-dom/test-utils';
 import PaginationDemo from '../../packages/list/src/demos/pagination';
 import { waitForComponentToPaint } from '../util';
-import { Tag } from 'antd';
+import { Tag } from 'infrad';
 
 type DataSourceType = {
   name: string;

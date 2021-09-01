@@ -15,9 +15,9 @@ import type {
   ProSchema,
   ProSchemaComponentTypes,
   SearchTransformKeyFn,
-} from '@ant-design/pro-utils';
-import { LabelIconTip, omitUndefined } from '@ant-design/pro-utils';
-import { runFunction } from '@ant-design/pro-utils';
+} from 'infrad-pro-utils';
+import { LabelIconTip, omitUndefined } from 'infrad-pro-utils';
+import { runFunction } from 'infrad-pro-utils';
 import omit from 'omit.js';
 import ProForm, { DrawerForm, ModalForm, QueryFilter, LightFilter, StepsForm } from '../../index';
 import type { ProFormFieldProps } from '../Field';

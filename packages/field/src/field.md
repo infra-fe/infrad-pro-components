@@ -24,7 +24,7 @@ nav:
 ## API
 
 ```typescript | pure
-import Field from '@ant-design/pro-field';
+import Field from 'infrad-pro-field';
 
 return <Field text="100" valueType="money" mode={state} />;
 ```

@@ -15733,7 +15733,7 @@ exports[`layout demos 📸 renders ./packages/layout/src/demos/immersive-navigat
           >
             <div
               class="ant-space-item"
-              style="margin-bottom: 8px;"
+              style="margin-bottom: 16px;"
             >
               <button
                 class="ant-btn ant-btn-sm"
@@ -15765,7 +15765,7 @@ exports[`layout demos 📸 renders ./packages/layout/src/demos/immersive-navigat
             </div>
             <div
               class="ant-space-item"
-              style="margin-bottom: 8px;"
+              style="margin-bottom: 16px;"
             >
               <b>
                 alipay_dev_gzone
@@ -15773,7 +15773,7 @@ exports[`layout demos 📸 renders ./packages/layout/src/demos/immersive-navigat
             </div>
             <div
               class="ant-space-item"
-              style="margin-bottom: 8px;"
+              style="margin-bottom: 16px;"
             >
               <span>
                 Creation Time 2017-01-10

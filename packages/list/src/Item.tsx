@@ -1,12 +1,12 @@
 import React, { useContext, useMemo } from 'react';
 import { List, Avatar, Skeleton, ConfigProvider } from 'infrad';
-import type { ProCardProps } from '@ant-design/pro-card';
+import type { ProCardProps } from 'infrad-pro-card';
 import type { GetComponentProps } from './index';
-import ProCard from '@ant-design/pro-card';
+import ProCard from 'infrad-pro-card';
 import useMergedState from 'rc-util/lib/hooks/useMergedState';
 import type { ListGridType } from 'infrad/lib/list';
 import type { ExpandableConfig } from 'infrad/lib/table/interface';
-import { RightOutlined } from '@ant-design/icons';
+import { RightOutlined } from 'infra-design-icons';
 import classNames from 'classnames';
 
 export type RenderExpandIconProps<RecordType> = {

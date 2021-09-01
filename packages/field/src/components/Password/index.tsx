@@ -1,8 +1,8 @@
 import React from 'react';
 import { Input, Space } from 'infrad';
-import { EyeOutlined, EyeInvisibleOutlined } from '@ant-design/icons';
+import { EyeOutlined, EyeInvisibleOutlined } from 'infra-design-icons';
 import useMergedState from 'rc-util/lib/hooks/useMergedState';
-import { useIntl } from '@ant-design/pro-provider';
+import { useIntl } from 'infrad-pro-provider';
 
 import type { ProFieldFC } from '../../index';
 

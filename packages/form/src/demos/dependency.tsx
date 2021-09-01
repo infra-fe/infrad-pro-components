@@ -1,6 +1,6 @@
 import React from 'react';
 import { Form, message } from 'infrad';
-import ProForm, { ProFormText, ProFormSelect, ProFormDependency } from '@ant-design/pro-form';
+import ProForm, { ProFormText, ProFormSelect, ProFormDependency } from 'infrad-pro-form';
 
 const waitTime = (time: number = 100) => {
   return new Promise((resolve) => {

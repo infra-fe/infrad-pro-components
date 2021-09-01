@@ -1,10 +1,10 @@
 /** Title: 前置水印 */
 import React from 'react';
-import { WaterMark } from '@ant-design/pro-layout';
+import { WaterMark } from 'infrad-pro-layout';
 import { Tooltip } from 'infrad';
-import { QuestionCircleOutlined } from '@ant-design/icons';
-import type { ProColumns } from '@ant-design/pro-table';
-import ProTable, { TableDropdown } from '@ant-design/pro-table';
+import { QuestionCircleOutlined } from 'infra-design-icons';
+import type { ProColumns } from 'infrad-pro-table';
+import ProTable, { TableDropdown } from 'infrad-pro-table';
 
 const valueEnum = {
   0: 'close',

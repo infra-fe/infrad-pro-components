@@ -30,7 +30,7 @@ exports[`Descriptions 📝 columns support editable test 1`] = `
                   >
                     <div
                       class="ant-space-item"
-                      style="margin-right:8px"
+                      style="margin-right:16px"
                     >
                       <div
                         class="ant-row ant-form-item"
@@ -86,7 +86,7 @@ exports[`Descriptions 📝 columns support editable test 1`] = `
                     </div>
                     <div
                       class="ant-space-item"
-                      style="margin-right:8px"
+                      style="margin-right:16px"
                     >
                       <a>
                         <span
@@ -112,7 +112,7 @@ exports[`Descriptions 📝 columns support editable test 1`] = `
                     </div>
                     <div
                       class="ant-space-item"
-                      style="margin-right:8px"
+                      style="margin-right:16px"
                     />
                     <div
                       class="ant-space-item"
@@ -195,7 +195,7 @@ exports[`Descriptions 📝 renderFormItem run defaultRender 1`] = `
                   >
                     <div
                       class="ant-space-item"
-                      style="margin-right:8px"
+                      style="margin-right:16px"
                     >
                       <div
                         class="ant-row ant-form-item"
@@ -251,7 +251,7 @@ exports[`Descriptions 📝 renderFormItem run defaultRender 1`] = `
                     </div>
                     <div
                       class="ant-space-item"
-                      style="margin-right:8px"
+                      style="margin-right:16px"
                     >
                       <a>
                         <span
@@ -277,7 +277,7 @@ exports[`Descriptions 📝 renderFormItem run defaultRender 1`] = `
                     </div>
                     <div
                       class="ant-space-item"
-                      style="margin-right:8px"
+                      style="margin-right:16px"
                     />
                     <div
                       class="ant-space-item"

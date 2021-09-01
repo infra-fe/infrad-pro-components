@@ -2,8 +2,8 @@ import { mount } from 'enzyme';
 import React from 'react';
 import MockDate from 'mockdate';
 import { act } from 'react-dom/test-utils';
-import { Input } from 'antd';
-import ProTable from '@ant-design/pro-table';
+import { Input } from 'infrad';
+import ProTable from 'infrad-pro-table';
 import { request } from './demo';
 import { waitForComponentToPaint, spyElementPrototypes, waitTime } from '../util';
 

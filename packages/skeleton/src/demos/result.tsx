@@ -1,5 +1,5 @@
 import React from 'react';
-import ProSkeleton from '@ant-design/pro-skeleton';
+import ProSkeleton from 'infrad-pro-skeleton';
 
 export default () => (
   <div

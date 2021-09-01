@@ -12,7 +12,7 @@ import {
   ProFormDateTimeRangePicker,
   ProFormSlider,
   ProFormFieldSet,
-} from '@ant-design/pro-form';
+} from 'infrad-pro-form';
 import { Radio } from 'infrad';
 import type { SizeType } from 'infrad/lib/config-provider/SizeContext';
 import moment from 'moment';

@@ -200,7 +200,7 @@ A simple loading page
 RouteContext can provide built-in data for Layout. For example, isMobile and collapsed, which you can consume to customize some of the behavior.
 
 ```tsx | pure
-import { RouteContext, RouteContextType } from '@ant-design/pro-layout';
+import { RouteContext, RouteContextType } from 'infrad-pro-layout';
 
 const Page = () => (
   <RouteContext.
@@ -223,7 +223,7 @@ GridContent encapsulates the [equal-width](https://preview.pro.ant.design/dashbo
 
 Generate menuData and breadcrumb based on router information.
 
-``js | pure import { getMenuData } from '@ant-design/pro-layout';
+``js | pure import { getMenuData } from 'infrad-pro-layout';
 
 const { breadcrumb, menuData } = getMenuData(routes, menu, formatMessage, menuDataRender);
 
@@ -241,7 +241,7 @@ const { breadcrumb, menuData } = getMenuData(routes, menu, formatMessage, menuDa
 getPageTitle encapsulates the logic of the title generated on the menuData.
 
 ``` js | pure
-import { getPageTitle } from '@ant-design/pro-layout';
+import { getPageTitle } from 'infrad-pro-layout';
 
 const title = getPageTitle({
   pathname,
@@ -263,7 +263,7 @@ const title = getPageTitle({
 ### Settings
 
 ```ts | pure
-// You can get this type by importing { Settings } from '@ant-design/pro-layout/defaultSettings'
+// You can get this type by importing { Settings } from 'infrad-pro-layout/defaultSettings'
 // to get this type
 export interface Settings {
   /** Theme for nav menu */
@@ -292,7 +292,7 @@ export interface Settings {
 ### MenuDataItem
 
 ```ts | pure
-// You can get this type by importing { MenuDataItem } from '@ant-design/pro-layout'
+// You can get this type by importing { MenuDataItem } from 'infrad-pro-layout'
 // to get this type
 
 export interface MenuDataItem {
@@ -311,7 +311,7 @@ export interface MenuDataItem {
 ### Route
 
 ```ts | pure
-// You can get this type by importing { RouterTypes } from '@ant-design/pro-layout/lib/typings';
+// You can get this type by importing { RouterTypes } from 'infrad-pro-layout/lib/typings';
 // to get this type
 export interface Route {
   path: string;
@@ -371,7 +371,7 @@ Usage.
 RouteContext provides a way to perform operations based on the layout's data, PageContainer and FooterToolbar both rely on RouteContext's data for their functionality.
 
 ```tsx | pure
-import { RouteContext, RouteContextType } from '@ant-design/pro-layout';
+import { RouteContext, RouteContextType } from 'infrad-pro-layout';
 
 const Page = () => (
   <RouteContext.
@@ -423,7 +423,7 @@ ProLayout will automatically generate the menu and auto-select it according to p
 In order to provide more functionality, we extended the routers configuration by adding several configurations for customization, with the following data structure definition:
 
 ```ts | pure
-// You can get this type by importing { MenuDataItem } from '@ant-design/pro-layout'
+// You can get this type by importing { MenuDataItem } from 'infrad-pro-layout'
 // to get this type
 export interface MenuDataItem {
   children?: MenuDataItem[];

@@ -1,6 +1,6 @@
 import React, { useMemo } from 'react';
 import { InputNumber } from 'infrad';
-import { useIntl } from '@ant-design/pro-provider';
+import { useIntl } from 'infrad-pro-provider';
 import type { ProFieldFC } from '../../index';
 
 export type FieldMoneyProps = {

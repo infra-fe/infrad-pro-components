@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button, Tag, Space } from 'infrad';
-import ProList from '@ant-design/pro-list';
+import ProList from 'infrad-pro-list';
 
 const dataSource = [
   {

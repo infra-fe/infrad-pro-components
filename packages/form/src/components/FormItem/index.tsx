@@ -3,8 +3,8 @@ import type { FormItemProps } from 'infrad';
 import { ConfigProvider, Form } from 'infrad';
 import { FormListContext } from '../List';
 import FieldContext from '../../FieldContext';
-import type { SearchTransformKeyFn } from '@ant-design/pro-utils';
-import { isDropdownValueType, omitUndefined } from '@ant-design/pro-utils';
+import type { SearchTransformKeyFn } from 'infrad-pro-utils';
+import { isDropdownValueType, omitUndefined } from 'infrad-pro-utils';
 import type { LightWrapperProps } from '../../BaseForm/LightWrapper';
 import LightWrapper from '../../BaseForm/LightWrapper';
 

@@ -3,7 +3,7 @@
   ProFormFieldSet,
   ProFormSelect,
   ProFormText,
-} from '@ant-design/pro-form';
+} from 'infrad-pro-form';
 import React from 'react';
 
 export default () => {

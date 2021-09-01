@@ -1,7 +1,7 @@
 {
-  "name": "@ant-design/pro-provider",
+  "name": "infrad-pro-provider",
   "version": "1.4.17",
-  "description": "@ant-design/pro-provider",
+  "description": "infrad-pro-provider",
   "keywords": [
     "antd",
     "admin",

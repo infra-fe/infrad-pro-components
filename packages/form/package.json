@@ -1,7 +1,7 @@
 {
-  "name": "@ant-design/pro-form",
+  "name": "infrad-pro-form",
   "version": "1.38.1",
-  "description": "@ant-design/pro-form",
+  "description": "infrad-pro-form",
   "keywords": [
     "antd",
     "admin",
@@ -33,10 +33,10 @@
     "ie >= 11"
   ],
   "dependencies": {
-    "@ant-design/icons": "^4.2.1",
-    "@ant-design/pro-field": "1.21.2",
-    "@ant-design/pro-provider": "1.4.17",
-    "@ant-design/pro-utils": "1.24.1",
+    "infra-design-icons": "^4.2.1",
+    "infrad-pro-field": "1.21.2",
+    "infrad-pro-provider": "1.4.17",
+    "infrad-pro-utils": "1.24.1",
     "@umijs/use-params": "^1.0.2",
     "classnames": "^2.2.6",
     "lodash.merge": "^4.6.2",

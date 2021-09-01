@@ -52,15 +52,15 @@ const getMds = (allVersion = false) => {
     }
     console.log(versions);
     versions.map((version) => {
-      const versionPkg = `@ant-design/pro-${pkg}@${version}`;
+      const versionPkg = `infrad-pro-${pkg}@${version}`;
       const changeLog = getChangelog(content, versionPkg);
       if (!changeLog) {
         return;
       }
       github.repos
         .createRelease({
-          owner: 'ant-design',
-          repo: 'pro-components',
+          owner: 'infra-fe',
+          repo: 'infrad-pro-components',
           tag_name: versionPkg,
           name: versionPkg,
           body: changeLog,

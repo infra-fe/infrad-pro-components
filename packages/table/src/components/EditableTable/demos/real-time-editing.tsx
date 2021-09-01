@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import type { ProColumns } from '@ant-design/pro-table';
-import { EditableProTable } from '@ant-design/pro-table';
-import ProCard from '@ant-design/pro-card';
+import type { ProColumns } from 'infrad-pro-table';
+import { EditableProTable } from 'infrad-pro-table';
+import ProCard from 'infrad-pro-card';
 import { Button } from 'infrad';
-import { ProFormField } from '@ant-design/pro-form';
+import { ProFormField } from 'infrad-pro-form';
 
 type DataSourceType = {
   id: React.Key;

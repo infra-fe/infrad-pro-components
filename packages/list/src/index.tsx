@@ -1,9 +1,9 @@
 import React, { useMemo, useContext, useRef, useImperativeHandle } from 'react';
 import type { ListProps, PaginationProps } from 'infrad';
 import classNames from 'classnames';
-import type { ProTableProps, ProColumnType, ActionType } from '@ant-design/pro-table';
-import ProTable from '@ant-design/pro-table';
-import type { ParamsType } from '@ant-design/pro-provider';
+import type { ProTableProps, ProColumnType, ActionType } from 'infrad-pro-table';
+import ProTable from 'infrad-pro-table';
+import type { ParamsType } from 'infrad-pro-provider';
 import { ConfigProvider } from 'infrad';
 import type { LabelTooltipType } from 'infrad/lib/form/FormItemLabel';
 

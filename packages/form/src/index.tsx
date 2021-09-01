@@ -43,7 +43,7 @@ import type { FormInstance, FormItemProps, FormProps, ProFormInstance } from './
 import type { ProFormLayoutType, ProFormColumnsType } from './components/SchemaForm';
 import BetaSchemaForm from './components/SchemaForm';
 import './index.less';
-import { ProFormContext } from '@ant-design/pro-utils';
+import { ProFormContext } from 'infrad-pro-utils';
 import type { LightFilterFooterRender, ProFormFieldItemProps } from './interface';
 
 export type {

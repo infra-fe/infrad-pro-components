@@ -1,6 +1,6 @@
 import React from 'react';
 
-import ProDescriptions from '@ant-design/pro-descriptions';
+import ProDescriptions from 'infrad-pro-descriptions';
 
 export default () => {
   return (

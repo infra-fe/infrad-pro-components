@@ -1,6 +1,6 @@
 import React from 'react';
-import { RightOutlined, EllipsisOutlined } from '@ant-design/icons';
-import { StatisticCard } from '@ant-design/pro-card';
+import { RightOutlined, EllipsisOutlined } from 'infra-design-icons';
+import { StatisticCard } from 'infrad-pro-card';
 import { Space } from 'infrad';
 
 const { Statistic } = StatisticCard;

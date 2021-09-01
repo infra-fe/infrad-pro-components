@@ -1,4 +1,4 @@
-import type { IntlType } from '@ant-design/pro-provider';
+import type { IntlType } from 'infrad-pro-provider';
 import {
   ConfigProviderWrap,
   ConfigProvider,
@@ -16,10 +16,10 @@ import {
   zhTWIntl,
   frFRIntl,
   ptBRIntl,
-} from '@ant-design/pro-provider';
-import type { ProFieldValueType, RowEditableConfig } from '@ant-design/pro-utils';
+} from 'infrad-pro-provider';
+import type { ProFieldValueType, RowEditableConfig } from 'infrad-pro-utils';
 
-import { FieldStatus, FieldIndexColumn } from '@ant-design/pro-field';
+import { FieldStatus, FieldIndexColumn } from 'infrad-pro-field';
 import ProTable from './Table';
 import TableDropdown from './components/Dropdown';
 import type { ListToolBarProps } from './components/ListToolBar';

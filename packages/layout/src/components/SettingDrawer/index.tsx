@@ -4,8 +4,8 @@ import {
   CloseOutlined,
   NotificationOutlined,
   SettingOutlined,
-} from '@ant-design/icons';
-import { isBrowser } from '@ant-design/pro-utils';
+} from 'infra-design-icons';
+import { isBrowser } from 'infrad-pro-utils';
 import { useUrlSearchParams } from '@umijs/use-params';
 
 import { Button, Divider, Drawer, List, Switch, message, Alert } from 'infrad';

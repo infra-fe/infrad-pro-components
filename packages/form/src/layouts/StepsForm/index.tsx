@@ -5,8 +5,8 @@ import toArray from 'rc-util/lib/Children/toArray';
 import type { FormProviderProps } from 'infrad/lib/form/context';
 import useMergedState from 'rc-util/lib/hooks/useMergedState';
 import classNames from 'classnames';
-import { ConfigProviderWrap, useIntl } from '@ant-design/pro-provider';
-import { useMountMergeState } from '@ant-design/pro-utils';
+import { ConfigProviderWrap, useIntl } from 'infrad-pro-provider';
+import { useMountMergeState } from 'infrad-pro-utils';
 
 import type { StepFormProps } from './StepForm';
 import StepForm from './StepForm';

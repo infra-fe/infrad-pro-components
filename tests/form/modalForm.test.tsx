@@ -1,6 +1,6 @@
 ﻿import React from 'react';
-import { ProFormText, ModalForm } from '@ant-design/pro-form';
-import { Button } from 'antd';
+import { ProFormText, ModalForm } from 'infrad-pro-form';
+import { Button } from 'infrad';
 import { act } from 'react-dom/test-utils';
 import { mount } from 'enzyme';
 import { waitForComponentToPaint } from '../util';

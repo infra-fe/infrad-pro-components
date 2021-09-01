@@ -1,5 +1,5 @@
 ﻿import React from 'react';
-import { pickProFormItemProps, omitUndefined } from '@ant-design/pro-utils';
+import { pickProFormItemProps, omitUndefined } from 'infrad-pro-utils';
 import classnames from 'classnames';
 import { noteOnce } from 'rc-util/lib/warning';
 import FieldContext from '../FieldContext';

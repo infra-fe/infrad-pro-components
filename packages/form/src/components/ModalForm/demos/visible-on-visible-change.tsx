@@ -6,8 +6,8 @@ import ProForm, {
   ProFormDateRangePicker,
   ProFormSelect,
   DrawerForm,
-} from '@ant-design/pro-form';
-import { PlusOutlined } from '@ant-design/icons';
+} from 'infrad-pro-form';
+import { PlusOutlined } from 'infra-design-icons';
 
 export default () => {
   const [modalVisit, setModalVisit] = useState(false);

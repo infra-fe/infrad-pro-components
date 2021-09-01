@@ -1,7 +1,7 @@
 import React from 'react';
 import type { FormItemProps } from 'infrad';
 import type { NamePath } from 'infrad/lib/form/interface';
-import type { ProFieldValueType, SearchTransformKeyFn } from '@ant-design/pro-utils';
+import type { ProFieldValueType, SearchTransformKeyFn } from 'infrad-pro-utils';
 import type { GroupProps, FieldProps } from './interface';
 import type { ProFormInstance } from '.';
 

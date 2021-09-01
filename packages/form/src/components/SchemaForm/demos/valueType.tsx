@@ -1,6 +1,6 @@
 ﻿import React, { useState } from 'react';
-import { BetaSchemaForm, ProFormSelect } from '@ant-design/pro-form';
-import type { ProFieldValueType } from '@ant-design/pro-utils';
+import { BetaSchemaForm, ProFormSelect } from 'infrad-pro-form';
+import type { ProFieldValueType } from 'infrad-pro-utils';
 
 const valueEnum = {
   all: { text: '全部', status: 'Default' },

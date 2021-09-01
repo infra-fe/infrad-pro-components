@@ -11,7 +11,7 @@ import ProForm, {
   ProFormSelect,
   ProFormRadio,
   LoginForm,
-} from '@ant-design/pro-form';
+} from 'infrad-pro-form';
 import {
   AlipayCircleOutlined,
   LockOutlined,
@@ -19,7 +19,7 @@ import {
   TaobaoCircleOutlined,
   UserOutlined,
   WeiboCircleOutlined,
-} from '@ant-design/icons';
+} from 'infra-design-icons';
 
 const iconStyles = {
   marginLeft: '16px',

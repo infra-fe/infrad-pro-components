@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Tooltip } from 'infrad';
-import { CheckOutlined } from '@ant-design/icons';
+import { CheckOutlined } from 'infra-design-icons';
 import classNames from 'classnames';
 
 export type BlockCheckboxProps = {

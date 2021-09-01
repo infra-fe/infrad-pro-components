@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import type { ProColumns } from '@ant-design/pro-table';
-import { DragSortTable } from '@ant-design/pro-table';
-import { MenuOutlined } from '@ant-design/icons';
+import type { ProColumns } from 'infrad-pro-table';
+import { DragSortTable } from 'infrad-pro-table';
+import { MenuOutlined } from 'infra-design-icons';
 import { message } from 'infrad';
 
 const columns: ProColumns[] = [

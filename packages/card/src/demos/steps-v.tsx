@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Steps, Button, Space } from 'infrad';
-import ProCard from '@ant-design/pro-card';
+import ProCard from 'infrad-pro-card';
 import RcResizeObserver from 'rc-resize-observer';
 
 const { Step } = Steps;

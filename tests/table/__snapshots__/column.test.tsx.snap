@@ -290,7 +290,7 @@ exports[`Table ColumnSetting 🎏 config provide render 1`] = `
                       >
                         <div
                           class="qixian-space-item"
-                          style="margin-right: 8px;"
+                          style="margin-right: 16px;"
                         >
                           <button
                             class="qixian-btn"

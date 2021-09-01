@@ -8,7 +8,7 @@ import ProForm, {
   ProFormSelect,
   ProFormDatePicker,
   ProFormGroup,
-} from '@ant-design/pro-form';
+} from 'infrad-pro-form';
 
 const Demo = () => {
   const [position, setPosition] = useState<'bottom' | 'top'>('bottom');

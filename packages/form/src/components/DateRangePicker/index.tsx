@@ -1,7 +1,7 @@
 import React from 'react';
 import type { RangePickerProps } from 'infrad/lib/date-picker';
 import ProField from '../Field';
-import { dateArrayFormatter } from '@ant-design/pro-utils';
+import { dateArrayFormatter } from 'infrad-pro-utils';
 import type { ProFormFieldItemProps } from '../../interface';
 
 const valueType = 'dateRange';

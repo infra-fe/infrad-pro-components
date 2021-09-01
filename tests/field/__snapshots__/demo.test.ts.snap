@@ -7,7 +7,7 @@ Array [
   >
     <div
       class="ant-space-item"
-      style="margin-right: 8px;"
+      style="margin-right: 16px;"
     >
       <div
         class="ant-radio-group ant-radio-group-outline"
@@ -55,7 +55,7 @@ Array [
     </div>
     <div
       class="ant-space-item"
-      style="margin-right: 8px;"
+      style="margin-right: 16px;"
     >
       简约模式
     </div>
@@ -709,7 +709,7 @@ Array [
                       >
                         <div
                           class="ant-space-item"
-                          style="margin-right: 8px;"
+                          style="margin-right: 16px;"
                         >
                           <span
                             class="ant-badge ant-badge-status ant-badge-not-a-wrapper"
@@ -776,7 +776,7 @@ Array [
                       >
                         <div
                           class="ant-space-item"
-                          style="margin-right: 8px;"
+                          style="margin-right: 16px;"
                         >
                           打开
                         </div>
@@ -939,7 +939,7 @@ Array [
                   >
                     <div
                       class="ant-space-item"
-                      style="margin-right: 8px;"
+                      style="margin-right: 16px;"
                     >
                       <span
                         style="color: rgb(255, 77, 79);"
@@ -949,7 +949,7 @@ Array [
                     </div>
                     <div
                       class="ant-space-item"
-                      style="margin-right: 8px;"
+                      style="margin-right: 16px;"
                     >
                       <span
                         style="color: rgb(89, 89, 89);"
@@ -1015,7 +1015,7 @@ Array [
                   >
                     <div
                       class="ant-space-item"
-                      style="margin-right: 8px;"
+                      style="margin-right: 16px;"
                     >
                       <span>
                         in 3 years
@@ -1184,7 +1184,7 @@ Array [
                   >
                     <div
                       class="ant-space-item"
-                      style="margin-right: 8px;"
+                      style="margin-right: 16px;"
                     >
                       <span>
                         ＊ ＊ ＊ ＊ ＊
@@ -1316,7 +1316,7 @@ Array [
   >
     <div
       class="ant-space-item"
-      style="margin-right: 8px;"
+      style="margin-right: 16px;"
     >
       <div
         class="ant-radio-group ant-radio-group-outline"
@@ -1364,7 +1364,7 @@ Array [
     </div>
     <div
       class="ant-space-item"
-      style="margin-right: 8px;"
+      style="margin-right: 16px;"
     >
       简约模式
     </div>
@@ -3110,7 +3110,7 @@ Array [
                   >
                     <div
                       class="ant-space-item"
-                      style="margin-right: 8px;"
+                      style="margin-right: 16px;"
                     >
                       <span
                         style="color: rgb(255, 77, 79);"
@@ -3120,7 +3120,7 @@ Array [
                     </div>
                     <div
                       class="ant-space-item"
-                      style="margin-right: 8px;"
+                      style="margin-right: 16px;"
                     >
                       <span
                         style="color: rgb(89, 89, 89);"
@@ -3222,7 +3222,7 @@ Array [
                   >
                     <div
                       class="ant-space-item"
-                      style="margin-right: 8px;"
+                      style="margin-right: 16px;"
                     >
                       <div
                         class="ant-picker"

@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { Card, Menu, Descriptions } from 'infrad';
-import type { ProColumns } from '@ant-design/pro-table';
-import ProTable from '@ant-design/pro-table';
-import { MailOutlined } from '@ant-design/icons';
+import type { ProColumns } from 'infrad-pro-table';
+import ProTable from 'infrad-pro-table';
+import { MailOutlined } from 'infra-design-icons';
 
 const waitTime = (time: number = 100) => {
   return new Promise((resolve) => {

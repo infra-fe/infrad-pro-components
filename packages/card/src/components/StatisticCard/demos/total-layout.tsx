@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import ProCard, { StatisticCard } from '@ant-design/pro-card';
+import ProCard, { StatisticCard } from 'infrad-pro-card';
 import RcResizeObserver from 'rc-resize-observer';
 
 const { Statistic } = StatisticCard;

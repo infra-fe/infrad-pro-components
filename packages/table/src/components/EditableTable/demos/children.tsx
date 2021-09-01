@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import type { ProColumns } from '@ant-design/pro-table';
-import { EditableProTable } from '@ant-design/pro-table';
-import ProCard from '@ant-design/pro-card';
-import { ProFormField } from '@ant-design/pro-form';
+import type { ProColumns } from 'infrad-pro-table';
+import { EditableProTable } from 'infrad-pro-table';
+import ProCard from 'infrad-pro-card';
+import { ProFormField } from 'infrad-pro-form';
 
 const waitTime = (time: number = 100) => {
   return new Promise((resolve) => {

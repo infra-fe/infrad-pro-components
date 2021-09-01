@@ -6,7 +6,7 @@ import {
   useMountMergeState,
   dateArrayFormatter,
   dateFormatterMap,
-} from '@ant-design/pro-utils';
+} from 'infrad-pro-utils';
 import { ConfigProvider } from 'infrad';
 
 import './index.less';

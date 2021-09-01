@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { Upload, ConfigProvider } from 'infrad';
 import type { DraggerProps, UploadProps } from 'infrad/lib/upload';
-import { InboxOutlined } from '@ant-design/icons';
+import { InboxOutlined } from 'infra-design-icons';
 import type { ProFormFieldItemProps } from '../../interface';
 import createField from '../../BaseForm/createField';
 

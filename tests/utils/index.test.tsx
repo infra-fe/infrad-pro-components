@@ -10,15 +10,15 @@ import {
   pickProProps,
   DropdownFooter,
   LabelIconTip,
-} from '@ant-design/pro-utils';
+} from 'infrad-pro-utils';
 import { mount } from 'enzyme';
-import { Form, Input } from 'antd';
+import { Form, Input } from 'infrad';
 import type { Moment } from 'moment';
 import moment from 'moment';
 import { act } from 'react-dom/test-utils';
 import { waitTime, waitForComponentToPaint } from '../util';
 import isDropdownValueType from '../../packages/utils/src/isDropdownValueType/index';
-import { CodeFilled } from '@ant-design/icons';
+import { CodeFilled } from 'infra-design-icons';
 
 describe('utils', () => {
   it('📅 useDebounceFn', async () => {

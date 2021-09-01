@@ -1,8 +1,8 @@
 import { mount, render } from 'enzyme';
 import React, { useState } from 'react';
 import { act } from 'react-dom/test-utils';
-import type { BasicLayoutProps } from '@ant-design/pro-layout';
-import BasicLayout from '@ant-design/pro-layout';
+import type { BasicLayoutProps } from 'infrad-pro-layout';
+import BasicLayout from 'infrad-pro-layout';
 
 import { waitForComponentToPaint } from '../util';
 
@@ -886,7 +886,7 @@ describe('BasicLayout', () => {
                 },
                 {
                   path: 'https://ant.design',
-                  name: 'antd',
+                  name: 'infrad',
                 },
               ],
             },
@@ -968,7 +968,7 @@ describe('BasicLayout', () => {
                 },
                 {
                   path: '/list/sub-page3',
-                  name: 'antd',
+                  name: 'infrad',
                 },
               ],
             },
@@ -1041,7 +1041,7 @@ describe('BasicLayout', () => {
                     },
                     {
                       path: '/list/sub-page3',
-                      name: 'antd',
+                      name: 'infrad',
                     },
                   ],
                 },

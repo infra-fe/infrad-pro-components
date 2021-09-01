@@ -1,8 +1,8 @@
 import type { CSSProperties } from 'react';
 import React from 'react';
 import { Layout } from 'infrad';
-import { ConfigProviderWrap } from '@ant-design/pro-provider';
-import { ErrorBoundary } from '@ant-design/pro-utils';
+import { ConfigProviderWrap } from 'infrad-pro-provider';
+import { ErrorBoundary } from 'infrad-pro-utils';
 
 const WrapContent: React.FC<{
   isChildrenLayout?: boolean;

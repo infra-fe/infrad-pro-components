@@ -2,7 +2,7 @@
 import LazyLoad from 'react-lazyload';
 import { isBrowser } from 'umi';
 // @ts-ignore
-import ProSkeleton from '@ant-design/pro-skeleton';
+import ProSkeleton from 'infrad-pro-skeleton';
 import PreView, { IPreviewerProps } from 'dumi-theme-default/src/builtins/Previewer';
 import { Spin } from 'infrad';
 

@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { InfoCircleOutlined } from '@ant-design/icons';
+import { InfoCircleOutlined } from 'infra-design-icons';
 import { Tooltip, ConfigProvider } from 'infrad';
 import './index.less';
 import type { LabelTooltipType, WrapperTooltipProps } from 'infrad/lib/form/FormItemLabel';

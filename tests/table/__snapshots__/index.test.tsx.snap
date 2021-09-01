@@ -845,7 +845,7 @@ exports[`BasicTable 🎏 base use 1`] = `
                       >
                         <div
                           class="ant-space-item"
-                          style="margin-right: 8px;"
+                          style="margin-right: 16px;"
                         >
                           <button
                             class="ant-btn"
@@ -937,7 +937,7 @@ exports[`BasicTable 🎏 base use 1`] = `
               >
                 <div
                   class="ant-space-item"
-                  style="margin-right: 8px;"
+                  style="margin-right: 16px;"
                 >
                   <span
                     class="ant-input-group-wrapper ant-input-search"
@@ -7011,7 +7011,7 @@ exports[`BasicTable 🎏 columns = undefined 1`] = `
                       >
                         <div
                           class="ant-space-item"
-                          style="margin-right:8px"
+                          style="margin-right:16px"
                         >
                           <button
                             class="ant-btn"
@@ -7537,7 +7537,7 @@ exports[`BasicTable 🎏 valueEnum support function 1`] = `
                       >
                         <div
                           class="ant-space-item"
-                          style="margin-right: 8px;"
+                          style="margin-right: 16px;"
                         >
                           <button
                             class="ant-btn"

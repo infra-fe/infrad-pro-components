@@ -6,8 +6,8 @@ import ProForm, {
   ProFormText,
   ProFormDateRangePicker,
   ProFormSelect,
-} from '@ant-design/pro-form';
-import { PlusOutlined } from '@ant-design/icons';
+} from 'infrad-pro-form';
+import { PlusOutlined } from 'infra-design-icons';
 
 const waitTime = (time: number = 100) => {
   return new Promise((resolve) => {

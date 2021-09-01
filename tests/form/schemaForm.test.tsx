@@ -1,9 +1,9 @@
 ﻿import React from 'react';
 import { mount, render } from 'enzyme';
-import { BetaSchemaForm } from '@ant-design/pro-form';
-import type { ProFormColumnsType } from '@ant-design/pro-form';
+import { BetaSchemaForm } from 'infrad-pro-form';
+import type { ProFormColumnsType } from 'infrad-pro-form';
 import { waitForComponentToPaint } from '../util';
-import { Input } from 'antd';
+import { Input } from 'infrad';
 import { act } from 'react-dom/test-utils';
 
 const columns: ProFormColumnsType<any>[] = [

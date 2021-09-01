@@ -1,11 +1,11 @@
 import { mount } from 'enzyme';
 import React from 'react';
-import { ConfigProvider } from 'antd';
-import ProTable from '@ant-design/pro-table';
+import { ConfigProvider } from 'infrad';
+import ProTable from 'infrad-pro-table';
 import { request } from './demo';
 import { waitForComponentToPaint } from '../util';
 import moment from 'moment';
-import { MenuOutlined } from '@ant-design/icons';
+import { MenuOutlined } from 'infra-design-icons';
 
 describe('Table ColumnSetting', () => {
   it('🎏 render', async () => {

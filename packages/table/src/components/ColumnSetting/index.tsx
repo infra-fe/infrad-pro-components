@@ -1,11 +1,11 @@
 import React, { useContext, useEffect, useMemo, useRef } from 'react';
-import { useIntl } from '@ant-design/pro-provider';
+import { useIntl } from 'infrad-pro-provider';
 import {
   SettingOutlined,
   VerticalAlignMiddleOutlined,
   VerticalAlignTopOutlined,
   VerticalAlignBottomOutlined,
-} from '@ant-design/icons';
+} from 'infra-design-icons';
 import type { TableColumnType } from 'infrad';
 import { Checkbox, Tree, Popover, ConfigProvider, Tooltip } from 'infrad';
 import classNames from 'classnames';
