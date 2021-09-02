@@ -26,7 +26,8 @@
     "test:update": "umi-test --updateSnapshot",
     "tsc": "tsc --noEmit",
     "tsc:duplicate": "tsc -p ./tests/tsconfig.duplicate.json",
-    "update:deps": "yarn upgrade-interactive --latest"
+    "update:deps": "yarn upgrade-interactive --latest",
+    "publish": "lerna publish --no-commit-hooks"
   },
   "browserslist": [
     "last 2 versions",
