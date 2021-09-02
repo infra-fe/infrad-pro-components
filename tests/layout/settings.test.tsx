@@ -1,6 +1,6 @@
 import React from 'react';
 import { mount } from 'enzyme';
-import BasicLayout from '@ant-design/pro-layout';
+import BasicLayout from 'infrad-pro-layout';
 import { waitForComponentToPaint } from '../util';
 import { act } from 'react-dom/test-utils';
 

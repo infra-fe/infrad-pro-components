@@ -1,7 +1,7 @@
 import React, { useRef } from 'react';
-import { message, Button } from 'antd';
-import type { ProFormInstance } from '@ant-design/pro-form';
-import ProForm, { ProFormText } from '@ant-design/pro-form';
+import { message, Button } from 'infrad';
+import type { ProFormInstance } from 'infrad-pro-form';
+import ProForm, { ProFormText } from 'infrad-pro-form';
 
 const waitTime = (time: number = 100) => {
   return new Promise((resolve) => {

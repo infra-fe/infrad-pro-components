@@ -1,5 +1,10 @@
 import React from 'react';
-import { SmileOutlined, CrownOutlined, TabletOutlined, AntDesignOutlined } from '@ant-design/icons';
+import {
+  SmileOutlined,
+  CrownOutlined,
+  TabletOutlined,
+  AntDesignOutlined,
+} from 'infra-design-icons';
 
 export default {
   route: {

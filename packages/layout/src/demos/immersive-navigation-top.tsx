@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { Button, Result, Avatar, Tag, Input } from 'antd';
-import { CrownOutlined, UserOutlined, SmileOutlined } from '@ant-design/icons';
-import ProLayout, { PageContainer } from '@ant-design/pro-layout';
+import { Button, Result, Avatar, Tag, Input } from 'infrad';
+import { CrownOutlined, UserOutlined, SmileOutlined } from 'infra-design-icons';
+import ProLayout, { PageContainer } from 'infrad-pro-layout';
 
 const defaultProps = {
   routes: [

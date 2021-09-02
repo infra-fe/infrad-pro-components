@@ -1,6 +1,6 @@
 ﻿import React, { useCallback, useMemo, useRef, useState } from 'react';
-import type { FormInstance, FormProps } from 'antd';
-import { Divider } from 'antd';
+import type { FormInstance, FormProps } from 'infrad';
+import { Divider } from 'infrad';
 import type {
   DrawerFormProps,
   QueryFilterProps,
@@ -15,14 +15,14 @@ import type {
   ProSchema,
   ProSchemaComponentTypes,
   SearchTransformKeyFn,
-} from '@ant-design/pro-utils';
-import { LabelIconTip, omitUndefined } from '@ant-design/pro-utils';
-import { runFunction } from '@ant-design/pro-utils';
+} from 'infrad-pro-utils';
+import { LabelIconTip, omitUndefined } from 'infrad-pro-utils';
+import { runFunction } from 'infrad-pro-utils';
 import omit from 'omit.js';
 import ProForm, { DrawerForm, ModalForm, QueryFilter, LightFilter, StepsForm } from '../../index';
 import type { ProFormFieldProps } from '../Field';
 import ProFormList from '../List';
-import type { NamePath } from 'antd/lib/form/interface';
+import type { NamePath } from 'infrad/lib/form/interface';
 
 export type ExtraProColumnType = {
   tooltip?: React.ReactNode;

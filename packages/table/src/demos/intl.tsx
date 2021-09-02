@@ -1,22 +1,22 @@
 import React, { useRef, useState } from 'react';
-import { PlusOutlined } from '@ant-design/icons';
-import { Button, Select, ConfigProvider, Space } from 'antd';
-import type { ProColumns, ActionType } from '@ant-design/pro-table';
-import ProTable from '@ant-design/pro-table';
+import { PlusOutlined } from 'infra-design-icons';
+import { Button, Select, ConfigProvider, Space } from 'infrad';
+import type { ProColumns, ActionType } from 'infrad-pro-table';
+import ProTable from 'infrad-pro-table';
 import moment from 'moment';
-import enUSIntl from 'antd/lib/locale/en_US';
-import enGBIntl from 'antd/lib/locale/en_GB';
-import zhCNIntl from 'antd/lib/locale/zh_CN';
-import viVNIntl from 'antd/lib/locale/vi_VN';
-import itITIntl from 'antd/lib/locale/it_IT';
-import jaJPIntl from 'antd/lib/locale/ja_JP';
-import esESIntl from 'antd/lib/locale/es_ES';
-import ruRUIntl from 'antd/lib/locale/ru_RU';
-import srRSIntl from 'antd/lib/locale/sr_RS';
-import msMYIntl from 'antd/lib/locale/ms_MY';
-import zhTWIntl from 'antd/lib/locale/zh_TW';
-import frFRIntl from 'antd/lib/locale/fr_FR';
-import ptBRIntl from 'antd/lib/locale/pt_BR';
+import enUSIntl from 'infrad/lib/locale/en_US';
+import enGBIntl from 'infrad/lib/locale/en_GB';
+import zhCNIntl from 'infrad/lib/locale/zh_CN';
+import viVNIntl from 'infrad/lib/locale/vi_VN';
+import itITIntl from 'infrad/lib/locale/it_IT';
+import jaJPIntl from 'infrad/lib/locale/ja_JP';
+import esESIntl from 'infrad/lib/locale/es_ES';
+import ruRUIntl from 'infrad/lib/locale/ru_RU';
+import srRSIntl from 'infrad/lib/locale/sr_RS';
+import msMYIntl from 'infrad/lib/locale/ms_MY';
+import zhTWIntl from 'infrad/lib/locale/zh_TW';
+import frFRIntl from 'infrad/lib/locale/fr_FR';
+import ptBRIntl from 'infrad/lib/locale/pt_BR';
 
 const intlMap = {
   zhCNIntl,

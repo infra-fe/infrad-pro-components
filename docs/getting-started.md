@@ -45,7 +45,7 @@ $ npm i @ant-design/pro-table --save
 
 ```tsx
 import React from 'react';
-import ProForm, { ProFormText } from '@ant-design/pro-form';
+import ProForm, { ProFormText } from 'infrad-pro-form';
 
 export default () => {
   return (
@@ -63,9 +63,9 @@ export default () => {
 我们所有的包都使用 less 来进行样式管理，方便进行主题的自定义。如果你没有 less-loader 可以尝试从 `dist` 中导入 css。
 
 ```tsx | pure
-import '@ant-design/pro-form/dist/form.css';
-import '@ant-design/pro-table/dist/table.css';
-import '@ant-design/pro-layout/dist/layout.css';
+import 'infrad-pro-form/dist/form.css';
+import 'infrad-pro-table/dist/table.css';
+import 'infrad-pro-layout/dist/layout.css';
 ```
 
 建议还是使用 less，可以方便进行主题自定义，也可以做到按需加载。

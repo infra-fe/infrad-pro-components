@@ -1,8 +1,8 @@
 ﻿import React, { useImperativeHandle } from 'react';
-import { Space, Input } from 'antd';
-import type { FormItemProps, SpaceProps } from 'antd';
+import { Space, Input } from 'infrad';
+import type { FormItemProps, SpaceProps } from 'infrad';
 import toArray from 'rc-util/lib/Children/toArray';
-import type { GroupProps } from 'antd/lib/input';
+import type { GroupProps } from 'infrad/lib/input';
 import createField from '../../BaseForm/createField';
 
 export type ProFormFieldSetProps<T = any> = {

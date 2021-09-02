@@ -1,7 +1,7 @@
 {
-  "name": "@ant-design/pro-layout",
+  "name": "infrad-pro-layout",
   "version": "6.25.1",
-  "description": "@ant-design/pro-layout",
+  "description": "infrad-pro-layout",
   "keywords": [
     "antd",
     "admin",
@@ -33,9 +33,9 @@
     "ie >= 11"
   ],
   "dependencies": {
-    "@ant-design/icons": "^4.0.0",
-    "@ant-design/pro-provider": "1.4.17",
-    "@ant-design/pro-utils": "1.24.1",
+    "infra-design-icons": "^4.0.0",
+    "infrad-pro-provider": "1.4.17",
+    "infrad-pro-utils": "1.24.1",
     "@umijs/route-utils": "^1.0.35",
     "@umijs/use-params": "^1.0.2",
     "classnames": "^2.2.6",
@@ -51,7 +51,7 @@
     "warning": "^4.0.3"
   },
   "peerDependencies": {
-    "antd": "^4.x",
+    "infrad": "^4.16.12",
     "react": ">=16.9.0"
   },
   "publishConfig": {

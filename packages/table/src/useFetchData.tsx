@@ -5,7 +5,7 @@ import {
   useDeepCompareEffect,
   useMountMergeState,
   runFunction,
-} from '@ant-design/pro-utils';
+} from 'infrad-pro-utils';
 import { unstable_batchedUpdates } from 'react-dom';
 import type { PageInfo, RequestData, UseFetchProps, UseFetchDataAction } from './typing';
 import { postDataPipeline } from './utils/index';

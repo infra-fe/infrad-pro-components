@@ -1,7 +1,7 @@
 import React, { useRef } from 'react';
-import { Input, Tooltip } from 'antd';
+import { Input, Tooltip } from 'infrad';
 
-import ProDescriptions from '@ant-design/pro-descriptions';
+import ProDescriptions from 'infrad-pro-descriptions';
 
 export default () => {
   const actionRef = useRef();

@@ -1,12 +1,12 @@
 import React, { useContext, useMemo } from 'react';
-import type { TabPaneProps } from 'antd';
-import { Tooltip, Space, Input, ConfigProvider, Tabs } from 'antd';
-import { useIntl } from '@ant-design/pro-provider';
+import type { TabPaneProps } from 'infrad';
+import { Tooltip, Space, Input, ConfigProvider, Tabs } from 'infrad';
+import { useIntl } from 'infrad-pro-provider';
 import useAntdMediaQuery from 'use-media-antd-query';
 import classNames from 'classnames';
-import type { SearchProps } from 'antd/lib/input';
-import type { LabelTooltipType } from 'antd/lib/form/FormItemLabel';
-import { LabelIconTip } from '@ant-design/pro-utils';
+import type { SearchProps } from 'infrad/lib/input';
+import type { LabelTooltipType } from 'infrad/lib/form/FormItemLabel';
+import { LabelIconTip } from 'infrad-pro-utils';
 import type { ListToolBarHeaderMenuProps } from './HeaderMenu';
 import HeaderMenu from './HeaderMenu';
 

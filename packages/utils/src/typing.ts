@@ -1,6 +1,6 @@
-import type { FormInstance, FormItemProps } from 'antd/lib/form';
-import type { LabelTooltipType } from 'antd/lib/form/FormItemLabel';
-import type { NamePath } from 'antd/lib/form/interface';
+import type { FormInstance, FormItemProps } from 'infrad/lib/form';
+import type { LabelTooltipType } from 'infrad/lib/form/FormItemLabel';
+import type { NamePath } from 'infrad/lib/form/interface';
 import type { Moment } from 'moment';
 import type { ReactNode } from 'react';
 import type { UseEditableUtilType } from './useEditableArray';

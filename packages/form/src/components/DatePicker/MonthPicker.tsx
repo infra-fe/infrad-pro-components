@@ -1,6 +1,6 @@
 import React from 'react';
 import ProField from '../Field';
-import type { MonthPickerProps } from 'antd/lib/date-picker';
+import type { MonthPickerProps } from 'infrad/lib/date-picker';
 import type { ProFormFieldItemProps } from '../../interface';
 
 const valueType = 'dateMonth';

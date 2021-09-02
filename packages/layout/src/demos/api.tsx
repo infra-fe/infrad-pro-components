@@ -1,7 +1,7 @@
 /* eslint-disable import/no-unresolved */
 import React, { useState } from 'react';
-import { Switch, Avatar } from 'antd';
-import ProLayout, { PageContainer, DefaultFooter } from '@ant-design/pro-layout';
+import { Switch, Avatar } from 'infrad';
+import ProLayout, { PageContainer, DefaultFooter } from 'infrad-pro-layout';
 import defaultProps from './_defaultProps';
 
 export default () => {

@@ -1,6 +1,6 @@
 import type { ErrorInfo } from 'react';
 import React from 'react';
-import { Result } from 'antd';
+import { Result } from 'infrad';
 
 class ErrorBoundary extends React.Component<{}, { hasError: boolean; errorInfo: string }> {
   state = { hasError: false, errorInfo: '' };

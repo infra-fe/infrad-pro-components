@@ -1,8 +1,12 @@
-import { LoginForm, ProFormText } from '@ant-design/pro-form';
+import { LoginForm, ProFormText } from 'infrad-pro-form';
 import { mount } from 'enzyme';
 import { waitForComponentToPaint } from '../util';
-import { AlipayCircleOutlined, TaobaoCircleOutlined, WeiboCircleOutlined } from '@ant-design/icons';
-import { Alert, Space } from 'antd';
+import {
+  AlipayCircleOutlined,
+  TaobaoCircleOutlined,
+  WeiboCircleOutlined,
+} from 'infra-design-icons';
+import { Alert, Space } from 'infrad';
 
 describe('LoginForm', () => {
   it('📦 LoginForm should show login message correctly', async () => {

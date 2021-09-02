@@ -1,6 +1,6 @@
 import React from 'react';
-import { PageContainer } from '@ant-design/pro-layout';
-import ProCard from '@ant-design/pro-card';
+import { PageContainer } from 'infrad-pro-layout';
+import ProCard from 'infrad-pro-card';
 
 export default () => (
   <div

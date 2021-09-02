@@ -1,9 +1,9 @@
 ﻿import { mount } from 'enzyme';
 import React from 'react';
-import { Button } from 'antd';
+import { Button } from 'infrad';
 import { act } from 'react-dom/test-utils';
-import type { StepsFormProps } from '@ant-design/pro-form';
-import { StepsForm, ProFormText } from '@ant-design/pro-form';
+import type { StepsFormProps } from 'infrad-pro-form';
+import { StepsForm, ProFormText } from 'infrad-pro-form';
 import { waitForComponentToPaint } from '../util';
 
 describe('StepsForm', () => {

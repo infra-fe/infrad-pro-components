@@ -1,9 +1,9 @@
-import type { SpaceProps } from 'antd';
+import type { SpaceProps } from 'infrad';
 import type { ReactNode } from 'react';
 import type { ProFormItemProps } from './components/FormItem';
-import type { LabelTooltipType } from 'antd/lib/form/FormItemLabel';
+import type { LabelTooltipType } from 'infrad/lib/form/FormItemLabel';
 import type React from 'react';
-import type { ProFieldProps, SearchTransformKeyFn } from '@ant-design/pro-utils';
+import type { ProFieldProps, SearchTransformKeyFn } from 'infrad-pro-utils';
 
 export type ProFormItemCreateConfig = {
   /** 自定义类型 */

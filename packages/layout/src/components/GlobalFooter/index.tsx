@@ -3,7 +3,7 @@ import './index.less';
 import React, { useContext } from 'react';
 import classNames from 'classnames';
 import type { WithFalse } from '../../typings';
-import { ConfigProvider } from 'antd';
+import { ConfigProvider } from 'infrad';
 
 export type GlobalFooterProps = {
   links?: WithFalse<

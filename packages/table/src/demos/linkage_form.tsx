@@ -1,9 +1,9 @@
 /* eslint-disable no-console */
 import React, { useEffect, useState } from 'react';
-import { PlusOutlined } from '@ant-design/icons';
-import { Button, Input, Select } from 'antd';
-import type { ProColumns } from '@ant-design/pro-table';
-import ProTable from '@ant-design/pro-table';
+import { PlusOutlined } from 'infra-design-icons';
+import { Button, Input, Select } from 'infrad';
+import type { ProColumns } from 'infrad-pro-table';
+import ProTable from 'infrad-pro-table';
 
 type GithubIssueItem = {
   key: number;

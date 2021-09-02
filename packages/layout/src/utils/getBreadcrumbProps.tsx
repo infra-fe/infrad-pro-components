@@ -1,5 +1,5 @@
 import type H from 'history';
-import type { BreadcrumbProps as AntdBreadcrumbProps } from 'antd';
+import type { BreadcrumbProps as AntdBreadcrumbProps } from 'infrad';
 import React from 'react';
 import pathToRegexp from 'path-to-regexp';
 

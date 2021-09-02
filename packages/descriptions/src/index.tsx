@@ -1,9 +1,9 @@
 import React, { useContext, useEffect } from 'react';
-import type { DescriptionsProps, FormInstance, FormProps } from 'antd';
-import { Descriptions, Space, Form, ConfigProvider } from 'antd';
-import { EditOutlined, CloseOutlined, CheckOutlined } from '@ant-design/icons';
+import type { DescriptionsProps, FormInstance, FormProps } from 'infrad';
+import { Descriptions, Space, Form, ConfigProvider } from 'infrad';
+import { EditOutlined, CloseOutlined, CheckOutlined } from 'infra-design-icons';
 import toArray from 'rc-util/lib/Children/toArray';
-import ProForm, { ProFormField } from '@ant-design/pro-form';
+import ProForm, { ProFormField } from 'infrad-pro-form';
 import type {
   ProSchema,
   ProCoreActionType,
@@ -11,21 +11,21 @@ import type {
   UseEditableMapUtilType,
   ProFieldValueType,
   ProSchemaComponentTypes,
-} from '@ant-design/pro-utils';
+} from 'infrad-pro-utils';
 import {
   InlineErrorFormItem,
   LabelIconTip,
   useEditableMap,
   ErrorBoundary,
   getFieldPropsOrFormItemProps,
-} from '@ant-design/pro-utils';
+} from 'infrad-pro-utils';
 import get from 'rc-util/lib/utils/get';
 import { stringify } from 'use-json-comparison';
-import ProSkeleton from '@ant-design/pro-skeleton';
+import ProSkeleton from 'infrad-pro-skeleton';
 import type { RequestData } from './useFetchData';
 import useFetchData from './useFetchData';
-import type { ProFieldFCMode } from '@ant-design/pro-utils';
-import type { LabelTooltipType } from 'antd/lib/form/FormItemLabel';
+import type { ProFieldFCMode } from 'infrad-pro-utils';
+import type { LabelTooltipType } from 'infrad/lib/form/FormItemLabel';
 
 import './index.less';
 

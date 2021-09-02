@@ -4,9 +4,9 @@ import ProForm, {
   ProFormDependency,
   ProFormGroup,
   ProFormList,
-} from '@ant-design/pro-form';
-import { Form } from 'antd';
-import type { NamePath } from 'antd/es/form/interface';
+} from 'infrad-pro-form';
+import { Form } from 'infrad';
+import type { NamePath } from 'infrad/es/form/interface';
 
 const Demo = () => {
   const initialValues = {

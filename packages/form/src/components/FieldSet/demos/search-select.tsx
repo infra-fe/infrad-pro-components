@@ -1,4 +1,4 @@
-﻿import ProForm, { ProFormSelect } from '@ant-design/pro-form';
+﻿import ProForm, { ProFormSelect } from 'infrad-pro-form';
 
 export default () => {
   return (

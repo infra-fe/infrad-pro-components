@@ -9,7 +9,7 @@ import ProForm, {
   ProFormDigit,
   ProFormSlider,
   ProFormGroup,
-} from '@ant-design/pro-form';
+} from 'infrad-pro-form';
 import Mock from 'mockjs';
 
 export const waitTime = (time: number = 100) => {

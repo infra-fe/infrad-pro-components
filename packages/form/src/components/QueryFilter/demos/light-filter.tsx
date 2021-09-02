@@ -12,9 +12,9 @@ import {
   ProFormDateTimeRangePicker,
   ProFormSlider,
   ProFormFieldSet,
-} from '@ant-design/pro-form';
-import { Radio } from 'antd';
-import type { SizeType } from 'antd/lib/config-provider/SizeContext';
+} from 'infrad-pro-form';
+import { Radio } from 'infrad';
+import type { SizeType } from 'infrad/lib/config-provider/SizeContext';
 import moment from 'moment';
 
 export default () => {

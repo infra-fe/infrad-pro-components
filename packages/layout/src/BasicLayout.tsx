@@ -2,8 +2,8 @@ import './BasicLayout.less';
 import type { CSSProperties } from 'react';
 import { useCallback, useRef } from 'react';
 import React, { useContext, useEffect, useMemo, useState } from 'react';
-import type { BreadcrumbProps as AntdBreadcrumbProps } from 'antd/lib/breadcrumb';
-import { Layout, ConfigProvider } from 'antd';
+import type { BreadcrumbProps as AntdBreadcrumbProps } from 'infrad/lib/breadcrumb';
+import { Layout, ConfigProvider } from 'infrad';
 import classNames from 'classnames';
 import warning from 'warning';
 import useMergedState from 'rc-util/lib/hooks/useMergedState';
@@ -13,7 +13,7 @@ import {
   useDocumentTitle,
   isBrowser,
   useMountMergeState,
-} from '@ant-design/pro-utils';
+} from 'infrad-pro-utils';
 import Omit from 'omit.js';
 import useSWR, { mutate } from 'swr';
 import { getMatchMenu } from '@umijs/route-utils';

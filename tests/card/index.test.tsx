@@ -1,11 +1,11 @@
 import { mount } from 'enzyme';
 import React from 'react';
-import ProCard from '@ant-design/pro-card';
+import ProCard from 'infrad-pro-card';
 import { waitForComponentToPaint } from '../util';
 import { act } from 'react-dom/test-utils';
-import { Grid } from 'antd';
+import { Grid } from 'infrad';
 
-jest.mock('antd/lib/grid/hooks/useBreakpoint');
+jest.mock('infrad/lib/grid/hooks/useBreakpoint');
 
 describe('Card', () => {
   it('🥩 collapsible onCollapse', async () => {

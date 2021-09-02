@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import type { ProCardTabsProps } from '@ant-design/pro-card';
-import ProCard from '@ant-design/pro-card';
-import { Space, Select } from 'antd';
+import type { ProCardTabsProps } from 'infrad-pro-card';
+import ProCard from 'infrad-pro-card';
+import { Space, Select } from 'infrad';
 
 const { Option } = Select;
 

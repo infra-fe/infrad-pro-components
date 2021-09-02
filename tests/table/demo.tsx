@@ -1,8 +1,8 @@
 import React from 'react';
 import moment from 'moment';
-import type { ProColumns } from '@ant-design/pro-table';
-import { TableStatus, TableDropdown } from '@ant-design/pro-table';
-import { Input, message } from 'antd';
+import type { ProColumns } from 'infrad-pro-table';
+import { TableStatus, TableDropdown } from 'infrad-pro-table';
+import { Input, message } from 'infrad';
 
 const getFetchData = (
   size: number,

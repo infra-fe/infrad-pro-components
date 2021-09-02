@@ -6,17 +6,13 @@ import React, {
   useMemo,
   useCallback,
 } from 'react';
-import type { FormProps, FormItemProps, FormInstance } from 'antd';
-import { Spin } from 'antd';
-import { ConfigProvider } from 'antd';
-import { Form } from 'antd';
-import { ConfigProviderWrap } from '@ant-design/pro-provider';
-import type {
-  ProFieldValueType,
-  SearchTransformKeyFn,
-  ProRequestData,
-} from '@ant-design/pro-utils';
-import { usePrevious } from '@ant-design/pro-utils';
+import type { FormProps, FormItemProps, FormInstance } from 'infrad';
+import { Spin } from 'infrad';
+import { ConfigProvider } from 'infrad';
+import { Form } from 'infrad';
+import { ConfigProviderWrap } from 'infrad-pro-provider';
+import type { ProFieldValueType, SearchTransformKeyFn, ProRequestData } from 'infrad-pro-utils';
+import { usePrevious } from 'infrad-pro-utils';
 import {
   conversionMomentValue,
   transformKeySubmitValue,
@@ -25,9 +21,9 @@ import {
   runFunction,
   useFetchData,
   isDeepEqualReact,
-} from '@ant-design/pro-utils';
+} from 'infrad-pro-utils';
 import { useUrlSearchParams } from '@umijs/use-params';
-import type { NamePath } from 'antd/lib/form/interface';
+import type { NamePath } from 'infrad/lib/form/interface';
 
 import namePathSet from 'rc-util/lib/utils/set';
 import FieldContext from '../FieldContext';

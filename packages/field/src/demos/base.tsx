@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import { Radio, Switch, Space, Descriptions } from 'antd';
+import { Radio, Switch, Space, Descriptions } from 'infrad';
 import moment from 'moment';
-import type { ProFieldFCMode } from '@ant-design/pro-utils';
+import type { ProFieldFCMode } from 'infrad-pro-utils';
 
-import Field from '@ant-design/pro-field';
+import Field from 'infrad-pro-field';
 
 export default () => {
   const [state, setState] = useState<ProFieldFCMode>('read');

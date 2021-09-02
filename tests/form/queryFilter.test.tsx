@@ -1,6 +1,6 @@
 import { mount } from 'enzyme';
 import React from 'react';
-import { QueryFilter, ProFormText, ProFormGroup } from '@ant-design/pro-form';
+import { QueryFilter, ProFormText, ProFormGroup } from 'infrad-pro-form';
 import { act } from 'react-dom/test-utils';
 import { waitForComponentToPaint, waitTime } from '../util';
 

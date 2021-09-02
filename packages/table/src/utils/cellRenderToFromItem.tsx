@@ -1,11 +1,11 @@
 import React from 'react';
-import type { FormInstance, FormItemProps } from 'antd';
-import type { ProFormFieldProps } from '@ant-design/pro-form';
-import ProForm, { ProFormField } from '@ant-design/pro-form';
-import type { ProFieldEmptyText } from '@ant-design/pro-field';
-import type { ProFieldValueType, ProSchemaComponentTypes } from '@ant-design/pro-utils';
-import { runFunction, isDeepEqualReact } from '@ant-design/pro-utils';
-import { getFieldPropsOrFormItemProps, InlineErrorFormItem } from '@ant-design/pro-utils';
+import type { FormInstance, FormItemProps } from 'infrad';
+import type { ProFormFieldProps } from 'infrad-pro-form';
+import ProForm, { ProFormField } from 'infrad-pro-form';
+import type { ProFieldEmptyText } from 'infrad-pro-field';
+import type { ProFieldValueType, ProSchemaComponentTypes } from 'infrad-pro-utils';
+import { runFunction, isDeepEqualReact } from 'infrad-pro-utils';
+import { getFieldPropsOrFormItemProps, InlineErrorFormItem } from 'infrad-pro-utils';
 
 import type { ProColumnType } from '../index';
 import get from 'rc-util/lib/utils/get';

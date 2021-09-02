@@ -1,8 +1,8 @@
 import React, { useContext } from 'react';
 import classnames from 'classnames';
-import { DownOutlined, EllipsisOutlined } from '@ant-design/icons';
-import type { MenuItemProps } from 'antd';
-import { Dropdown, Menu, Button, ConfigProvider } from 'antd';
+import { DownOutlined, EllipsisOutlined } from 'infra-design-icons';
+import type { MenuItemProps } from 'infrad';
+import { Dropdown, Menu, Button, ConfigProvider } from 'infrad';
 import './index.less';
 
 interface MenuItems extends MenuItemProps {

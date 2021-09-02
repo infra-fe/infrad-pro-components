@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { Button } from 'antd';
-import type { ProColumns } from '@ant-design/pro-table';
-import ProTable from '@ant-design/pro-table';
-import { LoadingOutlined, ReloadOutlined } from '@ant-design/icons';
+import { Button } from 'infrad';
+import type { ProColumns } from 'infrad-pro-table';
+import ProTable from 'infrad-pro-table';
+import { LoadingOutlined, ReloadOutlined } from 'infra-design-icons';
 import moment from 'moment';
 
 const valueEnum = {

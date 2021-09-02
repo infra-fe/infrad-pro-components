@@ -6,8 +6,8 @@
   useRef,
   useState,
 } from 'react';
-import type { DrawerProps, FormInstance, FormProps } from 'antd';
-import { ConfigProvider, Drawer } from 'antd';
+import type { DrawerProps, FormInstance, FormProps } from 'infrad';
+import { ConfigProvider, Drawer } from 'infrad';
 import useMergedState from 'rc-util/lib/hooks/useMergedState';
 import { createPortal } from 'react-dom';
 import omit from 'omit.js';

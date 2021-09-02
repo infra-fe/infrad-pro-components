@@ -1,9 +1,9 @@
 import { mount, render } from 'enzyme';
 import React, { useRef } from 'react';
-import { Input, Button } from 'antd';
+import { Input, Button } from 'infrad';
 import { act } from 'react-dom/test-utils';
-import type { ActionType } from '@ant-design/pro-table';
-import ProTable, { TableDropdown } from '@ant-design/pro-table';
+import type { ActionType } from 'infrad-pro-table';
+import ProTable, { TableDropdown } from 'infrad-pro-table';
 import { columns, request } from './demo';
 import { waitForComponentToPaint, waitTime } from '../util';
 

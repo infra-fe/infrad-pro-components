@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import { PlusOutlined } from '@ant-design/icons';
-import { Button, Tabs, Tag, Space, message } from 'antd';
-import type { ProDescriptionsItemProps } from '@ant-design/pro-descriptions';
-import ProDescriptions from '@ant-design/pro-descriptions';
-import type { ProColumns } from '@ant-design/pro-table';
-import ProTable, { TableDropdown } from '@ant-design/pro-table';
+import { PlusOutlined } from 'infra-design-icons';
+import { Button, Tabs, Tag, Space, message } from 'infrad';
+import type { ProDescriptionsItemProps } from 'infrad-pro-descriptions';
+import ProDescriptions from 'infrad-pro-descriptions';
+import type { ProColumns } from 'infrad-pro-table';
+import ProTable, { TableDropdown } from 'infrad-pro-table';
 import request from 'umi-request';
 
 type GithubIssueItem = {

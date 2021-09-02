@@ -4,14 +4,14 @@ import ProForm, {
   ProFormList,
   ProFormDependency,
   ProFormGroup,
-} from '@ant-design/pro-form';
+} from 'infrad-pro-form';
 import { act } from 'react-dom/test-utils';
 import { mount } from 'enzyme';
 import { waitForComponentToPaint } from '../util';
-import { SnippetsOutlined, CloseOutlined } from '@ant-design/icons';
-import { Form } from 'antd';
+import { SnippetsOutlined, CloseOutlined } from 'infra-design-icons';
+import { Form } from 'infrad';
 import _ from 'lodash';
-import type { NamePath } from 'antd/es/form/interface';
+import type { NamePath } from 'infrad/es/form/interface';
 
 describe('ProForm List', () => {
   it('♨️  ProForm.List', async () => {

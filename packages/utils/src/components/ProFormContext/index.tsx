@@ -1,4 +1,4 @@
-﻿import type { NamePath } from 'antd/lib/form/interface';
+﻿import type { NamePath } from 'infrad/lib/form/interface';
 import React from 'react';
 
 const ProFormContext = React.createContext<{

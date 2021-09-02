@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { ConfigProvider } from 'antd';
+import { ConfigProvider } from 'infrad';
 import Card from '../Card';
 import type { CardProps } from '../../type';
 import classNames from 'classnames';

@@ -1,5 +1,5 @@
 import React from 'react';
-import type { InputNumberProps } from 'antd';
+import type { InputNumberProps } from 'infrad';
 import ProFormField from '../Field';
 import type { ProFormFieldItemProps } from '../../interface';
 

@@ -5,7 +5,7 @@ import {
   ProFormDatePicker,
   ProFormRadio,
   ProFormCheckbox,
-} from '@ant-design/pro-form';
+} from 'infrad-pro-form';
 
 export default () => {
   return (

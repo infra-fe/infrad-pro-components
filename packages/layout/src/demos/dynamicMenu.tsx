@@ -1,6 +1,6 @@
 import React, { useRef } from 'react';
-import ProLayout, { PageContainer } from '@ant-design/pro-layout';
-import { Button } from 'antd';
+import ProLayout, { PageContainer } from 'infrad-pro-layout';
+import { Button } from 'infrad';
 import customMenuDate from './customMenu';
 
 const waitTime = (time: number = 100) => {

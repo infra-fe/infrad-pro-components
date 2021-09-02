@@ -1,8 +1,8 @@
 import { mount } from 'enzyme';
 import React from 'react';
-import ProTable from '@ant-design/pro-table';
-import { Input } from 'antd';
-import ProProvider from '@ant-design/pro-provider';
+import ProTable from 'infrad-pro-table';
+import { Input } from 'infrad';
+import ProProvider from 'infrad-pro-provider';
 
 import { waitForComponentToPaint } from '../util';
 import { act } from 'react-dom/test-utils';

@@ -1,10 +1,10 @@
 import React, { useContext } from 'react';
-import { Space, ConfigProvider } from 'antd';
-import { RightOutlined } from '@ant-design/icons';
+import { Space, ConfigProvider } from 'infrad';
+import { RightOutlined } from 'infra-design-icons';
 import FieldContext from '../../FieldContext';
 import type { GroupProps } from '../../interface';
 import './index.less';
-import { LabelIconTip, useMountMergeState } from '@ant-design/pro-utils';
+import { LabelIconTip, useMountMergeState } from 'infrad-pro-utils';
 import classNames from 'classnames';
 
 const Group: React.FC<GroupProps> = React.forwardRef((props, ref: any) => {

@@ -1,9 +1,9 @@
 import React, { useEffect, useRef } from 'react';
 import { useDragSort } from '../../utils/useDragSort';
-import type { ParamsType } from '@ant-design/pro-provider';
+import type { ParamsType } from 'infrad-pro-provider';
 import ProTable from '../../Table';
 import { SortableHandle } from 'react-sortable-hoc';
-import { MenuOutlined } from '@ant-design/icons';
+import { MenuOutlined } from 'infra-design-icons';
 import type { ProColumns, ProTableProps } from '../../typing';
 
 export type DragTableProps<T, U extends ParamsType> = {

@@ -1,7 +1,7 @@
-import { useIntl } from '@ant-design/pro-provider';
+import { useIntl } from 'infrad-pro-provider';
 import React from 'react';
-import { ColumnHeightOutlined } from '@ant-design/icons';
-import { Menu, Dropdown, Tooltip } from 'antd';
+import { ColumnHeightOutlined } from 'infra-design-icons';
+import { Menu, Dropdown, Tooltip } from 'infrad';
 import Container from '../../container';
 
 export type DensitySize = 'middle' | 'small' | 'large' | undefined;

@@ -1,9 +1,9 @@
 import React from 'react';
-import { Button } from 'antd';
-import { EllipsisOutlined, SettingOutlined, FullscreenOutlined } from '@ant-design/icons';
-import { LightFilter, ProFormDatePicker } from '@ant-design/pro-form';
-import type { ProColumns } from '@ant-design/pro-table';
-import ProTable from '@ant-design/pro-table';
+import { Button } from 'infrad';
+import { EllipsisOutlined, SettingOutlined, FullscreenOutlined } from 'infra-design-icons';
+import { LightFilter, ProFormDatePicker } from 'infrad-pro-form';
+import type { ProColumns } from 'infrad-pro-table';
+import ProTable from 'infrad-pro-table';
 
 export type TableListItem = {
   key: number;

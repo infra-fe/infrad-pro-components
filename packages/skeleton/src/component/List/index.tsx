@@ -1,6 +1,6 @@
 import React from 'react';
 import useMediaQuery from 'use-media-antd-query';
-import { Skeleton, Card, Space, Divider } from 'antd';
+import { Skeleton, Card, Space, Divider } from 'infrad';
 
 /** 一条分割线 */
 export const Line = ({ padding }: { padding?: string | number }) => (

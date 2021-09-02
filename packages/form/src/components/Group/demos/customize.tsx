@@ -7,8 +7,8 @@ import ProForm, {
   ProFormText,
   ProFormSelect,
   ProFormField,
-} from '@ant-design/pro-form';
-import ProCard from '@ant-design/pro-card';
+} from 'infrad-pro-form';
+import ProCard from 'infrad-pro-card';
 import {
   HeartOutlined,
   HomeOutlined,
@@ -18,7 +18,7 @@ import {
   PlusOutlined,
   DeleteOutlined,
   CopyOutlined,
-} from '@ant-design/icons';
+} from 'infra-design-icons';
 
 const IconMap = {
   PlusOutlined,

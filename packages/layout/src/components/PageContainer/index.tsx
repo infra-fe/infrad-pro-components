@@ -1,4 +1,4 @@
-import { PageHeader, Tabs, Affix, ConfigProvider, Breadcrumb } from 'antd';
+import { PageHeader, Tabs, Affix, ConfigProvider, Breadcrumb } from 'infrad';
 import type { ReactNode } from 'react';
 import React, { useContext } from 'react';
 import classNames from 'classnames';
@@ -9,7 +9,7 @@ import type {
   TabPaneProps,
   SpinProps,
   BreadcrumbProps,
-} from 'antd';
+} from 'infrad';
 
 import RouteContext from '../../RouteContext';
 import GridContent from '../GridContent';

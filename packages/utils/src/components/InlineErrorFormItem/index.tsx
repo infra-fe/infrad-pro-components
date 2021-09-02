@@ -1,8 +1,8 @@
 ﻿import React, { useState, useContext } from 'react';
-import { Form, Popover, Progress, Space, ConfigProvider } from 'antd';
+import { Form, Popover, Progress, Space, ConfigProvider } from 'infrad';
 import classNames from 'classnames';
-import type { FormItemProps, PopoverProps, ProgressProps, FormInstance } from 'antd';
-import { CheckCircleFilled, CloseCircleFilled, LoadingOutlined } from '@ant-design/icons';
+import type { FormItemProps, PopoverProps, ProgressProps, FormInstance } from 'infrad';
+import { CheckCircleFilled, CloseCircleFilled, LoadingOutlined } from 'infra-design-icons';
 import type { Rule, NamePath, RuleObject } from 'rc-field-form/lib/interface';
 import './index.less';
 

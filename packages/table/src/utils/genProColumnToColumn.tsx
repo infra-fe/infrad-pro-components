@@ -1,9 +1,9 @@
-﻿import type { ProSchemaComponentTypes, UseEditableUtilType } from '@ant-design/pro-utils';
-import type { ProFieldEmptyText } from '@ant-design/pro-field';
-import type { TableColumnType } from 'antd';
-import { runFunction } from '@ant-design/pro-utils';
-import { omitBoolean, omitUndefinedAndEmptyArr } from '@ant-design/pro-utils';
-import { proFieldParsingValueEnumToArray } from '@ant-design/pro-field';
+﻿import type { ProSchemaComponentTypes, UseEditableUtilType } from 'infrad-pro-utils';
+import type { ProFieldEmptyText } from 'infrad-pro-field';
+import type { TableColumnType } from 'infrad';
+import { runFunction } from 'infrad-pro-utils';
+import { omitBoolean, omitUndefinedAndEmptyArr } from 'infrad-pro-utils';
+import { proFieldParsingValueEnumToArray } from 'infrad-pro-field';
 
 import type { ProColumns, ProColumnGroupType } from '../typing';
 import type { useContainer } from '../container';

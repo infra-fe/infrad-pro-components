@@ -1,9 +1,9 @@
 import type React from 'react';
-import type { TablePaginationConfig } from 'antd';
-import type { SortOrder } from 'antd/es/table/interface';
-import type { UseEditableUtilType } from '@ant-design/pro-utils';
-import { arrayMoveImmutable } from '@ant-design/pro-utils';
-import type { IntlType } from '@ant-design/pro-provider';
+import type { TablePaginationConfig } from 'infrad';
+import type { SortOrder } from 'infrad/es/table/interface';
+import type { UseEditableUtilType } from 'infrad-pro-utils';
+import { arrayMoveImmutable } from 'infrad-pro-utils';
+import type { IntlType } from 'infrad-pro-provider';
 
 import type {
   ActionType,

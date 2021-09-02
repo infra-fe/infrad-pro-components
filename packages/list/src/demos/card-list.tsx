@@ -1,6 +1,6 @@
 import React from 'react';
-import { Progress, Tag } from 'antd';
-import ProList from '@ant-design/pro-list';
+import { Progress, Tag } from 'infrad';
+import ProList from 'infrad-pro-list';
 
 const data = [
   '语雀的天空',

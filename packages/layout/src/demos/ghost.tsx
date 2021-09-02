@@ -1,7 +1,7 @@
 import React from 'react';
-import ProLayout, { PageContainer } from '@ant-design/pro-layout';
-import ProCard from '@ant-design/pro-card';
-import { Descriptions } from 'antd';
+import ProLayout, { PageContainer } from 'infrad-pro-layout';
+import ProCard from 'infrad-pro-card';
+import { Descriptions } from 'infrad';
 import defaultProps from './_defaultProps';
 
 const content = (

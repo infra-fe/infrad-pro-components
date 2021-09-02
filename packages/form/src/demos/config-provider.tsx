@@ -1,5 +1,5 @@
-import { ConfigProvider, Input } from 'antd';
-import enUS from 'antd/lib/locale/en_US';
+import { ConfigProvider, Input } from 'infrad';
+import enUS from 'infrad/lib/locale/en_US';
 import ProForm, {
   StepsForm,
   ProFormSwitch,
@@ -10,9 +10,9 @@ import ProForm, {
   ProFormSlider,
   ProFormUploadDragger,
   ProFormText,
-} from '@ant-design/pro-form';
+} from 'infrad-pro-form';
 import React from 'react';
-import { SmileOutlined } from '@ant-design/icons';
+import { SmileOutlined } from 'infra-design-icons';
 import LightWrapper from '../BaseForm/LightWrapper';
 
 export default () => (

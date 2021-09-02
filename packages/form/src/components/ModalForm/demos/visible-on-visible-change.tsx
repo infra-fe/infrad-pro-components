@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
-import { Button, message, Space } from 'antd';
+import { Button, message, Space } from 'infrad';
 import ProForm, {
   ModalForm,
   ProFormText,
   ProFormDateRangePicker,
   ProFormSelect,
   DrawerForm,
-} from '@ant-design/pro-form';
-import { PlusOutlined } from '@ant-design/icons';
+} from 'infrad-pro-form';
+import { PlusOutlined } from 'infra-design-icons';
 
 export default () => {
   const [modalVisit, setModalVisit] = useState(false);

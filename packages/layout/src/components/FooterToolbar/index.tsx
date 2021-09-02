@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react';
 import React, { useContext, useEffect, useMemo } from 'react';
-import { ConfigProvider } from 'antd';
+import { ConfigProvider } from 'infrad';
 import classNames from 'classnames';
 import omit from 'omit.js';
 

@@ -7,10 +7,10 @@ import ProForm, {
   ProFormSelect,
   ProFormCheckbox,
   ProFormDigit,
-} from '@ant-design/pro-form';
+} from 'infrad-pro-form';
 
-import ProCard from '@ant-design/pro-card';
-import { message } from 'antd';
+import ProCard from 'infrad-pro-card';
+import { message } from 'infrad';
 
 const waitTime = (time: number = 100) => {
   return new Promise((resolve) => {

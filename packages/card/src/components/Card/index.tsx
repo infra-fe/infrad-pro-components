@@ -1,8 +1,8 @@
 import React, { useContext } from 'react';
-import { Grid, Tabs, ConfigProvider } from 'antd';
-import { RightOutlined } from '@ant-design/icons';
+import { Grid, Tabs, ConfigProvider } from 'infrad';
+import { RightOutlined } from 'infra-design-icons';
 import useMergedState from 'rc-util/lib/hooks/useMergedState';
-import { LabelIconTip } from '@ant-design/pro-utils';
+import { LabelIconTip } from 'infrad-pro-utils';
 import type { CardProps, Gutter, Breakpoint } from '../../type';
 import classNames from 'classnames';
 import omit from 'omit.js';

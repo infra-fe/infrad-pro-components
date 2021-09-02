@@ -1,7 +1,7 @@
 import React from 'react';
-import { Button, DatePicker, Space, Table } from 'antd';
-import type { ProColumns } from '@ant-design/pro-table';
-import ProTable from '@ant-design/pro-table';
+import { Button, DatePicker, Space, Table } from 'infrad';
+import type { ProColumns } from 'infrad-pro-table';
+import ProTable from 'infrad-pro-table';
 
 const { RangePicker } = DatePicker;
 

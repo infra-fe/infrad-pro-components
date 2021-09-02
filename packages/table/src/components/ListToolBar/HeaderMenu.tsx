@@ -1,6 +1,6 @@
 import React from 'react';
-import { Dropdown, Menu, Space, Tabs } from 'antd';
-import { DownOutlined } from '@ant-design/icons';
+import { Dropdown, Menu, Space, Tabs } from 'infrad';
+import { DownOutlined } from 'infra-design-icons';
 import classNames from 'classnames';
 import useMergedState from 'rc-util/lib/hooks/useMergedState';
 import './index.less';

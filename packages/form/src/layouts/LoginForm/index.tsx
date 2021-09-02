@@ -1,4 +1,4 @@
-import { ConfigProvider } from 'antd';
+import { ConfigProvider } from 'infrad';
 import React, { useContext, useMemo } from 'react';
 import type { ProFormProps } from '../ProForm';
 import ProForm from '../ProForm';

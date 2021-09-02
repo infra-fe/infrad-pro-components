@@ -1,9 +1,9 @@
 ﻿import React, { useContext, useEffect, useMemo, useState } from 'react';
 import Layout from 'dumi-theme-default/src/layout';
 import dumiContext from '@umijs/preset-dumi/lib/theme/context';
-import { ConfigProvider, Switch } from 'antd';
+import { ConfigProvider, Switch } from 'infrad';
 import { IRouteComponentProps, isBrowser } from 'umi';
-import zhCN from 'antd/es/locale/zh_CN';
+import zhCN from 'infrad/es/locale/zh_CN';
 import { Helmet, HelmetProvider } from 'react-helmet-async';
 import moment from 'moment';
 import useDarkreader from './useDarkreader';

@@ -1,9 +1,9 @@
-import type { DatePickerProps } from 'antd';
-import { DatePicker, ConfigProvider } from 'antd';
+import type { DatePickerProps } from 'infrad';
+import { DatePicker, ConfigProvider } from 'infrad';
 import React, { useState, useContext } from 'react';
 import moment from 'moment';
-import { useIntl } from '@ant-design/pro-provider';
-import { FieldLabel, parseValueToMoment } from '@ant-design/pro-utils';
+import { useIntl } from 'infrad-pro-provider';
+import { FieldLabel, parseValueToMoment } from 'infrad-pro-utils';
 import type { ProFieldFC } from '../../index';
 import './index.less';
 

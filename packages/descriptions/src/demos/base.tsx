@@ -1,8 +1,8 @@
 import React from 'react';
 import moment from 'moment';
 
-import ProDescriptions from '@ant-design/pro-descriptions';
-import { Button } from 'antd';
+import ProDescriptions from 'infrad-pro-descriptions';
+import { Button } from 'infrad';
 
 export default () => {
   return (

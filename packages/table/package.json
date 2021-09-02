@@ -1,5 +1,5 @@
 {
-  "name": "@ant-design/pro-table",
+  "name": "infrad-pro-table",
   "version": "2.51.2",
   "description": "🏆 Use Ant Design Table like a Pro!",
   "keywords": [
@@ -33,11 +33,11 @@
     "ie >= 11"
   ],
   "dependencies": {
-    "@ant-design/icons": "^4.1.0",
-    "@ant-design/pro-field": "1.21.2",
-    "@ant-design/pro-form": "1.38.1",
-    "@ant-design/pro-provider": "1.4.17",
-    "@ant-design/pro-utils": "1.24.1",
+    "infra-design-icons": "^4.1.0",
+    "infrad-pro-field": "1.21.2",
+    "infrad-pro-form": "1.38.1",
+    "infrad-pro-provider": "1.4.17",
+    "infrad-pro-utils": "1.24.1",
     "classnames": "^2.2.6",
     "moment": "^2.24.0",
     "omit.js": "^2.0.2",
@@ -48,7 +48,7 @@
     "use-media-antd-query": "^1.1.0"
   },
   "peerDependencies": {
-    "antd": "4.x",
+    "infrad": "^4.16.12",
     "react": ">=16.9.0",
     "react-dom": ">=16.9.0"
   },

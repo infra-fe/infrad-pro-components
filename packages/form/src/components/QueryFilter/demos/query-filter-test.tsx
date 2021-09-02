@@ -1,5 +1,5 @@
 import React from 'react';
-import { QueryFilter, ProFormText } from '@ant-design/pro-form';
+import { QueryFilter, ProFormText } from 'infrad-pro-form';
 
 export default () => {
   return (

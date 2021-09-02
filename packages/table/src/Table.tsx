@@ -1,10 +1,10 @@
 /* eslint max-classes-per-file: ["error", 3] */
 import React, { useContext, useRef, useCallback, useMemo, useEffect } from 'react';
-import type { TablePaginationConfig } from 'antd';
-import { Table, ConfigProvider, Card } from 'antd';
+import type { TablePaginationConfig } from 'infrad';
+import { Table, ConfigProvider, Card } from 'infrad';
 
-import type { ParamsType } from '@ant-design/pro-provider';
-import { useIntl, ConfigProviderWrap } from '@ant-design/pro-provider';
+import type { ParamsType } from 'infrad-pro-provider';
+import { useIntl, ConfigProviderWrap } from 'infrad-pro-provider';
 import classNames from 'classnames';
 import { stringify } from 'use-json-comparison';
 import type {
@@ -12,14 +12,14 @@ import type {
   SorterResult,
   SortOrder,
   GetRowKey,
-} from 'antd/lib/table/interface';
+} from 'infrad/lib/table/interface';
 import {
   useDeepCompareEffect,
   omitUndefined,
   useMountMergeState,
   useEditableArray,
   ErrorBoundary,
-} from '@ant-design/pro-utils';
+} from 'infrad-pro-utils';
 
 import useFetchData from './useFetchData';
 import Container from './container';
@@ -45,7 +45,7 @@ import type {
 } from './typing';
 import type { ActionType } from '.';
 import { columnSort } from './utils/columnSort';
-import ProForm from '@ant-design/pro-form';
+import ProForm from 'infrad-pro-form';
 
 function TableRender<T extends Record<string, any>, U, ValueType>(
   props: ProTableProps<T, U, ValueType> & {

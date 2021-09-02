@@ -5,7 +5,7 @@ import useMergedState from 'rc-util/lib/hooks/useMergedState';
 import type { ProTableProps } from './index';
 import type { DensitySize } from './components/ToolBar/DensityIcon';
 import type { ActionType } from './typing';
-import type { TableColumnType } from 'antd';
+import type { TableColumnType } from 'infrad';
 import { genColumnKey } from './utils';
 
 export type ColumnsState = {

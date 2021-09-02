@@ -1,8 +1,8 @@
 import React from 'react';
 
-import type { MenuDataItem } from '@ant-design/pro-layout';
-import ProLayout, { PageContainer } from '@ant-design/pro-layout';
-import { SmileOutlined, HeartOutlined } from '@ant-design/icons';
+import type { MenuDataItem } from 'infrad-pro-layout';
+import ProLayout, { PageContainer } from 'infrad-pro-layout';
+import { SmileOutlined, HeartOutlined } from 'infra-design-icons';
 
 const IconMap = {
   smile: <SmileOutlined />,

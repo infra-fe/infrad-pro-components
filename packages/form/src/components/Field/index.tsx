@@ -1,8 +1,8 @@
 import React from 'react';
-import ProField from '@ant-design/pro-field';
-import type { InputProps, SelectProps } from 'antd';
-import type { ProSchema } from '@ant-design/pro-utils';
-import { runFunction } from '@ant-design/pro-utils';
+import ProField from 'infrad-pro-field';
+import type { InputProps, SelectProps } from 'infrad';
+import type { ProSchema } from 'infrad-pro-utils';
+import { runFunction } from 'infrad-pro-utils';
 import createField from '../../BaseForm/createField';
 import type { ProFormFieldItemProps } from '../../interface';
 import ProFormDependency from '../Dependency';

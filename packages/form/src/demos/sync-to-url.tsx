@@ -1,11 +1,11 @@
 import React from 'react';
-import { message } from 'antd';
+import { message } from 'infrad';
 import ProForm, {
   ProFormText,
   ProFormDateRangePicker,
   ProFormSelect,
   ProFormDatePicker,
-} from '@ant-design/pro-form';
+} from 'infrad-pro-form';
 
 export default () => {
   return (

@@ -1,6 +1,6 @@
 import React from 'react';
 import ProFormField from '../Field';
-import type { DatePickerProps } from 'antd';
+import type { DatePickerProps } from 'infrad';
 import type { ProFormFieldItemProps } from '../../interface';
 
 const valueType = 'date';

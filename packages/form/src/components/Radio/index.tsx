@@ -1,9 +1,9 @@
 import React from 'react';
-import type { RadioProps, RadioGroupProps } from 'antd';
-import { Radio } from 'antd';
+import type { RadioProps, RadioGroupProps } from 'infrad';
+import { Radio } from 'infrad';
 import ProField from '../Field';
-import type { ProSchema } from '@ant-design/pro-utils';
-import { runFunction } from '@ant-design/pro-utils';
+import type { ProSchema } from 'infrad-pro-utils';
+import { runFunction } from 'infrad-pro-utils';
 import type { ProFormFieldItemProps } from '../../interface';
 import createField from '../../BaseForm/createField';
 

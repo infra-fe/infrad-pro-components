@@ -1,8 +1,8 @@
 import React, { useContext } from 'react';
-import { InfoCircleOutlined } from '@ant-design/icons';
-import { Tooltip, ConfigProvider } from 'antd';
+import { InfoCircleOutlined } from 'infra-design-icons';
+import { Tooltip, ConfigProvider } from 'infrad';
 import './index.less';
-import type { LabelTooltipType, WrapperTooltipProps } from 'antd/lib/form/FormItemLabel';
+import type { LabelTooltipType, WrapperTooltipProps } from 'infrad/lib/form/FormItemLabel';
 
 /**
  * 在 form 的 label 后面增加一个 tips 来展示一些说明文案

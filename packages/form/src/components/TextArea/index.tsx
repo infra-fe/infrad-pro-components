@@ -2,7 +2,7 @@ import React from 'react';
 
 import ProField from '../Field';
 import type { ProFormFieldItemProps } from '../../interface';
-import type { TextAreaProps } from 'antd/lib/input';
+import type { TextAreaProps } from 'infrad/lib/input';
 /**
  * 文本选择组件
  *

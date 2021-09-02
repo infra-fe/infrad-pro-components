@@ -1,6 +1,6 @@
 import React from 'react';
-import { Spin } from 'antd';
-import type { SpinProps } from 'antd';
+import { Spin } from 'infrad';
+import type { SpinProps } from 'infrad';
 
 const PageLoading: React.FC<SpinProps & any> = ({
   isLoading,

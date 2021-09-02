@@ -1,8 +1,8 @@
 import React, { useContext, useRef, useState } from 'react';
-import type { ProFormColumnsType } from '@ant-design/pro-form';
-import { BetaSchemaForm } from '@ant-design/pro-form';
-import ProProvider from '@ant-design/pro-provider';
-import { Input, Space, Tag } from 'antd';
+import type { ProFormColumnsType } from 'infrad-pro-form';
+import { BetaSchemaForm } from 'infrad-pro-form';
+import ProProvider from 'infrad-pro-provider';
+import { Input, Space, Tag } from 'infrad';
 
 const valueEnum = {
   0: 'close',

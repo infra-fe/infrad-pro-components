@@ -1,8 +1,8 @@
 import React, { useRef } from 'react';
-import { PlusOutlined } from '@ant-design/icons';
-import { Button, Tag, Space, ConfigProvider } from 'antd';
-import type { ProColumns, ActionType } from '@ant-design/pro-table';
-import ProTable, { TableDropdown } from '@ant-design/pro-table';
+import { PlusOutlined } from 'infra-design-icons';
+import { Button, Tag, Space, ConfigProvider } from 'infrad';
+import type { ProColumns, ActionType } from 'infrad-pro-table';
+import ProTable, { TableDropdown } from 'infrad-pro-table';
 import request from 'umi-request';
 
 type GithubIssueItem = {

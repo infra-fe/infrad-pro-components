@@ -7,10 +7,10 @@ import ProForm, {
   ProFormUploadButton,
   ProFormDigit,
   ProFormTextArea,
-} from '@ant-design/pro-form';
-import { BasicLayout, FooterToolbar, PageContainer } from '@ant-design/pro-layout';
-import { Card } from 'antd';
-import { SmileOutlined } from '@ant-design/icons';
+} from 'infrad-pro-form';
+import { BasicLayout, FooterToolbar, PageContainer } from 'infrad-pro-layout';
+import { Card } from 'infrad';
+import { SmileOutlined } from 'infra-design-icons';
 
 export default () => {
   return (

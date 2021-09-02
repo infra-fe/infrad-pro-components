@@ -1,8 +1,8 @@
 import { mount, render } from 'enzyme';
 import React from 'react';
-import ProTable, { ListToolBar } from '@ant-design/pro-table';
-import { SettingOutlined, FullscreenOutlined } from '@ant-design/icons';
-import { Button, Input } from 'antd';
+import ProTable, { ListToolBar } from 'infrad-pro-table';
+import { SettingOutlined, FullscreenOutlined } from 'infra-design-icons';
+import { Button, Input } from 'infrad';
 import { act } from 'react-dom/test-utils';
 import { waitForComponentToPaint } from '../util';
 

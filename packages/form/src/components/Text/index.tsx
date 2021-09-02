@@ -1,6 +1,6 @@
 import React from 'react';
-import type { InputProps } from 'antd';
-import type { PasswordProps } from 'antd/lib/input';
+import type { InputProps } from 'infrad';
+import type { PasswordProps } from 'infrad/lib/input';
 import ProField from '../Field';
 import type { ProFormFieldItemProps } from '../../interface';
 

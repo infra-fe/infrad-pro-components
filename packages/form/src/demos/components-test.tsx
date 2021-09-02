@@ -1,6 +1,6 @@
 import React, { useRef } from 'react';
 
-import { SmileOutlined } from '@ant-design/icons';
+import { SmileOutlined } from 'infra-design-icons';
 import ProForm, {
   ProFormSwitch,
   ProFormRadio,
@@ -9,8 +9,8 @@ import ProForm, {
   ProFormField,
   ProFormSlider,
   ProFormUploadDragger,
-} from '@ant-design/pro-form';
-import { Button, Input } from 'antd';
+} from 'infrad-pro-form';
+import { Button, Input } from 'infrad';
 
 const Demo = () => {
   const formRef = useRef();

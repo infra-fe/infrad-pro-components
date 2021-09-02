@@ -97,7 +97,7 @@ exports[`ProForm 📦 submitter props support resetButtonProps 1`] = `
   >
     <div
       class="ant-space-item"
-      style="margin-right: 8px;"
+      style="margin-right: 16px;"
     >
       <button
         class="ant-btn test_button"
@@ -138,7 +138,7 @@ exports[`ProForm 📦 submitter props support submitButtonProps 1`] = `
   >
     <div
       class="ant-space-item"
-      style="margin-right: 8px;"
+      style="margin-right: 16px;"
     >
       <button
         class="ant-btn"

@@ -1,8 +1,8 @@
 import { mount } from 'enzyme';
 import React, { useRef } from 'react';
-import { Button } from 'antd';
-import ProDescriptions from '@ant-design/pro-descriptions';
-import type { ProCoreActionType } from '@ant-design/pro-utils';
+import { Button } from 'infrad';
+import ProDescriptions from 'infrad-pro-descriptions';
+import type { ProCoreActionType } from 'infrad-pro-utils';
 import { act } from 'react-dom/test-utils';
 
 import { waitForComponentToPaint, waitTime } from '../util';

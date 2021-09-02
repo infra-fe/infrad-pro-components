@@ -1,6 +1,6 @@
-﻿import type { ProFieldEmptyText } from '@ant-design/pro-field';
-import type { ProFormProps, QueryFilterProps } from '@ant-design/pro-form';
-import type { ParamsType } from '@ant-design/pro-provider';
+﻿import type { ProFieldEmptyText } from 'infrad-pro-field';
+import type { ProFormProps, QueryFilterProps } from 'infrad-pro-form';
+import type { ParamsType } from 'infrad-pro-provider';
 import type {
   ProCoreActionType,
   ProSchema,
@@ -8,12 +8,17 @@ import type {
   SearchTransformKeyFn,
   ProTableEditableFnType,
   RowEditableConfig,
-} from '@ant-design/pro-utils';
-import type { CardProps } from 'antd/lib/card';
-import type { SpinProps } from 'antd/lib/spin';
-import type { TableProps } from 'antd/lib/table';
+} from 'infrad-pro-utils';
+import type { CardProps } from 'infrad/lib/card';
+import type { SpinProps } from 'infrad/lib/spin';
+import type { TableProps } from 'infrad/lib/table';
 
-import type { ColumnFilterItem, ColumnType, CompareFn, SortOrder } from 'antd/lib/table/interface';
+import type {
+  ColumnFilterItem,
+  ColumnType,
+  CompareFn,
+  SortOrder,
+} from 'infrad/lib/table/interface';
 import type { CSSProperties } from 'react';
 import type { AlertRenderType } from './components/Alert';
 import type { ListToolBarProps } from './components/ListToolBar';
@@ -21,8 +26,8 @@ import type { OptionConfig, ToolBarProps } from './components/ToolBar';
 import type { DensitySize } from './components/ToolBar/DensityIcon';
 import type { ColumnsState, useContainer } from './container';
 import type { SearchConfig, TableFormItem } from './components/Form/FormRender';
-import type { LabelTooltipType } from 'antd/lib/form/FormItemLabel';
-import type { SizeType } from 'antd/lib/config-provider/SizeContext';
+import type { LabelTooltipType } from 'infrad/lib/form/FormItemLabel';
+import type { SizeType } from 'infrad/lib/config-provider/SizeContext';
 
 export type PageInfo = {
   pageSize: number;

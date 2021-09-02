@@ -1,9 +1,9 @@
 import { mount } from 'enzyme';
 import React, { useContext } from 'react';
-import ProProvider from '@ant-design/pro-provider';
-import ProTable from '@ant-design/pro-table';
+import ProProvider from 'infrad-pro-provider';
+import ProTable from 'infrad-pro-table';
 import { act } from 'react-dom/test-utils';
-import { Input } from 'antd';
+import { Input } from 'infrad';
 
 import { waitForComponentToPaint } from '../util';
 

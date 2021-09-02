@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react';
 import React, { Fragment, useMemo } from 'react';
-import { InputNumber } from 'antd';
+import { InputNumber } from 'infrad';
 import toNumber from 'lodash.tonumber';
 
 import { getColorByRealValue, getSymbolByRealValue, getRealTextWithPrecision } from './util';

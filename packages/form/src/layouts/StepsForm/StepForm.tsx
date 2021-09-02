@@ -1,5 +1,5 @@
 import React, { useContext, useRef, useEffect, useImperativeHandle } from 'react';
-import type { FormProps, FormInstance, StepProps } from 'antd';
+import type { FormProps, FormInstance, StepProps } from 'infrad';
 import { noteOnce } from 'rc-util/lib/warning';
 
 import type { CommonFormProps } from '../../BaseForm';

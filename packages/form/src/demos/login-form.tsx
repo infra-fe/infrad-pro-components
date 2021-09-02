@@ -1,4 +1,4 @@
-import { LoginForm, ProFormText, ProFormCaptcha, ProFormCheckbox } from '@ant-design/pro-form';
+import { LoginForm, ProFormText, ProFormCaptcha, ProFormCheckbox } from 'infrad-pro-form';
 import {
   UserOutlined,
   MobileOutlined,
@@ -6,8 +6,8 @@ import {
   AlipayCircleOutlined,
   TaobaoCircleOutlined,
   WeiboCircleOutlined,
-} from '@ant-design/icons';
-import { message, Tabs, Space } from 'antd';
+} from 'infra-design-icons';
+import { message, Tabs, Space } from 'infrad';
 import type { CSSProperties } from 'react';
 import { useState } from 'react';
 

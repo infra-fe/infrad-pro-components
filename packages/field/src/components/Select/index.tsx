@@ -8,18 +8,18 @@ import React, {
   useCallback,
   useEffect,
 } from 'react';
-import type { SelectProps } from 'antd';
-import { Space, Spin, ConfigProvider } from 'antd';
+import type { SelectProps } from 'infrad';
+import { Space, Spin, ConfigProvider } from 'infrad';
 import type {
   ProFieldRequestData,
   ProFieldValueEnumType,
   ProSchemaValueEnumMap,
   ProSchemaValueEnumObj,
-} from '@ant-design/pro-utils';
+} from 'infrad-pro-utils';
 
-import { useDeepCompareEffect, useMountMergeState } from '@ant-design/pro-utils';
+import { useDeepCompareEffect, useMountMergeState } from 'infrad-pro-utils';
 import useSWR, { mutate } from 'swr';
-import { useIntl } from '@ant-design/pro-provider';
+import { useIntl } from 'infrad-pro-provider';
 
 import LightSelect from './LightSelect';
 import SearchSelect from './SearchSelect';
