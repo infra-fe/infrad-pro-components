@@ -1,6 +1,6 @@
 {
   "name": "infrad-pro-list",
-  "version": "1.13.2",
+  "version": "1.14.0",
   "description": "🏆 Use Ant Design List like a Pro!",
   "keywords": [
     "antd",
@@ -32,11 +32,11 @@
     "ie >= 11"
   ],
   "dependencies": {
-    "infra-design-icons": "^4.0.0",
-    "infrad-pro-card": "1.14.17",
-    "infrad-pro-field": "1.21.2",
-    "infrad-pro-table": "2.51.2",
     "classnames": "^2.2.6",
+    "infra-design-icons": "^4.0.0",
+    "infrad-pro-card": "^1.15.0",
+    "infrad-pro-field": "^1.22.0",
+    "infrad-pro-table": "^2.52.0",
     "moment": "^2.24.0",
     "rc-resize-observer": "^1.0.0",
     "rc-util": "^4.19.0",

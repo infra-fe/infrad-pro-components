@@ -1,6 +1,6 @@
 {
   "name": "infrad-pro-table",
-  "version": "2.51.2",
+  "version": "2.52.0",
   "description": "🏆 Use Ant Design Table like a Pro!",
   "keywords": [
     "antd",
@@ -33,12 +33,12 @@
     "ie >= 11"
   ],
   "dependencies": {
-    "infra-design-icons": "^4.1.0",
-    "infrad-pro-field": "1.21.2",
-    "infrad-pro-form": "1.38.1",
-    "infrad-pro-provider": "1.4.17",
-    "infrad-pro-utils": "1.24.1",
     "classnames": "^2.2.6",
+    "infra-design-icons": "^4.1.0",
+    "infrad-pro-field": "^1.22.0",
+    "infrad-pro-form": "^1.39.0",
+    "infrad-pro-provider": "^1.5.0",
+    "infrad-pro-utils": "^1.25.0",
     "moment": "^2.24.0",
     "omit.js": "^2.0.2",
     "rc-util": "^5.0.1",

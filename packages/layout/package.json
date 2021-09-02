@@ -1,6 +1,6 @@
 {
   "name": "infrad-pro-layout",
-  "version": "6.25.1",
+  "version": "6.26.0",
   "description": "infrad-pro-layout",
   "keywords": [
     "antd",
@@ -33,12 +33,12 @@
     "ie >= 11"
   ],
   "dependencies": {
-    "infra-design-icons": "^4.0.0",
-    "infrad-pro-provider": "1.4.17",
-    "infrad-pro-utils": "1.24.1",
     "@umijs/route-utils": "^1.0.35",
     "@umijs/use-params": "^1.0.2",
     "classnames": "^2.2.6",
+    "infra-design-icons": "^4.0.0",
+    "infrad-pro-provider": "^1.5.0",
+    "infrad-pro-utils": "^1.25.0",
     "lodash.merge": "^4.6.2",
     "omit.js": "^2.0.2",
     "path-to-regexp": "2.4.0",
