@@ -44,24 +44,24 @@ ${list
 
 const findIssue = async (issueId) => {
   const { data } = await octokit.request('GET /repos/{owner}/{repo}/issues/{issue_number}', {
-    owner: 'ant-design',
-    repo: 'pro-components',
+    owner: 'infra-fe',
+    repo: 'infrad-pro-components',
     issue_number: issueId,
   });
   return data;
 };
 const closeIssue = async (issueId) => {
   await octokit.request('PATCH /repos/{owner}/{repo}/issues/{issue_number}', {
-    owner: 'ant-design',
-    repo: 'pro-components',
+    owner: 'infra-fe',
+    repo: 'infrad-pro-components',
     issue_number: issueId,
     state: 'closed',
   });
 };
 const replyCommit = async (issueId, markdown) => {
   await octokit.request('POST /repos/{owner}/{repo}/issues/{issue_number}/comments', {
-    owner: 'ant-design',
-    repo: 'pro-components',
+    owner: 'infra-fe',
+    repo: 'infrad-pro-components',
     issue_number: issueId,
     body: markdown,
   });
