@@ -10,7 +10,7 @@ const pkgList = readdirSync(join(__dirname, 'packages')).filter(
 );
 
 const alias = pkgList.reduce((pre, pkg) => {
-  pre[`@ant-design/pro-${pkg}`] = join(__dirname, 'packages', pkg, 'src');
+  pre[`infrad-pro-${pkg}`] = join(__dirname, 'packages', pkg, 'src');
   return {
     ...pre,
   };
@@ -30,6 +30,7 @@ export default {
   title: 'ProComponents',
   mode: 'site',
   logo: 'https://gw.alipayobjects.com/zos/antfincdn/upvrAjAPQX/Logo_Tech%252520UI.svg',
+  base: '/infrad-pro-components',
   extraBabelPlugins: [
     [
       'import',
@@ -92,14 +93,14 @@ export default {
       null,
       {
         title: 'GitHub',
-        path: 'https://github.com/ant-design/pro-components',
+        path: 'https://github.com/infra-fe/infrad-pro-components',
       },
     ],
     'zh-CN': [
       null,
       {
         title: 'GitHub',
-        path: 'https://github.com/ant-design/pro-components',
+        path: 'https://github.com/infra-fe/infrad-pro-components',
       },
     ],
   },

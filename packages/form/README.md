@@ -1,15 +1,15 @@
-# @ant-design/pro-form
+# infrad-pro-form
 
 ## Install
 
 Using npm:
 
 ```bash
-$ npm install --save  @ant-design/pro-form
+$ npm install --save  infrad-pro-form
 ```
 
 or using yarn:
 
 ```bash
-$ yarn add @ant-design/pro-form
+$ yarn add infrad-pro-form
 ```

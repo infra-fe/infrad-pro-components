@@ -26,18 +26,18 @@ ProComponents 是基于 Ant Design 而开发的模板组件，提供了更高级
 当前 ProComponents 每一个组件都是一个独立的包，你需要在你的项目中安装对应的 npm 包并使用。
 
 ```shell
-$ npm i @ant-design/pro-table --save
+$ npm i infrad-pro-table --save
 ```
 
 当前 ProComponents 提供了如下组件可直接使用：
 
-- `npm i @ant-design/pro-form --save`
-- `npm i @ant-design/pro-layout --save`
-- `npm i @ant-design/pro-table --save`
-- `npm i @ant-design/pro-list --save`
-- `npm i @ant-design/pro-descriptions --save`
-- `npm i @ant-design/pro-card --save`
-- `npm i @ant-design/pro-skeleton --save`
+- `npm i infrad-pro-form --save`
+- `npm i infrad-pro-layout --save`
+- `npm i infrad-pro-table --save`
+- `npm i infrad-pro-list --save`
+- `npm i infrad-pro-descriptions --save`
+- `npm i infrad-pro-card --save`
+- `npm i infrad-pro-skeleton --save`
 
 ## 在项目中使用
 

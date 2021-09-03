@@ -26,18 +26,18 @@ ProComponents is focused on middle and backend CRUD and has a lot of pre-defined
 Currently each component of ProComponents is a separate package, you need to install the corresponding npm package in your project and use it.
 
 ```shell
-$ npm i @ant-design/pro-table --save
+$ npm i infrad-pro-table --save
 ```
 
 Current ProComponents provides the following components for direct use.
 
-- `npm i @ant-design/pro-form --save`
-- `npm i @ant-design/pro-layout --save`
-- `npm i @ant-design/pro-table --save`
-- `npm i @ant-design/pro-list --save`
-- `npm i @ant-design/pro-descriptions --save`
-- `npm i @ant-design/pro-card --save`
-- `npm i @ant-design/pro-skeleton --save`
+- `npm i infrad-pro-form --save`
+- `npm i infrad-pro-layout --save`
+- `npm i infrad-pro-table --save`
+- `npm i infrad-pro-list --save`
+- `npm i infrad-pro-descriptions --save`
+- `npm i infrad-pro-card --save`
+- `npm i infrad-pro-skeleton --save`
 
 ## Using in a project
 
