@@ -31,6 +31,7 @@ export default {
   mode: 'site',
   logo: 'https://gw.alipayobjects.com/zos/antfincdn/upvrAjAPQX/Logo_Tech%252520UI.svg',
   base: '/infrad-pro-components',
+  publicPath: '/infrad-pro-components/',
   extraBabelPlugins: [
     [
       'import',
