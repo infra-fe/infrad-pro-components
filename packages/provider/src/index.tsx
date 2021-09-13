@@ -96,7 +96,7 @@ function get(
   path: string,
   defaultValue?: string,
 ): string | undefined {
-  // a[3].b -> a.3.b
+  // a[3].b  -> a.3.b
   const paths = path.replace(/\[(\d+)\]/g, '.$1').split('.');
   let result = source;
   let message = defaultValue;

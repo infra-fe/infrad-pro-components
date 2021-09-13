@@ -29,7 +29,7 @@ import type { LabelTooltipType } from 'infrad/lib/form/FormItemLabel';
 
 import './index.less';
 
-// todo remove it
+// todo remove  it
 export interface DescriptionsItemProps {
   prefixCls?: string;
   className?: string;

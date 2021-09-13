@@ -41,7 +41,7 @@ import FieldColorPicker from './components/ColorPicker';
 
 export type ProFieldEmptyText = string | false;
 
-/** 默认的 Field 需要实现的功能 */
+/** 默认的 Field 需要实现的 功能 */
 export type ProFieldFC<T> = React.ForwardRefRenderFunction<
   any,
   BaseProFieldFC & ProRenderFieldPropsType & T
