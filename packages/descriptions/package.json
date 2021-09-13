@@ -1,6 +1,6 @@
 {
   "name": "infrad-pro-descriptions",
-  "version": "1.10.1",
+  "version": "1.10.2",
   "description": "infrad-pro-descriptions",
   "keywords": [
     "antd",
@@ -33,10 +33,10 @@
     "ie >= 11"
   ],
   "dependencies": {
-    "infrad-pro-field": "^1.22.1",
-    "infrad-pro-form": "^1.39.1",
+    "infrad-pro-field": "^1.22.2",
+    "infrad-pro-form": "^1.39.2",
     "infrad-pro-skeleton": "^1.1.1",
-    "infrad-pro-utils": "^1.25.1",
+    "infrad-pro-utils": "^1.25.2",
     "rc-util": "^5.0.6",
     "use-json-comparison": "^1.0.5"
   },

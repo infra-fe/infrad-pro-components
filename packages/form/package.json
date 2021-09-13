@@ -1,6 +1,6 @@
 {
   "name": "infrad-pro-form",
-  "version": "1.39.1",
+  "version": "1.39.2",
   "description": "infrad-pro-form",
   "keywords": [
     "antd",
@@ -36,9 +36,9 @@
     "@umijs/use-params": "^1.0.2",
     "classnames": "^2.2.6",
     "infra-design-icons": "^4.2.1",
-    "infrad-pro-field": "^1.22.1",
-    "infrad-pro-provider": "^1.5.1",
-    "infrad-pro-utils": "^1.25.1",
+    "infrad-pro-field": "^1.22.2",
+    "infrad-pro-provider": "^1.5.2",
+    "infrad-pro-utils": "^1.25.2",
     "lodash.merge": "^4.6.2",
     "omit.js": "^2.0.2",
     "rc-resize-observer": "^0.2.3",
