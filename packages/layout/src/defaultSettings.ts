@@ -66,10 +66,10 @@ export type PureSettings = {
 export type ProSettings = PureSettings & RenderSetting;
 
 const defaultSettings: ProSettings = {
-  navTheme: 'dark',
-  layout: 'side',
+  navTheme: 'light',
+  layout: 'mix',
   contentWidth: 'Fluid',
-  fixedHeader: false,
+  fixedHeader: true,
   fixSiderbar: false,
   headerHeight: 48,
   title: 'Ant Design Pro',
