@@ -15,8 +15,8 @@ export default () => {
       }}
     >
       <ProCard
-        title="数据概览"
-        extra="2019年9月28日 星期五"
+        title="Data Overview"
+        extra="2019-09-28 Friday"
         split={responsive ? 'horizontal' : 'vertical'}
         headerBordered
         bordered
@@ -26,30 +26,36 @@ export default () => {
             <ProCard split="vertical">
               <StatisticCard
                 statistic={{
-                  title: '昨日全部流量',
+                  title: 'Yesterday Total Volume',
                   value: 234,
-                  description: <Statistic title="较本月平均流量" value="8.04%" trend="down" />,
+                  description: (
+                    <Statistic
+                      title="Compared with Current Average Volume"
+                      value="8.04%"
+                      trend="down"
+                    />
+                  ),
                 }}
               />
               <StatisticCard
                 statistic={{
-                  title: '本月累计流量',
+                  title: 'Current Month Accumulative Volume',
                   value: 234,
-                  description: <Statistic title="月同比" value="8.04%" trend="up" />,
+                  description: <Statistic title="Month over Month" value="8.04%" trend="up" />,
                 }}
               />
             </ProCard>
             <ProCard split="vertical">
               <StatisticCard
                 statistic={{
-                  title: '运行中实验',
+                  title: 'Running Test',
                   value: '12/56',
                   suffix: '个',
                 }}
               />
               <StatisticCard
                 statistic={{
-                  title: '历史实验总数',
+                  title: 'History Test Count',
                   value: '134',
                   suffix: '个',
                 }}
@@ -57,7 +63,7 @@ export default () => {
             </ProCard>
           </ProCard>
           <StatisticCard
-            title="流量走势"
+            title="Volume Trend"
             chart={
               <img
                 src="https://gw.alipayobjects.com/zos/alicdn/_dZIob2NB/zhuzhuangtu.svg"
@@ -67,11 +73,11 @@ export default () => {
           />
         </ProCard>
         <StatisticCard
-          title="流量占用情况"
+          title="Volume Occupation"
           chart={
             <img
               src="https://gw.alipayobjects.com/zos/alicdn/qoYmFMxWY/jieping2021-03-29%252520xiawu4.32.34.png"
-              alt="大盘"
+              alt="stock"
               width="100%"
             />
           }

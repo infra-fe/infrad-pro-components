@@ -17,21 +17,21 @@ export default () => {
       <StatisticCard.Group direction={responsive ? 'column' : 'row'}>
         <StatisticCard
           statistic={{
-            title: '总流量(人次)',
+            title: 'Total Volume(Person-Time)',
             value: 601986875,
           }}
         />
         <Divider type={responsive ? 'horizontal' : 'vertical'} />
         <StatisticCard
           statistic={{
-            title: '付费流量',
+            title: 'Payment Volume',
             value: 3701928,
-            description: <Statistic title="占比" value="61.5%" />,
+            description: <Statistic title="Percentage" value="61.5%" />,
           }}
           chart={
             <img
               src="https://gw.alipayobjects.com/zos/alicdn/ShNDpDTik/huan.svg"
-              alt="百分比"
+              alt="Percentage"
               width="100%"
             />
           }
@@ -39,14 +39,14 @@ export default () => {
         />
         <StatisticCard
           statistic={{
-            title: '免费流量',
+            title: 'Free Volume',
             value: 1806062,
-            description: <Statistic title="占比" value="38.5%" />,
+            description: <Statistic title="Percentage" value="38.5%" />,
           }}
           chart={
             <img
               src="https://gw.alipayobjects.com/zos/alicdn/6YR18tCxJ/huanlv.svg"
-              alt="百分比"
+              alt="Percentage"
               width="100%"
             />
           }

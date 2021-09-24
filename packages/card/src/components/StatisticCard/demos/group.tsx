@@ -14,11 +14,11 @@ export default () => {
         setResponsive(offset.width < 596);
       }}
     >
-      <StatisticCard.Group title="核心指标" direction={responsive ? 'column' : 'row'}>
+      <StatisticCard.Group title="Core Indicators" direction={responsive ? 'column' : 'row'}>
         <StatisticCard
           statistic={{
-            title: '今日UV',
-            tip: '供应商信息',
+            title: 'UV Today',
+            tip: 'Supplier Info',
             value: 79,
             precision: 2,
           }}
@@ -26,26 +26,26 @@ export default () => {
         <Divider type={responsive ? 'horizontal' : 'vertical'} />
         <StatisticCard
           statistic={{
-            title: '冻结金额',
+            title: 'Frozen Amount',
             value: 112893,
             precision: 2,
-            suffix: '元',
+            suffix: 'yuan',
           }}
         />
         <Divider type={responsive ? 'horizontal' : 'vertical'} />
         <StatisticCard
           statistic={{
-            title: '信息完整度',
+            title: 'Info Completion',
             value: 92,
             suffix: '/ 100',
           }}
         />
         <StatisticCard
           statistic={{
-            title: '冻结金额',
+            title: 'Frozen Amount',
             value: 112893,
             precision: 2,
-            suffix: '元',
+            suffix: 'yuan',
           }}
         />
       </StatisticCard.Group>

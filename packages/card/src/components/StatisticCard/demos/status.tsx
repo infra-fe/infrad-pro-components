@@ -8,36 +8,36 @@ export default () => {
     <StatisticCard.Group>
       <StatisticCard
         statistic={{
-          title: '全部',
-          tip: '帮助文字',
+          title: 'Total',
+          tip: 'Help Text',
           value: 10,
         }}
       />
       <Divider />
       <StatisticCard
         statistic={{
-          title: '未发布',
+          title: 'Unpublished',
           value: 5,
           status: 'default',
         }}
       />
       <StatisticCard
         statistic={{
-          title: '发布中',
+          title: 'Publishing',
           value: 3,
           status: 'processing',
         }}
       />
       <StatisticCard
         statistic={{
-          title: '发布异常',
+          title: 'Publish Error',
           value: 2,
           status: 'error',
         }}
       />
       <StatisticCard
         statistic={{
-          title: '发布成功',
+          title: 'Publish Success',
           value: '-',
           status: 'success',
         }}

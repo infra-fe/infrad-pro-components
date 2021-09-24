@@ -17,24 +17,36 @@ export default () => {
       <ProCard split={responsive ? 'horizontal' : 'vertical'}>
         <StatisticCard
           colSpan={responsive ? 24 : 6}
-          title="财年业绩目标"
+          title="Fiscal Year Performance Target"
           statistic={{
             value: 82.6,
-            suffix: '亿',
-            description: <Statistic title="日同比" value="6.47%" trend="up" />,
+            suffix: '100 million',
+            description: <Statistic title="Day over Day" value="6.47%" trend="up" />,
           }}
           chart={
             <img
               src="https://gw.alipayobjects.com/zos/alicdn/PmKfn4qvD/mubiaowancheng-lan.svg"
-              alt="进度条"
+              alt="Progress Bar"
               width="100%"
             />
           }
           footer={
             <>
-              <Statistic value="70.98%" title="财年业绩完成率" layout="horizontal" />
-              <Statistic value="86.98%" title="去年同期业绩完成率" layout="horizontal" />
-              <Statistic value="88.98%" title="前年同期业绩完成率" layout="horizontal" />
+              <Statistic
+                value="70.98%"
+                title="Fiscal Year Performance Completion Rate"
+                layout="horizontal"
+              />
+              <Statistic
+                value="86.98%"
+                title="Last Year Performance Completion Rate"
+                layout="horizontal"
+              />
+              <Statistic
+                value="88.98%"
+                title="The Year before Last Performance Completion Rate"
+                layout="horizontal"
+              />
             </>
           }
         />
@@ -44,65 +56,65 @@ export default () => {
         >
           <StatisticCard
             statistic={{
-              title: '财年总收入',
+              title: 'Fiscal Year Income',
               value: 601987768,
-              description: <Statistic title="日同比" value="6.15%" trend="up" />,
+              description: <Statistic title="Day over Day" value="6.15%" trend="up" />,
             }}
             chart={
               <img
                 src="https://gw.alipayobjects.com/zos/alicdn/zevpN7Nv_/xiaozhexiantu.svg"
-                alt="折线图"
+                alt="Line Chart"
                 width="100%"
               />
             }
           >
             <Statistic
-              title="大盘总收入"
+              title="Stock Income"
               value={1982312}
               layout="vertical"
-              description={<Statistic title="日同比" value="6.15%" trend="down" />}
+              description={<Statistic title="Day over Day" value="6.15%" trend="down" />}
             />
           </StatisticCard>
           <StatisticCard
             statistic={{
-              title: '当日排名',
+              title: 'Daily Rank',
               value: 6,
-              description: <Statistic title="日同比" value="3.85%" trend="down" />,
+              description: <Statistic title="Day over Day" value="3.85%" trend="down" />,
             }}
             chart={
               <img
                 src="https://gw.alipayobjects.com/zos/alicdn/zevpN7Nv_/xiaozhexiantu.svg"
-                alt="折线图"
+                alt="Line Chart"
                 width="100%"
               />
             }
           >
             <Statistic
-              title="近7日收入"
+              title="Income in the Last Seven Days"
               value={17458}
               layout="vertical"
-              description={<Statistic title="日同比" value="6.47%" trend="up" />}
+              description={<Statistic title="Day over Day" value="6.47%" trend="up" />}
             />
           </StatisticCard>
           <StatisticCard
             statistic={{
-              title: '财年业绩收入排名',
+              title: 'Fiscal Year Performance Income Rank',
               value: 2,
-              description: <Statistic title="日同比" value="6.47%" trend="up" />,
+              description: <Statistic title="Day over Day" value="6.47%" trend="up" />,
             }}
             chart={
               <img
                 src="https://gw.alipayobjects.com/zos/alicdn/zevpN7Nv_/xiaozhexiantu.svg"
-                alt="折线图"
+                alt="Line Chart"
                 width="100%"
               />
             }
           >
             <Statistic
-              title="月付费个数"
+              title="Month Payment Count"
               value={601}
               layout="vertical"
-              description={<Statistic title="日同比" value="6.47%" trend="down" />}
+              description={<Statistic title="Day over Day" value="6.47%" trend="down" />}
             />
           </StatisticCard>
         </StatisticCard.Group>

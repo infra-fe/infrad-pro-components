@@ -8,28 +8,28 @@ export default () => {
     <StatisticCard.Group>
       <StatisticCard
         statistic={{
-          title: '服务网格数',
+          title: 'Service Grid Count',
           value: 500,
         }}
       />
       <Operation>=</Operation>
       <StatisticCard
         statistic={{
-          title: '未发布',
+          title: 'Unpublished',
           value: 234,
         }}
       />
       <Operation>+</Operation>
       <StatisticCard
         statistic={{
-          title: '发布中',
+          title: 'Publishing',
           value: 112,
         }}
       />
       <Operation>+</Operation>
       <StatisticCard
         statistic={{
-          title: '已发布',
+          title: 'Published',
           value: 255,
         }}
       />
