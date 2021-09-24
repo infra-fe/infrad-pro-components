@@ -33,11 +33,11 @@ export default () => {
           },
         }}
       >
-        <ProCard.TabPane key="tab1" tab="产品一">
-          内容一
+        <ProCard.TabPane key="tab1" tab="Product 1">
+          Content 1
         </ProCard.TabPane>
-        <ProCard.TabPane key="tab2" tab="产品二">
-          内容二
+        <ProCard.TabPane key="tab2" tab="Produect 2">
+          Content 2
         </ProCard.TabPane>
       </ProCard>
     </div>

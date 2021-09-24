@@ -6,7 +6,7 @@ export default () => {
   return (
     <>
       <ProCard
-        title="Actions 操作项"
+        title="Actions Manipulate Items"
         style={{ maxWidth: 300 }}
         actions={[
           <SettingOutlined key="setting" />,

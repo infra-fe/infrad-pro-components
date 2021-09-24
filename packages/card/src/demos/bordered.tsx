@@ -3,8 +3,8 @@ import ProCard from 'infrad-pro-card';
 
 export default () => {
   return (
-    <ProCard title="标题" extra="extra" tooltip="这是提示" style={{ maxWidth: 300 }} bordered>
-      内容
+    <ProCard title="Title" extra="extra" tooltip="This is tip" style={{ maxWidth: 300 }} bordered>
+      content
     </ProCard>
   );
 };

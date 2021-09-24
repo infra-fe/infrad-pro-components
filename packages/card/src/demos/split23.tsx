@@ -4,11 +4,11 @@ import ProCard from 'infrad-pro-card';
 export default () => {
   return (
     <ProCard split="vertical">
-      <ProCard title="左侧详情" colSpan="30%">
-        左侧内容
+      <ProCard title="Left Area Detail" colSpan="30%">
+        Left Area Content
       </ProCard>
-      <ProCard title="左右分栏子卡片带标题" headerBordered>
-        <div style={{ height: 360 }}>右侧内容</div>
+      <ProCard title="Split Columns Card with Title" headerBordered>
+        <div style={{ height: 360 }}>Right Area Content</div>
       </ProCard>
     </ProCard>
   );

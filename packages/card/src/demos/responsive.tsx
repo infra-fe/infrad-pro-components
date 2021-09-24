@@ -15,7 +15,7 @@ export default () => {
           Col
         </ProCard>
       </ProCard>
-      <ProCard style={{ marginTop: 8 }} gutter={8} title="指定宽度px">
+      <ProCard style={{ marginTop: 8 }} gutter={8} title="Given Width (px)">
         <ProCard
           colSpan={{
             xs: '50px',
@@ -34,7 +34,7 @@ export default () => {
         </ProCard>
       </ProCard>
 
-      <ProCard style={{ marginTop: 8 }} gutter={8} title="指定宽度百分比">
+      <ProCard style={{ marginTop: 8 }} gutter={8} title="Given Width (%)">
         <ProCard layout="center" bordered>
           Auto
         </ProCard>
@@ -49,7 +49,7 @@ export default () => {
           }}
           bordered
         >
-          Col - 百分比
+          Col - percentage
         </ProCard>
       </ProCard>
     </>

@@ -5,20 +5,20 @@ export default () => {
   return (
     <>
       <ProCard loading style={{ maxWidth: 300 }}>
-        内容
+        Content
       </ProCard>
 
       <ProCard loading style={{ maxWidth: 300, marginTop: 16 }} layout="center">
-        内容
+        Content
       </ProCard>
 
       <ProCard
-        title="自定义 Loading"
+        title="Customized Loading"
         extra="extra"
-        loading={<div>加载中</div>}
+        loading={<div>Loading</div>}
         style={{ maxWidth: 300, marginTop: 16 }}
       >
-        内容
+        Content
       </ProCard>
     </>
   );

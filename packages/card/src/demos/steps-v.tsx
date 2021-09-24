@@ -23,14 +23,14 @@ export default () => {
             current={current}
             style={{ height: '100%' }}
           >
-            <Step title="填写基本信息" />
-            <Step title="配置模板" />
-            <Step title="配置访问" />
-            <Step title="配置部署和调度" />
-            <Step title="预览" />
+            <Step title="Fill in Basic Info" />
+            <Step title="Dispose Template" />
+            <Step title="Dispose Visit" />
+            <Step title="Dispose Deployment & Dispatch" />
+            <Step title="Preview" />
           </Steps>
         </ProCard>
-        <ProCard title="流量占用情况" colSpan={responsive ? 24 : 18}>
+        <ProCard title="Volume Occupation" colSpan={responsive ? 24 : 18}>
           <Space>
             <Button
               key="primary"
@@ -38,10 +38,10 @@ export default () => {
               onClick={() => setCurrent(current + 1)}
               disabled={current === 5}
             >
-              下一步
+              Next
             </Button>
             <Button key="pre" onClick={() => setCurrent(current - 1)} disabled={current === 0}>
-              上一步
+              Prev
             </Button>
           </Space>
         </ProCard>

@@ -9,7 +9,7 @@ export default () => {
   return (
     <>
       <ProCard
-        title="可折叠"
+        title="Collapsible"
         headerBordered
         collapsible
         defaultCollapsed
@@ -21,14 +21,14 @@ export default () => {
               e.stopPropagation();
             }}
           >
-            提交
+            Submit
           </Button>
         }
       >
-        内容
+        Content
       </ProCard>
       <ProCard
-        title="可折叠-受控自定义"
+        title="Collapsible-Customized"
         extra={
           <RightOutlined
             rotate={!collapsed ? 90 : undefined}
@@ -41,7 +41,7 @@ export default () => {
         headerBordered
         collapsed={collapsed}
       >
-        内容
+        Content
       </ProCard>
     </>
   );

@@ -4,15 +4,15 @@ import ProCard from 'infrad-pro-card';
 export default () => {
   return (
     <>
-      <ProCard title="卡片组展开" ghost gutter={8} collapsible>
+      <ProCard title="Card Group" ghost gutter={8} collapsible>
         <ProCard layout="center" bordered>
-          卡片内容
+          Card Content
         </ProCard>
         <ProCard layout="center" bordered>
-          卡片内容
+          Card Content
         </ProCard>
         <ProCard layout="center" bordered>
-          卡片内容
+          Card Content
         </ProCard>
       </ProCard>
     </>

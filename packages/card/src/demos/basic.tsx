@@ -4,15 +4,15 @@ import ProCard from 'infrad-pro-card';
 export default () => {
   return (
     <>
-      <ProCard title="默认尺寸" extra="extra" tooltip="这是提示" style={{ maxWidth: 300 }}>
+      <ProCard title="Default Size" extra="extra" tooltip="This is tip" style={{ maxWidth: 300 }}>
         <div>Card content</div>
         <div>Card content</div>
         <div>Card content</div>
       </ProCard>
       <ProCard
-        title="小尺寸卡片"
+        title="Small Size"
         extra="extra"
-        tooltip="这是提示"
+        tooltip="This is tip"
         style={{ maxWidth: 300, marginTop: 24 }}
         size="small"
       >
