@@ -13,20 +13,20 @@ export default () => (
       ghost
       loading
       header={{
-        title: '页面标题',
+        title: 'Page Title',
         breadcrumb: {
           routes: [
             {
               path: '',
-              breadcrumbName: '一级页面',
+              breadcrumbName: 'Page Level 1',
             },
             {
               path: '',
-              breadcrumbName: '二级页面',
+              breadcrumbName: 'Page Level 2',
             },
             {
               path: '',
-              breadcrumbName: '当前页面',
+              breadcrumbName: 'Page Level 3',
             },
           ],
         },
