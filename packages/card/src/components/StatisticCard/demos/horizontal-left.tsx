@@ -23,7 +23,7 @@ export default () => {
       chart={
         <img
           src="https://gw.alipayobjects.com/zos/alicdn/snEBTn9ax/zhexiantuchang.svg"
-          alt="折线图"
+          alt="Line Chart"
           width="100%"
         />
       }
