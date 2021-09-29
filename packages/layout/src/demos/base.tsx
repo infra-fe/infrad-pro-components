@@ -42,7 +42,7 @@ export default () => {
               style={{
                 lineHeight: '48rpx',
                 display: 'flex',
-                height: 48,
+                height: 56,
                 color: 'rgba(255, 255, 255, 0.65)',
                 alignItems: 'center',
               }}
