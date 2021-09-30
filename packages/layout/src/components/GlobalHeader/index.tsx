@@ -1,5 +1,5 @@
 import './index.less';
-import React, { useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import classNames from 'classnames';
 
 import type { PureSettings } from '../../defaultSettings';
@@ -25,6 +25,7 @@ const GlobalHeader: React.FC<GlobalHeaderProps> = (props) => {
   const headerCls = classNames(className, headerPrefixCls);
 
   const [current, setCurrent] = useState('Application');
+  const [selected, setSelected] = useState('Tenant');
 
   const logoDom = (
     <span className={`${headerPrefixCls}-logo`} key="logo">
@@ -34,30 +35,22 @@ const GlobalHeader: React.FC<GlobalHeaderProps> = (props) => {
   );
 
   const menu = (
-    <Menu>
-      <Menu.Item>Banking</Menu.Item>
-      <Menu.Item>Data Science</Menu.Item>
-      <Menu.Item>Financial Service</Menu.Item>
-      <Menu.Item>Digital Purchase</Menu.Item>
-      <Menu.Item>SeaMoney Credit</Menu.Item>
-      <Menu.Item>Shopee Food</Menu.Item>
+    <Menu onClick={(e) => setSelected(`Tenant: ${e.key}`)}>
+      <Menu.Item key="Banking">Banking</Menu.Item>
+      <Menu.Item key="Data Science">Data Science</Menu.Item>
+      <Menu.Item key="Financial Service">Financial Service</Menu.Item>
+      <Menu.Item key="Digital Purchase">Digital Purchase</Menu.Item>
+      <Menu.Item key="SeaMoney Credit">SeaMoney Credit</Menu.Item>
+      <Menu.Item key="Shopee Food">Shopee Food</Menu.Item>
     </Menu>
   );
-  const menuDom = (
-    <Dropdown overlay={menu}>
-      <span className={`${headerPrefixCls}-menu`}>
-        Tenant Switcher
-        <IArrowDown style={{ marginLeft: 7 }} />
-      </span>
-    </Dropdown>
+  const info = (
+    <Menu>
+      <Menu.Item key="Banking">ShudongLi@shopee.com</Menu.Item>
+      <Menu.Item key="Data Science">Edit Permistion Groupe</Menu.Item>
+      <Menu.Item key="Financial Service">LogOut</Menu.Item>
+    </Menu>
   );
-  const userDom = (
-    <div className={`${headerPrefixCls}-user`} style={{ width: 200 }}>
-      <img src={imgSrc} alt="avatar" />
-      {menuDom}
-    </div>
-  );
-
   const navMenu = (
     <div style={{ display: 'inline-block' }}>
       <Menu
@@ -80,7 +73,12 @@ const GlobalHeader: React.FC<GlobalHeaderProps> = (props) => {
     <div className={headerCls} style={{ ...style }}>
       <div className={`${headerPrefixCls}-left`}>
         {logoDom}
-        {menuDom}
+        <Dropdown overlay={menu} trigger={['click']}>
+          <span className={`${headerPrefixCls}-menu`}>
+            {selected}
+            <IArrowDown style={{ marginLeft: 7 }} />
+          </span>
+        </Dropdown>
         <Divider type="vertical" />
         {navMenu}
       </div>
@@ -91,7 +89,15 @@ const GlobalHeader: React.FC<GlobalHeaderProps> = (props) => {
           style={{ width: 240 }}
           bordered={false}
         />
-        {userDom}
+        <div className={`${headerPrefixCls}-user`}>
+          <img src={imgSrc} alt="avatar" />
+          <Dropdown overlay={info} trigger={['hover']}>
+            <span className={`${headerPrefixCls}-menu`}>
+              {'shduong.li@shopee.com'}
+              <IArrowDown style={{ marginLeft: 7 }} />
+            </span>
+          </Dropdown>
+        </div>
       </div>
     </div>
   );
