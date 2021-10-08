@@ -2,7 +2,6 @@ import './index.less';
 import React, { useState } from 'react';
 import classNames from 'classnames';
 
-import type { PureSettings } from '../../defaultSettings';
 import { IInstagram, IArrowDown, IIntroduction } from 'infra-design-icons';
 import { Menu, Dropdown, Divider, Input, Select } from 'infrad';
 
@@ -12,14 +11,14 @@ export type GlobalHeaderProps = {
   style?: React.CSSProperties;
   logo?: React.ReactNode;
   title: React.ReactNode;
-} & Partial<PureSettings>;
+};
 
 const { Search } = Input;
 const { Option } = Select;
 const imgSrc =
   'https://lh3.googleusercontent.com/a/AATXAJwuBvQcPnrqY2FAswoNsh5SFCQ0f8X3U83mE4RR=s96-c';
 
-const GlobalHeader: React.FC<GlobalHeaderProps> = (props) => {
+const ProHeader: React.FC<GlobalHeaderProps> = (props) => {
   const { className, prefixCls, style, logo, title } = props;
 
   const headerPrefixCls = `${prefixCls}-global-header`;
@@ -31,7 +30,7 @@ const GlobalHeader: React.FC<GlobalHeaderProps> = (props) => {
   const logoDom = (
     <span className={`${headerPrefixCls}-logo`} key="logo">
       <IInstagram className={`${prefixCls}-logo-icon`} style={{ fontSize: 26, marginRight: 8 }} />
-      {title}
+      {'Shopee Undefined Platform'}
     </span>
   );
 
@@ -104,4 +103,4 @@ const GlobalHeader: React.FC<GlobalHeaderProps> = (props) => {
   );
 };
 
-export default GlobalHeader;
+export default ProHeader;
