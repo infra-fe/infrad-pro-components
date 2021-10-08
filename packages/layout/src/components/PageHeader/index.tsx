@@ -2,8 +2,8 @@ import './index.less';
 import React, { useState, useContext } from 'react';
 import classNames from 'classnames';
 
-import { IInstagram, IArrowDown, IIntroduction } from 'infra-design-icons';
-import { Menu, Dropdown, Divider, Input, Select, ConfigProvider } from 'infrad';
+import { IInstagram, IArrowDown } from 'infra-design-icons';
+import { Menu, Dropdown, Divider, Input, ConfigProvider } from 'infrad';
 
 export type GlobalHeaderProps = {
   className?: string;
@@ -11,15 +11,32 @@ export type GlobalHeaderProps = {
   style?: React.CSSProperties;
   logo?: React.ReactNode;
   title: React.ReactNode;
+  selectMenu: { value: number | string; label: string }[];
+  onMenuSelect?: (key: number | string) => void;
+  avatarUrl: string;
+  account: string;
+  infoMenu: React.ReactElement;
+  onInputSearch?: (input: string) => void;
+  navMenu: { value: number | string; label: string; icon: typeof IArrowDown }[];
 };
 
 const { Search } = Input;
-const { Option } = Select;
-const imgSrc =
-  'https://lh3.googleusercontent.com/a/AATXAJwuBvQcPnrqY2FAswoNsh5SFCQ0f8X3U83mE4RR=s96-c';
 
 const PageHeader: React.FC<GlobalHeaderProps> = (props) => {
-  const { className, prefixCls, style, logo, title } = props;
+  const {
+    className,
+    prefixCls,
+    style,
+    logo,
+    title,
+    selectMenu,
+    onMenuSelect,
+    avatarUrl,
+    account,
+    infoMenu,
+    onInputSearch,
+    navMenu,
+  } = props;
   const { getPrefixCls } = useContext(ConfigProvider.ConfigContext);
   const headerPrefixCls = props.prefixCls || getPrefixCls('pro-global-header');
   const headerCls = classNames(className, headerPrefixCls);
@@ -34,39 +51,18 @@ const PageHeader: React.FC<GlobalHeaderProps> = (props) => {
     </span>
   );
 
+  const handleMenuSelect = (key: number | string) => {
+    setSelected(`Tenant: ${key}`);
+    if (onMenuSelect) {
+      onMenuSelect(key);
+    }
+  };
   const menu = (
-    <Menu onClick={(e) => setSelected(`Tenant: ${e.key}`)}>
-      <Menu.Item key="Banking">Banking</Menu.Item>
-      <Menu.Item key="Data Science">Data Science</Menu.Item>
-      <Menu.Item key="Financial Service">Financial Service</Menu.Item>
-      <Menu.Item key="Digital Purchase">Digital Purchase</Menu.Item>
-      <Menu.Item key="SeaMoney Credit">SeaMoney Credit</Menu.Item>
-      <Menu.Item key="Shopee Food">Shopee Food</Menu.Item>
+    <Menu onClick={(e) => handleMenuSelect(e.key)}>
+      {selectMenu.map((item) => (
+        <Menu.Item key={item.label}>{item.label}</Menu.Item>
+      ))}
     </Menu>
-  );
-  const info = (
-    <Menu>
-      <Menu.Item key="Banking">ShudongLi@shopee.com</Menu.Item>
-      <Menu.Item key="Data Science">Edit Permistion Groupe</Menu.Item>
-      <Menu.Item key="Financial Service">LogOut</Menu.Item>
-    </Menu>
-  );
-  const navMenu = (
-    <div style={{ display: 'inline-block' }}>
-      <Menu
-        onClick={(e) => setCurrent(e.key)}
-        selectedKeys={[current]}
-        mode="horizontal"
-        theme="dark"
-      >
-        <Menu.Item key="Application" icon={<IIntroduction />}>
-          Application
-        </Menu.Item>
-        <Menu.Item key="Resource" icon={<IIntroduction />}>
-          Resource
-        </Menu.Item>
-      </Menu>
-    </div>
   );
 
   return (
@@ -80,7 +76,20 @@ const PageHeader: React.FC<GlobalHeaderProps> = (props) => {
           </span>
         </Dropdown>
         <Divider type="vertical" />
-        {navMenu}
+        <div style={{ display: 'inline-block' }}>
+          <Menu
+            onClick={(e) => setCurrent(e.key)}
+            selectedKeys={[current]}
+            mode="horizontal"
+            theme="dark"
+          >
+            {navMenu.map((item) => (
+              <Menu.Item key={item.value} icon={item.icon ? <item.icon /> : null}>
+                {item.label}
+              </Menu.Item>
+            ))}
+          </Menu>
+        </div>
       </div>
       <div className={`${headerPrefixCls}-right`}>
         <Search
@@ -88,12 +97,13 @@ const PageHeader: React.FC<GlobalHeaderProps> = (props) => {
           allowClear
           style={{ width: 240 }}
           bordered={false}
+          onSearch={onInputSearch}
         />
         <div className={`${headerPrefixCls}-user`}>
-          <img src={imgSrc} alt="avatar" />
-          <Dropdown overlay={info} trigger={['hover']}>
+          <img src={avatarUrl} alt="avatar" />
+          <Dropdown overlay={infoMenu} trigger={['hover']}>
             <span className={`${headerPrefixCls}-menu`}>
-              {'shduong.li@shopee.com'}
+              {account}
               <IArrowDown style={{ marginLeft: 7 }} />
             </span>
           </Dropdown>
