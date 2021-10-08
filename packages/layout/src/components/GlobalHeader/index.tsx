@@ -1,105 +1,121 @@
 import './index.less';
-import React, { useState } from 'react';
+import React from 'react';
 import classNames from 'classnames';
 
+import type { HeaderViewProps } from '../../Header';
+import type { SiderMenuProps, PrivateSiderMenuProps } from '../SiderMenu/SiderMenu';
+import {
+  defaultRenderLogo,
+  defaultRenderLogoAndTitle,
+  defaultRenderCollapsedButton,
+} from '../SiderMenu/SiderMenu';
 import type { PureSettings } from '../../defaultSettings';
-import { IInstagram, IArrowDown, IIntroduction } from 'infra-design-icons';
-import { Menu, Dropdown, Divider, Input, Select } from 'infrad';
+import TopNavHeader from '../TopNavHeader';
+import type { MenuDataItem } from '../../index';
+import type { WithFalse } from '../../typings';
+import { clearMenuItem } from '../../utils/utils';
 
 export type GlobalHeaderProps = {
+  collapsed?: boolean;
+  onCollapse?: (collapsed: boolean) => void;
+  isMobile?: boolean;
+  logo?: React.ReactNode;
+  menuRender?: WithFalse<(props: HeaderViewProps, defaultDom: React.ReactNode) => React.ReactNode>;
+  rightContentRender?: WithFalse<(props: HeaderViewProps) => React.ReactNode>;
   className?: string;
   prefixCls?: string;
+  menuData?: MenuDataItem[];
+  onMenuHeaderClick?: (e: React.MouseEvent<HTMLDivElement>) => void;
   style?: React.CSSProperties;
-  logo?: React.ReactNode;
-  title: React.ReactNode;
+  menuHeaderRender?: SiderMenuProps['menuHeaderRender'];
+  collapsedButtonRender?: SiderMenuProps['collapsedButtonRender'];
+  splitMenus?: boolean;
 } & Partial<PureSettings>;
 
-const { Search } = Input;
-const { Option } = Select;
-const imgSrc =
-  'https://lh3.googleusercontent.com/a/AATXAJwuBvQcPnrqY2FAswoNsh5SFCQ0f8X3U83mE4RR=s96-c';
+const renderLogo = (
+  menuHeaderRender: SiderMenuProps['menuHeaderRender'],
+  logoDom: React.ReactNode,
+) => {
+  if (menuHeaderRender === false) {
+    return null;
+  }
+  if (menuHeaderRender) {
+    return menuHeaderRender(logoDom, null);
+  }
+  return logoDom;
+};
 
-const GlobalHeader: React.FC<GlobalHeaderProps> = (props) => {
-  const { className, prefixCls, style, logo, title } = props;
+const GlobalHeader: React.FC<GlobalHeaderProps & PrivateSiderMenuProps> = (props) => {
+  const {
+    isMobile,
+    logo,
+    collapsed,
+    onCollapse,
+    collapsedButtonRender = defaultRenderCollapsedButton,
+    rightContentRender,
+    menuHeaderRender,
+    onMenuHeaderClick,
+    className: propClassName,
+    style,
+    layout,
+    children,
+    headerTheme = 'dark',
+    splitMenus,
+    menuData,
+    prefixCls,
+  } = props;
+  const baseClassName = `${prefixCls}-global-header`;
+  const className = classNames(propClassName, baseClassName, {
+    [`${baseClassName}-layout-${layout}`]: layout && headerTheme === 'dark',
+  });
 
-  const headerPrefixCls = `${prefixCls}-global-header`;
-  const headerCls = classNames(className, headerPrefixCls);
-
-  const [current, setCurrent] = useState('Application');
-  const [selected, setSelected] = useState('Tenant');
+  if (layout === 'mix' && !isMobile && splitMenus) {
+    const noChildrenMenuData = (menuData || []).map((item) => ({
+      ...item,
+      children: undefined,
+    }));
+    const clearMenuData = clearMenuItem(noChildrenMenuData);
+    return (
+      <TopNavHeader
+        mode="horizontal"
+        {...props}
+        splitMenus={false}
+        menuData={clearMenuData}
+        theme={headerTheme as 'light' | 'dark'}
+      />
+    );
+  }
 
   const logoDom = (
-    <span className={`${headerPrefixCls}-logo`} key="logo">
-      <IInstagram className={`${prefixCls}-logo-icon`} style={{ fontSize: 26, marginRight: 8 }} />
-      {title}
+    <span className={`${baseClassName}-logo`} key="logo">
+      <a>{defaultRenderLogo(logo)}</a>
     </span>
   );
 
-  const menu = (
-    <Menu onClick={(e) => setSelected(`Tenant: ${e.key}`)}>
-      <Menu.Item key="Banking">Banking</Menu.Item>
-      <Menu.Item key="Data Science">Data Science</Menu.Item>
-      <Menu.Item key="Financial Service">Financial Service</Menu.Item>
-      <Menu.Item key="Digital Purchase">Digital Purchase</Menu.Item>
-      <Menu.Item key="SeaMoney Credit">SeaMoney Credit</Menu.Item>
-      <Menu.Item key="Shopee Food">Shopee Food</Menu.Item>
-    </Menu>
-  );
-  const info = (
-    <Menu>
-      <Menu.Item key="Banking">ShudongLi@shopee.com</Menu.Item>
-      <Menu.Item key="Data Science">Edit Permistion Groupe</Menu.Item>
-      <Menu.Item key="Financial Service">LogOut</Menu.Item>
-    </Menu>
-  );
-  const navMenu = (
-    <div style={{ display: 'inline-block' }}>
-      <Menu
-        onClick={(e) => setCurrent(e.key)}
-        selectedKeys={[current]}
-        mode="horizontal"
-        theme="dark"
-      >
-        <Menu.Item key="Application" icon={<IIntroduction />}>
-          Application
-        </Menu.Item>
-        <Menu.Item key="Resource" icon={<IIntroduction />}>
-          Resource
-        </Menu.Item>
-      </Menu>
-    </div>
-  );
-
   return (
-    <div className={headerCls} style={{ ...style }}>
-      <div className={`${headerPrefixCls}-left`}>
-        {logoDom}
-        <Dropdown overlay={menu} trigger={['click']}>
-          <span className={`${headerPrefixCls}-menu`}>
-            {selected}
-            <IArrowDown style={{ marginLeft: 7 }} />
-          </span>
-        </Dropdown>
-        <Divider type="vertical" />
-        {navMenu}
-      </div>
-      <div className={`${headerPrefixCls}-right`}>
-        <Search
-          placeholder="Search APP/Pod IP..."
-          allowClear
-          style={{ width: 240 }}
-          bordered={false}
-        />
-        <div className={`${headerPrefixCls}-user`}>
-          <img src={imgSrc} alt="avatar" />
-          <Dropdown overlay={info} trigger={['hover']}>
-            <span className={`${headerPrefixCls}-menu`}>
-              {'shduong.li@shopee.com'}
-              <IArrowDown style={{ marginLeft: 7 }} />
-            </span>
-          </Dropdown>
-        </div>
-      </div>
+    <div className={className} style={{ ...style }}>
+      {isMobile && renderLogo(menuHeaderRender, logoDom)}
+      {isMobile && collapsedButtonRender && (
+        <span
+          className={`${baseClassName}-collapsed-button`}
+          onClick={() => {
+            if (onCollapse) {
+              onCollapse(!collapsed);
+            }
+          }}
+        >
+          {collapsedButtonRender(collapsed)}
+        </span>
+      )}
+      {layout === 'mix' && !isMobile && (
+        <>
+          <div className={`${baseClassName}-logo`} onClick={onMenuHeaderClick}>
+            {defaultRenderLogoAndTitle({ ...props, collapsed: false }, 'headerTitleRender')}
+          </div>
+        </>
+      )}
+      <div style={{ flex: 1 }}>{children}</div>
+      {rightContentRender && rightContentRender(props)}
     </div>
   );
 };

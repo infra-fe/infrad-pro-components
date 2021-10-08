@@ -141,7 +141,7 @@ export default {
           'card',
           'WaterMark/index',
           'StatisticCard/index',
-          'header',
+          'PageHeader',
         ],
       },
       {

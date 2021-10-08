@@ -3,105 +3,88 @@
 
 @pro-layout-global-header-prefix-cls: ~'@{ant-prefix}-pro-global-header';
 
-// @pro-layout-header-bg: @component-background;
-// @pro-layout-header-hover-bg: @component-background;
-@pro-layout-header-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.12);
+@pro-layout-header-bg: @component-background;
+@pro-layout-header-hover-bg: @component-background;
+@pro-layout-header-box-shadow: 0 1px 4px rgba(0, 21, 41, 0.08);
 
 .@{pro-layout-global-header-prefix-cls} {
   position: relative;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  width: 100%;
-  height: @pro-layout-header-height;
+  height: 100%;
   padding: 0 16px;
-  background: @layout-sider-background;
+  background: @pro-layout-header-bg;
   box-shadow: @pro-layout-header-box-shadow;
   > * {
     height: 100%;
   }
-  &-left {
+
+  &-collapsed-button {
     display: flex;
     align-items: center;
-    .ant-divider {
-      height: 24px;
-      margin-left: 26px;
-      border-left: 1px solid rgba(255, 255, 255, 0.24);
-    }
-  }
-  &-right {
-    display: flex;
-    align-items: center;
-  }
-  &-logo {
-    margin-right: 24px;
-    color: #fff;
+    margin-left: 16px;
     font-size: 20px;
-    &-icon {
-      color: #fff;
+  }
+
+  &-layout {
+    &-mix {
+      background-color: @layout-sider-background;
+      .@{pro-layout-global-header-prefix-cls}-logo {
+        h1 {
+          color: @btn-primary-color;
+        }
+      }
+      .anticon {
+        color: @btn-primary-color;
+      }
     }
   }
+
+  &-logo {
+    position: relative;
+    overflow: hidden;
+    a {
+      display: flex;
+      align-items: center;
+      height: 100%;
+      img {
+        height: 28px;
+      }
+      h1 {
+        height: 32px;
+        margin: 0 0 0 8px;
+        margin: 0 0 0 12px;
+        color: @primary-color;
+        font-weight: 600;
+        font-size: 18px;
+        line-height: 32px;
+      }
+    }
+  }
+
   &-menu {
-    color: rgba(255, 255, 255, 0.64);
-    font-size: 14px;
-    &:hover {
-      color: rgba(255, 255, 255, 1);
-    }
-  }
-  &-user {
-    height: 44px;
-    padding: 0 8px;
-    line-height: 44px;
-    border: none;
-    border-radius: 22px;
-    &:hover {
-      background-color: rgba(255, 255, 255, 0.04);
-    }
-    img {
-      display: inline-block;
-      width: 32px;
-      height: 32px;
+    .anticon {
       margin-right: 8px;
-      border-radius: 50%;
+    }
+    .@{ant-prefix}-dropdown-menu-item {
+      min-width: 160px;
     }
   }
-  .ant-menu-dark.ant-menu-horizontal > .ant-menu-item:hover {
-    background-color: transparent;
-  }
-  .ant-menu.ant-menu-dark .ant-menu-item-selected,
-  .ant-menu-submenu-popup.ant-menu-dark .ant-menu-item-selected {
-    background-color: transparent;
-  }
-  .ant-input-search {
-    margin-right: 20px;
-    .ant-input-wrapper {
-      background-color: rgba(255, 255, 255, 0.1);
-      border-radius: 2px;
-    }
-    .ant-input-group-addon,
-    .ant-btn {
-      background-color: transparent;
-      border: none;
-    }
-    .ant-btn {
-      margin-left: -6px;
-      padding: 2.4px 13px 2.4px 0px;
-    }
-  }
-  .ant-input-suffix svg {
-    fill: rgba(255, 255, 255, 1);
-  }
-  .ant-input {
-    color: rgba(255, 255, 255, 1);
-    &::-webkit-input-placeholder {
-      color: rgba(255, 255, 255, 0.2);
-    }
-  }
-  .anticon-search svg {
-    opacity: 0.2;
-    fill: rgba(255, 255, 255, 1);
-    &:hover {
-      opacity: 1;
+
+  .dark {
+    height: @pro-layout-header-height;
+    .action {
+      color: rgba(255, 255, 255, 0.85);
+      > i {
+        color: rgba(255, 255, 255, 0.85);
+      }
+      &:hover,
+      &.opened {
+        background: @primary-color;
+      }
+      .@{ant-prefix}-badge {
+        color: rgba(255, 255, 255, 0.85);
+      }
     }
   }
 }

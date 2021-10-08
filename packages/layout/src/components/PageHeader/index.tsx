@@ -1,9 +1,9 @@
 import './index.less';
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import classNames from 'classnames';
 
 import { IInstagram, IArrowDown, IIntroduction } from 'infra-design-icons';
-import { Menu, Dropdown, Divider, Input, Select } from 'infrad';
+import { Menu, Dropdown, Divider, Input, Select, ConfigProvider } from 'infrad';
 
 export type GlobalHeaderProps = {
   className?: string;
@@ -18,10 +18,10 @@ const { Option } = Select;
 const imgSrc =
   'https://lh3.googleusercontent.com/a/AATXAJwuBvQcPnrqY2FAswoNsh5SFCQ0f8X3U83mE4RR=s96-c';
 
-const ProHeader: React.FC<GlobalHeaderProps> = (props) => {
+const PageHeader: React.FC<GlobalHeaderProps> = (props) => {
   const { className, prefixCls, style, logo, title } = props;
-
-  const headerPrefixCls = `${prefixCls}-global-header`;
+  const { getPrefixCls } = useContext(ConfigProvider.ConfigContext);
+  const headerPrefixCls = props.prefixCls || getPrefixCls('pro-global-header');
   const headerCls = classNames(className, headerPrefixCls);
 
   const [current, setCurrent] = useState('Application');
@@ -30,7 +30,7 @@ const ProHeader: React.FC<GlobalHeaderProps> = (props) => {
   const logoDom = (
     <span className={`${headerPrefixCls}-logo`} key="logo">
       <IInstagram className={`${prefixCls}-logo-icon`} style={{ fontSize: 26, marginRight: 8 }} />
-      {'Shopee Undefined Platform'}
+      {title}
     </span>
   );
 
@@ -103,4 +103,4 @@ const ProHeader: React.FC<GlobalHeaderProps> = (props) => {
   );
 };
 
-export default ProHeader;
+export default PageHeader;

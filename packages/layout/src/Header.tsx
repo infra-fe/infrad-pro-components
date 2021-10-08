@@ -4,7 +4,7 @@ import React, { Component } from 'react';
 import classNames from 'classnames';
 import { Layout } from 'infrad';
 import type { GlobalHeaderProps } from './components/GlobalHeader';
-import GlobalHeader from './components/GlobalHeader';
+import PageHeader from './components/PageHeader';
 import TopNavHeader from './components/TopNavHeader';
 import type { WithFalse } from './typings';
 import type { PrivateSiderMenuProps } from './components/SiderMenu/SiderMenu';
@@ -37,11 +37,7 @@ class HeaderView extends Component<HeaderViewProps & PrivateSiderMenuProps, Head
       this.props;
     const isTop = layout === 'top';
     const clearMenuData = clearMenuItem(this.props.menuData || []);
-    let defaultDom = (
-      <GlobalHeader onCollapse={onCollapse} {...this.props} menuData={clearMenuData}>
-        {headerContentRender && headerContentRender(this.props)}
-      </GlobalHeader>
-    );
+    let defaultDom = <PageHeader title={'Shopee Undefined Platform'}></PageHeader>;
     if (isTop && !isMobile) {
       defaultDom = (
         <TopNavHeader

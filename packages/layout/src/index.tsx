@@ -11,6 +11,7 @@ import type { FooterProps } from './Footer';
 import DefaultFooter from './Footer';
 import GridContent from './components/GridContent';
 import PageContainer from './components/PageContainer';
+import PageHeader from './components/PageHeader';
 import type { PageContainerProps } from './components/PageContainer';
 import type { RouteContextType } from './RouteContext';
 import RouteContext from './RouteContext';
@@ -40,6 +41,7 @@ export {
   PageHeaderWrapper,
   getMenuData,
   PageContainer,
+  PageHeader,
   FooterToolbar,
   WaterMark,
   ProPageHeader,
