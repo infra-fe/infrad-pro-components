@@ -1,7 +1,7 @@
 import React from 'react';
 import { PageHeader } from 'infrad-pro-layout';
 import { Menu } from 'infrad';
-import { IIntroduction, IProduct } from 'infra-design-icons';
+import { IArrowDown, IIntroduction, IProduct } from 'infra-design-icons';
 const infoMenu = (
   <Menu>
     <Menu.Item key="info" onClick={() => alert('userInfo')}>
@@ -31,6 +31,7 @@ const navMenu = [
 export default () => (
   <div style={{ width: '100%' }}>
     <PageHeader
+      logo={<IProduct />}
       title={'Shopee Cloud'}
       selectMenu={[
         { value: 1, label: 'Banking' },
@@ -45,6 +46,7 @@ export default () => (
       infoMenu={infoMenu}
       onInputSearch={(input) => alert(input)}
       navMenu={navMenu}
+      onNavChange={(nav) => alert(nav)}
     />
   </div>
 );

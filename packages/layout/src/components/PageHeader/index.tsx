@@ -2,14 +2,14 @@ import './index.less';
 import React, { useState, useContext } from 'react';
 import classNames from 'classnames';
 
-import { IInstagram, IArrowDown } from 'infra-design-icons';
+import { IArrowDown } from 'infra-design-icons';
 import { Menu, Dropdown, Divider, Input, ConfigProvider } from 'infrad';
 
 export type GlobalHeaderProps = {
   className?: string;
   prefixCls?: string;
   style?: React.CSSProperties;
-  logo?: React.ReactNode;
+  logo: React.ReactElement;
   title: React.ReactNode;
   selectMenu: { value: number | string; label: string }[];
   onMenuSelect?: (key: number | string) => void;
@@ -17,7 +17,8 @@ export type GlobalHeaderProps = {
   account: string;
   infoMenu: React.ReactElement;
   onInputSearch?: (input: string) => void;
-  navMenu: { value: number | string; label: string; icon: typeof IArrowDown }[];
+  navMenu: { value: string; label: string; icon: typeof IArrowDown }[];
+  onNavChange: (key: string) => void;
 };
 
 const { Search } = Input;
@@ -36,17 +37,19 @@ const PageHeader: React.FC<GlobalHeaderProps> = (props) => {
     infoMenu,
     onInputSearch,
     navMenu,
+    onNavChange,
   } = props;
   const { getPrefixCls } = useContext(ConfigProvider.ConfigContext);
-  const headerPrefixCls = props.prefixCls || getPrefixCls('pro-global-header');
+  const headerPrefixCls = prefixCls || getPrefixCls('pro-global-header');
   const headerCls = classNames(className, headerPrefixCls);
 
-  const [current, setCurrent] = useState('Application');
+  const initialState = navMenu[0].value;
+  const [current, setCurrent] = useState(initialState);
   const [selected, setSelected] = useState('Tenant');
 
   const logoDom = (
     <span className={`${headerPrefixCls}-logo`} key="logo">
-      <IInstagram className={`${prefixCls}-logo-icon`} style={{ fontSize: 26, marginRight: 8 }} />
+      {logo ? logo : null}
       {title}
     </span>
   );
@@ -65,6 +68,13 @@ const PageHeader: React.FC<GlobalHeaderProps> = (props) => {
     </Menu>
   );
 
+  const handleNavChange = (key: string) => {
+    setCurrent(key);
+    if (onNavChange) {
+      onNavChange(key);
+    }
+  };
+
   return (
     <div className={headerCls} style={{ ...style }}>
       <div className={`${headerPrefixCls}-left`}>
@@ -78,7 +88,7 @@ const PageHeader: React.FC<GlobalHeaderProps> = (props) => {
         <Divider type="vertical" />
         <div style={{ display: 'inline-block' }}>
           <Menu
-            onClick={(e) => setCurrent(e.key)}
+            onClick={(e) => handleNavChange(e.key)}
             selectedKeys={[current]}
             mode="horizontal"
             theme="dark"
