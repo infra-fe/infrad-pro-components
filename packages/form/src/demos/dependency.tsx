@@ -16,27 +16,27 @@ export default () => {
       onFinish={async (values) => {
         await waitTime(2000);
         console.log(values);
-        message.success('提交成功');
+        message.success('Submit Successfully!');
       }}
       initialValues={{
-        name: '蚂蚁设计有限公司',
-        name2: '蚂蚁设计集团',
+        name: 'Ant Design Limited Company',
+        name2: 'Ant Design Group',
         useMode: 'chapter',
       }}
     >
       <ProFormText
         width="md"
         name="name"
-        label="签约客户名称"
-        tooltip="最长为 24 位"
-        placeholder="请输入名称"
+        label="Signed Customer Name"
+        tooltip="No longer than 24"
+        placeholder="Please enter name"
       />
       <ProFormText
         width="md"
         name={['name2', 'text']}
-        label="签约客户名称"
-        tooltip="最长为 24 位"
-        placeholder="请输入名称"
+        label="Signed Customer Name"
+        tooltip="No longer than 24"
+        placeholder="Please enter name"
       />
       {/*  ProFormDependency 会自动注入并且 进行 shouldUpdate 的比对  */}
       <ProFormDependency name={['name', ['name2', 'text']]}>
@@ -46,12 +46,12 @@ export default () => {
               options={[
                 {
                   value: 'chapter',
-                  label: '盖章后生效',
+                  label: 'Effective after Stamping',
                 },
               ]}
               width="md"
               name="useMode"
-              label={`与《${name || ''}》 与 《${name2?.text || ''}》合同约定生效方式`}
+              label={`《${name || ''}》 and 《${name2?.text || ''}》Effective Way of Contract`}
             />
           );
         }}
@@ -64,12 +64,12 @@ export default () => {
               options={[
                 {
                   value: 'chapter',
-                  label: '盖章后生效',
+                  label: 'Effective after Stamping',
                 },
               ]}
               width="md"
               name="useMode"
-              label={`与《${form.getFieldValue('name')}》合同约定生效方式`}
+              label={`with《${form.getFieldValue('name')}》Effective Way of Contract`}
             />
           );
         }}

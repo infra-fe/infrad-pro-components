@@ -24,11 +24,11 @@ export default () => {
         {
           path: '/one',
           icon: <SmileOutlined />,
-          name: '一级名称',
+          name: 'Level One',
           children: [
             {
               path: 'two',
-              name: '二级名称',
+              name: 'Level Two',
             },
           ],
         },
@@ -38,7 +38,7 @@ export default () => {
         pathname: '/one/two',
       }}
     >
-      <PageContainer title="输入表单">
+      <PageContainer title="Input Form">
         <Card>
           <ProForm
             submitter={{
@@ -49,53 +49,60 @@ export default () => {
             <ProForm.Group>
               <ProFormText
                 name="name"
-                label="签约客户名称"
-                tooltip="最长为 24 位"
-                placeholder="请输入名称"
+                label="Signed Customer Name"
+                tooltip="No longer than 24"
+                placeholder="Please enter name"
               />
               <ProFormText
                 width="md"
                 name="company"
-                label="我方公司名称"
-                placeholder="请输入名称"
+                label="Our Company Name"
+                placeholder="Please enter name"
               />
             </ProForm.Group>
             <ProForm.Group>
-              <ProFormText name={['contract', 'name']} label="合同名称" placeholder="请输入名称" />
-              <ProFormDateRangePicker name={['contract', 'createTime']} label="合同生效时间" />
+              <ProFormText
+                name={['contract', 'name']}
+                label="Contract Title"
+                placeholder="Please enter name"
+              />
+              <ProFormDateRangePicker
+                name={['contract', 'createTime']}
+                label="Contract Effective Time"
+              />
             </ProForm.Group>
             <ProForm.Group>
               <ProFormSelect
                 options={[
                   {
                     value: 'chapter',
-                    label: '盖章后生效',
+                    label: 'Effective after Stamping',
                   },
                 ]}
                 width="xs"
                 name="chapter"
-                label="合同约定生效方式"
+                label="Effective Way of Contract"
               />
               <ProFormSelect
                 width="xs"
                 options={[
                   {
                     value: 'time',
-                    label: '履行完终止',
+                    label: 'Termination after Fulfillment',
                   },
                 ]}
                 name="unusedMode"
-                label="合同约定失效效方式"
+                label="Contractual Invalidation Method"
               />
             </ProForm.Group>
-            <ProFormText width="sm" name="id" label="主合同编号" />
-            <ProFormText name="project" disabled label="项目名称" initialValue="xxxx项目" />
+            <ProFormText width="sm" name="id" label="Main Contract Number" />
+            <ProFormText name="project" disabled label="Project Name" initialValue="Project xxxx" />
             <ProFormText
               width="xs"
               name="mangerName"
               disabled
-              label="商务经理"
-              initialValue="启途"
+              label="Business Manager"
+              initialValue="QiTu"
             />
             <ProForm.Group>
               <ProFormSelect
@@ -103,12 +110,12 @@ export default () => {
                 options={[
                   {
                     value: 'money',
-                    label: '确认金额',
+                    label: 'Confirm Amount',
                   },
                 ]}
                 width="xs"
                 name="useMode"
-                label="金额类型"
+                label="Amount Type"
               />
               <ProFormSelect
                 options={[
@@ -124,23 +131,23 @@ export default () => {
                 initialValue="6"
                 width="xs"
                 name="taxRate"
-                label="税率"
+                label="Tax Rate"
               />
               <ProFormRadio.Group
-                label="发票类型"
+                label="Invoice Type"
                 name="invoiceType"
-                initialValue="发票"
-                options={['发票', '普票', '无票']}
+                initialValue="invoice"
+                options={['Invoice', 'Normal Ticket', 'No Ticket']}
               />
             </ProForm.Group>
             <ProFormUploadButton
-              extra="支持扩展名：.jpg .zip .doc .wps"
-              label="倒签报备附件"
+              extra="Support Extension Type：.jpg .zip .doc .wps"
+              label="Report Attachment"
               name="file"
-              title="上传文件"
+              title="Uploading File"
             />
-            <ProFormDigit width="xs" name="num" label="合同份数" initialValue={5} />
-            <ProFormTextArea width="xl" label="合同备注说明" name="remark" />
+            <ProFormDigit width="xs" name="num" label="Number of Contracts" initialValue={5} />
+            <ProFormTextArea width="xl" label="Contract Remarks" name="remark" />
           </ProForm>
         </Card>
       </PageContainer>

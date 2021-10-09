@@ -16,28 +16,28 @@ export default () => {
 
   const onFill = () => {
     formRef?.current?.setFieldsValue({
-      name: '张三',
-      company: '蚂蚁金服',
+      name: 'Tony Stark',
+      company: 'Ant Financial',
     });
   };
 
   const getCompanyName = () => {
-    message.info(`公司名称为 "${formRef?.current?.getFieldValue('company')}"`);
+    message.info(`The company name is  "${formRef?.current?.getFieldValue('company')}"`);
   };
 
   return (
     <ProForm
-      title="新建表单"
+      title="Create New Form"
       formRef={formRef}
       submitter={{
         render: (props, doms) => {
           return [
             ...doms,
             <Button htmlType="button" onClick={onFill} key="edit">
-              一键填写
+              One Click Filling
             </Button>,
             <Button htmlType="button" onClick={getCompanyName} key="read">
-              读取公司
+              Get Company Info
             </Button>,
           ];
         },
@@ -45,19 +45,24 @@ export default () => {
       onFinish={async (values) => {
         await waitTime(2000);
         console.log(values);
-        message.success('提交成功');
+        message.success('Submit Successfully!');
         return true;
       }}
     >
       <ProFormText
         width="md"
         name="name"
-        label="签约客户名称"
-        tooltip="最长为 24 位"
-        placeholder="请输入名称"
+        label="Signed Customer Name"
+        tooltip="No longer than 24"
+        placeholder="Please enter name"
       />
 
-      <ProFormText width="md" name="company" label="我方公司名称" placeholder="请输入名称" />
+      <ProFormText
+        width="md"
+        name="company"
+        label="Our Company Name"
+        placeholder="Please enter name"
+      />
     </ProForm>
   );
 };

@@ -75,81 +75,81 @@ export default () => {
           onFinish={async (values: any) => {
             await waitTime(2000);
             console.log(values);
-            message.success('提交成功');
+            message.success('Submit Successfully！');
           }}
         >
-          <StepsForm.StepForm title="第一步">
+          <StepsForm.StepForm title="First Step">
             <ProForm.Group>
               <ProFormText
                 width="md"
                 name="name"
-                label="签约客户名称"
-                tooltip="最长为 24 位"
-                placeholder="请输入名称"
+                label="Signed Customer Name"
+                tooltip="No longer than 24"
+                placeholder="Please enter name"
               />
               <ProFormText
                 width="md"
                 name="company"
-                label="我方公司名称"
-                placeholder="请输入名称"
+                label="Our Company Name"
+                placeholder="Please enter name"
               />
             </ProForm.Group>
             <ProForm.Group>
               <ProFormText
                 name={['contract', 'name']}
                 width="md"
-                label="合同名称"
-                placeholder="请输入名称"
+                label="Contract Title"
+                placeholder="Please enter name"
               />
               <ProFormDateRangePicker
                 width="md"
                 name={['contract', 'createTime']}
-                label="合同生效时间"
+                label="Contract Effective Time"
               />
             </ProForm.Group>
           </StepsForm.StepForm>
-          <StepsForm.StepForm title="第二步">
+          <StepsForm.StepForm title="Second Step">
             <ProForm.Group>
               <ProFormSelect
                 options={[
                   {
                     value: 'chapter',
-                    label: '盖章后生效',
+                    label: 'Effective after Stamping',
                   },
                 ]}
                 readonly
                 width="xs"
                 name="useMode"
-                label="合同约定生效方式"
+                label="Effective Way of Contract"
               />
               <ProFormSelect
                 width="xs"
                 options={[
                   {
                     value: 'time',
-                    label: '履行完终止',
+                    label: 'Termination after Fulfillment',
                   },
                 ]}
                 name="unusedMode"
-                label="合同约定失效效方式"
+                label="Contractual Invalidation Method"
               />
             </ProForm.Group>
           </StepsForm.StepForm>
-          <StepsForm.StepForm title="第二步">
-            <ProFormText width="sm" name="id" label="主合同编号" />
+          <StepsForm.StepForm title="Third Step">
+            <ProFormText width="sm" name="id" label="Main Contract Number" />
             <ProFormText
               name="project"
               width="md"
               disabled
-              label="项目名称"
-              initialValue="xxxx项目"
+              label="Project Name"
+              initialValue="Project xxxx"
             />
             <ProFormText
               width="xs"
               name="mangerName"
               disabled
-              label="商务经理"
-              initialValue="启途"
+              label="Business Manager"
+              initialValue="QiTu"
             />
           </StepsForm.StepForm>
         </StepsForm>
@@ -163,10 +163,10 @@ export default () => {
     return (
       <FormComponents
         title="Github"
-        subTitle="全球最大同性交友网站"
+        subTitle="Sign in to GitHub"
         actions={
           <Space>
-            其他登录方式
+            Other Login Methods
             <AlipayCircleOutlined style={iconStyles}></AlipayCircleOutlined>
             <TaobaoCircleOutlined style={iconStyles}></TaobaoCircleOutlined>
             <WeiboCircleOutlined style={iconStyles}></WeiboCircleOutlined>
@@ -184,7 +184,7 @@ export default () => {
           rules={[
             {
               required: true,
-              message: '请输入用户名!',
+              message: 'Please enter username!',
             },
           ]}
         />
@@ -194,11 +194,11 @@ export default () => {
             size: 'large',
             prefix: <LockOutlined className={'prefixIcon'} />,
           }}
-          placeholder={'密码: ant.design'}
+          placeholder={'password: ant.design'}
           rules={[
             {
               required: true,
-              message: '请输入密码！',
+              message: 'Please enter password!',
             },
           ]}
         />
@@ -237,16 +237,16 @@ export default () => {
           trigger={
             <Button type="primary">
               <PlusOutlined />
-              新建表单
+              Create New Form
             </Button>
           }
           onFinish={async (values: any) => {
             await waitTime(2000);
             console.log(values);
-            message.success('提交成功');
+            message.success('Submit Successfully!');
           }}
           initialValues={{
-            name: '蚂蚁设计有限公司',
+            name: 'Ant Design Limited Company',
             useMode: 'chapter',
           }}
         >
@@ -254,23 +254,28 @@ export default () => {
             <ProFormText
               width="md"
               name="name"
-              label="签约客户名称"
-              tooltip="最长为 24 位"
-              placeholder="请输入名称"
+              label="Signed Customer Name"
+              tooltip="No longer than 24"
+              placeholder="Please enter name"
             />
-            <ProFormText width="md" name="company" label="我方公司名称" placeholder="请输入名称" />
+            <ProFormText
+              width="md"
+              name="company"
+              label="Our Company Name"
+              placeholder="Please enter name"
+            />
           </ProForm.Group>
           <ProForm.Group>
             <ProFormText
               name={['contract', 'name']}
               width="md"
-              label="合同名称"
-              placeholder="请输入名称"
+              label="Contract Title"
+              placeholder="Please enter name"
             />
             <ProFormDateRangePicker
               width="md"
               name={['contract', 'createTime']}
-              label="合同生效时间"
+              label="Contract Effective Time"
             />
           </ProForm.Group>
           <ProForm.Group>
@@ -278,35 +283,41 @@ export default () => {
               options={[
                 {
                   value: 'chapter',
-                  label: '盖章后生效',
+                  label: 'Effective after Stamping',
                 },
               ]}
               readonly
               width="xs"
               name="useMode"
-              label="合同约定生效方式"
+              label="Effective Way of Contract"
             />
             <ProFormSelect
               width="xs"
               options={[
                 {
                   value: 'time',
-                  label: '履行完终止',
+                  label: 'Termination after Fulfillment',
                 },
               ]}
               name="unusedMode"
-              label="合同约定失效效方式"
+              label="Contractual Invalidation Method"
             />
           </ProForm.Group>
-          <ProFormText width="sm" name="id" label="主合同编号" />
+          <ProFormText width="sm" name="id" label="Main Contract Number" />
           <ProFormText
             name="project"
             width="md"
             disabled
-            label="项目名称"
-            initialValue="xxxx项目"
+            label="Project Name"
+            initialValue="Project xxxx"
           />
-          <ProFormText width="xs" name="mangerName" disabled label="商务经理" initialValue="启途" />
+          <ProFormText
+            width="xs"
+            name="mangerName"
+            disabled
+            label="Business Manager"
+            initialValue="QiTu"
+          />
         </FormComponents>
       </div>
     </>

@@ -18,7 +18,7 @@ import LightWrapper from '../BaseForm/LightWrapper';
 export default () => (
   <ConfigProvider locale={enUS}>
     <StepsForm>
-      <StepsForm.StepForm title="新建">
+      <StepsForm.StepForm title="Create">
         <ProFormText name="name" />
       </StepsForm.StepForm>
     </StepsForm>
@@ -38,17 +38,17 @@ export default () => (
         name="upload"
         icon={<SmileOutlined />}
         label="Upload"
-        title="点击上传"
+        title="Click to Upload"
         action="/upload.do"
         extra="longgggggggggggggggggggggggggggggggggg"
       />
       <ProFormRadio name="test" />
       <ProFormCheckbox name="test2" />
-      <ProFormSwitch width="lg" label="是否打开" />
+      <ProFormSwitch width="lg" label="Whether to  Open" />
       <ProFormUploadDragger
-        title="拖动上传"
+        title="Drag to Upload"
         icon={<SmileOutlined />}
-        description="支持 text"
+        description="Support Text Format"
         label="Dragger"
         name="dragger"
         fieldProps={{
@@ -57,7 +57,7 @@ export default () => (
       />
       <LightWrapper valuePropName="value">test</LightWrapper>
       <LightWrapper valuePropName="value">test</LightWrapper>
-      <ProFormSlider name="range" label="范围" />
+      <ProFormSlider name="range" label="Range" />
       <ProFormField>test</ProFormField>
       <ProFormField>
         <Input />

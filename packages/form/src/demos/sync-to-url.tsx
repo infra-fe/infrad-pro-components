@@ -11,7 +11,7 @@ export default () => {
   return (
     <ProForm
       onFinish={async () => {
-        message.success('提交成功');
+        message.success('Submit Successfully!');
       }}
       syncToUrl={(values, type) => {
         if (type === 'get') {
@@ -30,16 +30,16 @@ export default () => {
         };
       }}
       initialValues={{
-        name: '蚂蚁设计有限公司',
+        name: 'Ant Design Limited Company',
         useMode: 'chapter',
       }}
     >
       <ProFormText
         width="md"
         name="name"
-        label="签约客户名称"
-        tooltip="最长为 24 位"
-        placeholder="请输入名称"
+        label="Signed Customer Name"
+        tooltip="No longer than 24"
+        placeholder="Please enter name"
       />
       <ProFormDateRangePicker
         transform={(values) => {
@@ -50,20 +50,20 @@ export default () => {
         }}
         width="md"
         name="createTimeRanger"
-        label="合同生效时间"
+        label="Contract Effective Time"
       />
 
-      <ProFormDatePicker width="md" name="expirationTime" label="合同失效时间" />
+      <ProFormDatePicker width="md" name="expirationTime" label="Contract Expiration Time" />
       <ProFormSelect
         options={[
           {
             value: 'chapter',
-            label: '盖章后生效',
+            label: 'Effective after Stamping',
           },
         ]}
         width="sm"
         name="useMode"
-        label="合同约定生效方式"
+        label="Effective Way of Contract"
       />
     </ProForm>
   );

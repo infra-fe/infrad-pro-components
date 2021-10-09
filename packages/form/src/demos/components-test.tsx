@@ -31,31 +31,31 @@ const Demo = () => {
         name="upload"
         icon={<SmileOutlined />}
         label="Upload"
-        title="点击上传"
+        title="Click to  Upload"
         action="/upload.do"
         extra="longgggggggggggggggggggggggggggggggggg"
       />
       <ProFormRadio name="test" />
       <ProFormCheckbox name="test2" />
-      <ProFormSwitch width="lg" label="是否打开" />
+      <ProFormSwitch width="lg" label="Whether  to Open" />
       <ProFormUploadDragger
-        title="拖动上传"
+        title="Drag to Upload"
         icon={<SmileOutlined />}
-        description="支持 text"
+        description="Support test format"
         label="Dragger"
         name="dragger"
         fieldProps={{
           showUploadList: true,
         }}
       />
-      <ProFormSlider name="range" label="范围" />
+      <ProFormSlider name="range" label="Range" />
       <ProFormField>test</ProFormField>
       <ProFormField>
         <Input />
       </ProFormField>
       <ProForm.Item>
-        <Button>查看记录数</Button>
-        <span>共有200条</span>
+        <Button>View the number of records</Button>
+        <span>200 in Total</span>
       </ProForm.Item>
     </ProForm>
   );

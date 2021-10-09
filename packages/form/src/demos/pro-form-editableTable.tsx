@@ -24,15 +24,15 @@ type DataSourceType = {
 const defaultData: DataSourceType[] = [
   {
     id: 624748504,
-    title: '活动名称一',
-    decs: '这个活动真好玩',
+    title: 'Activity Name One',
+    decs: 'This Activity is fun',
     state: 'open',
     created_at: '2020-05-26T09:42:56Z',
   },
   {
     id: 624691229,
-    title: '活动名称二',
-    decs: '这个活动真好玩',
+    title: 'Activity Name Two',
+    decs: 'This Activity is fun',
     state: 'closed',
     created_at: '2020-05-26T08:19:22Z',
   },
@@ -40,7 +40,7 @@ const defaultData: DataSourceType[] = [
 
 const columns: ProColumns<DataSourceType>[] = [
   {
-    title: '活动名称',
+    title: 'Activity Name',
     dataIndex: 'title',
     width: '30%',
   },
@@ -50,23 +50,23 @@ const columns: ProColumns<DataSourceType>[] = [
     dataIndex: 'state',
     valueType: 'select',
     valueEnum: {
-      all: { text: '全部', status: 'Default' },
+      all: { text: 'Total', status: 'Default' },
       open: {
-        text: '未解决',
+        text: 'Unsolved',
         status: 'Error',
       },
       closed: {
-        text: '已解决',
+        text: 'Resolved',
         status: 'Success',
       },
     },
   },
   {
-    title: '描述',
+    title: 'Description',
     dataIndex: 'decs',
   },
   {
-    title: '操作',
+    title: 'Manipulation',
     valueType: 'option',
   },
 ];
@@ -83,10 +83,10 @@ export default () => {
       onFinish={async (values) => {
         await waitTime(2000);
         console.log(values);
-        message.success('提交成功');
+        message.success('Submit Successfully!');
       }}
       initialValues={{
-        name: '蚂蚁设计有限公司',
+        name: 'Ant Design Limited Company',
         useMode: 'chapter',
       }}
     >
@@ -94,15 +94,20 @@ export default () => {
         <ProFormText
           width="md"
           name="name"
-          label="签约客户名称"
-          tooltip="最长为 24 位"
-          placeholder="请输入名称"
+          label="Signed Customer Name"
+          tooltip="No longer than 24"
+          placeholder="Please enter name"
         />
-        <ProFormText width="md" name="company" label="我方公司名称" placeholder="请输入名称" />
+        <ProFormText
+          width="md"
+          name="company"
+          label="Our Company Name"
+          placeholder="Please enter name"
+        />
       </ProForm.Group>
-      <ProFormText width="sm" name="id" label="主合同编号" />
+      <ProFormText width="sm" name="id" label="Main Contract Number" />
       <ProForm.Item
-        label="数组数据"
+        label="Array Data"
         name="dataSource"
         initialValue={defaultData}
         trigger="onValuesChange"
