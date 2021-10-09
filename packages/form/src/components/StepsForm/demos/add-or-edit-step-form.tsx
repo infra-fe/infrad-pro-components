@@ -36,11 +36,11 @@ const waitTime = (time: number = 100) => {
 const jobType = [
   {
     value: 1,
-    label: '国企',
+    label: 'State-owned Enterprise',
   },
   {
     value: 2,
-    label: '私企',
+    label: ' Private Enterprise',
   },
 ];
 const EditExample = () => {
@@ -62,13 +62,13 @@ const EditExample = () => {
         return Promise.resolve(true);
       }}
     >
-      <StepsForm.StepForm name="step1" title="工作信息">
-        <ProFormText label="姓名" name={['jobInfo', 'name']} />
-        <ProFormSelect label="工作类型" name={['jobInfo', 'type']} options={jobType} />
+      <StepsForm.StepForm name="step1" title="Job Info">
+        <ProFormText label="Name" name={['jobInfo', 'name']} />
+        <ProFormSelect label="Job Type" name={['jobInfo', 'type']} options={jobType} />
       </StepsForm.StepForm>
-      <StepsForm.StepForm name="step2" title={'同步表单信息'}>
-        <ProFormDateRangePicker label="时间区间" name={['syncTableInfo', 'timeRange']} />
-        <ProFormText label="标题" name={['syncTableInfo', 'title']} />
+      <StepsForm.StepForm name="step2" title={'Synchronous Form Info'}>
+        <ProFormDateRangePicker label="Time Range" name={['syncTableInfo', 'timeRange']} />
+        <ProFormText label="Title" name={['syncTableInfo', 'title']} />
       </StepsForm.StepForm>
     </StepsForm>
   );
