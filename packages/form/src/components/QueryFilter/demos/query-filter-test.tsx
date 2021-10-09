@@ -14,8 +14,8 @@ export default () => {
         span={6}
         defaultCollapsed={false}
       >
-        <ProFormText name="name" label="应用名称" rules={[{ required: true }]} />
-        <ProFormText name="sex" label="性别" />
+        <ProFormText name="name" label="App Name" rules={[{ required: true }]} />
+        <ProFormText name="sex" label="Gender" />
       </QueryFilter>
       <QueryFilter<{
         name: string;
@@ -27,9 +27,9 @@ export default () => {
         span={6}
         defaultCollapsed={false}
       >
-        <ProFormText name="name" label="应用名称" rules={[{ required: true }]} />
-        <ProFormText name="creater" label="创建人" />
-        <ProFormText name="sex" label="性别" />
+        <ProFormText name="name" label="App Name" rules={[{ required: true }]} />
+        <ProFormText name="creater" label="Creator" />
+        <ProFormText name="sex" label="Gender" />
       </QueryFilter>
       <QueryFilter<{
         name: string;
@@ -40,12 +40,12 @@ export default () => {
         }}
         defaultCollapsed={false}
       >
-        <ProFormText name="name" label="应用名称" rules={[{ required: true }]} />
-        <ProFormText name="creater" label="创建人" />
-        <ProFormText name="sex" label="性别" />
-        <ProFormText name="status" label="应用状态" />
-        <ProFormText name="startdate" label="响应日期" />
-        <ProFormText name="create" label="创建时间" />
+        <ProFormText name="name" label="App Name" rules={[{ required: true }]} />
+        <ProFormText name="creater" label="Creator" />
+        <ProFormText name="sex" label="Gender" />
+        <ProFormText name="status" label="App Status" />
+        <ProFormText name="startdate" label="Response Time" />
+        <ProFormText name="create" label="Created Time" />
       </QueryFilter>
       <QueryFilter<{
         name: string;
@@ -57,12 +57,12 @@ export default () => {
         span={12}
         defaultCollapsed={false}
       >
-        <ProFormText name="name" label="应用名称" rules={[{ required: true }]} />
-        <ProFormText name="creater" label="创建人" />
-        <ProFormText name="sex" label="性别" />
-        <ProFormText name="status" label="应用状态" />
-        <ProFormText name="startdate" label="响应日期" />
-        <ProFormText name="create" label="创建时间" colSize={3} />
+        <ProFormText name="name" label="App Name" rules={[{ required: true }]} />
+        <ProFormText name="creater" label="Creator" />
+        <ProFormText name="sex" label="Gender" />
+        <ProFormText name="status" label="App Status" />
+        <ProFormText name="startdate" label="Response Date" />
+        <ProFormText name="create" label="Created Time" colSize={3} />
       </QueryFilter>
       <QueryFilter<{
         name: string;
@@ -74,12 +74,12 @@ export default () => {
         span={8}
         defaultCollapsed={false}
       >
-        <ProFormText name="name" label="应用名称" rules={[{ required: true }]} />
-        <ProFormText name="creater" label="创建人" />
-        <ProFormText name="sex" label="性别" />
-        <ProFormText name="status" label="应用状态" />
-        <ProFormText name="startdate" label="响应日期" />
-        <ProFormText name="create" label="创建时间" colSize={3} />
+        <ProFormText name="name" label="App Name" rules={[{ required: true }]} />
+        <ProFormText name="creater" label="Creator" />
+        <ProFormText name="sex" label="Gender" />
+        <ProFormText name="status" label="App Status" />
+        <ProFormText name="startdate" label="Response Date" />
+        <ProFormText name="create" label="Created Time" colSize={3} />
       </QueryFilter>
       <QueryFilter<{
         name: string;
@@ -92,12 +92,12 @@ export default () => {
         defaultColsNumber={1}
         defaultCollapsed={false}
       >
-        <ProFormText name="name" label="应用名称" rules={[{ required: true }]} />
-        <ProFormText name="creater" label="创建人" />
-        <ProFormText name="sex" label="性别" />
-        <ProFormText name="status" label="应用状态" />
-        <ProFormText name="startdate" label="响应日期" />
-        <ProFormText name="create" label="创建时间" colSize={3} />
+        <ProFormText name="name" label="App Name" rules={[{ required: true }]} />
+        <ProFormText name="creater" label="Creator" />
+        <ProFormText name="sex" label="Gender" />
+        <ProFormText name="status" label="App Status" />
+        <ProFormText name="startdate" label="Response Date" />
+        <ProFormText name="create" label="Created Time" colSize={3} />
       </QueryFilter>
     </>
   );

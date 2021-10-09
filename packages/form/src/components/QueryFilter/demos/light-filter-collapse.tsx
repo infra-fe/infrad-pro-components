@@ -12,14 +12,14 @@ export default () => {
     >
       <ProFormSelect
         name="sex"
-        label="性别"
+        label="Gender"
         showSearch
         valueEnum={{
-          man: '男',
-          woman: '女',
+          man: 'male',
+          woman: 'female',
         }}
       />
-      <ProFormDateTimePicker name="time" label="时间" />
+      <ProFormDateTimePicker name="time" label="date" />
     </LightFilter>
   );
 };

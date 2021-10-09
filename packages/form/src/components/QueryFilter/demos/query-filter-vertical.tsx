@@ -10,35 +10,35 @@ import {
 export default () => {
   return (
     <QueryFilter layout="vertical">
-      <ProFormText name="name" label="这是一个超级超级长的名称" />
-      <ProFormDatePicker name="birth" label="创建时间" />
-      <ProFormText name="sex" label="应用状态" />
+      <ProFormText name="name" label="This is a very long name" />
+      <ProFormDatePicker name="birth" label="Created Time" />
+      <ProFormText name="sex" label="App Status" />
       <ProFormRadio.Group
         name="freq"
-        label="查询频度"
+        label="Query Frequency"
         options={[
           {
             value: 'weekly',
-            label: '每周',
+            label: 'weekly',
           },
           {
             value: 'quarterly',
-            label: '每季度',
+            label: 'quarterly',
           },
           {
             value: 'monthly',
-            label: '每月',
+            label: 'monthly',
           },
           {
             value: 'yearly',
-            label: '每年',
+            label: 'yearly',
           },
         ]}
       />
       <ProFormCheckbox.Group
         name="checkbox"
-        label="行业分布"
-        options={['农业', '制造业', '互联网']}
+        label="Industry Distribution"
+        options={['Agriculture', 'Manufacturing', 'Internet']}
       />
     </QueryFilter>
   );

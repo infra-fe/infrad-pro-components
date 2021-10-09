@@ -17,20 +17,20 @@ export default () => {
         console.log(values.name);
       }}
     >
-      <ProFormText name="name" label="应用名称" rules={[{ required: true }]} />
-      <ProFormText name="creater" label="创建人" />
+      <ProFormText name="name" label="App Name" rules={[{ required: true }]} />
+      <ProFormText name="creater" label="Creator" />
       <ProFormSelect
         name="sex"
-        label="性别"
+        label="Gender"
         showSearch
         valueEnum={{
-          man: '男',
-          woman: '女',
+          man: 'male',
+          woman: 'female',
         }}
       />
-      <ProFormText name="status" label="应用状态" />
-      <ProFormDatePicker name="startdate" label="响应日期" />
-      <ProFormDateRangePicker name="create" label="创建时间" colSize={3} />
+      <ProFormText name="status" label="App Status" />
+      <ProFormDatePicker name="startdate" label="Response Date" />
+      <ProFormDateRangePicker name="create" label="Created Time" colSize={3} />
     </QueryFilter>
   );
 };

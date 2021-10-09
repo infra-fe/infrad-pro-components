@@ -43,11 +43,11 @@ export default () => {
           sex: [
             {
               value: 'open1',
-              label: '打开',
+              label: 'Open',
             },
             {
               value: 'closed2',
-              label: '关闭',
+              label: 'Close',
             },
           ],
           datetimeRanger: [
@@ -64,40 +64,40 @@ export default () => {
       >
         <ProFormSelect
           name="sex"
-          label="性别"
+          label="Gender"
           showSearch
           allowClear={false}
           fieldProps={{
             labelInValue: true,
           }}
           valueEnum={{
-            man: '男',
-            woman: '女',
+            man: 'male',
+            woman: 'female',
           }}
         />
         <ProFormSelect
           name="area"
-          label="地区"
+          label="Area"
           mode="multiple"
           valueEnum={{
-            beijing: '北京',
-            shanghai: '上海',
-            hangzhou: '杭州',
-            long: '这是一个很长的用来测试溢出的项目',
+            beijing: 'Beijing',
+            shanghai: 'Shanghai',
+            hangzhou: 'Hangzhou',
+            long: 'This is a very long item to test overflow effect',
           }}
         />
-        <ProFormDigit name="count" label="数量" />
-        <ProFormSlider name="range" label="范围" range />
-        <ProFormText name="name1" label="名称" />
-        <ProFormSwitch name="open" label="开关" secondary />
-        <ProFormText name="name2" label="地址" secondary />
-        <ProFormDatePicker name="name3" label="不能清空的日期" allowClear={false} />
-        <ProFormDateRangePicker name="date" label="日期范围" />
-        <ProFormDateTimePicker name="datetime" label="日期时间" />
-        <ProFormDateTimeRangePicker name="datetimeRanger" label="日期时间范围" />
-        <ProFormTimePicker name="time" label="时间" />
-        <ProFormTimePicker.RangePicker name="timeRanger" label="时间范围" />
-        <ProFormFieldSet name="name" label="姓名">
+        <ProFormDigit name="count" label="Count" />
+        <ProFormSlider name="range" label="Range" range />
+        <ProFormText name="name1" label="Name" />
+        <ProFormSwitch name="open" label="Switch" secondary />
+        <ProFormText name="name2" label="Address" secondary />
+        <ProFormDatePicker name="name3" label="Not allowed to clear" allowClear={false} />
+        <ProFormDateRangePicker name="date" label="Date Range" />
+        <ProFormDateTimePicker name="datetime" label="Date Time" />
+        <ProFormDateTimeRangePicker name="datetimeRanger" label="Date Time Range" />
+        <ProFormTimePicker name="time" label="Time" />
+        <ProFormTimePicker.RangePicker name="timeRanger" label="Time Range" />
+        <ProFormFieldSet name="name" label="Name">
           <ProFormText />
           <ProFormText />
         </ProFormFieldSet>

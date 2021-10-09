@@ -16,10 +16,10 @@ export default () => {
         name="sex"
         showSearch
         valueEnum={{
-          man: '男',
-          woman: '女',
+          man: 'male',
+          woman: 'female',
         }}
-        placeholder="性别"
+        placeholder="gender"
       />
       <ProFormRadio.Group
         name="radio"
@@ -27,23 +27,23 @@ export default () => {
         options={[
           {
             value: 'weekly',
-            label: '每周',
+            label: 'weekly',
           },
           {
             value: 'quarterly',
-            label: '每季度',
+            label: 'quarterly',
           },
           {
             value: 'monthly',
-            label: '每月',
+            label: 'monthly',
           },
           {
             value: 'yearly',
-            label: '每年',
+            label: 'yearly',
           },
         ]}
       />
-      <ProFormDatePicker name="time" placeholder="日期" />
+      <ProFormDatePicker name="time" placeholder="date" />
     </LightFilter>
   );
 };

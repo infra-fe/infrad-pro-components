@@ -29,14 +29,14 @@ export default () => {
         >
           <ProFormText
             name="name"
-            label="名称"
+            label="Name"
             footerRender={(_, onClear) => (
               <Button
                 onClick={() => {
                   onClear?.();
                 }}
               >
-                自定义footer
+                Customized Footer
               </Button>
             )}
           />
@@ -48,7 +48,7 @@ export default () => {
             name: 'Jack2',
           }}
         >
-          <ProFormText name="name" label="名称" footerRender={false} />
+          <ProFormText name="name" label="Name" footerRender={false} />
         </LightFilter>
 
         <LightFilter
@@ -57,10 +57,10 @@ export default () => {
             name: 'Jack2',
           }}
           collapse
-          collapseLabel="footer为false"
+          collapseLabel="footer is false"
           footerRender={false}
         >
-          <ProFormText name="name" label="名称" />
+          <ProFormText name="name" label="Name" />
         </LightFilter>
 
         <LightFilter
@@ -69,18 +69,18 @@ export default () => {
             name: 'Jack2',
           }}
           collapse
-          collapseLabel="自定义footer"
+          collapseLabel="Customized Footer"
           footerRender={(_, onClear) => (
             <Button
               onClick={() => {
                 onClear?.();
               }}
             >
-              自定义footer
+              Customized Footer
             </Button>
           )}
         >
-          <ProFormText name="name" label="名称" />
+          <ProFormText name="name" label="Name" />
         </LightFilter>
       </Space>
     </div>

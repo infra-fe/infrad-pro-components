@@ -17,7 +17,7 @@ const AdvancedSearch: React.FC<AdvancedSearchProps> = (props) => {
   const { onSearch, onTypeChange, defaultType = 'articles', onFilterChange } = props;
   const [searchText, setSearchText] = useState<string>();
   const [showFilter, setShowFilter] = useState<boolean>(true);
-  const quickSearch = ['小程序开发', '入驻', 'ISV 权限'];
+  const quickSearch = ['Mini Program Development', ' Settle In', 'ISV Permission'];
   return (
     <Card
       bodyStyle={{ paddingBottom: 0 }}
@@ -26,8 +26,8 @@ const AdvancedSearch: React.FC<AdvancedSearchProps> = (props) => {
     >
       <div>
         <Input.Search
-          placeholder="请输入"
-          enterButton="搜索"
+          placeholder="Please enter"
+          enterButton="Search"
           size="large"
           value={searchText}
           onChange={(e) => {
@@ -63,13 +63,13 @@ const AdvancedSearch: React.FC<AdvancedSearchProps> = (props) => {
               setShowFilter(!showFilter);
             }}
           >
-            高级筛选 {showFilter ? <UpOutlined /> : <DownOutlined />}
+            Advanced Filter {showFilter ? <UpOutlined /> : <DownOutlined />}
           </a>
         }
       >
-        <TabPane tab="文章" key="articles" />
-        <TabPane tab="项目" key="projects" />
-        <TabPane tab="应用" key="applications" />
+        <TabPane tab="Article" key="articles" />
+        <TabPane tab="Program" key="projects" />
+        <TabPane tab="Application" key="applications" />
       </Tabs>
 
       <QueryFilter
