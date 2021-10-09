@@ -28,7 +28,7 @@ const Demo = () => (
         'input-number': 3,
         'checkbox-group': ['A', 'B'],
         rate: 3.5,
-        name: '蚂蚁金服有限公司',
+        name: 'Ant Financial Limited Company',
         radio: 'a',
         list: ['1', '2', '3'],
         select: 'china',
@@ -108,13 +108,13 @@ const Demo = () => (
         width="md"
         readonly
         request={async () => [
-          { label: '全部', value: 'all' },
-          { label: '未解决', value: 'open' },
-          { label: '已解决', value: 'closed' },
-          { label: '解决中', value: 'processing' },
+          { label: 'All', value: 'all' },
+          { label: 'Unsolved', value: 'open' },
+          { label: 'Resolved', value: 'closed' },
+          { label: 'Solving', value: 'processing' },
         ]}
         name="useMode"
-        label="合同约定生效方式"
+        label="Effective Way of Contract"
       />
       <ProFormSelect
         name="select-multiple"
@@ -136,8 +136,8 @@ const Demo = () => (
         readonly
         name="switch"
         label="Switch"
-        unCheckedChildren="不同意"
-        checkedChildren="同意"
+        unCheckedChildren="Disagree"
+        checkedChildren="Agree"
       />
       <ProFormSlider
         readonly

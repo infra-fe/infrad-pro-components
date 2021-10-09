@@ -41,12 +41,12 @@ const Demo = () => (
       }}
       onFinish={async (value) => console.log(value)}
     >
-      <ProFormGroup label="文本类">
+      <ProFormGroup label="Text Type">
         <ProFormText width="md" name="name" label="name" />
         <ProFormText.Password width="md" name="password" label="password" />
       </ProFormGroup>
       <ProFormGroup
-        label="选择类"
+        label="Selectable Type"
         style={{
           gap: '0 32px',
         }}
@@ -63,7 +63,7 @@ const Demo = () => (
         />
         <ProFormSelect
           name="select2"
-          label="支持搜索查询的 Select"
+          label="Support Search & Query"
           showSearch
           request={async ({ keyWords }) => {
             await waitTime(1000);
@@ -76,7 +76,7 @@ const Demo = () => (
               ],
             }).data.concat({
               value: keyWords,
-              label: '目标_target',
+              label: 'target',
             });
           }}
           placeholder="Please select a country"
@@ -88,13 +88,13 @@ const Demo = () => (
             labelInValue: true,
           }}
           request={async () => [
-            { label: '全部', value: 'all' },
-            { label: '未解决', value: 'open' },
-            { label: '已解决', value: 'closed' },
-            { label: '解决中', value: 'processing' },
+            { label: 'All', value: 'all' },
+            { label: 'Unsolved', value: 'open' },
+            { label: 'Resolved', value: 'closed' },
+            { label: 'Solving', value: 'processing' },
           ]}
           name="useMode"
-          label="合同约定生效方式"
+          label="Effective Way of Contract"
         />
         <ProFormSelect
           name="select-multiple"
@@ -175,7 +175,7 @@ const Demo = () => (
           options={['A', 'B', 'C', 'D', 'E', 'F']}
         />
       </ProFormGroup>
-      <ProFormGroup label="数字类">
+      <ProFormGroup label="Number Type">
         <ProFormDigit label="InputNumber" name="input-number" width="sm" min={1} max={10} />
         <ProFormSwitch name="switch" label="Switch" />
         <ProFormSlider

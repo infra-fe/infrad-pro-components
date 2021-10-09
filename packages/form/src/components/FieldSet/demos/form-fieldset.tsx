@@ -13,32 +13,32 @@ export default () => {
         list: ['1', '2', '3'],
       }}
     >
-      <ProForm.Item label="互相依赖的表单">
+      <ProForm.Item label="Related Form">
         <ProFormDependency name={['list']}>
           {({ list }) => {
             return <div>{JSON.stringify(list, null, 2)}</div>;
           }}
         </ProFormDependency>
       </ProForm.Item>
-      <ProFormFieldSet name="list" label="组件列表">
+      <ProFormFieldSet name="list" label="Components List">
         <ProFormText width="md" />
         <ProFormSelect
           width="md"
           request={async () => [
-            { label: '全部', value: 'all' },
-            { label: '未解决', value: 'open' },
-            { label: '已解决', value: 'closed' },
-            { label: '解决中', value: 'processing' },
+            { label: 'All', value: 'all' },
+            { label: 'Unresolved', value: 'open' },
+            { label: 'Resolved', value: 'closed' },
+            { label: 'Solving', value: 'processing' },
           ]}
           name="useMode"
-          label="合同约定生效方式"
+          label="Effective Way of Contract"
         />
         <ProFormText width="md" />
       </ProFormFieldSet>
 
       <ProFormFieldSet
         name="list"
-        label="组件列表- Input.Group"
+        label="Components List - Input.Group"
         type="group"
         transform={(value: any) => ({ startTime: value[0], endTime: value[1] })}
       >
@@ -49,7 +49,7 @@ export default () => {
 
       <ProFormFieldSet
         name="list"
-        label="组件列表"
+        label="Components List"
         readonly
         transform={(value: any) => ({ startTime: value[0], endTime: value[1] })}
       >
