@@ -30,12 +30,12 @@ export default () => {
           name: string;
           company: string;
         }>
-          title="新建表单"
+          title="Create New Form"
           formRef={formRef}
           trigger={
             <Button type="primary">
               <PlusOutlined />
-              新建 Drawer 表单
+              Create Drawer Form
             </Button>
           }
           drawerProps={{
@@ -45,7 +45,7 @@ export default () => {
           onFinish={async (values) => {
             await waitTime(2000);
             console.log(values.name);
-            message.success('提交成功');
+            message.success('Submit Successfully!');
             // 不返回不会关闭弹框
             return true;
           }}
@@ -54,12 +54,12 @@ export default () => {
             name: string;
             company: string;
           }>
-            title="新建表单"
+            title="Create New Form"
             formRef={formRef}
             trigger={
               <Button type="primary">
                 <PlusOutlined />
-                新建 Drawer 表单
+                Create Drawer Form
               </Button>
             }
             drawerProps={{
@@ -69,7 +69,7 @@ export default () => {
             onFinish={async (values) => {
               await waitTime(2000);
               console.log(values.name);
-              message.success('提交成功');
+              message.success('Submit Successfully!');
               // 不返回不会关闭弹框
               return true;
             }}
@@ -78,53 +78,58 @@ export default () => {
               <ProFormText
                 name="name"
                 width="md"
-                label="签约客户名称"
-                tooltip="最长为 24 位"
-                placeholder="请输入名称"
+                label="Signed Customer Name"
+                tooltip="No longer than 24"
+                placeholder="Please enter name"
               />
               <ProFormText
                 width="md"
                 name="company"
-                label="我方公司名称"
-                placeholder="请输入名称"
+                label="Our Company Name"
+                placeholder="Please enter name"
               />
             </ProForm.Group>
             <ProForm.Group>
-              <ProFormText width="md" name="contract" label="合同名称" placeholder="请输入名称" />
-              <ProFormDateRangePicker name="contractTime" label="合同生效时间" />
+              <ProFormText
+                width="md"
+                name="contract"
+                label="Contract Title"
+                placeholder="Please enter name"
+              />
+              <ProFormDateRangePicker name="contractTime" label="Contract Effective Time" />
             </ProForm.Group>
             <ProForm.Group>
               <ProFormSelect
                 options={[
                   {
                     value: 'chapter',
-                    label: '盖章后生效',
+                    label: 'Effective after stamping',
                   },
                 ]}
                 width="xs"
                 name="useMode"
-                label="合同约定生效方式"
+                label="Effective Way of Contract"
               />
               <ProFormSelect
                 width="xs"
                 options={[
                   {
                     value: 'time',
-                    label: '履行完终止',
+                    label: 'Termination after Fulfillment',
                   },
                 ]}
                 name="unusedMode"
-                label="合同约定失效效方式"
+                label="Contractual Invalidation Method"
               />
             </ProForm.Group>
-            <ProFormText width="sm" name="id" label="主合同编号" />
-            <ProFormText name="project" disabled label="项目名称" initialValue="xxxx项目" />
+            <ProFormText width="sm" name="id" label="Main Contract Number" />
+            <ProFormText name="project" disabled label="Project Name" initialValue="Project xxxx" />
             <ProFormText
               width="xs"
               name="mangerName"
               disabled
-              label="商务经理"
-              initialValue="启途"
+              label="Business Manager"
+              initialValue="QiTu"
             />
           </DrawerForm>
         </DrawerForm>
@@ -133,12 +138,12 @@ export default () => {
           name: string;
           company: string;
         }>
-          title="新建表单"
+          title="Create New Form"
           formRef={formRef}
           trigger={
             <Button type="primary">
               <PlusOutlined />
-              新建 Model 表单
+              Create Model Form
             </Button>
           }
           modalProps={{
@@ -148,7 +153,7 @@ export default () => {
           onFinish={async (values) => {
             await waitTime(2000);
             console.log(values.name);
-            message.success('提交成功');
+            message.success('Submit Successfully!');
             // 不返回不会关闭弹框
             return true;
           }}
@@ -157,12 +162,12 @@ export default () => {
             name: string;
             company: string;
           }>
-            title="新建表单"
+            title="Create New Form"
             formRef={formRef}
             trigger={
               <Button type="primary">
                 <PlusOutlined />
-                新建 Model 表单
+                Create Model Form
               </Button>
             }
             modalProps={{
@@ -172,7 +177,7 @@ export default () => {
             onFinish={async (values) => {
               await waitTime(2000);
               console.log(values.name);
-              message.success('提交成功');
+              message.success('Submit Successfully!');
               // 不返回不会关闭弹框
               return true;
             }}
@@ -181,53 +186,58 @@ export default () => {
               <ProFormText
                 name="name"
                 width="md"
-                label="签约客户名称"
-                tooltip="最长为 24 位"
-                placeholder="请输入名称"
+                label="Signed Customer Name"
+                tooltip="No longer than 24"
+                placeholder="Please enter name"
               />
               <ProFormText
                 width="md"
                 name="company"
-                label="我方公司名称"
-                placeholder="请输入名称"
+                label="Our Company Name"
+                placeholder="Please enter name"
               />
             </ProForm.Group>
             <ProForm.Group>
-              <ProFormText width="md" name="contract" label="合同名称" placeholder="请输入名称" />
-              <ProFormDateRangePicker name="contractTime" label="合同生效时间" />
+              <ProFormText
+                width="md"
+                name="contract"
+                label="Contract Title"
+                placeholder="Please enter name"
+              />
+              <ProFormDateRangePicker name="contractTime" label="Contract Effective Time" />
             </ProForm.Group>
             <ProForm.Group>
               <ProFormSelect
                 options={[
                   {
                     value: 'chapter',
-                    label: '盖章后生效',
+                    label: 'Effective after Stamping',
                   },
                 ]}
                 width="xs"
                 name="useMode"
-                label="合同约定生效方式"
+                label="Effective Way of Contract"
               />
               <ProFormSelect
                 width="xs"
                 options={[
                   {
                     value: 'time',
-                    label: '履行完终止',
+                    label: 'Termination after Fulfillment',
                   },
                 ]}
                 name="unusedMode"
-                label="合同约定失效效方式"
+                label="Contractual Invalidation Method"
               />
             </ProForm.Group>
-            <ProFormText width="sm" name="id" label="主合同编号" />
-            <ProFormText name="project" disabled label="项目名称" initialValue="xxxx项目" />
+            <ProFormText width="sm" name="id" label="Main Contract Number" />
+            <ProFormText name="project" disabled label="Project Name" initialValue="Project xxxx" />
             <ProFormText
               width="xs"
               name="mangerName"
               disabled
-              label="商务经理"
-              initialValue="启途"
+              label="Business Manager"
+              initialValue="QiTu"
             />
           </ModalForm>
         </ModalForm>
