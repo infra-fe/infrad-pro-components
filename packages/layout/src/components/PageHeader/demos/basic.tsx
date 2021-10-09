@@ -39,9 +39,7 @@ export default () => (
         { value: 3, label: 'Financial Service' },
       ]}
       onMenuSelect={(key) => console.log(key)}
-      avatarUrl={
-        'https://lh3.googleusercontent.com/a/AATXAJwuBvQcPnrqY2FAswoNsh5SFCQ0f8X3U83mE4RR=s96-c'
-      }
+      avatarUrl={'https://coding.net/static/fruit_avatar/Fruit-19.png'}
       account={'shudong.li@shopee.com'}
       infoMenu={infoMenu}
       onInputSearch={(input) => alert(input)}

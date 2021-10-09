@@ -9,11 +9,11 @@ export type GlobalHeaderProps = {
   className?: string;
   prefixCls?: string;
   style?: React.CSSProperties;
-  logo: React.ReactElement;
+  logo?: React.ReactElement;
   title: React.ReactNode;
   selectMenu: { value: number | string; label: string }[];
   onMenuSelect?: (key: number | string) => void;
-  avatarUrl: string;
+  avatarUrl?: string;
   account: string;
   infoMenu: React.ReactElement;
   onInputSearch?: (input: string) => void;
@@ -43,7 +43,7 @@ const PageHeader: React.FC<GlobalHeaderProps> = (props) => {
   const headerPrefixCls = prefixCls || getPrefixCls('pro-global-header');
   const headerCls = classNames(className, headerPrefixCls);
 
-  const initialState = navMenu[0].value;
+  const initialState = navMenu?.[0]?.value ?? '';
   const [current, setCurrent] = useState(initialState);
   const [selected, setSelected] = useState('Tenant');
 
@@ -62,7 +62,7 @@ const PageHeader: React.FC<GlobalHeaderProps> = (props) => {
   };
   const menu = (
     <Menu onClick={(e) => handleMenuSelect(e.key)}>
-      {selectMenu.map((item) => (
+      {selectMenu?.map((item) => (
         <Menu.Item key={item.label}>{item.label}</Menu.Item>
       ))}
     </Menu>
@@ -79,27 +79,33 @@ const PageHeader: React.FC<GlobalHeaderProps> = (props) => {
     <div className={headerCls} style={{ ...style }}>
       <div className={`${headerPrefixCls}-left`}>
         {logoDom}
-        <Dropdown overlay={menu} trigger={['click']}>
-          <span className={`${headerPrefixCls}-menu`}>
-            {selected}
-            <IArrowDown style={{ marginLeft: 7 }} />
-          </span>
-        </Dropdown>
-        <Divider type="vertical" />
-        <div style={{ display: 'inline-block' }}>
-          <Menu
-            onClick={(e) => handleNavChange(e.key)}
-            selectedKeys={[current]}
-            mode="horizontal"
-            theme="dark"
-          >
-            {navMenu.map((item) => (
-              <Menu.Item key={item.value} icon={item.icon ? <item.icon /> : null}>
-                {item.label}
-              </Menu.Item>
-            ))}
-          </Menu>
-        </div>
+        {selectMenu ? (
+          <Dropdown overlay={menu} trigger={['click']}>
+            <span className={`${headerPrefixCls}-menu`}>
+              {selected}
+              <IArrowDown style={{ marginLeft: 7 }} />
+            </span>
+          </Dropdown>
+        ) : null}
+        {navMenu ? (
+          <>
+            <Divider type="vertical" />
+            <div style={{ display: 'inline-block' }}>
+              <Menu
+                onClick={(e) => handleNavChange(e.key)}
+                selectedKeys={[current]}
+                mode="horizontal"
+                theme="dark"
+              >
+                {navMenu?.map((item) => (
+                  <Menu.Item key={item.value} icon={item.icon ? <item.icon /> : null}>
+                    {item.label}
+                  </Menu.Item>
+                ))}
+              </Menu>
+            </div>
+          </>
+        ) : null}
       </div>
       <div className={`${headerPrefixCls}-right`}>
         <Search
@@ -110,13 +116,17 @@ const PageHeader: React.FC<GlobalHeaderProps> = (props) => {
           onSearch={onInputSearch}
         />
         <div className={`${headerPrefixCls}-user`}>
-          <img src={avatarUrl} alt="avatar" />
-          <Dropdown overlay={infoMenu} trigger={['hover']}>
-            <span className={`${headerPrefixCls}-menu`}>
-              {account}
-              <IArrowDown style={{ marginLeft: 7 }} />
-            </span>
-          </Dropdown>
+          {avatarUrl ? <img src={avatarUrl} alt="avatar" /> : null}
+          {infoMenu ? (
+            <Dropdown overlay={infoMenu} trigger={['hover']}>
+              <span className={`${headerPrefixCls}-menu`}>
+                {account}
+                <IArrowDown style={{ marginLeft: 7 }} />
+              </span>
+            </Dropdown>
+          ) : (
+            <span className={`${headerPrefixCls}-menu`}>{account}</span>
+          )}
         </div>
       </div>
     </div>
