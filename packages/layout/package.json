@@ -36,7 +36,7 @@
     "@umijs/route-utils": "^1.0.35",
     "@umijs/use-params": "^1.0.2",
     "classnames": "^2.2.6",
-    "infra-design-icons": "^4.0.0",
+    "infra-design-icons": "^4.7.14",
     "infrad-pro-provider": "^1.5.2",
     "infrad-pro-utils": "^1.25.2",
     "lodash.merge": "^4.6.2",

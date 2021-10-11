@@ -1,7 +1,7 @@
 import React from 'react';
 import { PageHeader } from 'infrad-pro-layout';
-import { Menu } from 'infrad';
-import { IArrowDown, IIntroduction, IProduct } from 'infra-design-icons';
+import { Menu, Divider } from 'infrad';
+import { IArrowDown, IIntroduction, IProduct, INoticeOutlined } from 'infra-design-icons';
 const infoMenu = (
   <Menu>
     <Menu.Item key="info" onClick={() => alert('userInfo')}>
@@ -20,14 +20,36 @@ const navMenu = [
   {
     value: 'Application',
     label: 'Application',
-    icon: IIntroduction,
+    icon: <IIntroduction />,
   },
   {
     value: 'Resource',
     label: 'Resource',
-    icon: IProduct,
+    icon: <IProduct />,
   },
 ];
+
+const extra = (
+  <>
+    <Divider type="vertical" />
+    <INoticeOutlined style={{ color: '#fff', fontSize: '18px', marginLeft: 10 }} />
+    <span
+      style={{
+        display: 'inline-block',
+        padding: '0 10px',
+        height: 26,
+        lineHeight: '24px',
+        marginLeft: '18px',
+        borderRadius: 50,
+        color: '#fff',
+        border: '1px solid #fff',
+      }}
+    >
+      Education Hub
+    </span>
+  </>
+);
+
 export default () => (
   <div style={{ width: '100%' }}>
     <PageHeader
@@ -45,6 +67,7 @@ export default () => (
       onInputSearch={(input) => alert(input)}
       navMenu={navMenu}
       onNavChange={(nav) => alert(nav)}
+      extra={extra}
     />
   </div>
 );

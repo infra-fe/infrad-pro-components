@@ -2,6 +2,7 @@ import './index.less';
 import React, { useState, useContext } from 'react';
 import classNames from 'classnames';
 
+import type { IconDefinition } from 'infra-design-svgs/lib/types';
 import { IArrowDown } from 'infra-design-icons';
 import { Menu, Dropdown, Divider, Input, ConfigProvider } from 'infrad';
 
@@ -17,8 +18,9 @@ export type GlobalHeaderProps = {
   account: string;
   infoMenu: React.ReactElement;
   onInputSearch?: (input: string) => void;
-  navMenu: { value: string; label: string; icon: typeof IArrowDown }[];
+  navMenu: { value: string; label: string; icon?: React.ReactElement }[];
   onNavChange: (key: string) => void;
+  extra?: React.ReactNode;
 };
 
 const { Search } = Input;
@@ -38,6 +40,7 @@ const PageHeader: React.FC<GlobalHeaderProps> = (props) => {
     onInputSearch,
     navMenu,
     onNavChange,
+    extra,
   } = props;
   const { getPrefixCls } = useContext(ConfigProvider.ConfigContext);
   const headerPrefixCls = prefixCls || getPrefixCls('pro-global-header');
@@ -98,7 +101,7 @@ const PageHeader: React.FC<GlobalHeaderProps> = (props) => {
                 theme="dark"
               >
                 {navMenu?.map((item) => (
-                  <Menu.Item key={item.value} icon={item.icon ? <item.icon /> : null}>
+                  <Menu.Item key={item.value} icon={item.icon ?? null}>
                     {item.label}
                   </Menu.Item>
                 ))}
@@ -128,6 +131,7 @@ const PageHeader: React.FC<GlobalHeaderProps> = (props) => {
             <span className={`${headerPrefixCls}-menu`}>{account}</span>
           )}
         </div>
+        {extra ? <div style={{ display: 'inline-block' }}>{extra}</div> : null}
       </div>
     </div>
   );

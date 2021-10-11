@@ -10613,10 +10613,21 @@ infra-design-icons@^4.0.0, infra-design-icons@^4.1.0, infra-design-icons@^4.2.1,
     infra-design-svgs "^4.2.9"
     rc-util "^5.9.4"
 
-infra-design-icons@^4.7.13, infra-design-icons@^4.7.14:
+infra-design-icons@^4.7.13:
   version "4.7.14"
   resolved "https://registry.npmmirror.com/infra-design-icons/download/infra-design-icons-4.7.14.tgz#7b8e551fb5f311f82e5bbd5061ca84db9aafead3"
   integrity sha1-e45VH7XzEfguW71QYcqE25qv6tM=
+  dependencies:
+    "@ant-design/colors" "^6.0.0"
+    "@babel/runtime" "^7.11.2"
+    classnames "^2.2.6"
+    infra-design-svgs "^4.2.12"
+    rc-util "^5.9.4"
+
+infra-design-icons@^4.7.14:
+  version "4.7.14"
+  resolved "https://registry.yarnpkg.com/infra-design-icons/-/infra-design-icons-4.7.14.tgz#7b8e551fb5f311f82e5bbd5061ca84db9aafead3"
+  integrity sha512-7EPThAsUQx+Jf5J/D0RwkgCs76RwUtlNBK2i421WT6AjOHL0VmwS/5itIuluDjbBG19XtSzVqV0syX4ca10G2w==
   dependencies:
     "@ant-design/colors" "^6.0.0"
     "@babel/runtime" "^7.11.2"

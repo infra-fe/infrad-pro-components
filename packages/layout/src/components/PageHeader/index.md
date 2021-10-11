@@ -25,7 +25,8 @@ nav:
 | onMenuSelect | Tenant 下拉选中某一项时调用此函数 | `(key: number \| string) => void` | - |
 | avatarUrl | 用户头像图片 url | `string`  | - |
 | account | 用户账号 | `string` | - |
-| infoMenu | 用户账号下拉列表 | `React.ReactElement` | 24 |
-| onInputSearch | 搜索框点击搜索或者清空时调用此函数 | `(input: string) => void` | 0 |
-| navMenu | 顶部导航列表 | `{ value: string; label: string; icon: typeof IArrowDown }[]` | - |
+| infoMenu | 用户账号下拉列表 | `React.ReactElement` | - |
+| onInputSearch | 搜索框点击搜索或者清空时调用此函数 | `(input: string) => void` | - |
+| navMenu | 顶部导航列表 | `{ value: string; label: string; icon: React.ReactElement}[]` | - |
 | onNavChange | 点击 navMenu 时调用此函数 | `(key: string) => void` | - |
+| extra | 右上角自定义区域 | `React.ReactNode` | - |
