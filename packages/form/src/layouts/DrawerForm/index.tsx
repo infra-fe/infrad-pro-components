@@ -191,7 +191,7 @@ function DrawerForm<T = Record<string, any>>({
               return (
                 <Drawer
                   title={title}
-                  width={width || 800}
+                  width={width || 528}
                   {...drawerProps}
                   getContainer={false}
                   visible={visible}
