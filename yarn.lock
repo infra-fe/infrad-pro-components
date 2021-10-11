@@ -10602,7 +10602,7 @@ inflight@^1.0.4:
     once "^1.3.0"
     wrappy "1"
 
-infra-design-icons@^4.0.0, infra-design-icons@^4.1.0, infra-design-icons@^4.2.1, infra-design-icons@^4.3.0, infra-design-icons@^4.7.11:
+infra-design-icons@^4.0.0, infra-design-icons@^4.1.0, infra-design-icons@^4.2.1, infra-design-icons@^4.3.0:
   version "4.7.11"
   resolved "https://registry.yarnpkg.com/infra-design-icons/-/infra-design-icons-4.7.11.tgz#9aebd6e0c47f8698361796ec3452e64c3cba38ae"
   integrity sha512-yghITkrES6dm242bc+GuklsDK0td5syjakPQCcc6ywXYeGFioHeUmfHMV//pKjmfz0gwZEBMBQzO7MUPVT9zgg==
@@ -10613,15 +10613,31 @@ infra-design-icons@^4.0.0, infra-design-icons@^4.1.0, infra-design-icons@^4.2.1,
     infra-design-svgs "^4.2.9"
     rc-util "^5.9.4"
 
+infra-design-icons@^4.7.13, infra-design-icons@^4.7.14:
+  version "4.7.14"
+  resolved "https://registry.npmmirror.com/infra-design-icons/download/infra-design-icons-4.7.14.tgz#7b8e551fb5f311f82e5bbd5061ca84db9aafead3"
+  integrity sha1-e45VH7XzEfguW71QYcqE25qv6tM=
+  dependencies:
+    "@ant-design/colors" "^6.0.0"
+    "@babel/runtime" "^7.11.2"
+    classnames "^2.2.6"
+    infra-design-svgs "^4.2.12"
+    rc-util "^5.9.4"
+
+infra-design-svgs@^4.2.12:
+  version "4.2.12"
+  resolved "https://registry.npmmirror.com/infra-design-svgs/download/infra-design-svgs-4.2.12.tgz#baa838a474c26d035e8e7c5730b5e48c5ae54546"
+  integrity sha1-uqg4pHTCbQNejnxXMLXkjFrlRUY=
+
 infra-design-svgs@^4.2.9:
   version "4.2.9"
   resolved "https://registry.yarnpkg.com/infra-design-svgs/-/infra-design-svgs-4.2.9.tgz#8761bb8530dd2973e7964edd6aeabbc08c282876"
   integrity sha512-70/GZMgXnAbjIX8F2Obbzzi94cHcElx6h6povjvWkBtbMoLHO7vAP/dWiTOWCKE8qGD6oClqxmqBUOZCW0iWcw==
 
-infrad@^4.16.12:
-  version "4.16.12"
-  resolved "https://registry.yarnpkg.com/infrad/-/infrad-4.16.12.tgz#59b41623133f92cf2123df1b9fe825d735d5346d"
-  integrity sha512-GxTWJI/EoOVzv0IoGAzoMfC+z/yqro/ghIuapglou5Xf9QRKCaK9cM7Z8uXe6pRrRUeHqNXRLD3z7J1SEg/Pxw==
+infrad@^4.16.14:
+  version "4.16.14"
+  resolved "https://registry.npmmirror.com/infrad/download/infrad-4.16.14.tgz#d2e6f194600eeaa04e2193b0e000fe6501bb12cf"
+  integrity sha1-0ubxlGAO6qBOIZOw4AD+ZQG7Es8=
   dependencies:
     "@ant-design/colors" "^6.0.0"
     "@ant-design/icons" "^4.6.2"
@@ -10630,6 +10646,7 @@ infrad@^4.16.12:
     array-tree-filter "^2.1.0"
     classnames "^2.2.6"
     copy-to-clipboard "^3.2.0"
+    infra-design-icons "^4.7.13"
     lodash "^4.17.21"
     moment "^2.25.3"
     rc-cascader "~1.4.0"

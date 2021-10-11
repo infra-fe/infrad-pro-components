@@ -6,6 +6,7 @@
   useRef,
   useState,
 } from 'react';
+import './index.less';
 import type { DrawerProps, FormInstance, FormProps } from 'infrad';
 import { ConfigProvider, Drawer } from 'infrad';
 import useMergedState from 'rc-util/lib/hooks/useMergedState';
@@ -64,6 +65,8 @@ function DrawerForm<T = Record<string, any>>({
   });
 
   const context = useContext(ConfigProvider.ConfigContext);
+  const { getPrefixCls } = useContext(ConfigProvider.ConfigContext);
+  const drawerFormPrefixCls = getPrefixCls('drawer-form');
 
   const renderDom = useMemo(() => {
     if (drawerProps?.getContainer) {
@@ -192,6 +195,7 @@ function DrawerForm<T = Record<string, any>>({
                 <Drawer
                   title={title}
                   width={width || 528}
+                  className={drawerFormPrefixCls}
                   {...drawerProps}
                   getContainer={false}
                   visible={visible}
