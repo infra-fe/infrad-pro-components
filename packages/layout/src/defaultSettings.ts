@@ -72,7 +72,7 @@ const defaultSettings: ProSettings = {
   fixedHeader: true,
   fixSiderbar: false,
   headerHeight: 56,
-  title: 'Shopee Undefined Platform',
+  title: 'Shopee Platform',
   iconfontUrl: '',
   primaryColor: 'daybreak',
   splitMenus: false,
