@@ -2,7 +2,6 @@ import './index.less';
 import React, { useState, useContext } from 'react';
 import classNames from 'classnames';
 
-import type { IconDefinition } from 'infra-design-svgs/lib/types';
 import { IArrowDown } from 'infra-design-icons';
 import { Menu, Dropdown, Divider, Input, ConfigProvider } from 'infrad';
 
@@ -131,7 +130,7 @@ const PageHeader: React.FC<GlobalHeaderProps> = (props) => {
             <span className={`${headerPrefixCls}-menu`}>{account}</span>
           )}
         </div>
-        {extra ? <div style={{ display: 'inline-block' }}>{extra}</div> : null}
+        {extra ? <div className={`${headerPrefixCls}-user`}>{extra}</div> : null}
       </div>
     </div>
   );

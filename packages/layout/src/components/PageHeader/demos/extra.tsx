@@ -29,6 +29,27 @@ const navMenu = [
   },
 ];
 
+const extra = (
+  <>
+    <Divider type="vertical" />
+    <INoticeOutlined style={{ color: '#fff', fontSize: '18px', marginLeft: 10 }} />
+    <span
+      style={{
+        display: 'inline-block',
+        padding: '0 10px',
+        height: 26,
+        lineHeight: '24px',
+        marginLeft: '18px',
+        borderRadius: 50,
+        color: '#fff',
+        border: '1px solid #fff',
+      }}
+    >
+      Education Hub
+    </span>
+  </>
+);
+
 export default () => (
   <div style={{ width: '100%' }}>
     <PageHeader
@@ -46,6 +67,7 @@ export default () => (
       onInputSearch={(input) => alert(input)}
       navMenu={navMenu}
       onNavChange={(nav) => alert(nav)}
+      extra={extra}
     />
   </div>
 );

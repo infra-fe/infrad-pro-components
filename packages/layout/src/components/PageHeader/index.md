@@ -15,12 +15,17 @@ nav:
 
 <code src="./demos/basic.tsx" iframe="500px" title="基本使用" desc="基本使用" />
 
+### 自定义右上角
+
+<code src="./demos/extra.tsx" iframe="500px" title="自定义右上角" desc="自定义右上角" />
+
 ## API
 
 | 参数 | 说明 | 类型 | 默认值 | 版本 |
 | --- | --- | --- | --- | --- |
 | title | 标题 | `React.ReactNode` | - |
 | logo | logo | `React.ReactElement` | - |
+| isLogin | 是否已登陆 | `Boolean` | false |
 | selectMenu | Tenant 下拉列表 | `{ value: number \| string; label: string }[]` | - |
 | onMenuSelect | Tenant 下拉选中某一项时调用此函数 | `(key: number \| string) => void` | - |
 | avatarUrl | 用户头像图片 url | `string`  | - |
