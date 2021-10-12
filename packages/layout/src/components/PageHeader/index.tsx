@@ -53,7 +53,8 @@ const PageHeader: React.FC<GlobalHeaderProps> = (props) => {
 
   const initialState = navMenu?.[0]?.value ?? '';
   const [current, setCurrent] = useState(initialState);
-  const [selected, setSelected] = useState('Tenant');
+  const [selected, setSelected] = useState('');
+  const [dropdown, setDropdown] = useState(false);
 
   const logoDom = (
     <span className={`${headerPrefixCls}-logo`} key="logo">
@@ -62,16 +63,25 @@ const PageHeader: React.FC<GlobalHeaderProps> = (props) => {
     </span>
   );
 
-  const handleMenuSelect = (key: number | string) => {
-    setSelected(`Tenant: ${key}`);
+  const handleMenuSelect = (key: string) => {
+    setSelected(key);
+    setDropdown(false);
     if (onMenuSelect) {
       onMenuSelect(key);
     }
   };
+  const handleTenantSwitcher = (visible: boolean) => {
+    if (visible !== dropdown) {
+      setDropdown(visible);
+    }
+    console.log(visible);
+  };
   const menu = (
     <Menu onClick={(e) => handleMenuSelect(e.key)}>
       {selectMenu?.map((item) => (
-        <Menu.Item key={item.label}>{item.label}</Menu.Item>
+        <Menu.Item key={item.label} style={{ color: selected === item.label ? '#2673DD' : '' }}>
+          {item.label}
+        </Menu.Item>
       ))}
     </Menu>
   );
@@ -90,9 +100,12 @@ const PageHeader: React.FC<GlobalHeaderProps> = (props) => {
         {isLogin ? (
           <>
             {selectMenu ? (
-              <Dropdown overlay={menu} trigger={['click']}>
-                <span className={`${headerPrefixCls}-menu`}>
-                  {selected}
+              <Dropdown overlay={menu} trigger={['click']} onVisibleChange={handleTenantSwitcher}>
+                <span
+                  className={`${headerPrefixCls}-menu`}
+                  style={{ color: dropdown ? '#fff' : '' }}
+                >
+                  {`Tenant: ${selected}`}
                   <IArrowDown style={{ marginLeft: 7 }} />
                 </span>
               </Dropdown>
@@ -132,7 +145,11 @@ const PageHeader: React.FC<GlobalHeaderProps> = (props) => {
             <div className={`${headerPrefixCls}-user`}>
               {avatarUrl ? <img src={avatarUrl} alt="avatar" /> : null}
               {infoMenu ? (
-                <Dropdown overlay={infoMenu} trigger={['hover']}>
+                <Dropdown
+                  overlay={infoMenu}
+                  trigger={['hover']}
+                  overlayClassName={`${headerPrefixCls}-user-dropdown`}
+                >
                   <span className={`${headerPrefixCls}-menu`}>
                     {account}
                     <IArrowDown style={{ marginLeft: 7 }} />
