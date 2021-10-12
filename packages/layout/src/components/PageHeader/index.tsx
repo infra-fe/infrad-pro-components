@@ -167,7 +167,7 @@ const PageHeader: React.FC<GlobalHeaderProps> = (props) => {
           </>
         )}
         {extra ? (
-          <div className={`${headerPrefixCls}-user`}>
+          <div className={`${headerPrefixCls}-extra`}>
             <Divider type="vertical" />
             {extra}
           </div>

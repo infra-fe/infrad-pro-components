@@ -87,6 +87,20 @@
   &-extra {
     display: flex;
     align-items: center;
+    color: rgba(255, 255, 255, 0.64);
+    svg {
+      fill: rgba(255, 255, 255, 0.64);
+      &:hover {
+        fill: rgba(255, 255, 255, 1);
+      }
+    }
+    span:not(.anticon) {
+      border: 1px solid rgba(255, 255, 255, 0.64);
+      &:hover {
+        color: rgba(255, 255, 255, 1);
+        border: 1px solid rgba(255, 255, 255, 1);
+      }
+    }
   }
   .ant-menu-dark.ant-menu-horizontal > .ant-menu-item:hover {
     background-color: transparent;

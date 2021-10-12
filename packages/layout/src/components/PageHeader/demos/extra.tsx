@@ -40,8 +40,6 @@ const extra = (
         lineHeight: '24px',
         marginLeft: '18px',
         borderRadius: 50,
-        color: '#fff',
-        border: '1px solid #fff',
       }}
     >
       Education Hub
