@@ -34,7 +34,7 @@
   ],
   "dependencies": {
     "classnames": "^2.2.6",
-    "infra-design-icons": "^4.1.0",
+    "infra-design-icons": "^4.7.14",
     "infrad-pro-field": "^1.22.2",
     "infrad-pro-form": "^1.39.2",
     "infrad-pro-provider": "^1.5.2",

@@ -29,7 +29,7 @@
   ],
   "dependencies": {
     "classnames": "^2.2.6",
-    "infra-design-icons": "^4.2.1",
+    "infra-design-icons": "^4.7.14",
     "infrad-pro-provider": "^1.5.2",
     "infrad-pro-utils": "^1.25.2",
     "lodash.tonumber": "^4.0.3",
