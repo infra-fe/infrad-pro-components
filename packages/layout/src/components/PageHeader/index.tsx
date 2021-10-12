@@ -11,11 +11,14 @@ export type GlobalHeaderProps = {
   style?: React.CSSProperties;
   logo?: React.ReactElement;
   title: React.ReactNode;
+  isLogin?: Boolean;
+  hasNotice?: Boolean;
   selectMenu: { value: number | string; label: string }[];
   onMenuSelect?: (key: number | string) => void;
   avatarUrl?: string;
   account: string;
   infoMenu: React.ReactElement;
+  searchPlaceholder?: string;
   onInputSearch?: (input: string) => void;
   navMenu: { value: string; label: string; icon?: React.ReactElement }[];
   onNavChange: (key: string) => void;
@@ -31,11 +34,14 @@ const PageHeader: React.FC<GlobalHeaderProps> = (props) => {
     style,
     logo,
     title,
+    isLogin = true,
+    hasNotice = true,
     selectMenu,
     onMenuSelect,
     avatarUrl,
     account,
     infoMenu,
+    searchPlaceholder = 'Search APP/Pod IP...',
     onInputSearch,
     navMenu,
     onNavChange,
@@ -81,56 +87,74 @@ const PageHeader: React.FC<GlobalHeaderProps> = (props) => {
     <div className={headerCls} style={{ ...style }}>
       <div className={`${headerPrefixCls}-left`}>
         {logoDom}
-        {selectMenu ? (
-          <Dropdown overlay={menu} trigger={['click']}>
-            <span className={`${headerPrefixCls}-menu`}>
-              {selected}
-              <IArrowDown style={{ marginLeft: 7 }} />
-            </span>
-          </Dropdown>
-        ) : null}
-        {navMenu ? (
+        {isLogin ? (
           <>
-            <Divider type="vertical" />
-            <div style={{ display: 'inline-block' }}>
-              <Menu
-                onClick={(e) => handleNavChange(e.key)}
-                selectedKeys={[current]}
-                mode="horizontal"
-                theme="dark"
-              >
-                {navMenu?.map((item) => (
-                  <Menu.Item key={item.value} icon={item.icon ?? null}>
-                    {item.label}
-                  </Menu.Item>
-                ))}
-              </Menu>
-            </div>
+            {selectMenu ? (
+              <Dropdown overlay={menu} trigger={['click']}>
+                <span className={`${headerPrefixCls}-menu`}>
+                  {selected}
+                  <IArrowDown style={{ marginLeft: 7 }} />
+                </span>
+              </Dropdown>
+            ) : null}
+            {navMenu ? (
+              <>
+                <Divider type="vertical" />
+                <div style={{ display: 'inline-block' }}>
+                  <Menu
+                    onClick={(e) => handleNavChange(e.key)}
+                    selectedKeys={[current]}
+                    mode="horizontal"
+                    theme="dark"
+                  >
+                    {navMenu?.map((item) => (
+                      <Menu.Item key={item.value} icon={item.icon ?? null}>
+                        {item.label}
+                      </Menu.Item>
+                    ))}
+                  </Menu>
+                </div>
+              </>
+            ) : null}
           </>
         ) : null}
       </div>
       <div className={`${headerPrefixCls}-right`}>
-        <Search
-          placeholder="Search APP/Pod IP..."
-          allowClear
-          style={{ width: 240 }}
-          bordered={false}
-          onSearch={onInputSearch}
-        />
-        <div className={`${headerPrefixCls}-user`}>
-          {avatarUrl ? <img src={avatarUrl} alt="avatar" /> : null}
-          {infoMenu ? (
-            <Dropdown overlay={infoMenu} trigger={['hover']}>
-              <span className={`${headerPrefixCls}-menu`}>
-                {account}
-                <IArrowDown style={{ marginLeft: 7 }} />
-              </span>
-            </Dropdown>
-          ) : (
-            <span className={`${headerPrefixCls}-menu`}>{account}</span>
-          )}
-        </div>
-        {extra ? <div className={`${headerPrefixCls}-user`}>{extra}</div> : null}
+        {isLogin ? (
+          <>
+            <Search
+              placeholder={searchPlaceholder}
+              allowClear
+              style={{ width: 240 }}
+              bordered={false}
+              onSearch={onInputSearch}
+            />
+            <div className={`${headerPrefixCls}-user`}>
+              {avatarUrl ? <img src={avatarUrl} alt="avatar" /> : null}
+              {infoMenu ? (
+                <Dropdown overlay={infoMenu} trigger={['hover']}>
+                  <span className={`${headerPrefixCls}-menu`}>
+                    {account}
+                    <IArrowDown style={{ marginLeft: 7 }} />
+                  </span>
+                </Dropdown>
+              ) : (
+                <span className={`${headerPrefixCls}-menu`}>{account}</span>
+              )}
+            </div>
+          </>
+        ) : (
+          <>
+            <span className={`${headerPrefixCls}-unlogin`}>Application Infra Homepage</span>
+            {hasNotice ? <span className={`${headerPrefixCls}-notice`}>New</span> : null}
+          </>
+        )}
+        {extra ? (
+          <div className={`${headerPrefixCls}-user`}>
+            <Divider type="vertical" />
+            {extra}
+          </div>
+        ) : null}
       </div>
     </div>
   );

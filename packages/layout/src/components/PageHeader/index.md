@@ -15,6 +15,10 @@ nav:
 
 <code src="./demos/basic.tsx" iframe="500px" title="基本使用" desc="基本使用" />
 
+### 未登录
+
+<code src="./demos/unlogin.tsx" iframe="500px" title="基本使用" desc="基本使用" />
+
 ### 自定义右上角
 
 <code src="./demos/extra.tsx" iframe="500px" title="自定义右上角" desc="自定义右上角" />
@@ -25,13 +29,15 @@ nav:
 | --- | --- | --- | --- | --- |
 | title | 标题 | `React.ReactNode` | - |
 | logo | logo | `React.ReactElement` | - |
-| isLogin | 是否已登陆 | `Boolean` | false |
+| isLogin | 是否已登陆 | `Boolean` | true |
+| hasNotice | 是否有更新 | `Boolean` | true |
 | selectMenu | Tenant 下拉列表 | `{ value: number \| string; label: string }[]` | - |
 | onMenuSelect | Tenant 下拉选中某一项时调用此函数 | `(key: number \| string) => void` | - |
 | avatarUrl | 用户头像图片 url | `string`  | - |
 | account | 用户账号 | `string` | - |
 | infoMenu | 用户账号下拉列表 | `React.ReactElement` | - |
 | onInputSearch | 搜索框点击搜索或者清空时调用此函数 | `(input: string) => void` | - |
+| searchPlaceholder | 搜索框占位符 | `string` | `Search APP/Pod IP...` |
 | navMenu | 顶部导航列表 | `{ value: string; label: string; icon: React.ReactElement}[]` | - |
 | onNavChange | 点击 navMenu 时调用此函数 | `(key: string) => void` | - |
 | extra | 右上角自定义区域 | `React.ReactNode` | - |

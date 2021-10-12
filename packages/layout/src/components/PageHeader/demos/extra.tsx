@@ -31,7 +31,6 @@ const navMenu = [
 
 const extra = (
   <>
-    <Divider type="vertical" />
     <INoticeOutlined style={{ color: '#fff', fontSize: '18px', marginLeft: 10 }} />
     <span
       style={{
