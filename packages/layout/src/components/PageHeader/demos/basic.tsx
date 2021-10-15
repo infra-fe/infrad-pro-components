@@ -1,7 +1,7 @@
 import React from 'react';
 import { PageHeader } from 'infrad-pro-layout';
-import { Menu, Divider } from 'infrad';
-import { IIntroduction, IProduct, INoticeOutlined } from 'infra-design-icons';
+import { Menu } from 'infrad';
+import { IIntroduction, IProduct } from 'infra-design-icons';
 const infoMenu = (
   <Menu>
     <Menu.Item key="info" onClick={() => alert('userInfo')}>
