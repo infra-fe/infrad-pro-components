@@ -77,6 +77,7 @@ const PageHeader: React.FC<GlobalHeaderProps> = (props) => {
                 defaultSelectedKey={businessMenu.defaultSelectedKey}
                 keepSelectedStatus={true}
                 suffix={businessMenu.suffix}
+                onMenuChange={businessMenu.onMenuChange}
               />
             ) : null}
             {navMenu ? navMenuDom : null}
@@ -100,6 +101,7 @@ const PageHeader: React.FC<GlobalHeaderProps> = (props) => {
                   prefixCls={headerPrefixCls}
                   menuList={userInfo.menuList}
                   suffix={userInfo.account}
+                  onMenuChange={userInfo?.onMenuChange}
                 />
               ) : null}
             </div>

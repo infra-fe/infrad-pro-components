@@ -1,6 +1,6 @@
 import React from 'react';
 import { PageHeader } from 'infrad-pro-layout';
-import { Menu, message } from 'infrad';
+import { message } from 'infrad';
 import { IProduct } from 'infra-design-icons';
 
 export default () => (

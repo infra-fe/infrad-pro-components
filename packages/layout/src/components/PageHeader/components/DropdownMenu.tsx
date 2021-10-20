@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Menu, Dropdown } from 'infrad';
 import classNames from 'classnames';
 import { IArrowDown } from 'infra-design-icons';
-import { CustomizedNodeList } from '../typings';
+import { CustomizedNode, CustomizedNodeList } from '../typings';
 
 interface IDropdownMenuProps {
   prefixCls?: string;
@@ -13,11 +13,19 @@ interface IDropdownMenuProps {
   keepSelectedStatus?: boolean;
   /** 前中项前置显示内容 */
   suffix: string;
+  onMenuChange?: (arg: CustomizedNode | undefined) => void;
 }
 const DropdownMenu: React.FC<IDropdownMenuProps> = (props) => {
-  const { prefixCls, menuList, defaultSelectedKey, keepSelectedStatus = false, suffix } = props;
+  const {
+    prefixCls,
+    menuList,
+    defaultSelectedKey,
+    keepSelectedStatus = false,
+    suffix,
+    onMenuChange,
+  } = props;
 
-  const [selectedMenu, setSelectedMenu] = useState(defaultSelectedKey);
+  const [selectedMenu, setSelectedMenu] = useState<string | number | undefined>(defaultSelectedKey);
   const [dropdownStatus, setDropdownStatus] = useState(false);
 
   const menuDom = (
@@ -33,9 +41,10 @@ const DropdownMenu: React.FC<IDropdownMenuProps> = (props) => {
     </Menu>
   );
 
-  const handleMenuSelect = (key: string) => {
+  const handleMenuSelect = (key: string | number) => {
     setSelectedMenu(key);
     setDropdownStatus(false);
+    onMenuChange?.(menuList.find((i) => i.key === key));
   };
 
   const onVisibleChange = (visible: boolean) => {

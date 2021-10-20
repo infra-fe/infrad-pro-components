@@ -30,7 +30,7 @@ export type GlobalHeaderProps = {
     defaultSelectedKey: string;
     menuList: CustomizedNodeList;
     /** 所选项切换回调函数 */
-    onMenuChange?: (key: string | number) => void;
+    onMenuChange?: (arg: CustomizedNode | undefined) => void;
   };
 
   /** Input占位符 */
@@ -45,6 +45,7 @@ export type GlobalHeaderProps = {
     /** 用户账号 */
     account: string;
     menuList?: CustomizedNodeList;
+    onMenuChange?: (arg: CustomizedNode | undefined) => void;
   };
 
   /** 未登录状态子标题 */
@@ -55,8 +56,11 @@ export type GlobalHeaderProps = {
   extra?: React.ReactNode;
 };
 
+export type CustomizedNode = {
+  key: string | number;
+  content: React.ReactNode;
+};
 export type CustomizedNodeList = {
   key: string | number;
   content: React.ReactNode;
-  icon?: React.ReactElement;
 }[];

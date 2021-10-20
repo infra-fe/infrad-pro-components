@@ -2,6 +2,7 @@ import React from 'react';
 import { PageHeader } from 'infrad-pro-layout';
 import { message } from 'infrad';
 import { IIntroduction, IProduct } from 'infra-design-icons';
+import { CustomizedNode } from '../typings';
 
 const navMenu = {
   menuList: [
@@ -28,17 +29,18 @@ const businessMenu = {
   ],
   suffix: 'Tenant',
   defaultSelectedKey: '1',
-  onMenuChange: (key: string | number) => message.info(key),
+  onMenuChange: (arg: CustomizedNode | undefined) => message.info(arg?.content),
 };
 
 const userInfo = {
   avatar: 'https://coding.net/static/fruit_avatar/Fruit-19.png',
   account: 'Apple@shopee.com',
   menuList: [
-    { key: '1', content: <>Apple@shopee.com</> },
-    { key: '2', content: <>Detail</> },
-    { key: '3', content: <>Logout</> },
+    { key: 'account', content: <>Apple@shopee.com</> },
+    { key: 'detail', content: <>Detail</> },
+    { key: 'logout', content: <>Logout</> },
   ],
+  onMenuChange: (arg: CustomizedNode | undefined) => message.info(arg?.key),
 };
 
 export default () => (
