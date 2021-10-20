@@ -1,27 +1,43 @@
 import './index.less';
 import React, { useState, useContext } from 'react';
 import classNames from 'classnames';
-
-import { IArrowDown } from 'infra-design-icons';
-import { Menu, Dropdown, Divider, Input, ConfigProvider } from 'infrad';
+import { Menu, Divider, Input, ConfigProvider } from 'infrad';
+import DropdownMenu from './components/DropdownMenu';
 
 export type GlobalHeaderProps = {
   className?: string;
   prefixCls?: string;
   style?: React.CSSProperties;
-  logo?: React.ReactElement;
-  title: React.ReactNode;
+
   isLogin?: Boolean;
-  hasNotice?: Boolean;
-  selectMenu: { value: number | string; label: string }[];
-  onMenuSelect?: (key: number | string) => void;
-  avatarUrl?: string;
-  account: string;
-  infoMenu: React.ReactElement;
+  logo?: React.ReactElement;
+  title: string;
+  onLogoClick?: () => void;
+
+  navMenu?: {
+    menuList: { key: string; label: string; icon?: React.ReactElement }[];
+    defaultNavKey: string;
+    onNavChange: (key: string) => void;
+  };
+
+  businessMenu?: {
+    suffix: string;
+    defaultSelectedKey: string;
+    menuList: { key: string; content: React.ReactNode }[];
+    onMenuChange?: (key: string) => void;
+  };
+
   searchPlaceholder?: string;
-  onInputSearch?: (input: string) => void;
-  navMenu: { value: string; label: string; icon?: React.ReactElement }[];
-  onNavChange: (key: string) => void;
+  onSearch?: (input: string) => void;
+
+  userInfo?: {
+    avatar: string;
+    suffix: string;
+    menuList?: { key: string; content: React.ReactNode }[];
+  };
+
+  subTitle?: string;
+  hasNotice?: Boolean;
   extra?: React.ReactNode;
 };
 
@@ -32,65 +48,56 @@ const PageHeader: React.FC<GlobalHeaderProps> = (props) => {
     className,
     prefixCls,
     style,
+    isLogin = true,
     logo,
     title,
-    isLogin = true,
-    hasNotice = true,
-    selectMenu,
-    onMenuSelect,
-    avatarUrl,
-    account,
-    infoMenu,
-    searchPlaceholder = 'Search APP/Pod IP...',
-    onInputSearch,
+    onLogoClick,
     navMenu,
-    onNavChange,
+    businessMenu,
+    searchPlaceholder = 'Search APP/Pod IP...',
+    onSearch,
+    userInfo,
+    subTitle = 'Application Infra Homepage',
+    hasNotice = false,
     extra,
   } = props;
+
   const { getPrefixCls } = useContext(ConfigProvider.ConfigContext);
   const headerPrefixCls = prefixCls || getPrefixCls('pro-global-header');
   const headerCls = classNames(className, headerPrefixCls);
 
-  const initialState = navMenu?.[0]?.value ?? '';
-  const [current, setCurrent] = useState(initialState);
-  const [selected, setSelected] = useState('');
-  const [dropdown, setDropdown] = useState(false);
+  const [selectedNav, setSelectedNav] = useState(navMenu?.defaultNavKey);
 
   const logoDom = (
-    <span className={`${headerPrefixCls}-logo`} key="logo">
+    <span className={`${headerPrefixCls}-logo`} key="logo" onClick={onLogoClick}>
       {logo ? logo : null}
       {title}
     </span>
   );
 
-  const handleMenuSelect = (key: string) => {
-    setSelected(key);
-    setDropdown(false);
-    if (onMenuSelect) {
-      onMenuSelect(key);
-    }
-  };
-  const handleTenantSwitcher = (visible: boolean) => {
-    if (visible !== dropdown) {
-      setDropdown(visible);
-    }
-    console.log(visible);
-  };
-  const menu = (
-    <Menu onClick={(e) => handleMenuSelect(e.key)}>
-      {selectMenu?.map((item) => (
-        <Menu.Item key={item.label} style={{ color: selected === item.label ? '#2673DD' : '' }}>
-          {item.label}
-        </Menu.Item>
-      ))}
-    </Menu>
+  const navMenuDom = (
+    <>
+      <Divider type="vertical" />
+      <div style={{ display: 'inline-block' }}>
+        <Menu
+          onClick={(e) => handleNavChange(e.key)}
+          selectedKeys={[selectedNav ?? '']}
+          mode="horizontal"
+          theme="dark"
+        >
+          {navMenu?.menuList?.map((item) => (
+            <Menu.Item key={item.key} icon={item.icon ?? null}>
+              {item.label}
+            </Menu.Item>
+          ))}
+        </Menu>
+      </div>
+    </>
   );
 
   const handleNavChange = (key: string) => {
-    setCurrent(key);
-    if (onNavChange) {
-      onNavChange(key);
-    }
+    setSelectedNav(key);
+    navMenu?.onNavChange?.(key);
   };
 
   return (
@@ -99,36 +106,16 @@ const PageHeader: React.FC<GlobalHeaderProps> = (props) => {
         {logoDom}
         {isLogin ? (
           <>
-            {selectMenu ? (
-              <Dropdown overlay={menu} trigger={['click']} onVisibleChange={handleTenantSwitcher}>
-                <span
-                  className={`${headerPrefixCls}-menu`}
-                  style={{ color: dropdown ? '#fff' : '' }}
-                >
-                  {`Tenant: ${selected}`}
-                  <IArrowDown style={{ marginLeft: 7 }} />
-                </span>
-              </Dropdown>
+            {businessMenu ? (
+              <DropdownMenu
+                prefixCls={headerPrefixCls}
+                menuList={businessMenu.menuList}
+                defaultSelectedKey={businessMenu.defaultSelectedKey}
+                keepSelectedStatus={true}
+                suffix={businessMenu.suffix}
+              />
             ) : null}
-            {navMenu ? (
-              <>
-                <Divider type="vertical" />
-                <div style={{ display: 'inline-block' }}>
-                  <Menu
-                    onClick={(e) => handleNavChange(e.key)}
-                    selectedKeys={[current]}
-                    mode="horizontal"
-                    theme="dark"
-                  >
-                    {navMenu?.map((item) => (
-                      <Menu.Item key={item.value} icon={item.icon ?? null}>
-                        {item.label}
-                      </Menu.Item>
-                    ))}
-                  </Menu>
-                </div>
-              </>
-            ) : null}
+            {navMenu ? navMenuDom : null}
           </>
         ) : null}
       </div>
@@ -140,29 +127,22 @@ const PageHeader: React.FC<GlobalHeaderProps> = (props) => {
               allowClear
               style={{ width: 240 }}
               bordered={false}
-              onSearch={onInputSearch}
+              onSearch={onSearch}
             />
             <div className={`${headerPrefixCls}-user`}>
-              {avatarUrl ? <img src={avatarUrl} alt="avatar" /> : null}
-              {infoMenu ? (
-                <Dropdown
-                  overlay={infoMenu}
-                  trigger={['hover']}
-                  overlayClassName={`${headerPrefixCls}-user-dropdown`}
-                >
-                  <span className={`${headerPrefixCls}-menu`}>
-                    {account}
-                    <IArrowDown style={{ marginLeft: 7 }} />
-                  </span>
-                </Dropdown>
-              ) : (
-                <span className={`${headerPrefixCls}-menu`}>{account}</span>
-              )}
+              {userInfo?.avatar ? <img src={userInfo.avatar} alt="avatar" /> : null}
+              {userInfo?.menuList ? (
+                <DropdownMenu
+                  prefixCls={headerPrefixCls}
+                  menuList={userInfo.menuList}
+                  suffix={userInfo.suffix}
+                />
+              ) : null}
             </div>
           </>
         ) : (
           <>
-            <span className={`${headerPrefixCls}-unlogin`}>Application Infra Homepage</span>
+            <span className={`${headerPrefixCls}-unlogin`}>{subTitle}</span>
             {hasNotice ? <span className={`${headerPrefixCls}-notice`}>New</span> : null}
           </>
         )}

@@ -1,5 +1,5 @@
 ---
-title: PageHeader - 高级头部导航栏
+title: ProHeader - 高级头部导航栏
 group:
   path: /
 nav:
@@ -27,7 +27,8 @@ nav:
 
 | 参数 | 说明 | 类型 | 默认值 | 版本 |
 | --- | --- | --- | --- | --- |
-| title | 标题 | `React.ReactNode` | - |
+| title | 标题 | `string` | - |
+| subTitle | 子标题 | `string` | - |
 | logo | logo | `React.ReactElement` | - |
 | isLogin | 是否已登陆 | `Boolean` | true |
 | hasNotice | 是否有更新 | `Boolean` | true |
