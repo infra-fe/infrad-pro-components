@@ -3,43 +3,7 @@ import React, { useState, useContext } from 'react';
 import classNames from 'classnames';
 import { Menu, Divider, Input, ConfigProvider } from 'infrad';
 import DropdownMenu from './components/DropdownMenu';
-
-export type GlobalHeaderProps = {
-  className?: string;
-  prefixCls?: string;
-  style?: React.CSSProperties;
-
-  isLogin?: Boolean;
-  logo?: React.ReactElement;
-  title: string;
-  onLogoClick?: () => void;
-
-  navMenu?: {
-    menuList: { key: string; label: string; icon?: React.ReactElement }[];
-    defaultNavKey: string;
-    onNavChange: (key: string) => void;
-  };
-
-  businessMenu?: {
-    suffix: string;
-    defaultSelectedKey: string;
-    menuList: { key: string; content: React.ReactNode }[];
-    onMenuChange?: (key: string) => void;
-  };
-
-  searchPlaceholder?: string;
-  onSearch?: (input: string) => void;
-
-  userInfo?: {
-    avatar: string;
-    suffix: string;
-    menuList?: { key: string; content: React.ReactNode }[];
-  };
-
-  subTitle?: string;
-  hasNotice?: Boolean;
-  extra?: React.ReactNode;
-};
+import { GlobalHeaderProps } from './typings';
 
 const { Search } = Input;
 
@@ -62,11 +26,11 @@ const PageHeader: React.FC<GlobalHeaderProps> = (props) => {
     extra,
   } = props;
 
+  const [selectedNav, setSelectedNav] = useState(navMenu?.defaultSelectedKey);
+
   const { getPrefixCls } = useContext(ConfigProvider.ConfigContext);
   const headerPrefixCls = prefixCls || getPrefixCls('pro-global-header');
   const headerCls = classNames(className, headerPrefixCls);
-
-  const [selectedNav, setSelectedNav] = useState(navMenu?.defaultNavKey);
 
   const logoDom = (
     <span className={`${headerPrefixCls}-logo`} key="logo" onClick={onLogoClick}>
@@ -86,8 +50,8 @@ const PageHeader: React.FC<GlobalHeaderProps> = (props) => {
           theme="dark"
         >
           {navMenu?.menuList?.map((item) => (
-            <Menu.Item key={item.key} icon={item.icon ?? null}>
-              {item.label}
+            <Menu.Item key={item.key} icon={item.icon}>
+              {item.content}
             </Menu.Item>
           ))}
         </Menu>
@@ -101,7 +65,7 @@ const PageHeader: React.FC<GlobalHeaderProps> = (props) => {
   };
 
   return (
-    <div className={headerCls} style={{ ...style }}>
+    <div className={headerCls} style={style}>
       <div className={`${headerPrefixCls}-left`}>
         {logoDom}
         {isLogin ? (
@@ -135,14 +99,14 @@ const PageHeader: React.FC<GlobalHeaderProps> = (props) => {
                 <DropdownMenu
                   prefixCls={headerPrefixCls}
                   menuList={userInfo.menuList}
-                  suffix={userInfo.suffix}
+                  suffix={userInfo.account}
                 />
               ) : null}
             </div>
           </>
         ) : (
           <>
-            <span className={`${headerPrefixCls}-unlogin`}>{subTitle}</span>
+            <span className={`${headerPrefixCls}-guest`}>{subTitle}</span>
             {hasNotice ? <span className={`${headerPrefixCls}-notice`}>New</span> : null}
           </>
         )}

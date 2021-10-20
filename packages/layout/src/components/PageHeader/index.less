@@ -60,6 +60,9 @@
       color: @pure-light;
     }
   }
+  &-menu-trigger {
+    color: @pure-light;
+  }
   &-user {
     height: 44px;
     padding: 0 8px;
@@ -80,7 +83,7 @@
   &-user-dropdown {
     top: 60px !important;
   }
-  &-unlogin {
+  &-guest {
     color: @dark-grey;
     font-size: 14px;
   }
@@ -127,12 +130,10 @@
     }
     .ant-input-group-addon,
     .ant-btn {
+      margin-left: -6px;
+      padding: 2px 13px 2px 0px;
       background-color: transparent;
       border: none;
-    }
-    .ant-btn {
-      margin-left: -6px;
-      padding: 2.4px 13px 2.4px 0px;
     }
   }
   .ant-input-suffix svg {

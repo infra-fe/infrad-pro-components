@@ -1,7 +1,7 @@
 import React from 'react';
 import { PageHeader } from 'infrad-pro-layout';
 import { Menu, message } from 'infrad';
-import { IIntroduction, IProduct, INoticeOutlined } from 'infra-design-icons';
+import { IProduct } from 'infra-design-icons';
 
 export default () => (
   <div style={{ width: '100%' }}>

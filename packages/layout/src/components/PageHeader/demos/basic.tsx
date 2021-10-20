@@ -7,17 +7,17 @@ const navMenu = {
   menuList: [
     {
       key: 'Application',
-      label: 'Application',
+      content: 'Application',
       icon: <IIntroduction />,
     },
     {
       key: 'Resource',
-      label: 'Resource',
+      content: 'Resource',
       icon: <IProduct />,
     },
   ],
-  defaultNavKey: 'Application',
-  onNavChange: (navKey: string) => message.info(navKey),
+  defaultSelectedKey: 'Application',
+  onNavChange: (navKey: string | number) => message.info(navKey),
 };
 
 const businessMenu = {
@@ -28,12 +28,12 @@ const businessMenu = {
   ],
   suffix: 'Tenant',
   defaultSelectedKey: '1',
-  onMenuChange: (key: string) => message.info(key),
+  onMenuChange: (key: string | number) => message.info(key),
 };
 
 const userInfo = {
   avatar: 'https://coding.net/static/fruit_avatar/Fruit-19.png',
-  suffix: 'Apple@shopee.com',
+  account: 'Apple@shopee.com',
   menuList: [
     { key: '1', content: <>Apple@shopee.com</> },
     { key: '2', content: <>Detail</> },
@@ -46,11 +46,11 @@ export default () => (
     <PageHeader
       logo={<IProduct style={{ fontSize: 24 }} />}
       title={'Shopee Cloud'}
-      onLogoClick={() => message.info('logo click')}
       businessMenu={businessMenu}
       userInfo={userInfo}
       onSearch={(input) => message.info(`search: ${input}`)}
       navMenu={navMenu}
+      onLogoClick={() => message.info('logo click')}
     />
   </div>
 );
