@@ -62,7 +62,7 @@ const Extra = (
 );
 
 export default () => (
-  <div style={{ width: '100%' }}>
+  <div style={{ width: '100%', minWidth: 1400 }}>
     <PageHeader
       logo={<IProduct style={{ fontSize: 24 }} />}
       title={'Shopee Cloud'}

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Menu, Dropdown } from 'infrad';
 import classNames from 'classnames';
-import { IArrowDown } from 'infra-design-icons';
+import { IArrowDown, IArrowUp } from 'infra-design-icons';
 import { CustomizedNode, CustomizedNodeList } from '../typings';
 
 interface IDropdownMenuProps {
@@ -63,7 +63,11 @@ const DropdownMenu: React.FC<IDropdownMenuProps> = (props) => {
         {defaultSelectedKey
           ? `${suffix}: ${menuList.find((i) => i.key === selectedMenu)?.content}`
           : suffix}
-        <IArrowDown style={{ marginLeft: 7 }} />
+        {dropdownStatus ? (
+          <IArrowUp style={{ marginLeft: 7 }} />
+        ) : (
+          <IArrowDown style={{ marginLeft: 7 }} />
+        )}
       </span>
     </Dropdown>
   );

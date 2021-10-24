@@ -25,20 +25,45 @@ nav:
 
 ## API
 
+### basic
+
 | 参数 | 说明 | 类型 | 默认值 | 版本 |
 | --- | --- | --- | --- | --- |
-| title | 标题 | `string` | - |
-| subTitle | 子标题 | `string` | - |
+| isLogin | 是否已登陆，通过登录态来切换显示项 | `Boolean` | true |
 | logo | logo | `React.ReactElement` | - |
-| isLogin | 是否已登陆 | `Boolean` | true |
-| hasNotice | 是否有更新 | `Boolean` | true |
-| selectMenu | Tenant 下拉列表 | `{ value: number \| string; label: string }[]` | - |
-| onMenuSelect | Tenant 下拉选中某一项时调用此函数 | `(key: number \| string) => void` | - |
-| avatarUrl | 用户头像图片 url | `string`  | - |
-| account | 用户账号 | `string` | - |
-| infoMenu | 用户账号下拉列表 | `React.ReactElement` | - |
-| onInputSearch | 搜索框点击搜索或者清空时调用此函数 | `(input: string) => void` | - |
+| title | 左侧主标题 | `string` | - |
+| onLogoClick | 点击 logo 和 title 的回调函数 | `() => void` | - |
+| navMenu | 一级导航菜单 | [navMenu](#nav-menu) | - |
+| businessMenu | 业务线菜单 | [businessMenu](#business-menu) | - |
+| userInfo | 用户信息菜单 | [userInfo](#user-menu) | - |
 | searchPlaceholder | 搜索框占位符 | `string` | `Search APP/Pod IP...` |
-| navMenu | 顶部导航列表 | `{ value: string; label: string; icon: React.ReactElement}[]` | - |
-| onNavChange | 点击 navMenu 时调用此函数 | `(key: string) => void` | - |
+| onSearch | 搜索框点击搜索或者清空时调用此函数 | `(input: string) => void` | - |
+| subTitle | 未登录状态下右侧子标题 | `string` | `Application Infra Homepage` |
+| hasNotice | 是否有更新 | `Boolean` | true |
 | extra | 右上角自定义区域 | `React.ReactNode` | - |
+
+### nav-menu
+
+| 参数 | 说明 | 类型 | 默认值 | 版本 |
+| --- | --- | --- | --- | --- |
+| menuList | 导航菜单列表 | `{ key: string \| number; content: React.ReactNode; icon?: React.ReactElement }[]` | true |
+| defaultSelectedKey | 默认选中项 | `string` | - |
+| onNavChange | 导航菜单切换回调函数 | `(key: string \| number) => void;` | - |
+
+### business-menu
+
+| 参数 | 说明 | 类型 | 默认值 | 版本 |
+| --- | --- | --- | --- | --- |
+| suffix | 业务线菜单前缀 | `string` | true |
+| defaultSelectedKey | 默订选中项 | `string` | - |
+| menuList | 下拉列表 | `{ key: string \| number; content: React.ReactNode;}[]` | - |
+| onMenuChange | 下拉列表选中回调函数 | `onMenuChange?: (arg: {key: string \| number;content: React.ReactNode;} \| undefined) => void;` | - |
+
+### user-menu
+
+| 参数 | 说明 | 类型 | 默认值 | 版本 |
+| --- | --- | --- | --- | --- |
+| avatar | 用户头像 | `string` | true |
+| account | 用户账号 | `string` | - |
+| menuList | 下拉列表 | `{ key: string \| number; content: React.ReactNode;}[]` | - |
+| onMenuChange | 下拉列表选中回调函数 | `(arg: {key: string \| number; content: React.ReactNode;} \| undefined) => void` | - |

@@ -8,7 +8,7 @@ export type GlobalHeaderProps = {
   isLogin?: Boolean;
   /** Logo */
   logo?: React.ReactElement;
-  /** 页面titlte */
+  /** 页面tittle */
   title: string;
   /** 点击logo的回调函数 */
   onLogoClick?: () => void;
