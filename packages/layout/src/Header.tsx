@@ -9,8 +9,9 @@ import TopNavHeader from './components/TopNavHeader';
 import type { WithFalse } from './typings';
 import type { PrivateSiderMenuProps } from './components/SiderMenu/SiderMenu';
 import { clearMenuItem } from './utils/utils';
-import { Menu } from 'infrad';
-import { IIntroduction, IProduct, INoticeOutlined } from 'infra-design-icons';
+import { message } from 'infrad';
+import { IIntroduction, IProduct } from 'infra-design-icons';
+import { CustomizedNode } from './components/PageHeader/typings';
 
 const { Header } = Layout;
 
@@ -40,68 +41,54 @@ class HeaderView extends Component<HeaderViewProps & PrivateSiderMenuProps, Head
     const isTop = layout === 'top';
     const clearMenuData = clearMenuItem(this.props.menuData || []);
 
-    const infoMenu = (
-      <Menu>
-        <Menu.Item key="info" onClick={() => alert('userInfo')}>
-          ShudongLi@shopee.com
-        </Menu.Item>
-        <Menu.Item key="permission" onClick={() => alert('userPermission')}>
-          Edit Permistion Groupe
-        </Menu.Item>
-        <Menu.Item key="logout" onClick={() => alert('logout')}>
-          LogOut
-        </Menu.Item>
-      </Menu>
-    );
+    const navMenu = {
+      menuList: [
+        {
+          key: 'Application',
+          content: 'Application',
+          icon: <IIntroduction />,
+        },
+        {
+          key: 'Resource',
+          content: 'Resource',
+          icon: <IProduct />,
+        },
+      ],
+      defaultSelectedKey: 'Application',
+      onNavChange: (navKey: string | number) => message.info(navKey),
+    };
 
-    const navMenu = [
-      {
-        value: 'Application',
-        label: 'Application',
-        icon: <IIntroduction />,
-      },
-      {
-        value: 'Resource',
-        label: 'Resource',
-        icon: <IProduct />,
-      },
-    ];
+    const businessMenu = {
+      menuList: [
+        { key: '1', content: 'Banking' },
+        { key: '2', content: 'Data Science' },
+        { key: '3', content: 'Financial Service' },
+      ],
+      suffix: 'Tenant',
+      defaultSelectedKey: '1',
+      onMenuChange: (arg: CustomizedNode | undefined) => message.info(arg?.content),
+    };
 
-    const extra = (
-      <>
-        <INoticeOutlined style={{ color: '#fff', fontSize: '18px', marginLeft: 10 }} />
-        <span
-          style={{
-            display: 'inline-block',
-            padding: '0 10px',
-            height: 26,
-            lineHeight: '24px',
-            marginLeft: '18px',
-            borderRadius: 50,
-          }}
-        >
-          Education Hub
-        </span>
-      </>
-    );
+    const userInfo = {
+      avatar: 'https://coding.net/static/fruit_avatar/Fruit-19.png',
+      account: 'Apple@shopee.com',
+      menuList: [
+        { key: 'account', content: <>Apple@shopee.com</> },
+        { key: 'detail', content: <>Detail</> },
+        { key: 'logout', content: <>Logout</> },
+      ],
+      onMenuChange: (arg: CustomizedNode | undefined) => message.info(arg?.key),
+    };
 
     let defaultDom = (
       <PageHeader
-        logo={<IProduct />}
+        logo={<IProduct style={{ fontSize: 24 }} />}
         title={'Shopee Cloud'}
-        selectMenu={[
-          { value: 1, label: 'Banking' },
-          { value: 2, label: 'Data Science' },
-          { value: 3, label: 'Financial Service' },
-        ]}
-        onMenuSelect={(key) => console.log(key)}
-        avatarUrl={'https://coding.net/static/fruit_avatar/Fruit-19.png'}
-        account={'shudong.li@shopee.com'}
-        infoMenu={infoMenu}
-        onInputSearch={(input) => alert(input)}
+        businessMenu={businessMenu}
+        userInfo={userInfo}
+        onSearch={(input) => message.info(`search: ${input}`)}
         navMenu={navMenu}
-        onNavChange={(nav) => alert(nav)}
-        extra={extra}
+        onLogoClick={() => message.info('logo click')}
       />
     );
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import { PageHeader } from 'infrad-pro-layout';
+import { ProPageHeader } from 'infrad-pro-layout';
 import { message } from 'infrad';
 import { IIntroduction, IProduct } from 'infra-design-icons';
 import { CustomizedNode } from '../typings';
@@ -45,7 +45,7 @@ const userInfo = {
 
 export default () => (
   <div style={{ width: '100%' }}>
-    <PageHeader
+    <ProPageHeader
       logo={<IProduct style={{ fontSize: 24 }} />}
       title={'Shopee Cloud'}
       businessMenu={businessMenu}

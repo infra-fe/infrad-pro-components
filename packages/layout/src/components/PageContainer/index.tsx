@@ -317,6 +317,6 @@ const PageContainer: React.FC<PageContainerProps> = (props) => {
   );
 };
 
-export { ProPageHeader, ProBreadcrumb };
+export { ProBreadcrumb };
 
 export default PageContainer;
