@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 
 export type GlobalHeaderProps = {
   className?: string;
@@ -25,10 +25,11 @@ export type GlobalHeaderProps = {
   /** 业务线菜单 */
   businessMenu?: {
     /** 所选项前缀 */
-    suffix: string;
+    suffix?: string;
     /** 默认选中项 */
     defaultSelectedKey: string;
     menuList: CustomizedNodeList;
+    menuButtons?: ReactNode;
     /** 所选项切换回调函数 */
     onMenuChange?: (arg: CustomizedNode | undefined) => void;
   };

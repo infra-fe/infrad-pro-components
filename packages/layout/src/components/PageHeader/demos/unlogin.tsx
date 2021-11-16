@@ -9,7 +9,7 @@ export default () => (
       isLogin={false}
       hasNotice={true}
       logo={<IProduct style={{ fontSize: 24 }} />}
-      title={'Shopee Cloud'}
+      title="Shopee Cloud"
       onLogoClick={() => message.info('logo click')}
     />
   </div>

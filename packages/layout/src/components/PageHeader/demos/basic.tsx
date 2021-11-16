@@ -47,7 +47,7 @@ export default () => (
   <div style={{ width: '100%' }}>
     <ProPageHeader
       logo={<IProduct style={{ fontSize: 24 }} />}
-      title={'Shopee Cloud'}
+      title="Shopee Cloud"
       businessMenu={businessMenu}
       userInfo={userInfo}
       onSearch={(input) => message.info(`search: ${input}`)}

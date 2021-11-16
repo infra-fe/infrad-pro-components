@@ -76,7 +76,8 @@ const PageHeader: React.FC<GlobalHeaderProps> = (props) => {
                 menuList={businessMenu.menuList}
                 defaultSelectedKey={businessMenu.defaultSelectedKey}
                 keepSelectedStatus={true}
-                suffix={businessMenu.suffix}
+                menuButtons={businessMenu?.menuButtons}
+                suffix={businessMenu?.suffix || ''}
                 onMenuChange={businessMenu.onMenuChange}
               />
             ) : null}

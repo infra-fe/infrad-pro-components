@@ -60,6 +60,23 @@
       color: @pure-light;
     }
   }
+  &-menu-btn {
+    padding: 0px;
+    &:hover {
+      background-color: transparent;
+    }
+    & > span {
+      display: flex;
+      button {
+        flex: 1;
+        height: auto;
+        padding: 10px;
+        &:first-child {
+          border-right: 1px solid #eee;
+        }
+      }
+    }
+  }
   &-menu-trigger {
     color: @pure-light;
   }
