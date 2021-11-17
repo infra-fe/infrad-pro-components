@@ -1,5 +1,5 @@
 ---
-title: ProHeader - 高级头部导航栏
+title: ProPageHeader - 高级头部导航栏
 group:
   path: /
 nav:
@@ -7,7 +7,7 @@ nav:
   path: /components
 ---
 
-# ProHeader - 高级头部导航栏
+# ProPageHeader - 高级头部导航栏
 
 ## 何时使用
 

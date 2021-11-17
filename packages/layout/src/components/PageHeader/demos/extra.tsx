@@ -1,34 +1,19 @@
 import React from 'react';
 import { ProPageHeader } from 'infrad-pro-layout';
 import { message, Button } from 'infrad';
-import { IIntroduction, IProduct, INoticeOutlined, IAdd, ISetting } from 'infra-design-icons';
+import { IProduct, INoticeOutlined, IAdd, ISetting, ILanguage } from 'infra-design-icons';
 import { CustomizedNode } from '../typings';
-
-const navMenu = {
-  menuList: [
-    {
-      key: 'Application',
-      content: 'Application',
-      icon: <IIntroduction />,
-    },
-    {
-      key: 'Resource',
-      content: 'Resource',
-      icon: <IProduct />,
-    },
-  ],
-  defaultSelectedKey: 'Application',
-  onNavChange: (navKey: string | number) => message.info(navKey),
-};
 
 const createNewProject = () => message.info('create new project');
 const manage = () => message.info('manage');
 
 const businessMenu = {
   menuList: [
-    { key: '1', content: 'Banking' },
-    { key: '2', content: 'Data Science' },
-    { key: '3', content: 'Financial Service' },
+    { key: '1', content: 'Project Name 01' },
+    { key: '2', content: 'Project Name 02' },
+    { key: '3', content: 'Project Name 03' },
+    { key: '4', content: 'Project Name 04' },
+    { key: '5', content: 'Project Name 05' },
   ],
   defaultSelectedKey: '1',
   menuButtons: (
@@ -59,12 +44,13 @@ const userInfo = {
 
 const Extra = (
   <>
-    <INoticeOutlined style={{ color: '#fff', fontSize: 18, marginLeft: 10 }} />
+    <ILanguage style={{ color: '#fff', fontSize: 18, marginLeft: 24 }} />
+    <INoticeOutlined style={{ color: '#fff', fontSize: 18, marginLeft: 26 }} />
     <span
       style={{
         display: 'inline-block',
         padding: '6px 15px',
-        marginLeft: 18,
+        marginLeft: 26,
         borderRadius: 50,
       }}
     >
@@ -81,7 +67,6 @@ export default () => (
       businessMenu={businessMenu}
       userInfo={userInfo}
       onSearch={(input) => message.info(`search: ${input}`)}
-      // navMenu={navMenu}
       extra={Extra}
       onLogoClick={() => message.info('logo click')}
     />
