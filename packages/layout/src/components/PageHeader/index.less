@@ -1,0 +1,206 @@
+@import '../../BasicLayout.less';
+@import '~infrad/es/style/themes/default.less';
+
+@pro-layout-global-header-prefix-cls: ~'@{ant-prefix}-pro-global-header';
+
+@pro-layout-header-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.12);
+@pure-light: rgba(255, 255, 255, 1);
+@dark-grey: rgba(255, 255, 255, 0.64);
+
+.@{pro-layout-global-header-prefix-cls} {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  height: @pro-layout-header-height;
+  padding: 0 16px;
+  background: @layout-sider-background;
+  box-shadow: @pro-layout-header-box-shadow;
+  > * {
+    height: 100%;
+  }
+  &-left {
+    display: flex;
+    align-items: center;
+  }
+  &-right {
+    display: flex;
+    align-items: center;
+  }
+  .ant-divider {
+    height: 24px;
+    margin-left: 26px;
+    border-left: 1px solid rgba(255, 255, 255, 0.24);
+  }
+  &-logo {
+    display: flex;
+    align-items: center;
+    margin-right: 24px;
+    color: @pure-light;
+    font-size: 20px;
+    &:hover {
+      cursor: pointer;
+    }
+    svg {
+      margin-right: 10px;
+      color: @pure-light;
+    }
+    img {
+      display: inline-block;
+      width: 26px;
+      height: 26px;
+      margin-right: 10px;
+    }
+  }
+  &-menu {
+    color: @dark-grey;
+    font-size: 14px;
+    &:hover {
+      color: @pure-light;
+    }
+  }
+  &-menu-item-group {
+    max-height: 256px;
+    overflow: auto;
+    .ant-dropdown-menu-item-group-title {
+      display: none;
+    }
+  }
+  &-menu-item-active {
+    color: @primary-color;
+  }
+  &-menu-btn {
+    width: 250px;
+    padding: 0px;
+    color: @primary-color;
+    border: 1px solid #eee;
+    &:hover {
+      background-color: transparent;
+    }
+    & > span {
+      display: flex;
+      button {
+        flex: 1;
+        height: auto;
+        padding: 10px;
+        &:first-child {
+          border-right: 1px solid #eee;
+        }
+      }
+    }
+  }
+  &-menu-trigger {
+    color: @pure-light;
+  }
+  &-menu-display {
+    padding: 0;
+    .ant-dropdown-menu-item-group {
+      li {
+        height: 49px;
+        font-size: 16px;
+        &:first-child {
+          font-weight: 600;
+          border-bottom: 1px solid #e5e5e5;
+        }
+      }
+    }
+    .ant-dropdown-menu-item-group-list {
+      margin: 0;
+    }
+  }
+  &-user {
+    height: 44px;
+    padding: 0 8px;
+    line-height: 44px;
+    border: none;
+    border-radius: 22px;
+    &:hover {
+      background-color: rgba(255, 255, 255, 0.04);
+    }
+    img {
+      display: inline-block;
+      width: 32px;
+      height: 32px;
+      margin-right: 8px;
+      border-radius: 50%;
+    }
+  }
+  &-guest {
+    color: @dark-grey;
+    font-size: 14px;
+  }
+  &-notice {
+    display: inline-block;
+    width: 28px;
+    height: 16px;
+    margin-left: 8px;
+    color: @pure-light;
+    font-size: 12px;
+    line-height: 16px;
+    text-align: center;
+    background: linear-gradient(270deg, #fe9373 8.63%, #ee4d2d 91.37%);
+    border-radius: 9px 2px 9px 9px;
+  }
+  &-extra {
+    display: flex;
+    align-items: center;
+    color: @dark-grey;
+    svg {
+      cursor: pointer;
+      fill: @dark-grey;
+      &:hover {
+        fill: @pure-light;
+      }
+    }
+    span:not(.anticon) {
+      border: 1px solid @dark-grey;
+      cursor: pointer;
+      &:hover {
+        color: @pure-light;
+        border: 1px solid @pure-light;
+      }
+    }
+  }
+  .ant-dropdown-trigger {
+    cursor: pointer;
+  }
+  .ant-menu-horizontal {
+    line-height: 100%;
+  }
+  .ant-menu-dark.ant-menu-horizontal > .ant-menu-item:hover,
+  .ant-menu.ant-menu-dark .ant-menu-item-selected,
+  .ant-menu-submenu-popup.ant-menu-dark .ant-menu-item-selected {
+    background-color: transparent;
+  }
+  .ant-input-search {
+    margin-right: 20px;
+    .ant-input-wrapper {
+      background-color: rgba(255, 255, 255, 0.1);
+      border-radius: 2px;
+    }
+    .ant-input-group-addon,
+    .ant-btn {
+      margin-left: -6px;
+      padding: 2px 13px 2px 0px;
+      background-color: transparent;
+      border: none;
+    }
+  }
+  .ant-input-suffix svg {
+    fill: @pure-light;
+  }
+  .ant-input {
+    color: @pure-light;
+    &::-webkit-input-placeholder {
+      color: rgba(255, 255, 255, 0.2);
+    }
+  }
+  .anticon-search svg {
+    opacity: 0.2;
+    fill: @pure-light;
+    &:hover {
+      opacity: 1;
+    }
+  }
+}
