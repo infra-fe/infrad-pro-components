@@ -22,6 +22,8 @@ const businessMenu = {
     { key: '5', content: 'Project Name 05' },
     { key: '6', content: 'Project Name 06' },
     { key: '7', content: 'Project Name 07' },
+    { key: '8', content: 'Project Name 08' },
+    { key: '9', content: 'Project Name 09' },
   ],
   defaultSelectedKey: '1',
   menuButtons: (

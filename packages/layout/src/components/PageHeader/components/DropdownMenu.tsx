@@ -35,13 +35,16 @@ const DropdownMenu: React.FC<IDropdownMenuProps> = (props) => {
 
   const menuDom = (
     <Menu
-      onClick={(e) => handleMenuSelect(e.key)}
+      onClick={(e) => {
+        console.log(e);
+        handleMenuSelect(e.key);
+      }}
       style={{ paddingBottom: menuButtons || layoutType === 'display' ? 0 : 8 }}
       className={classNames({
         [`${prefixCls}-menu-display`]: layoutType === 'display',
       })}
     >
-      <div style={{ maxHeight: 256, overflow: 'auto' }}>
+      <Menu.ItemGroup className={`${prefixCls}-menu-item-group`}>
         {menuList?.map((item) => (
           <Menu.Item
             key={item.key}
@@ -50,7 +53,7 @@ const DropdownMenu: React.FC<IDropdownMenuProps> = (props) => {
             {item.content}
           </Menu.Item>
         ))}
-      </div>
+      </Menu.ItemGroup>
       {menuButtons ? (
         <Menu.Item
           className={`${prefixCls}-menu-btn`}
