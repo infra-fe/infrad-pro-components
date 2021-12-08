@@ -36,7 +36,6 @@ const DropdownMenu: React.FC<IDropdownMenuProps> = (props) => {
   const menuDom = (
     <Menu
       onClick={(e) => {
-        console.log(e);
         handleMenuSelect(e.key);
       }}
       style={{ paddingBottom: menuButtons || layoutType === 'display' ? 0 : 8 }}
@@ -48,18 +47,16 @@ const DropdownMenu: React.FC<IDropdownMenuProps> = (props) => {
         {menuList?.map((item) => (
           <Menu.Item
             key={item.key}
-            style={{ color: keepSelectedStatus && selectedMenu === item.key ? '#2673DD' : '' }}
+            className={
+              keepSelectedStatus && selectedMenu === item.key ? `${prefixCls}-menu-item-active` : ''
+            }
           >
             {item.content}
           </Menu.Item>
         ))}
       </Menu.ItemGroup>
       {menuButtons ? (
-        <Menu.Item
-          className={`${prefixCls}-menu-btn`}
-          key="btn"
-          style={{ color: '#2673DD', border: '1px solid #eee', width: 250 }}
-        >
+        <Menu.Item className={`${prefixCls}-menu-btn`} key="btn">
           {menuButtons}
         </Menu.Item>
       ) : null}
@@ -70,7 +67,6 @@ const DropdownMenu: React.FC<IDropdownMenuProps> = (props) => {
     setDropdownStatus(false);
     if (key !== 'btn') {
       setSelectedMenu(key);
-      console.log(key, menuList.find((i) => i.key === key)?.content);
       onMenuChange?.(menuList.find((i) => i.key === key));
     }
   };
