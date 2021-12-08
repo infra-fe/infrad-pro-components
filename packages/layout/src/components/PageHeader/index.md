@@ -35,9 +35,10 @@ nav:
 | onLogoClick | 点击 logo 和 title 的回调函数 | `() => void` | - |
 | navMenu | 一级导航菜单 | [navMenu](#nav-menu) | - |
 | businessMenu | 业务线菜单 | [businessMenu](#business-menu) | - |
-| userInfo | 用户信息菜单 | [userInfo](#user-menu) | - |
+| searchable | 是否有搜索框功能 | `boolean` | true |
 | searchPlaceholder | 搜索框占位符 | `string` | `Search APP/Pod IP...` |
 | onSearch | 搜索框点击搜索或者清空时调用此函数 | `(input: string) => void` | - |
+| userInfo | 用户信息菜单 | [userInfo](#user-menu) | - |
 | subTitle | 未登录状态下右侧子标题 | `string` | `Application Infra Homepage` |
 | hasNotice | 是否有更新 | `Boolean` | true |
 | extra | 右上角自定义区域 | `React.ReactNode` | - |
@@ -56,6 +57,7 @@ nav:
 | --- | --- | --- | --- | --- |
 | suffix | 业务线菜单前缀 | `string` | true |
 | defaultSelectedKey | 默订选中项 | `string` | - |
+| menuButtons | 下拉菜单底部按钮组件 | `ReactNode` | - |
 | menuList | 下拉列表 | `{ key: string \| number; content: React.ReactNode;}[]` | - |
 | onMenuChange | 下拉列表选中回调函数 | `onMenuChange?: (arg: {key: string \| number;content: React.ReactNode;} \| undefined) => void;` | - |
 
