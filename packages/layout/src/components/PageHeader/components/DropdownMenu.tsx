@@ -11,6 +11,7 @@ interface IDropdownMenuProps {
   menuList: CustomizedNodeList;
   /** 默认选中项 */
   defaultSelectedKey?: string;
+  maxWidth?: number;
   /** 是否保留下拉中的选中状态 */
   keepSelectedStatus?: boolean;
   /** 前中项前置显示内容 */
