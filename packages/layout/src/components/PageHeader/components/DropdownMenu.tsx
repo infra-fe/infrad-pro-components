@@ -84,10 +84,12 @@ const DropdownMenu: React.FC<IDropdownMenuProps> = (props) => {
           [`${prefixCls}-menu-trigger`]: dropdownStatus,
         })}
       >
-        {defaultSelectedKey
-          ? (suffix ? `${suffix}:` : '') +
-            `${menuList.find((i) => i.key === selectedMenu)?.content}`
-          : suffix ?? ''}
+        <span>
+          {defaultSelectedKey
+            ? (suffix ? `${suffix}:` : '') +
+              `${menuList.find((i) => i.key === selectedMenu)?.content}`
+            : suffix ?? ''}
+        </span>
         {dropdownStatus ? (
           <IArrowUp style={{ marginLeft: 7, fontSize: 16 }} />
         ) : (
