@@ -25,9 +25,9 @@ const businessMenu = {
     { key: '8', content: 'Project Name 08' },
     { key: '9', content: 'Project Name 09' },
   ],
-  defaultSelectedKey: '1',
+  selectedKey: '1',
   maxWidth: 400,
-  menuButtons: (
+  customMenuItem: (
     <>
       <Button type="link" onClick={createNewProject}>
         <IAdd />

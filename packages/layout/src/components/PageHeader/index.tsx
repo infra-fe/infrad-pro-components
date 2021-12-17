@@ -2,7 +2,7 @@ import './index.less';
 import React, { useState, useContext } from 'react';
 import classNames from 'classnames';
 import { Menu, Divider, Input, ConfigProvider } from 'infrad';
-import DropdownMenu from './components/DropdownMenu';
+import DropdownMenu, { LAYOUT_TYPE } from './components/DropdownMenu';
 import { GlobalHeaderProps } from './typings';
 
 const { Search } = Input;
@@ -27,7 +27,7 @@ const PageHeader: React.FC<GlobalHeaderProps> = (props) => {
     extra,
   } = props;
 
-  const [selectedNav, setSelectedNav] = useState(navMenu?.defaultSelectedKey);
+  const [selectedNav, setSelectedNav] = useState(navMenu?.selectedKey);
 
   const { getPrefixCls } = useContext(ConfigProvider.ConfigContext);
   const headerPrefixCls = prefixCls || getPrefixCls('pro-global-header');
@@ -76,10 +76,10 @@ const PageHeader: React.FC<GlobalHeaderProps> = (props) => {
                 layoutType="select"
                 prefixCls={headerPrefixCls}
                 menuList={businessMenu.menuList}
-                defaultSelectedKey={businessMenu.defaultSelectedKey}
+                selectedKey={businessMenu.selectedKey}
                 maxWidth={businessMenu.maxWidth}
                 keepSelectedStatus={true}
-                menuButtons={businessMenu?.menuButtons}
+                customMenuItem={businessMenu?.customMenuItem}
                 suffix={businessMenu?.suffix || ''}
                 onMenuChange={businessMenu.onMenuChange}
               />
@@ -104,7 +104,7 @@ const PageHeader: React.FC<GlobalHeaderProps> = (props) => {
               {userInfo?.avatar ? <img src={userInfo.avatar} alt="avatar" /> : null}
               {userInfo?.menuList ? (
                 <DropdownMenu
-                  layoutType="display"
+                  layoutType={LAYOUT_TYPE.DISPLAY}
                   prefixCls={headerPrefixCls}
                   menuList={userInfo.menuList}
                   suffix={userInfo.account}

@@ -48,7 +48,7 @@ nav:
 | 参数 | 说明 | 类型 | 默认值 | 版本 |
 | --- | --- | --- | --- | --- |
 | menuList | 导航菜单列表 | `{ key: string \| number; content: React.ReactNode; icon?: React.ReactElement }[]` | true |
-| defaultSelectedKey | 默认选中项 | `string` | - |
+| selectedKey | 选中项 | `string` | - |
 | onNavChange | 导航菜单切换回调函数 | `(key: string \| number) => void;` | - |
 
 ### business-menu
@@ -56,9 +56,9 @@ nav:
 | 参数 | 说明 | 类型 | 默认值 | 版本 |
 | --- | --- | --- | --- | --- |
 | suffix | 业务线菜单前缀 | `string` | true |
-| defaultSelectedKey | 默订选中项 | `string` | - |
+| selectedKey | 选中项 | `string` | - |
 | maxWidth | 显示最大宽度 | `number` | - |
-| menuButtons | 下拉菜单底部按钮组件 | `ReactNode` | - |
+| customMenuItem | 用户自定义列表底部 | `ReactNode` | - |
 | menuList | 下拉列表 | `{ key: string \| number; content: React.ReactNode;}[]` | - |
 | onMenuChange | 下拉列表选中回调函数 | `onMenuChange?: (arg: {key: string \| number;content: React.ReactNode;} \| undefined) => void;` | - |
 

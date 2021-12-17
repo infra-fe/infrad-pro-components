@@ -4,31 +4,36 @@ import classNames from 'classnames';
 import { IArrowDown, IArrowUp } from 'infra-design-icons';
 import { CustomizedNode, CustomizedNodeList } from '../typings';
 
+export enum LAYOUT_TYPE {
+  SELECT = 'select',
+  DISPLAY = 'display',
+}
+
 interface IDropdownMenuProps {
   /** 两种场景：下拉选中 和 纯下拉展示 */
-  layoutType: 'select' | 'display';
+  layoutType: LAYOUT_TYPE;
   prefixCls?: string;
   menuList: CustomizedNodeList;
   /** 默认选中项 */
-  defaultSelectedKey?: string;
+  selectedKey?: string;
   maxWidth?: number;
   /** 是否保留下拉中的选中状态 */
   keepSelectedStatus?: boolean;
   /** 前中项前置显示内容 */
   suffix: string;
-  menuButtons?: ReactNode;
+  customMenuItem?: ReactNode;
   onMenuChange?: (arg: CustomizedNode | undefined) => void;
 }
 const DropdownMenu: React.FC<IDropdownMenuProps> = (props) => {
   const {
-    layoutType = 'select',
+    layoutType = LAYOUT_TYPE.SELECT,
     prefixCls,
     menuList,
-    defaultSelectedKey,
+    selectedKey,
     maxWidth,
     keepSelectedStatus = false,
     suffix,
-    menuButtons,
+    customMenuItem,
     onMenuChange,
   } = props;
 
@@ -36,17 +41,17 @@ const DropdownMenu: React.FC<IDropdownMenuProps> = (props) => {
   const [dropdownStatus, setDropdownStatus] = useState(false);
 
   useEffect(() => {
-    setSelectedMenu(props.defaultSelectedKey);
-  }, [props.defaultSelectedKey]);
+    setSelectedMenu(props.selectedKey);
+  }, [props.selectedKey]);
 
   const menuDom = (
     <Menu
       onClick={(e) => {
         handleMenuSelect(e.key);
       }}
-      style={{ paddingBottom: menuButtons || layoutType === 'display' ? 0 : 8 }}
+      style={{ paddingBottom: customMenuItem || layoutType === LAYOUT_TYPE.DISPLAY ? 0 : 8 }}
       className={classNames({
-        [`${prefixCls}-menu-display`]: layoutType === 'display',
+        [`${prefixCls}-menu-display`]: layoutType === LAYOUT_TYPE.DISPLAY,
       })}
     >
       <Menu.ItemGroup className={`${prefixCls}-menu-item-group`}>
@@ -62,9 +67,9 @@ const DropdownMenu: React.FC<IDropdownMenuProps> = (props) => {
           </Menu.Item>
         ))}
       </Menu.ItemGroup>
-      {menuButtons ? (
-        <Menu.Item className={`${prefixCls}-menu-btn`} key="btn">
-          {menuButtons}
+      {customMenuItem ? (
+        <Menu.Item className={`${prefixCls}-custom-item`} key="btn">
+          {customMenuItem}
         </Menu.Item>
       ) : null}
     </Menu>
@@ -92,7 +97,7 @@ const DropdownMenu: React.FC<IDropdownMenuProps> = (props) => {
         })}
       >
         <span style={{ maxWidth }}>
-          {defaultSelectedKey
+          {selectedKey
             ? (suffix ? `${suffix}:` : '') +
               `${menuList.find((i) => i.key === selectedMenu)?.content}`
             : suffix ?? ''}
