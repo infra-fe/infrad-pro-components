@@ -1,4 +1,4 @@
-import React, { ReactNode, useState } from 'react';
+import React, { ReactNode, useState, useEffect } from 'react';
 import { Menu, Dropdown } from 'infrad';
 import classNames from 'classnames';
 import { IArrowDown, IArrowUp } from 'infra-design-icons';
@@ -30,8 +30,12 @@ const DropdownMenu: React.FC<IDropdownMenuProps> = (props) => {
     onMenuChange,
   } = props;
 
-  const [selectedMenu, setSelectedMenu] = useState<string | number | undefined>(defaultSelectedKey);
+  const [selectedMenu, setSelectedMenu] = useState<string | number | undefined>();
   const [dropdownStatus, setDropdownStatus] = useState(false);
+
+  useEffect(() => {
+    setSelectedMenu(props.defaultSelectedKey);
+  }, [props.defaultSelectedKey]);
 
   const menuDom = (
     <Menu
