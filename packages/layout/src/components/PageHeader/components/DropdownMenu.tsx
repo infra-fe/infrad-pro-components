@@ -24,6 +24,7 @@ const DropdownMenu: React.FC<IDropdownMenuProps> = (props) => {
     prefixCls,
     menuList,
     defaultSelectedKey,
+    maxWidth,
     keepSelectedStatus = false,
     suffix,
     menuButtons,
@@ -51,6 +52,7 @@ const DropdownMenu: React.FC<IDropdownMenuProps> = (props) => {
         {menuList?.map((item) => (
           <Menu.Item
             key={item.key}
+            style={{ maxWidth }}
             className={
               keepSelectedStatus && selectedMenu === item.key ? `${prefixCls}-menu-item-active` : ''
             }
@@ -88,7 +90,7 @@ const DropdownMenu: React.FC<IDropdownMenuProps> = (props) => {
           [`${prefixCls}-menu-trigger`]: dropdownStatus,
         })}
       >
-        <span>
+        <span style={{ maxWidth }}>
           {defaultSelectedKey
             ? (suffix ? `${suffix}:` : '') +
               `${menuList.find((i) => i.key === selectedMenu)?.content}`

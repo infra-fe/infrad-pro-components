@@ -28,6 +28,8 @@ export type GlobalHeaderProps = {
     suffix?: string;
     /** 默认选中项 */
     defaultSelectedKey: string;
+    /** 最大宽度 */
+    maxWidth?: number;
     menuList: CustomizedNodeList;
     menuButtons?: ReactNode;
     /** 所选项切换回调函数 */

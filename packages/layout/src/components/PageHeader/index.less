@@ -37,8 +37,10 @@
     display: flex;
     align-items: center;
     margin-right: 24px;
+    overflow: hidden;
     color: @pure-light;
     font-size: 20px;
+    white-space: nowrap;
     &:hover {
       cursor: pointer;
     }
@@ -67,7 +69,6 @@
       display: none;
     }
     .ant-dropdown-menu-title-content {
-      max-width: 500px;
       overflow: hidden;
       white-space: nowrap;
       text-overflow: ellipsis;
@@ -174,7 +175,6 @@
     cursor: pointer;
     & > span {
       display: inline-block;
-      max-width: 400px;
       overflow: hidden;
       white-space: nowrap;
       text-overflow: ellipsis;

@@ -57,6 +57,7 @@ nav:
 | --- | --- | --- | --- | --- |
 | suffix | 业务线菜单前缀 | `string` | true |
 | defaultSelectedKey | 默订选中项 | `string` | - |
+| maxWidth | 显示最大宽度 | `number` | - |
 | menuButtons | 下拉菜单底部按钮组件 | `ReactNode` | - |
 | menuList | 下拉列表 | `{ key: string \| number; content: React.ReactNode;}[]` | - |
 | onMenuChange | 下拉列表选中回调函数 | `onMenuChange?: (arg: {key: string \| number;content: React.ReactNode;} \| undefined) => void;` | - |
