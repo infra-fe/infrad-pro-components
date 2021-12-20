@@ -73,7 +73,7 @@ const PageHeader: React.FC<GlobalHeaderProps> = (props) => {
           <>
             {businessMenu ? (
               <DropdownMenu
-                layoutType="select"
+                layoutType={LAYOUT_TYPE.SELECT}
                 prefixCls={headerPrefixCls}
                 menuList={businessMenu.menuList}
                 selectedKey={businessMenu.selectedKey}

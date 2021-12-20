@@ -31,7 +31,7 @@ export type GlobalHeaderProps = {
     /** 最大宽度 */
     maxWidth?: number;
     menuList: CustomizedNodeList;
-    menuButtons?: ReactNode;
+    customMenuItem?: ReactNode;
     /** 所选项切换回调函数 */
     onMenuChange?: (arg: CustomizedNode | undefined) => void;
   };
