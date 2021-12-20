@@ -27,7 +27,7 @@
     "tsc": "tsc --noEmit",
     "tsc:duplicate": "tsc -p ./tests/tsconfig.duplicate.json",
     "update:deps": "yarn upgrade-interactive --latest",
-    "publish": "yarn build && lerna publish"
+    "publish": "yarn build && lerna publish from-package"
   },
   "browserslist": [
     "last 2 versions",
