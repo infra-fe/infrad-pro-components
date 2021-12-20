@@ -15,7 +15,7 @@ const manage = () => message.info('manage');
 
 const businessMenu = {
   menuList: [
-    { key: '1', content: 'Project Name 01' },
+    { key: '1', content: 'Project Name 01Project Project Name 01Project Project Name 01Project' },
     { key: '2', content: 'Project Name 02' },
     { key: '3', content: 'Project Name 03' },
     { key: '4', content: 'Project Name 04' },
@@ -25,8 +25,9 @@ const businessMenu = {
     { key: '8', content: 'Project Name 08' },
     { key: '9', content: 'Project Name 09' },
   ],
-  defaultSelectedKey: '1',
-  menuButtons: (
+  selectedKey: '1',
+  maxWidth: 400,
+  customMenuItem: (
     <>
       <Button type="link" onClick={createNewProject}>
         <IAdd />

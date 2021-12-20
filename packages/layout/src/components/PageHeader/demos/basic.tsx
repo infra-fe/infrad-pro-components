@@ -17,7 +17,7 @@ const navMenu = {
       icon: <IProduct />,
     },
   ],
-  defaultSelectedKey: 'Application',
+  selectedKey: 'Application',
   onNavChange: (navKey: string | number) => message.info(navKey),
 };
 
@@ -28,7 +28,7 @@ const businessMenu = {
     { key: '3', content: 'Financial Service' },
   ],
   suffix: 'Tenant',
-  defaultSelectedKey: '1',
+  selectedKey: '1',
   onMenuChange: (arg: CustomizedNode | undefined) => message.info(arg?.content),
 };
 

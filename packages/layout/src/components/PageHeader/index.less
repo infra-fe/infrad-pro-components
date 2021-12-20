@@ -37,8 +37,10 @@
     display: flex;
     align-items: center;
     margin-right: 24px;
+    overflow: hidden;
     color: @pure-light;
     font-size: 20px;
+    white-space: nowrap;
     &:hover {
       cursor: pointer;
     }
@@ -66,12 +68,16 @@
     .ant-dropdown-menu-item-group-title {
       display: none;
     }
+    .ant-dropdown-menu-title-content {
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
   }
   &-menu-item-active {
     color: @primary-color;
   }
-  &-menu-btn {
-    width: 250px;
+  &-custom-item {
     padding: 0px;
     color: @primary-color;
     border: 1px solid #eee;
@@ -110,9 +116,10 @@
     }
   }
   &-user {
+    display: flex;
+    align-items: center;
     height: 44px;
     padding: 0 8px;
-    line-height: 44px;
     border: none;
     border-radius: 22px;
     &:hover {
@@ -163,7 +170,15 @@
     }
   }
   .ant-dropdown-trigger {
+    display: flex;
+    align-items: center;
     cursor: pointer;
+    & > span {
+      display: inline-block;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
   }
   .ant-menu-horizontal {
     line-height: 100%;
