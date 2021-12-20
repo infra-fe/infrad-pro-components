@@ -17,7 +17,7 @@ export type GlobalHeaderProps = {
   navMenu?: {
     menuList: { key: string | number; content: React.ReactNode; icon?: React.ReactElement }[];
     /** 默认选中项 */
-    defaultSelectedKey: string;
+    selectedKey: string;
     /** 导航切换回调函数 */
     onNavChange: (key: string | number) => void;
   };
@@ -27,7 +27,7 @@ export type GlobalHeaderProps = {
     /** 所选项前缀 */
     suffix?: string;
     /** 默认选中项 */
-    defaultSelectedKey: string;
+    selectedKey: string;
     /** 最大宽度 */
     maxWidth?: number;
     menuList: CustomizedNodeList;
