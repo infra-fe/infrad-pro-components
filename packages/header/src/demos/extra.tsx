@@ -41,7 +41,7 @@ const ExtraDemo = () => {
         </Button>
       </>
     ),
-    onMenuChange: (arg: any | undefined) => message.info(arg?.content),
+    onMenuChange: (arg) => message.info(arg?.content),
   };
 
   const userInfo: UserInfo = {
@@ -59,7 +59,7 @@ const ExtraDemo = () => {
         ),
       },
     ],
-    onMenuChange: (arg: any | undefined) => message.info(arg?.key),
+    onMenuChange: (arg) => message.info(arg?.key),
   };
 
   const Extra: React.ReactNode = (
