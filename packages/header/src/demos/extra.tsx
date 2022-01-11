@@ -80,7 +80,7 @@ const ExtraDemo = () => {
   );
 
   return (
-    <div style={{ width: '100%' }}>
+    <div style={{ width: '100%', minWidth: 1400 }}>
       <ProHeader
         logo={<IProduct style={{ fontSize: 24 }} />}
         title="Shopee Content Config Management System"
