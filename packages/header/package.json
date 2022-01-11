@@ -1,6 +1,6 @@
 {
   "name": "infrad-pro-header",
-  "version": "1.0.0-beta.1",
+  "version": "1.0.0",
   "description": "infrad-pro-header",
   "module": "es/index.js",
   "main": "lib/index.js",
