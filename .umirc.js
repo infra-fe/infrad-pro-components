@@ -141,7 +141,7 @@ export default {
           'card',
           'WaterMark/index',
           'StatisticCard/index',
-          'PageHeader/index',
+          'header',
         ],
       },
       {
@@ -172,7 +172,7 @@ export default {
       },
       {
         title: 'Layout',
-        children: ['layout', 'PageContainer/index', 'card'],
+        children: ['layout', 'PageContainer/index', 'card', 'header'],
       },
       {
         title: 'Data entry',
