@@ -11,7 +11,6 @@ import type { FooterProps } from './Footer';
 import DefaultFooter from './Footer';
 import GridContent from './components/GridContent';
 import PageContainer from './components/PageContainer';
-import ProPageHeader from './components/PageHeader';
 import type { PageContainerProps } from './components/PageContainer';
 import type { RouteContextType } from './RouteContext';
 import RouteContext from './RouteContext';
@@ -20,7 +19,7 @@ import getPageTitle from './getPageTitle';
 import PageLoading from './components/PageLoading';
 import FooterToolbar from './components/FooterToolbar';
 import WaterMark from './components/WaterMark';
-import { ProBreadcrumb } from './components/PageContainer';
+import { ProPageHeader, ProBreadcrumb } from './components/PageContainer';
 
 export type { ProSettings as Settings, ProSettings } from './defaultSettings';
 

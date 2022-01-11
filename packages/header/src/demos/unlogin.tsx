@@ -1,11 +1,11 @@
 import React from 'react';
-import { ProPageHeader } from 'infrad-pro-layout';
+import ProHeader from 'infrad-pro-header';
 import { message } from 'infrad';
 import { IProduct } from 'infra-design-icons';
 
-export default () => (
+const UnloginDemo = () => (
   <div style={{ width: '100%' }}>
-    <ProPageHeader
+    <ProHeader
       isLogin={false}
       hasNotice={true}
       searchable={false}
@@ -15,3 +15,5 @@ export default () => (
     />
   </div>
 );
+
+export default UnloginDemo;

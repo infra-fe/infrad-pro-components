@@ -3,11 +3,11 @@ import React, { useState, useContext } from 'react';
 import classNames from 'classnames';
 import { Menu, Divider, Input, ConfigProvider } from 'infrad';
 import DropdownMenu, { LAYOUT_TYPE } from './components/DropdownMenu';
-import { GlobalHeaderProps } from './typings';
+import { GlobalHeaderProps, NavMenu, UserInfo, BusinessMenu } from './typings';
 
 const { Search } = Input;
 
-const PageHeader: React.FC<GlobalHeaderProps> = (props) => {
+const ProHeader: React.FC<GlobalHeaderProps> = (props) => {
   const {
     className,
     prefixCls,
@@ -130,4 +130,6 @@ const PageHeader: React.FC<GlobalHeaderProps> = (props) => {
   );
 };
 
-export default PageHeader;
+export type { GlobalHeaderProps, NavMenu, UserInfo, BusinessMenu };
+
+export default ProHeader;

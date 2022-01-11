@@ -1,8 +1,8 @@
-@import '../../BasicLayout.less';
+// @import '../../BasicLayout.less';
 @import '~infrad/es/style/themes/default.less';
 
 @pro-layout-global-header-prefix-cls: ~'@{ant-prefix}-pro-global-header';
-
+@pro-header-height: 48px;
 @pro-layout-header-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.12);
 @pure-light: rgba(255, 255, 255, 1);
 @dark-grey: rgba(255, 255, 255, 0.64);
@@ -13,7 +13,7 @@
   align-items: center;
   justify-content: space-between;
   width: 100%;
-  height: @pro-layout-header-height;
+  height: @pro-header-height;
   padding: 0 16px;
   background: @layout-sider-background;
   box-shadow: @pro-layout-header-box-shadow;
