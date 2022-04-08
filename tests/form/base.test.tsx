@@ -1,5 +1,8 @@
-import React from 'react';
-import { Button, Input } from 'infrad';
+import React, { useRef, useEffect } from 'react';
+import { Button, ConfigProvider, Input } from 'infrad';
+import type { ProFormInstance } from 'infrad-pro-form';
+import { ProFormDateTimePicker } from 'infrad-pro-form';
+import { ProFormDigitRange } from 'infrad-pro-form';
 import ProForm, {
   ProFormText,
   ProFormCaptcha,
@@ -10,16 +13,28 @@ import ProForm, {
   ProFormField,
 } from 'infrad-pro-form';
 import { act } from 'react-dom/test-utils';
-import { FontSizeOutlined } from 'infra-design-icons';
-
+import { FontSizeOutlined } from '@ant-design/icons';
 import { mount } from 'enzyme';
 import { waitTime, waitForComponentToPaint } from '../util';
+import { render as reactRender } from '@testing-library/react';
+import moment from 'moment';
 
 describe('ProForm', () => {
   it('📦 submit props actionsRender=false', async () => {
     const wrapper = mount(<ProForm submitter={false} />);
     await waitForComponentToPaint(wrapper);
     expect(wrapper.render()).toMatchSnapshot();
+  });
+
+  it('📦 componentSize is work', async () => {
+    const wrapper = mount(
+      <ConfigProvider componentSize="small">
+        <ProForm>
+          <ProFormText />
+        </ProForm>
+      </ConfigProvider>,
+    );
+    expect(wrapper.find('.ant-input-sm').length).toBe(1);
   });
 
   it('📦 ProForm support sync form url', async () => {
@@ -55,17 +70,22 @@ describe('ProForm', () => {
     expect(fn).toHaveBeenCalledWith('realDark');
   });
 
-  it('📦 ProForm support sync form url', async () => {
-    const fn = jest.fn();
+  it('📦 ProForm support sync form url and rest', async () => {
+    const onFinish = jest.fn();
     const wrapper = mount<{ navTheme: string }>(
       <ProForm
         onFinish={async (values) => {
-          fn(values.navTheme);
+          onFinish(values.navTheme);
         }}
         syncToUrl
         syncToInitialValues={false}
       >
         <ProFormText name="navTheme" />
+        <ProForm.Item>
+          {() => {
+            return '123';
+          }}
+        </ProForm.Item>
       </ProForm>,
     );
     await waitForComponentToPaint(wrapper);
@@ -74,8 +94,9 @@ describe('ProForm', () => {
       wrapper.find('button.ant-btn-primary').simulate('click');
     });
     await waitForComponentToPaint(wrapper);
-    expect(fn).toHaveBeenCalledWith('realDark');
+    expect(onFinish).toHaveBeenCalledWith('realDark');
 
+    // rest
     act(() => {
       wrapper.find('button.ant-btn').at(1).simulate('click');
     });
@@ -84,7 +105,7 @@ describe('ProForm', () => {
       wrapper.find('button.ant-btn-primary').simulate('click');
     });
     await waitForComponentToPaint(wrapper);
-    expect(fn).toHaveBeenCalledWith(undefined);
+    expect(onFinish).toHaveBeenCalledWith(undefined);
   });
 
   it('📦 ProForm initialValues update will warning', async () => {
@@ -167,6 +188,42 @@ describe('ProForm', () => {
     expect(wrapper.find('.ant-btn-loading').exists()).toBe(false);
   });
 
+  it('📦 onFinish support params and request', async () => {
+    const wrapper = mount(
+      <ProForm
+        request={async (params) => {
+          await waitTime(100);
+          return params;
+        }}
+        params={{
+          name: 'test',
+        }}
+      >
+        <ProFormText
+          name="name"
+          fieldProps={{
+            id: 'test',
+          }}
+        />
+      </ProForm>,
+    );
+
+    await waitForComponentToPaint(wrapper, 200);
+
+    expect(wrapper.find('input#test').props().value).toEqual('test');
+
+    act(() => {
+      wrapper.setProps({
+        params: {
+          name: '1234',
+        },
+      });
+    });
+    await waitForComponentToPaint(wrapper, 500);
+
+    expect(wrapper.find('input#test').props().value).toEqual('1234');
+  });
+
   it('📦 submit props actionsRender=()=>false', async () => {
     const wrapper = mount(
       <ProForm
@@ -183,12 +240,42 @@ describe('ProForm', () => {
     const wrapper = mount(
       <ProForm
         submitter={{
-          render: () => [<a>test</a>],
+          render: () => [<a key="test">test</a>],
         }}
       />,
     );
     await waitForComponentToPaint(wrapper);
     expect(wrapper.render()).toMatchSnapshot();
+  });
+
+  it('📦 support formRef', async () => {
+    const formRef = React.createRef<ProFormInstance<any>>();
+    const wrapper = mount(
+      <ProForm
+        formRef={formRef}
+        submitter={{
+          render: () => [<a key="test">test</a>],
+        }}
+        initialValues={{
+          test: '12,34',
+        }}
+      >
+        <ProFormText
+          name="test"
+          transform={(value) => {
+            return {
+              test: value.split(','),
+            };
+          }}
+        />
+      </ProForm>,
+    );
+    await waitForComponentToPaint(wrapper, 1000);
+    expect(formRef.current?.getFieldFormatValue?.('test')?.join('-')).toBe('12-34');
+    expect(formRef.current?.getFieldFormatValueObject?.('test')?.test.join('-')).toBe('12-34');
+    expect(formRef.current?.getFieldsFormatValue?.()?.test.join('-')).toBe('12-34');
+    expect(formRef.current?.getFieldFormatValue?.(['test'])?.join('-')).toBe('12-34');
+    expect(formRef.current?.getFieldValue?.('test')).toBe('12,34');
   });
 
   it('📦 ProForm support namePath is array', async () => {
@@ -201,6 +288,7 @@ describe('ProForm', () => {
           },
           test: 'test2',
         }}
+        isKeyPressSubmit
         onFinish={async (params) => {
           fn(params);
         }}
@@ -229,6 +317,7 @@ describe('ProForm', () => {
     const wrapper = mount(
       <ProForm
         omitNil={false}
+        isKeyPressSubmit
         onFinish={async () => {
           fn();
         }}
@@ -723,7 +812,7 @@ describe('ProForm', () => {
     await waitForComponentToPaint(wrapper);
 
     act(() => {
-      wrapper.find('Input#testInput').simulate('change', {
+      wrapper.find('input#testInput').simulate('change', {
         target: {
           value: 'test',
         },
@@ -1431,6 +1520,108 @@ describe('ProForm', () => {
     expect(wrapper.find('div.ant-select-item.ant-select-item-option').length).toBe(4);
   });
 
+  it('📦 SearchSelect support multiple and autoClearSearchValue: false ', async () => {
+    const onSearch = jest.fn();
+    const onFinish = jest.fn();
+
+    const wrapper = mount(
+      <ProForm
+        onFinish={async (values) => {
+          onFinish(values?.userQuery?.length);
+        }}
+      >
+        <ProFormSelect.SearchSelect
+          name="userQuery"
+          label="产品选择"
+          placeholder="测试 placeholder"
+          fieldProps={{
+            mode: 'multiple',
+            autoClearSearchValue: false,
+            searchOnFocus: true,
+            onSearch: (e) => onSearch(e),
+          }}
+          options={[
+            { label: '全部', value: 'all' },
+            { label: '未解决', value: 'open' },
+            { label: '已解决', value: 'closed' },
+            { label: '解决中', value: 'processing' },
+          ]}
+        />
+      </ProForm>,
+    );
+
+    // 点击搜索框
+    act(() => {
+      wrapper.find('.ant-select-selector').simulate('mousedown');
+      wrapper.update();
+    });
+
+    await waitForComponentToPaint(wrapper);
+
+    // 默认展示所有的7个选项
+    expect(wrapper.find('div.ant-select-item.ant-select-item-option').length).toBe(4);
+    // 默认输入框没有内容
+    expect(wrapper.find('.ant-select-item-option-content div span').length).toBe(0);
+    // input 元素的内容也为空
+    expect(wrapper.find('input.ant-select-selection-search-input').props().value).toBe('');
+
+    // 输入搜索内容
+    act(() => {
+      wrapper.find('.ant-select-selection-search-input').simulate('change', {
+        target: {
+          value: '解',
+        },
+      });
+    });
+
+    await waitForComponentToPaint(wrapper);
+
+    // 应该有4个item 被筛选出来
+    expect(wrapper.find('div.ant-select-item.ant-select-item-option').length).toBe(3);
+    // input 也有输入的内容
+    expect(wrapper.find('input.ant-select-selection-search-input').props().value).toBe('解');
+
+    // 选中第一个
+    act(() => {
+      wrapper.find('.ant-select-item').at(0).simulate('click');
+    });
+    await waitForComponentToPaint(wrapper);
+
+    // 选中的内容出现在 input 中
+    expect(wrapper.find('.ant-select-item-option-content').at(0).text()).toBe('未解决');
+    expect(wrapper.find('input.ant-select-selection-search-input').props().value).toBe('解');
+    // 搜索的结果, 应该保持不变
+    expect(wrapper.find('div.ant-select-item.ant-select-item-option').length).toBe(3);
+
+    // 继续选中第二个
+    act(() => {
+      wrapper.find('.ant-select-item').at(1).simulate('click');
+    });
+    await waitForComponentToPaint(wrapper);
+
+    // 选中的内容出现在 input 中
+    expect(wrapper.find('.ant-select-item-option-content').at(1).text()).toBe('已解决');
+    expect(wrapper.find('input.ant-select-selection-search-input').props().value).toBe('解');
+
+    act(() => {
+      wrapper.find('.ant-select-selector').simulate('mousedown');
+      wrapper.update();
+    });
+
+    act(() => {
+      wrapper.find('.ant-btn-primary').simulate('submit');
+    });
+
+    // 多次提交需要阻止
+    act(() => {
+      wrapper.find('.ant-btn-primary').simulate('submit');
+    });
+
+    await waitForComponentToPaint(wrapper);
+
+    expect(onFinish).toBeCalledWith(2);
+  });
+
   it('📦 Select support single', async () => {
     const onFinish = jest.fn();
     const wrapper = mount(
@@ -1493,6 +1684,100 @@ describe('ProForm', () => {
     await waitForComponentToPaint(wrapper);
 
     expect(onFinish).toBeCalledWith('open');
+  });
+
+  it('📦 ProFormSelect support filterOption', async () => {
+    const onSearch = jest.fn();
+    const wrapper = mount(
+      <ProForm>
+        <ProFormSelect
+          fieldProps={{
+            filterOption: false,
+            onSearch: (e) => onSearch(e),
+          }}
+          options={[
+            { value: 1, label: 'Aa' },
+            { value: 2, label: 'Bb' },
+            { value: 3, label: 'Cc' },
+          ]}
+          name="userQuery"
+          label="查询选择器"
+        />
+      </ProForm>,
+    );
+    await waitForComponentToPaint(wrapper);
+
+    act(() => {
+      wrapper.find('.ant-select-selection-search-input').simulate('change', {
+        target: {
+          value: 'A',
+        },
+      });
+    });
+    await waitForComponentToPaint(wrapper);
+
+    act(() => {
+      wrapper.find('.ant-select-selector').simulate('mousedown');
+      wrapper.update();
+    });
+
+    expect(wrapper.find('.ant-select-item').length).toBe(3);
+
+    await waitForComponentToPaint(wrapper);
+  });
+
+  it('📦 Select filterOption support mixed case', async () => {
+    const wrapper = mount(
+      <ProForm>
+        <ProFormSelect
+          name="userQuery"
+          label="查询选择器"
+          fieldProps={{
+            showSearch: true,
+            options: [
+              { value: 1, label: 'Aa' },
+              { value: 2, label: 'Bb' },
+              { value: 3, label: 'Cc' },
+            ],
+          }}
+        />
+      </ProForm>,
+    );
+    await waitForComponentToPaint(wrapper);
+
+    act(() => {
+      wrapper.find('.ant-select-selection-search-input').simulate('change', {
+        target: {
+          value: 'b',
+        },
+      });
+    });
+    await waitForComponentToPaint(wrapper);
+
+    act(() => {
+      wrapper.find('.ant-select-selector').simulate('mousedown');
+      wrapper.update();
+    });
+
+    expect(wrapper.find('.ant-select-item').length).toBe(1);
+
+    act(() => {
+      wrapper.find('.ant-select-selection-search-input').simulate('change', {
+        target: {
+          value: 'B',
+        },
+      });
+    });
+    await waitForComponentToPaint(wrapper);
+
+    act(() => {
+      wrapper.find('.ant-select-selector').simulate('mousedown');
+      wrapper.update();
+    });
+
+    expect(wrapper.find('.ant-select-item').length).toBe(1);
+
+    await waitForComponentToPaint(wrapper);
   });
 
   it('📦 Select support labelInValue single', async () => {
@@ -1562,6 +1847,264 @@ describe('ProForm', () => {
     expect(onFinish).toBeCalledWith('open');
   });
 
+  it('📦 Select support multiple unnamed async options', async () => {
+    const wrapper = mount(
+      <>
+        <ProFormSelect id="select1" request={async () => [{ value: 1 }]} />
+        <ProFormSelect id="select2" request={async () => [{ value: 2 }]} />
+      </>,
+    );
+    await waitForComponentToPaint(wrapper);
+
+    act(() => {
+      wrapper.find('.ant-select-selector').at(0).simulate('mousedown');
+      wrapper.find('.ant-select-selector').at(1).simulate('mousedown');
+      wrapper.update();
+    });
+    await waitForComponentToPaint(wrapper);
+
+    expect(wrapper.find('#select1 .ant-select-item').at(0).text()).toBe('1');
+    expect(wrapper.find('#select2 .ant-select-item').at(0).text()).toBe('2');
+  });
+
+  it('📦 Select support multiple and autoClearSearchValue: false ', async () => {
+    const onSearch = jest.fn();
+    const onFinish = jest.fn();
+
+    const wrapper = mount(
+      <ProForm
+        onFinish={async (values) => {
+          onFinish(values?.userQuery?.length);
+        }}
+      >
+        <ProFormSelect
+          name="userQuery"
+          label="产品选择"
+          placeholder="测试 placeholder"
+          fieldProps={{
+            mode: 'multiple',
+            autoClearSearchValue: false,
+            searchOnFocus: true,
+            onSearch: (e) => onSearch(e),
+          }}
+          options={[
+            {
+              value: '2',
+              label: '网点2',
+            },
+            {
+              value: '21',
+              label: '网点21',
+            },
+            {
+              value: '22',
+              label: '网点22',
+            },
+            {
+              value: '3',
+              label: '网点3',
+            },
+            {
+              value: '31',
+              label: '网点31',
+            },
+            {
+              value: '32',
+              label: '网点32',
+            },
+            {
+              value: '33',
+              label: '网点33',
+            },
+          ]}
+        />
+      </ProForm>,
+    );
+
+    // 点击搜索框
+    act(() => {
+      wrapper.find('.ant-select-selector').simulate('mousedown');
+      wrapper.update();
+    });
+
+    await waitForComponentToPaint(wrapper);
+
+    // 默认展示所有的7个选项
+    expect(wrapper.find('div.ant-select-item.ant-select-item-option').length).toBe(7);
+    // 默认输入框没有内容
+    expect(wrapper.find('.ant-select-item-option-content div span').length).toBe(0);
+    // input 元素的内容也为空
+    expect(wrapper.find('input.ant-select-selection-search-input').props().value).toBe('');
+
+    // 输入搜索内容
+    act(() => {
+      wrapper.find('.ant-select-selection-search-input').simulate('change', {
+        target: {
+          value: '2',
+        },
+      });
+    });
+
+    await waitForComponentToPaint(wrapper);
+
+    // 应该有4个item 被筛选出来
+    expect(wrapper.find('div.ant-select-item.ant-select-item-option').length).toBe(4);
+    // input 也有输入的内容
+    expect(wrapper.find('input.ant-select-selection-search-input').props().value).toBe('2');
+
+    // 选中第一个
+    act(() => {
+      wrapper.find('.ant-select-item').at(0).simulate('click');
+    });
+    await waitForComponentToPaint(wrapper);
+
+    // 选中的内容出现在 input 中
+    expect(wrapper.find('.ant-select-item-option-content').at(0).text()).toBe('网点2');
+    expect(wrapper.find('input.ant-select-selection-search-input').props().value).toBe('2');
+    // 搜索的结果, 应该保持不变
+    expect(wrapper.find('div.ant-select-item.ant-select-item-option').length).toBe(4);
+
+    // 继续选中第二个
+    act(() => {
+      wrapper.find('.ant-select-item').at(1).simulate('click');
+    });
+    await waitForComponentToPaint(wrapper);
+
+    // 选中的内容出现在 input 中
+    expect(wrapper.find('.ant-select-item-option-content').at(1).text()).toBe('网点21');
+    expect(wrapper.find('input.ant-select-selection-search-input').props().value).toBe('2');
+
+    act(() => {
+      wrapper.find('.ant-select-selector').simulate('mousedown');
+      wrapper.update();
+    });
+
+    act(() => {
+      wrapper.find('.ant-btn-primary').simulate('submit');
+    });
+
+    // 多次提交需要阻止
+    act(() => {
+      wrapper.find('.ant-btn-primary').simulate('submit');
+    });
+
+    await waitForComponentToPaint(wrapper);
+
+    expect(onFinish).toBeCalledWith(2);
+  });
+
+  it('📦 Select support multiple and autoClearSearchValue: true', async () => {
+    const onSearch = jest.fn();
+    const onFinish = jest.fn();
+
+    const wrapper = mount(
+      <ProForm
+        onFinish={async (values) => {
+          onFinish(values?.userQuery?.length);
+        }}
+      >
+        <ProFormSelect
+          name="userQuery"
+          label="产品选择"
+          placeholder="测试 placeholder"
+          fieldProps={{
+            mode: 'multiple',
+            autoClearSearchValue: true,
+            searchOnFocus: true,
+            onSearch: (e) => onSearch(e),
+          }}
+          options={[
+            {
+              value: '2',
+              label: '网点2',
+            },
+            {
+              value: '21',
+              label: '网点21',
+            },
+            {
+              value: '22',
+              label: '网点22',
+            },
+            {
+              value: '3',
+              label: '网点3',
+            },
+            {
+              value: '31',
+              label: '网点31',
+            },
+            {
+              value: '32',
+              label: '网点32',
+            },
+            {
+              value: '33',
+              label: '网点33',
+            },
+          ]}
+        />
+      </ProForm>,
+    );
+
+    // 点击搜索框
+    act(() => {
+      wrapper.find('.ant-select-selector').simulate('mousedown');
+      wrapper.update();
+    });
+
+    await waitForComponentToPaint(wrapper);
+
+    // 默认展示所有的7个选项
+    expect(wrapper.find('div.ant-select-item.ant-select-item-option').length).toBe(7);
+    // 默认输入框没有内容
+    expect(wrapper.find('.ant-select-item-option-content div span').length).toBe(0);
+    // input 元素的内容也为空
+    expect(wrapper.find('input.ant-select-selection-search-input').props().value).toBe('');
+
+    // 输入搜索内容
+    act(() => {
+      wrapper.find('.ant-select-selection-search-input').simulate('change', {
+        target: {
+          value: '2',
+        },
+      });
+    });
+
+    await waitForComponentToPaint(wrapper);
+
+    // 应该有4个item 被筛选出来
+    expect(wrapper.find('div.ant-select-item.ant-select-item-option').length).toBe(4);
+    // input 也有输入的内容
+    expect(wrapper.find('input.ant-select-selection-search-input').props().value).toBe('2');
+
+    // 选中第一个
+    act(() => {
+      wrapper.find('.ant-select-item').at(0).simulate('click');
+    });
+    await waitForComponentToPaint(wrapper);
+
+    // 选中的内容出现在 input 中
+    expect(wrapper.find('.ant-select-item-option-content').at(0).text()).toBe('网点2');
+    // 选中后， 会自动清空搜索内容
+    expect(wrapper.find('input.ant-select-selection-search-input').props().value).toBe('');
+    // 搜索的结果, 恢复到原始结果
+    expect(wrapper.find('div.ant-select-item.ant-select-item-option').length).toBe(7);
+
+    act(() => {
+      wrapper.find('.ant-btn-primary').simulate('submit');
+    });
+
+    // 多次提交需要阻止
+    act(() => {
+      wrapper.find('.ant-btn-primary').simulate('submit');
+    });
+
+    await waitForComponentToPaint(wrapper);
+
+    expect(onFinish).toBeCalledWith(1);
+  });
+
   it('📦 ColorPicker support rgba', async () => {
     const onFinish = jest.fn();
     const wrapper = mount(
@@ -1597,5 +2140,222 @@ describe('ProForm', () => {
     });
     await waitForComponentToPaint(wrapper, 100);
     expect(onFinish).toBeCalledWith('rgba(91, 143, 249, 0.02)');
+  });
+
+  it('📦 validateFieldsReturnFormatValue', async () => {
+    const fn1 = jest.fn();
+    const fn2 = jest.fn();
+    const App = () => {
+      const formRef = useRef<
+        ProFormInstance<{
+          date: string;
+        }>
+      >();
+
+      useEffect(() => {
+        formRef.current?.validateFieldsReturnFormatValue?.().then((val) => {
+          fn1(val.date);
+        });
+      }, []);
+
+      return (
+        <ProForm
+          onValuesChange={async () => {
+            formRef.current?.validateFieldsReturnFormatValue?.().then((val) => {
+              fn2(val.date);
+            });
+          }}
+          formRef={formRef}
+        >
+          <ProFormDatePicker
+            name="date"
+            initialValue={moment('2021-08-09')}
+            fieldProps={{ open: true }}
+          />
+        </ProForm>
+      );
+    };
+
+    const wrapper = mount(<App />);
+    await waitForComponentToPaint(wrapper);
+
+    expect(fn1).toHaveBeenCalledWith('2021-08-09');
+
+    act(() => {
+      wrapper.find('.ant-picker-cell').at(2).simulate('click');
+    });
+    await waitForComponentToPaint(wrapper, 100);
+    expect(fn2).toHaveBeenCalledWith('2021-07-28');
+    act(() => {
+      expect(wrapper.render()).toMatchSnapshot();
+    });
+  });
+
+  it('📦 DigitRange Will return undefined when both value equal to undefined', async () => {
+    const onFinish = jest.fn();
+    const wrapper = mount(
+      <ProForm
+        onFinish={async (values) => {
+          onFinish(values?.digitRange);
+        }}
+      >
+        <ProFormDigitRange name="digitRange" />
+      </ProForm>,
+    );
+    await waitForComponentToPaint(wrapper);
+
+    // 测试基本功能
+    act(() => {
+      wrapper
+        .find('.ant-input-number-input')
+        .at(0)
+        .simulate('change', {
+          target: {
+            value: '1',
+          },
+        });
+    });
+
+    await waitForComponentToPaint(wrapper, 100);
+
+    act(() => {
+      wrapper
+        .find('.ant-input-number-input')
+        .at(1)
+        .simulate('change', {
+          target: {
+            value: '2',
+          },
+        });
+    });
+
+    await waitForComponentToPaint(wrapper, 100);
+
+    act(() => {
+      wrapper.find('button.ant-btn-primary').simulate('click');
+    });
+
+    await waitForComponentToPaint(wrapper, 100);
+
+    expect(onFinish).toBeCalledWith([1, 2]);
+
+    // 测试清空两个值
+    act(() => {
+      wrapper
+        .find('.ant-input-number-input')
+        .at(0)
+        .simulate('change', {
+          target: {
+            value: '',
+          },
+        });
+    });
+
+    await waitForComponentToPaint(wrapper, 100);
+
+    act(() => {
+      wrapper
+        .find('.ant-input-number-input')
+        .at(1)
+        .simulate('change', {
+          target: {
+            value: '',
+          },
+        });
+    });
+
+    await waitForComponentToPaint(wrapper, 100);
+
+    act(() => {
+      wrapper.find('.ant-input-number-input').at(1).simulate('blur');
+    });
+
+    await waitForComponentToPaint(wrapper, 100);
+
+    act(() => {
+      wrapper.find('button.ant-btn-primary').simulate('click');
+    });
+
+    await waitForComponentToPaint(wrapper, 100);
+
+    expect(onFinish).toBeCalledWith(undefined);
+  });
+
+  it('📦 when dateFormatter is a Function', async () => {
+    const fn1 = jest.fn();
+    const fn2 = jest.fn();
+    const App = () => {
+      return (
+        <ProForm
+          dateFormatter={(value, valueType) => {
+            fn1(value.format('YYYY/MM/DD HH:mm:ss'), valueType);
+            return value.format('YYYY/MM/DD HH:mm:ss');
+          }}
+          onFinish={async (values) => {
+            fn2(values.datetime);
+            return true;
+          }}
+        >
+          <ProFormDateTimePicker
+            name="datetime"
+            initialValue={moment('2021-08-09 12:12:12')}
+            fieldProps={{ open: true }}
+          />
+        </ProForm>
+      );
+    };
+
+    const wrapper = mount(<App />);
+    await waitForComponentToPaint(wrapper);
+
+    expect(fn1).toBeCalledWith('2021/08/09 12:12:12', 'dateTime');
+    act(() => {
+      wrapper.find('button.ant-btn-primary').at(1).simulate('click');
+    });
+
+    await waitForComponentToPaint(wrapper, 100);
+    expect(fn2).toHaveBeenCalledWith('2021/08/09 12:12:12');
+
+    act(() => {
+      expect(wrapper.render()).toMatchSnapshot();
+    });
+  });
+
+  it(`📦 rules change should rerender`, () => {
+    const html = reactRender(
+      <ProForm>
+        <ProFormText
+          width="md"
+          rules={[
+            {
+              required: true,
+              message: 'test',
+            },
+          ]}
+          name="function"
+          label="生效方式"
+        />
+      </ProForm>,
+    );
+
+    expect(html.baseElement.querySelectorAll('.ant-form-item-required').length).toBe(1);
+
+    html.rerender(
+      <ProForm>
+        <ProFormText
+          width="md"
+          rules={[
+            {
+              required: false,
+              message: 'test',
+            },
+          ]}
+          name="function"
+          label="生效方式"
+        />
+      </ProForm>,
+    );
+
+    expect(html.baseElement.querySelectorAll('.ant-form-item-required').length).toBe(0);
   });
 });

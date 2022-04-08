@@ -1,6 +1,5 @@
 ﻿import type { ProFieldEmptyText } from 'infrad-pro-field';
-import type { ProFormProps, QueryFilterProps } from 'infrad-pro-form';
-import type { ParamsType } from 'infrad-pro-provider';
+import type { LightWrapperProps, ProFormProps, QueryFilterProps } from 'infrad-pro-form';
 import type {
   ProCoreActionType,
   ProSchema,
@@ -28,6 +27,9 @@ import type { ColumnsState, useContainer } from './container';
 import type { SearchConfig, TableFormItem } from './components/Form/FormRender';
 import type { LabelTooltipType } from 'infrad/lib/form/FormItemLabel';
 import type { SizeType } from 'infrad/lib/config-provider/SizeContext';
+import type { NamePath } from 'infrad/lib/form/interface';
+import type React from 'react';
+import type { SearchProps } from 'infrad/lib/input';
 
 export type PageInfo = {
   pageSize: number;
@@ -133,14 +135,28 @@ export type ProColumnType<T = unknown, ValueType = 'text'> = ProSchema<
 
     /** Form 的排序 */
     order?: number;
+
     /** 可编辑表格是否可编辑 */
     editable?: boolean | ProTableEditableFnType<T>;
 
     /** @private */
     listKey?: string;
+
+    /** 只读 */
+    readonly?: boolean;
+
+    /** 列设置的 disabled */
+    disable?:
+      | boolean
+      | {
+          checkbox: boolean;
+        };
   },
   ProSchemaComponentTypes,
-  ValueType
+  ValueType,
+  {
+    lightProps?: LightWrapperProps;
+  }
 >;
 
 export type ProColumnGroupType<RecordType, ValueType> = {
@@ -160,17 +176,53 @@ export type Bordered =
       table?: boolean;
     };
 
+export type ColumnsStateType = {
+  /**
+   * 持久化的类型，支持 localStorage 和 sessionStorage
+   *
+   * @param localStorage 设置在关闭浏览器后也是存在的
+   * @param sessionStorage 关闭浏览器后会丢失
+   */
+  persistenceType?: 'localStorage' | 'sessionStorage';
+  /** 持久化的key，用于存储到 storage 中 */
+  persistenceKey?: string;
+  /** ColumnsState 的值，columnsStateMap将会废弃 */
+  defaultValue?: Record<string, ColumnsState>;
+  /** ColumnsState 的值，columnsStateMap将会废弃 */
+  value?: Record<string, ColumnsState>;
+  onChange?: (map: Record<string, ColumnsState>) => void;
+};
+
 /** ProTable 的类型定义 继承自 antd 的 Table */
-export type ProTableProps<T, U extends ParamsType, ValueType = 'text'> = {
+export type ProTableProps<T, U, ValueType = 'text'> = {
   columns?: ProColumns<T, ValueType>[];
   /** @name ListToolBar 的属性 */
   toolbar?: ListToolBarProps;
+  /**
+   * 幽灵模式，即是否取消卡片内容区域的 padding 和 卡片的背景颜色。
+   */
+  ghost?: boolean;
 
+  /**
+   * request 的参数，修改之后会触发更新
+   */
   params?: U;
 
+  /**
+   * 列状态配置，可以配置是否浮动和是否展示
+   *
+   * @deprecated 请使用 columnsState.value 代替
+   */
   columnsStateMap?: Record<string, ColumnsState>;
-
+  /**
+   * 列状态配置修改触发事件
+   *
+   * @deprecated 请使用 columnsState.onChange 代替
+   */
   onColumnsStateChange?: (map: Record<string, ColumnsState>) => void;
+
+  /** 列状态的配置，可以用来操作列功能 */
+  columnsState?: ColumnsStateType;
 
   onSizeChange?: (size: DensitySize) => void;
 
@@ -211,7 +263,7 @@ export type ProTableProps<T, U extends ParamsType, ValueType = 'text'> = {
   defaultData?: T[];
 
   /** @name 初始化的参数，可以操作 table */
-  actionRef?: React.MutableRefObject<ActionType | undefined> | ((actionRef: ActionType) => void);
+  actionRef?: React.Ref<ActionType | undefined>;
 
   /** @name 操作自带的 form */
   formRef?: TableFormItem<T>['formRef'];
@@ -266,7 +318,11 @@ export type ProTableProps<T, U extends ParamsType, ValueType = 'text'> = {
    *
    * @name 如何格式化日期
    */
-  dateFormatter?: 'string' | 'number' | false;
+  dateFormatter?:
+    | 'string'
+    | 'number'
+    | ((value: moment.Moment, valueType: string) => string | number)
+    | false;
   /** @name 格式化搜索表单提交数据 */
   beforeSearchSubmit?: (params: Partial<U>) => any;
   /**
@@ -312,10 +368,23 @@ export type ProTableProps<T, U extends ParamsType, ValueType = 'text'> = {
   onDataSourceChange?: (dataSource: T[]) => void;
   /** @name 查询表单和 Table 的卡片 border 配置 */
   cardBordered?: Bordered;
-  /** Debounce time */
+  /** @name 去抖时间 */
   debounceTime?: number;
+  /**
+   * 只在request 存在的时候生效，可编辑表格也不会生效
+   *
+   * @default true
+   * @name 窗口聚焦时自动重新请求
+   */
+  revalidateOnFocus?: boolean;
   /** 默认的表格大小 */
   defaultSize?: SizeType;
+  /** @name, 可编辑表格的name,通过这个name 可以直接与 form通信，无需嵌套 */
+  name?: NamePath;
+  /**
+   * 错误边界自定义
+   */
+  ErrorBoundary?: any;
 } & Omit<TableProps<T>, 'columns' | 'rowSelection'>;
 
 export type ActionType = ProCoreActionType & {
@@ -344,4 +413,10 @@ export type UseFetchProps = {
   manual: boolean;
   debounceTime?: number;
   polling?: number | ((dataSource: any[]) => number);
+  revalidateOnFocus?: boolean;
+};
+
+export type OptionSearchProps = Omit<SearchProps, 'onSearch'> & {
+  /** 如果 onSearch 返回一个false，直接拦截请求 */
+  onSearch?: (keyword: string) => boolean | undefined;
 };

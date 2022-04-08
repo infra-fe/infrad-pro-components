@@ -1,9 +1,9 @@
 import React from 'react';
 import type { FormItemProps } from 'infrad';
 import type { NamePath } from 'infrad/lib/form/interface';
-import type { ProFieldValueType, SearchTransformKeyFn } from 'infrad-pro-utils';
+import type { ProSchemaValueType, SearchTransformKeyFn } from 'infrad-pro-utils';
 import type { GroupProps, FieldProps } from './interface';
-import type { ProFormInstance } from '.';
+import type { CommonFormProps } from './BaseForm';
 
 export type FiledContextProps = {
   fieldProps?: FieldProps;
@@ -12,15 +12,21 @@ export type FiledContextProps = {
   setFieldValueType?: (
     name: NamePath,
     obj: {
-      valueType?: ProFieldValueType;
+      valueType?: ProSchemaValueType<'text'>;
       dateFormat?: string;
       /** 数据转化的地方 */
       transform?: SearchTransformKeyFn;
     },
   ) => void;
-  formRef?: React.MutableRefObject<ProFormInstance>;
-};
+  /** Form 组件的类型 */
+  formComponentType?: string;
+
+  /** 表单的 getPopupContainer 控制 */
+  getPopupContainer?: (e: HTMLElement) => ParentNode;
+} & Pick<CommonFormProps, 'formRef' | 'grid'>;
 
 const FieldContext = React.createContext<FiledContextProps>({});
+
+export { FieldContext };
 
 export default FieldContext;

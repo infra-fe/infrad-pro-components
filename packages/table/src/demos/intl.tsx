@@ -11,6 +11,7 @@ import viVNIntl from 'infrad/lib/locale/vi_VN';
 import itITIntl from 'infrad/lib/locale/it_IT';
 import jaJPIntl from 'infrad/lib/locale/ja_JP';
 import esESIntl from 'infrad/lib/locale/es_ES';
+import caESIntl from 'infrad/lib/locale/ca_ES';
 import ruRUIntl from 'infrad/lib/locale/ru_RU';
 import srRSIntl from 'infrad/lib/locale/sr_RS';
 import msMYIntl from 'infrad/lib/locale/ms_MY';
@@ -26,6 +27,7 @@ const intlMap = {
   itITIntl,
   jaJPIntl,
   esESIntl,
+  caESIntl,
   ruRUIntl,
   srRSIntl,
   msMYIntl,

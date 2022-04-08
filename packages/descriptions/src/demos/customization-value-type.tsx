@@ -3,6 +3,7 @@ import type { ProColumns } from 'infrad-pro-table';
 import ProDescriptions from 'infrad-pro-descriptions';
 import ProProvider from 'infrad-pro-provider';
 import { Input, Space, Tag } from 'infrad';
+import type { InputRef } from 'infrad';
 
 const valueEnum = {
   0: 'close',
@@ -46,7 +47,7 @@ const TagList: React.FC<{
     }[],
   ) => void;
 }> = ({ value, onChange }) => {
-  const ref = useRef<Input | null>(null);
+  const ref = useRef<InputRef | null>(null);
   const [newTags, setNewTags] = useState<
     {
       key: string;

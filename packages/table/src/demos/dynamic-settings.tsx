@@ -1,5 +1,5 @@
-import { DownOutlined } from 'infra-design-icons';
-import React, { useState } from 'react';
+import { DownOutlined } from '@ant-design/icons';
+import React, { useState, useRef } from 'react';
 import ProForm, {
   ProFormDigit,
   ProFormRadio,
@@ -16,6 +16,7 @@ import ProTable from 'infrad-pro-table';
 import { useDebounceFn } from 'infrad-pro-utils';
 import ProCard from 'infrad-pro-card';
 import { Button } from 'infrad';
+import type { ProFormInstance } from 'infrad-pro-form';
 
 const valueTypeArray = [
   'password',
@@ -156,6 +157,8 @@ const initData = {
 };
 
 const DynamicSettings = () => {
+  const ref = useRef<ProFormInstance>();
+
   const [config, setConfig] = useState<any>(initData);
 
   /** 去抖配置 */
@@ -186,6 +189,7 @@ const DynamicSettings = () => {
       >
         <ProTable
           {...config}
+          formRef={ref}
           pagination={
             config.pagination?.show
               ? config.pagination
@@ -201,7 +205,13 @@ const DynamicSettings = () => {
           }
           options={config.options?.show ? config.options : false}
           toolBarRender={
-            config?.toolBarRender ? () => [<Button type="primary">刷新</Button>] : false
+            config?.toolBarRender
+              ? () => [
+                  <Button key="refresh" type="primary">
+                    刷新
+                  </Button>,
+                ]
+              : false
           }
           footer={config.footer ? () => 'Here is footer' : false}
           headerTitle={config.headerTitle}
@@ -666,6 +676,11 @@ const DynamicSettings = () => {
                   width="xs"
                   label="值类型"
                   name="valueType"
+                  fieldProps={{
+                    onChange: () => {
+                      ref.current?.resetFields();
+                    },
+                  }}
                   options={valueTypeArray.map((value) => ({
                     label: value,
                     value,

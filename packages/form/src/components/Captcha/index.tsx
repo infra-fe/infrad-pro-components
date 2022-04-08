@@ -2,7 +2,7 @@
 import { Button, Input, Form } from 'infrad';
 import type { NamePath } from 'infrad/lib/form/interface';
 import React, { useState, useEffect } from 'react';
-import createField from '../../BaseForm/createField';
+import { createField } from '../../BaseForm/createField';
 import type { ProFormFieldItemProps } from '../../interface';
 
 export type ProFormCaptchaProps = ProFormFieldItemProps<InputProps> & {
@@ -73,6 +73,7 @@ const ProFormCaptcha: React.FC<ProFormCaptchaProps> = React.forwardRef((props, r
       }, 1000);
     }
     return () => clearInterval(interval);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [timing]);
 
   return (

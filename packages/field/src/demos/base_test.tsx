@@ -35,6 +35,9 @@ export default () => {
         <Descriptions.Item label="文本">
           <Field text="这是一段文本" valueType="text" mode={state} plain={plain} />
         </Descriptions.Item>
+        <Descriptions.Item label="颜色">
+          <Field text="blue" valueType="color" mode={state} plain={plain} />
+        </Descriptions.Item>
         <Descriptions.Item label="图片">
           <Field
             text="https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png"
@@ -48,8 +51,12 @@ export default () => {
         </Descriptions.Item>
         <Descriptions.Item label="金额">
           <Field
+            numberPopoverRender
             fieldProps={{
-              precision: 4,
+              precision: 2,
+              style: {
+                width: 200,
+              },
             }}
             text="10000"
             valueType="money"
@@ -59,6 +66,9 @@ export default () => {
         </Descriptions.Item>
         <Descriptions.Item label="数字">
           <Field text="19897979797979" valueType="digit" mode={state} plain={plain} />
+        </Descriptions.Item>
+        <Descriptions.Item label="数字范围">
+          <Field text={[123, 456]} valueType="digitRange" mode={state} plain={plain} />
         </Descriptions.Item>
         <Descriptions.Item label="秒格式化">
           <Field text={2000000} valueType="second" mode={state} plain={plain} />
@@ -191,6 +201,9 @@ export default () => {
           <Field
             text="open"
             mode={state}
+            params={{
+              name: 'test',
+            }}
             valueType="select"
             request={async () => {
               return [
@@ -205,6 +218,51 @@ export default () => {
                   options: [
                     { label: '不解决', value: 'no' },
                     { label: '已废弃', value: 'clear' },
+                  ],
+                },
+              ];
+            }}
+          />
+        </Descriptions.Item>
+        <Descriptions.Item label="远程级联框">
+          <Field
+            mode={state}
+            params={{
+              name: 'test',
+            }}
+            valueType="cascader"
+            request={async () => {
+              return [
+                {
+                  value: 'zhejiang',
+                  label: 'Zhejiang',
+                  children: [
+                    {
+                      value: 'hangzhou',
+                      label: 'Hangzhou',
+                      children: [
+                        {
+                          value: 'xihu',
+                          label: 'West Lake',
+                        },
+                      ],
+                    },
+                  ],
+                },
+                {
+                  value: 'jiangsu',
+                  label: 'Jiangsu',
+                  children: [
+                    {
+                      value: 'nanjing',
+                      label: 'Nanjing',
+                      children: [
+                        {
+                          value: 'zhonghuamen',
+                          label: 'Zhong Hua Men',
+                        },
+                      ],
+                    },
                   ],
                 },
               ];

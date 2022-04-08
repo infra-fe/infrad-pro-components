@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/ban-types */
 import React from 'react';
 import { mount } from 'enzyme';
 import { WaterMark } from 'infrad-pro-layout';

@@ -5,6 +5,7 @@ import type { LabelTooltipType } from 'infrad/lib/form/FormItemLabel';
 
 export type Breakpoint = 'xxl' | 'xl' | 'lg' | 'md' | 'sm' | 'xs';
 export type Gutter = number | Partial<Record<Breakpoint, number>>;
+// eslint-disable-next-line @typescript-eslint/ban-types
 export type ProCardTabsProps = {} & TabsProps;
 
 export type ColSpanType = number | string;
@@ -60,6 +61,8 @@ export type CardProps = {
   collapsible?: boolean;
   /** 受控 collapsed 属性 */
   collapsed?: boolean;
+  /** 折叠按钮自定义节点 */
+  collapsibleIconRender?: ({ collapsed }: { collapsed: boolean }) => React.ReactNode;
   /** 配置默认是否折叠 */
   defaultCollapsed?: boolean;
   /** 收起卡片的事件 */
@@ -70,6 +73,10 @@ export type CardProps = {
   prefixCls?: string;
   /** ProCard 的 ref */
   ref?: React.Ref<HTMLDivElement | undefined>;
+  /** 是否展示选中样式 */
+  checked?: boolean;
+  /** 选中改变 */
+  onChecked?: (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => void;
 } & Omit<React.HTMLAttributes<HTMLDivElement>, 'title'>;
 
 export type ProCardTabPaneProps = {

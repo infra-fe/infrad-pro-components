@@ -1,6 +1,6 @@
 import { mount } from 'enzyme';
 import React from 'react';
-import { DragSortTable, ProColumns, ProColumnType } from 'infrad-pro-table';
+import { DragSortTable } from 'infrad-pro-table';
 import { waitForComponentToPaint } from '../util';
 import { MenuOutlined } from 'infra-design-icons';
 import { sortData } from '../../packages/table/src/utils';

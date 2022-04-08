@@ -47,6 +47,12 @@ tailPkgs.forEach((pkg) => {
     mode: 'production',
     resolve: {
       extensions: ['.ts', '.tsx', '.json', '.css', '.js', '.less'],
+      alias: {
+        antd: 'infrad',
+        'antd/*': 'infrad/*',
+        'antd/**/*': 'infrad/**/*',
+        'infrad-pro-card': 'infrad-pro-',
+      },
     },
     optimization: isCI
       ? {

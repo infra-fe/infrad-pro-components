@@ -8,12 +8,12 @@ const headPkgs: string[] = [
   'provider',
   'utils',
   'layout',
+  'card',
   'field',
   'skeleton',
   'layout',
   'form',
   'table',
-  'card',
   'list',
 ];
 const tailPkgs = readdirSync(join(__dirname, 'packages')).filter(
@@ -28,7 +28,11 @@ if (type === 'lib') {
   config = {
     cjs: { type: 'babel', lazy: true },
     esm: false,
+    runtimeHelpers: true,
     pkgs: [...headPkgs, ...tailPkgs],
+    extraBabelPlugins: [
+      ['babel-plugin-import', { libraryName: 'antd', libraryDirectory: 'es', style: true }, 'antd'],
+    ],
   };
 }
 
@@ -38,14 +42,11 @@ if (type === 'es') {
     esm: {
       type: 'babel',
     },
+    runtimeHelpers: true,
     pkgs: [...headPkgs, ...tailPkgs],
     extraBabelPlugins: [
-      [
-        'babel-plugin-import',
-        { libraryName: 'infrad', libraryDirectory: 'es', style: true },
-        'infrad',
-      ],
       [require('./scripts/replaceLib')],
+      ['babel-plugin-import', { libraryName: 'antd', libraryDirectory: 'es', style: true }, 'antd'],
     ],
   };
 }

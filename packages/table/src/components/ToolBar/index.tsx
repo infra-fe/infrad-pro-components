@@ -1,8 +1,7 @@
 import React, { useEffect, useMemo } from 'react';
-import { ReloadOutlined, SettingOutlined } from 'infra-design-icons';
+import { ReloadOutlined, SettingOutlined } from '@ant-design/icons';
 import type { TableColumnType } from 'infrad';
 import { Tooltip } from 'infrad';
-import type { SearchProps } from 'infrad/lib/input';
 import type { IntlType } from 'infrad-pro-provider';
 import { useIntl } from 'infrad-pro-provider';
 import type { ListToolBarProps } from '../ListToolBar';
@@ -12,14 +11,9 @@ import './index.less';
 import FullScreenIcon from './FullscreenIcon';
 import DensityIcon from './DensityIcon';
 import Container from '../../container';
-import type { ActionType, ProTableProps } from '../../typing';
+import type { ActionType, ProTableProps, OptionSearchProps } from '../../typing';
 import { omitUndefined, isDeepEqualReact } from 'infrad-pro-utils';
 import type { LabelTooltipType } from 'infrad/lib/form/FormItemLabel';
-
-type OptionSearchProps = Omit<SearchProps, 'onSearch'> & {
-  /** 如果 onSearch 返回一个false，直接拦截请求 */
-  onSearch?: (keyword: string) => boolean | undefined;
-};
 
 export type OptionConfig = {
   density?: boolean;
@@ -30,13 +24,19 @@ export type OptionConfig = {
     | {
         draggable?: boolean;
         checkable?: boolean;
+        checkedReset?: boolean;
+        extra?: React.ReactNode;
+        children?: React.ReactNode;
       };
   search?: (OptionSearchProps & { name?: string }) | boolean;
 };
 
-export type OptionsType =
-  | ((e: React.MouseEvent<HTMLSpanElement>, action?: ActionType) => void)
-  | boolean;
+export type OptionsFunctionType = (
+  e: React.MouseEvent<HTMLSpanElement>,
+  action?: ActionType,
+) => void;
+
+export type OptionsType = OptionsFunctionType | boolean;
 
 export type ToolBarProps<T = unknown> = {
   headerTitle?: React.ReactNode;
@@ -51,7 +51,7 @@ export type ToolBarProps<T = unknown> = {
       selectedRows?: T[];
     },
   ) => React.ReactNode[];
-  action?: React.MutableRefObject<ActionType | undefined>;
+  action: React.MutableRefObject<ActionType | undefined>;
   options?: OptionConfig | false;
   selectedRowKeys?: (string | number)[];
   selectedRows?: T[];
@@ -96,6 +96,7 @@ function renderDefaultOption<T>(
   defaultOptions: OptionConfig & {
     intl: IntlType;
   },
+  actions: React.MutableRefObject<ActionType | undefined>,
   columns: TableColumnType<T>[],
 ) {
   return Object.keys(options)
@@ -105,12 +106,20 @@ function renderDefaultOption<T>(
       if (!value) {
         return null;
       }
+
+      let onClick: OptionsFunctionType =
+        value === true ? defaultOptions[key] : (event) => value?.(event, actions.current);
+
+      if (typeof onClick !== 'function') {
+        onClick = () => {};
+      }
+
       if (key === 'setting') {
         return <ColumnSetting {...options[key]} columns={columns} key={key} />;
       }
       if (key === 'fullScreen') {
         return (
-          <span key={key} onClick={value === true ? defaultOptions[key] : value}>
+          <span key={key} onClick={onClick}>
             <FullScreenIcon />
           </span>
         );
@@ -118,18 +127,7 @@ function renderDefaultOption<T>(
       const optionItem = getButtonText(defaultOptions)[key];
       if (optionItem) {
         return (
-          <span
-            key={key}
-            onClick={() => {
-              if (value && defaultOptions[key] !== true) {
-                if (value !== true) {
-                  value();
-                  return;
-                }
-                defaultOptions[key]();
-              }
-            }}
-          >
+          <span key={key} onClick={onClick}>
             <Tooltip title={optionItem.text}>{optionItem.icon}</Tooltip>
           </span>
         );
@@ -179,6 +177,7 @@ function ToolBar<T>({
         ...defaultOptions,
         intl,
       },
+      action,
       columns,
     );
   }, [action, columns, intl, propsOptions]);
@@ -263,7 +262,6 @@ class ToolbarRender<T> extends React.Component<ToolbarRenderProps<T>> {
 
     onFormSearchSubmit(
       omitUndefined({
-        // ...formSearch,
         _timestamp: Date.now(),
         [name]: keyword,
       }),
@@ -308,6 +306,7 @@ class ToolbarRender<T> extends React.Component<ToolbarRenderProps<T>> {
         actionRef: next.actionRef,
         toolBarRender: next.toolBarRender,
       },
+      ['render', 'renderFormItem'],
     );
   };
   shouldComponentUpdate = (next: ToolbarRenderProps<T>) => {

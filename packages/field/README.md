@@ -1,6 +1,4 @@
-# @umijs/plugin-field
-
-> Umi plugin for access management..
+# @ant-design/pro-field
 
 See our website [infrad-pro-field](https://procomponent.ant.design/) for more information.
 

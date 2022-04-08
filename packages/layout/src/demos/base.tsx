@@ -133,12 +133,13 @@ export default () => {
       </ProLayout>
       <SettingDrawer
         pathname={pathname}
+        enableDarkTheme
         getContainer={() => document.getElementById('test-pro-layout')}
         settings={settings}
         onSettingChange={(changeSetting) => {
           setSetting(changeSetting);
         }}
-        disableUrlParams
+        disableUrlParams={false}
       />
     </div>
   );

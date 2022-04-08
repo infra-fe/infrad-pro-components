@@ -8,6 +8,7 @@ import classNames from 'classnames';
 import omit from 'omit.js';
 import Loading from '../Loading';
 import Actions from '../Actions';
+
 import './index.less';
 
 const { useBreakpoint } = Grid;
@@ -40,8 +41,11 @@ const Card = React.forwardRef((props: CardProps, ref: any) => {
     direction,
     collapsed: controlCollapsed,
     collapsible = false,
+    collapsibleIconRender,
     defaultCollapsed = false,
     onCollapse,
+    checked,
+    onChecked,
     tabs,
     type,
     ...rest
@@ -151,7 +155,7 @@ const Card = React.forwardRef((props: CardProps, ref: any) => {
             }),
           }}
           // eslint-disable-next-line react/no-array-index-key
-          key={`pro-card-col-${index}`}
+          key={`pro-card-col-${element?.key || index}`}
           className={columnClassName}
         >
           {React.cloneElement(element)}
@@ -171,6 +175,7 @@ const Card = React.forwardRef((props: CardProps, ref: any) => {
     [`${prefixCls}-size-${size}`]: size,
     [`${prefixCls}-type-${type}`]: type,
     [`${prefixCls}-collapse`]: collapsed,
+    [`${prefixCls}-checked`]: checked,
   });
 
   const bodyCls = classNames(`${prefixCls}-body`, {
@@ -201,19 +206,28 @@ const Card = React.forwardRef((props: CardProps, ref: any) => {
   );
 
   // 非受控情况下展示
-  const collapsibleButton = collapsible && controlCollapsed === undefined && (
-    <RightOutlined
-      rotate={!collapsed ? 90 : undefined}
-      className={`${prefixCls}-collapsible-icon`}
-    />
-  );
+  const collapsibleButton =
+    collapsible &&
+    controlCollapsed === undefined &&
+    (collapsibleIconRender ? (
+      collapsibleIconRender({ collapsed })
+    ) : (
+      <RightOutlined
+        rotate={!collapsed ? 90 : undefined}
+        className={`${prefixCls}-collapsible-icon`}
+      />
+    ));
 
   return (
     <div
       className={cardCls}
       style={style}
       ref={ref}
-      {...omit(rest, ['id', 'prefixCls', 'colSpan'])}
+      onClick={(e) => {
+        onChecked?.(e);
+        rest?.onClick?.(e);
+      }}
+      {...omit(rest, ['prefixCls', 'colSpan'])}
     >
       {(title || extra || collapsibleButton) && (
         <div
@@ -230,7 +244,7 @@ const Card = React.forwardRef((props: CardProps, ref: any) => {
             {collapsibleButton}
             <LabelIconTip label={title} tooltip={tooltip || tip} subTitle={subTitle} />
           </div>
-          <div className={`${prefixCls}-extra`}>{extra}</div>
+          {extra && <div className={`${prefixCls}-extra`}>{extra}</div>}
         </div>
       )}
       {tabs ? (

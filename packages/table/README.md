@@ -61,11 +61,9 @@ ProTable puts a layer of wrapping on top of antd's Table, supports some presets,
 | tableStyle | The style of the wrapped table | [CSSProperties](https://www.htmlhelp.com/reference/css/properties.html) | - |
 | options | table toolbar, not shown when set to false | `{{ fullScreen: boolean \| function, reload: boolean \| function,setting: true }}` | `{ fullScreen: true, reload:true, setting: true}`` |
 | search | Whether to display the search form, pass in the object for the search form configuration | `false`\| [SearchConfig](#search-search-form) | true |
-| dateFormatter | Converts moment format data to a specific type, false does not convert | `"string"` \| `"number"` \| `false` | `"string"` |
+| dateFormatter | Converts moment format data to a specific type, false does not convert | `"string"` \| `"number"` \| ((value: Moment, valueType: string) => string \| number) \| `false` | `"string"` |
 | beforeSearchSubmit | make some changes before searching | `(params:T)=>T` | - |
 | onSizeChange | table size changed | `(size: 'default' \| 'middle' \| 'small') => void` | - |
-| columnsStateMap | State enumeration for columns | `{key:{ show,fixed }}}` | - |
-| onColumnsStateChange | columns state changed | `(props: {key:{ show,fixed }}}) => void` | - |
 | type | pro-table type | `"form"` | - |
 | form | configuration of antd form | [FormProps](https://ant.design/components/form-cn/#API) | - |
 | onSubmit | Triggered when the form is submitted | `(params: U) => void` | - |

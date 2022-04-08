@@ -129,6 +129,7 @@ export default () => {
         <ProDescriptions
           title="高级定义列表"
           {...values}
+          columns={values?.columns?.filter(Boolean) || []}
           request={async () => {
             return Promise.resolve({
               success: true,
@@ -151,7 +152,14 @@ export default () => {
         }}
         submitter={false}
       >
-        <ProCard colSpan="500px" title="配置菜单" tabs={{}}>
+        <ProCard
+          colSpan="500px"
+          title="配置菜单"
+          tabs={{}}
+          style={{
+            width: 500,
+          }}
+        >
           <ProCard.TabPane tab="基本配置" key="base">
             <ProFormText label="标题" name="title" />
             <ProForm.Group>
@@ -199,6 +207,9 @@ export default () => {
             <ProFormList
               name="columns"
               label="列配置"
+              creatorButtonProps={{
+                position: 'top',
+              }}
               itemRender={({ listDom, action }) => {
                 return (
                   <ProCard
@@ -222,7 +233,7 @@ export default () => {
                 );
               }}
             >
-              <ProForm.Group size={16}>
+              <ProForm.Group size={16} key="Group">
                 <ProFormText label="标题" name="title" />
                 <ProFormDigit width="xs" initialValue={1} label="占据列数" name="span" />
                 <ProFormSelect
@@ -247,7 +258,7 @@ export default () => {
                   }}
                 />
               </ProForm.Group>
-              <ProFormDependency name={['valueType', 'valueEnum']}>
+              <ProFormDependency key="valueType" name={['valueType', 'valueEnum']}>
                 {({ valueType, valueEnum }) => {
                   if (valueType !== 'select') {
                     return null;

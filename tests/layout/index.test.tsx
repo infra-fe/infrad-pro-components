@@ -1,10 +1,14 @@
-import { mount, render } from 'enzyme';
+import { mount, render as enzymeRender } from 'enzyme';
 import React, { useState } from 'react';
 import { act } from 'react-dom/test-utils';
+import { render } from '@testing-library/react';
 import type { BasicLayoutProps } from 'infrad-pro-layout';
 import BasicLayout from 'infrad-pro-layout';
 
 import { waitForComponentToPaint } from '../util';
+import { LoginForm, ProFormText } from 'infrad-pro-form';
+import { ConfigProvider } from 'infrad';
+import en_US from 'antd/lib/locale/en_US';
 
 describe('BasicLayout', () => {
   beforeAll(() => {
@@ -12,7 +16,7 @@ describe('BasicLayout', () => {
     process.env.USE_MEDIA = 'md';
   });
   it('🥩 base use', async () => {
-    const html = render(<BasicLayout />);
+    const html = enzymeRender(<BasicLayout />);
     expect(html).toMatchSnapshot();
   });
 
@@ -58,7 +62,7 @@ describe('BasicLayout', () => {
               path: '/home',
               name: '首页',
               locale: 'menu.home',
-              children: [
+              routes: [
                 {
                   path: '/home/overview',
                   name: '概述',
@@ -79,59 +83,59 @@ describe('BasicLayout', () => {
               path: '/data_hui',
               name: '汇总数据',
               locale: 'menu.data_hui',
-              children: [
+              routes: [
                 {
                   collapsed: true,
                   menuName: '域买家维度交易',
                   name: '域买家维度交易',
-                  children: [
+                  routes: [
                     {
                       id: 2,
                       isNavHome: '2',
                       itemId: '191020104',
                       itemName: '_交易_买家_月表',
                       tab: 'adm_rk_cr_tb_trd_byr_ms',
-                      tabProj: 'alifin_odps_birisk',
+                      tabProj: 'alining_odps_biisk',
                       name: '_交易_买家_月表',
-                      path: '/data_hui1?tableName=adm_rk_cr_tb_trd_byr_ms&tableSchema=alifin_odps_birisk',
+                      path: '/data_hui1?tableName=adm_rk_cr_tb_trd_byr_ms&tableSchema=alibis_odps_biisk',
                     },
                     {
                       id: 3,
                       isNavHome: '3',
                       name: '_航旅交易_买家_日表',
-                      path: '/data_hui2?tableName=adm_rk_cr_tb_trv_byr_ds&tableSchema=alifin_odps_birisk',
+                      path: '/data_hui2?tableName=adm_rk_cr_tb_trv_byr_ds&tableSchema=box-shadow',
                     },
                   ],
                 },
                 {
                   collapsed: true,
                   name: '域买家维度交易2',
-                  children: [
+                  routes: [
                     {
                       id: 5,
                       name: '_交易_买家_月表',
-                      path: '/data_hui3?tableName=adm_rk_cr_tb_trd_byr_ms&tableSchema=alifin_odps_birisk',
+                      path: '/data_hui3?tableName=adm_rk_cr_tb_trd_byr_ms&tableSchema=box-shadow',
                     },
                     {
                       id: 6,
                       name: '_航旅交易_买家_日表',
-                      path: '/data_hui4?tableName=adm_rk_cr_tb_trv_byr_ds&tableSchema=alifin_odps_birisk',
+                      path: '/data_hui4?tableName=adm_rk_cr_tb_trv_byr_ds&tableSchema=box-shadow',
                     },
                   ],
                 },
                 {
                   collapsed: true,
                   name: '域买家维度交易3',
-                  children: [
+                  routes: [
                     {
                       id: 7,
                       name: '_交易_买家_月表2',
-                      path: '/data_hui5?tableName=adm_rk_cr_tb_trd_byr_ms&tableSchema=alifin_odps_birisk',
+                      path: '/data_hui5?tableName=adm_rk_cr_tb_trd_byr_ms&tableSchema=box-shadow',
                     },
                     {
                       id: 8,
                       name: '_航旅交易_买家_日表3',
-                      path: '/data_hui6?tableName=adm_rk_cr_tb_trv_byr_ds&tableSchema=alifin_odps_birisk',
+                      path: '/data_hui6?tableName=adm_rk_cr_tb_trv_byr_ds&tableSchema=box-shadow',
                     },
                   ],
                 },
@@ -147,7 +151,7 @@ describe('BasicLayout', () => {
               name: '其他',
 
               locale: 'menu.other',
-              children: [
+              routes: [
                 {
                   path: '/other/upLoad',
                   name: 'odps同步导入',
@@ -199,7 +203,7 @@ describe('BasicLayout', () => {
           {
             path: '/home',
             name: '首页',
-            children: [
+            routes: [
               {
                 path: '/home/overview',
                 name: '概述',
@@ -384,7 +388,7 @@ describe('BasicLayout', () => {
   });
 
   it('🥩 contentStyle should change dom', async () => {
-    const wrapper = render(
+    const wrapper = enzymeRender(
       <BasicLayout
         contentStyle={{
           padding: 56,
@@ -729,7 +733,7 @@ describe('BasicLayout', () => {
   });
 
   it('🥩 BasicLayout menu support menu.true', async () => {
-    const wrapper = render(
+    const wrapper = enzymeRender(
       <>
         <BasicLayout
           menu={{
@@ -1159,7 +1163,7 @@ describe('BasicLayout', () => {
               path: '/home',
               name: '首页',
               locale: 'menu.home',
-              children: [
+              routes: [
                 {
                   path: '/home/overview',
                   name: '概述',
@@ -1178,12 +1182,12 @@ describe('BasicLayout', () => {
               path: '/data_hui',
               name: '汇总数据',
               locale: 'menu.data_hui',
-              children: [
+              routes: [
                 {
                   collapsed: true,
                   menuName: '域买家维度交易',
                   name: '域买家维度交易',
-                  children: [
+                  routes: [
                     {
                       id: 2,
                       name: '月表',
@@ -1191,21 +1195,21 @@ describe('BasicLayout', () => {
                     },
                     {
                       name: '日表',
-                      path: '/data_hui3?tableName=adm_rk_cr_tb_trv_byr_ds&tableSchema=alifin_odps_birisk',
+                      path: '/data_hui3?tableName=adm_rk_cr_tb_trv_byr_ds&tableSchema=box-shadow',
                     },
                   ],
                 },
                 {
                   name: '维度交易',
                   path: '/',
-                  children: [
+                  routes: [
                     {
                       name: '月表',
                       path: '/data_hui4',
                     },
                     {
                       name: '日表',
-                      key: 'tableName=adm_rk_cr_tb_trv_byr_ds&tableSchema=alifin_odps_birisk',
+                      key: 'tableName=adm_rk_cr_tb_trv_byr_ds&tableSchema=box-shadow',
                       path: '/data_hui5',
                     },
                   ],
@@ -1248,7 +1252,7 @@ describe('BasicLayout', () => {
               path: '/home',
               name: '首页',
               locale: 'menu.home',
-              children: [
+              routes: [
                 {
                   path: '/home/overview',
                   name: '概述',
@@ -1267,12 +1271,12 @@ describe('BasicLayout', () => {
               path: '/data_hui',
               name: '汇总数据',
               locale: 'menu.data_hui',
-              children: [
+              routes: [
                 {
                   collapsed: true,
                   menuName: '域买家维度交易',
                   name: '域买家维度交易',
-                  children: [
+                  routes: [
                     {
                       id: 2,
                       name: '月表',
@@ -1280,21 +1284,21 @@ describe('BasicLayout', () => {
                     },
                     {
                       name: '日表',
-                      path: '/data_hui3?tableName=adm_rk_cr_tb_trv_byr_ds&tableSchema=alifin_odps_birisk',
+                      path: '/data_hui3?tableName=adm_rk_cr_tb_trv_byr_ds&tableSchema=box-shadow',
                     },
                   ],
                 },
                 {
                   name: '维度交易',
                   path: '/',
-                  children: [
+                  routes: [
                     {
                       name: '月表',
                       path: '/data_hui4',
                     },
                     {
                       name: '日表',
-                      key: 'tableName=adm_rk_cr_tb_trv_byr_ds&tableSchema=alifin_odps_birisk',
+                      key: 'tableName=adm_rk_cr_tb_trv_byr_ds&tableSchema=box-shadow',
                       path: '/data_hui5',
                     },
                   ],
@@ -1322,5 +1326,88 @@ describe('BasicLayout', () => {
     });
     await waitForComponentToPaint(html, 100);
     expect(html.find('li.ant-menu-submenu-open').length).toBe(3);
+  });
+
+  it('🥩  navTheme=realDark', () => {
+    const html = render(<BasicLayout navTheme="realDark" />);
+    expect(html.baseElement.querySelector('aside.ant-layout-sider')?.getAttribute('style')).toBe(
+      'overflow: hidden; box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 65%); flex: 0 0 208px; max-width: 208px; min-width: 208px; width: 208px;',
+    );
+  });
+
+  it('🥩 formatMessage support', () => {
+    const html = render(
+      <BasicLayout
+        menu={{
+          locale: true,
+        }}
+        route={{
+          routes: [
+            {
+              name: 'home',
+              locale: 'menu.home',
+              path: '/home',
+            },
+          ],
+        }}
+        formatMessage={({
+          id,
+          defaultMessage,
+        }: {
+          id: string;
+          defaultMessage?: string;
+        }): string => {
+          const locales = {
+            'menu.home': '主页',
+          };
+          return locales[id] ? locales[id] : (defaultMessage as string);
+        }}
+      />,
+    );
+
+    expect(html.getByText('主页')).toBeTruthy();
+  });
+
+  it('🥩 pure should has provide', () => {
+    let html = render(
+      <ConfigProvider locale={en_US}>
+        <BasicLayout>
+          <LoginForm>
+            <ProFormText />
+          </LoginForm>
+        </BasicLayout>
+      </ConfigProvider>,
+    );
+    expect(html.container.querySelector('.ant-btn.ant-btn-primary.ant-btn-lg')?.textContent).toBe(
+      'Login',
+    );
+
+    expect(html.getByText('Login')).toBeTruthy();
+
+    html.rerender(
+      <ConfigProvider locale={en_US}>
+        <BasicLayout pure>
+          <LoginForm>
+            <ProFormText />
+          </LoginForm>
+        </BasicLayout>
+      </ConfigProvider>,
+    );
+
+    expect(html.container.querySelector('.ant-btn.ant-btn-primary.ant-btn-lg')?.textContent).toBe(
+      'Login',
+    );
+
+    html = render(
+      <ConfigProvider locale={en_US}>
+        <LoginForm>
+          <ProFormText />
+        </LoginForm>
+      </ConfigProvider>,
+    );
+
+    expect(html.container.querySelector('.ant-btn.ant-btn-primary.ant-btn-lg')?.textContent).toBe(
+      'Login',
+    );
   });
 });

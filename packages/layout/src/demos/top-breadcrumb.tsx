@@ -12,6 +12,7 @@ export default () => (
       location={{
         pathname: '/admin/process/edit/123',
       }}
+      ErrorBoundary={false}
       headerContentRender={() => <ProBreadcrumb />}
       breadcrumbRender={(routers = []) => [
         {
@@ -32,7 +33,7 @@ export default () => (
         {
           path: '/admin',
           name: '管理',
-          children: [
+          routes: [
             {
               name: '申请单列表',
               path: '/admin/process',

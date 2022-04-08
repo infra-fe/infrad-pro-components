@@ -61,11 +61,13 @@ ProForm comes with Filed , which basically corresponds to the valueType one by o
 ### Generic properties
 
 | parameter | description | type | default |
-| --- | --- | --- | --- | --- |
-| width | The length of the Field, we summarize the common Field lengths and suitable scenarios, support some enumeration "xs" , "s" , "m" , "l" , "x" | `number \| "xs" \| "s" \| "m" \| "l" \| "x"` | - | tooltip |
+| --- | --- | --- | --- |
+| width | The length of the Field, we summarize the common Field lengths and suitable scenarios, support some enumeration "xs" , "s" , "m" , "l" , "x" | `number \| "xs" \| "s" \| "m" \| "l" \| "x"` | - |
+| rowProps | Passed to `Row` when `grid` mode is enabled, Applies only to `ProFormGroup`, `ProFormList`, `ProFormFieldSet` | [RowProps](https://ant.design/components/grid/#Row) | { gutter: 8 } |
+| colProps | Passed to `Col` when `grid` mode is enabled | [ColProps](https://ant.design/components/grid/#Col) | { xs: 24 } |
 | tooltip | will add an icon next to the label to show the configured information when hovered | `string \| tooltipProps` | - |
 | secondary | Whether secondary control, only valid for LightFilter | `boolean` | `false` |
-| allowClear | Support for clearing, valid for LightFilter, will also be passed to `fieldProps` | `boolean` | `true` | if actively set. |
+| allowClear | Support for clearing, valid for LightFilter, will also be passed to `fieldProps` if actively set. | `boolean` | `true` |
 
 ### Width
 
@@ -193,7 +195,10 @@ Same as [Input.TextArea](https://ant.design/components/input/#Input.TextArea).
 
 Same as [checkbox](https://ant.design/components/checkbox/), but supports `options` and `layout`.
 
-| parameters | description | type | default | | --- | --- | --- | --- | options | options | Same as select, generates child nodes based on options, recommended. | `string[]` \| `{label:ReactNode,value:string}[]` | - | | layout | Configure the look of the checkbox to support vertical `vertical` and `horizontal` | `horizontal` \| `vertical` | - |
+| parameters | description | type | default |
+| --- | --- | --- | --- | --- |
+| options | options | Same as select, generates child nodes based on options, recommended. | `string[]` \| `{label:ReactNode,value:string}[]` | - |
+| layout | Configure the look of the checkbox to support vertical `vertical` and `horizontal` | `horizontal` \| `vertical` | - |
 
 ```tsx | pure
 <ProFormCheckbox.Group
@@ -210,7 +215,9 @@ Same as [checkbox](https://ant.design/components/checkbox/), but supports `optio
 
 Same as [radio](https://ant.design/components/radio/) but with support for `options`.
 
-| parameters | description | type | default | | --- | --- | --- | --- | options | options | Same as select, generates child nodes based on options, recommended. | `string[]` \| `{label:ReactNode,value:string}[]` | - | | radioType | Set whether button mode or radio mode | `button` \| `radio` | `radio` |
+| parameters | description | type | default |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| options | options | Same as select, generates child nodes based on options, recommended. | `string[]` \| `{label:ReactNode,value:string}[]` | - |  | radioType | Set whether button mode or radio mode | `button` \| `radio` | `radio` |
 
 ```tsx | pure
 <ProFormRadio.Group
@@ -305,7 +312,7 @@ Same as [select](https://ant.design/components/select/). Both request and valueE
 
 | parameters | description | type | default |
 | --- | --- | --- | --- |
-| valueEnum | Enumeration of current values [valueEnum](/components/table#valueenum) | `{[key:string`\|`number]:any}` | - |
+| valueEnum | Enumeration of current values [valueEnum](/components/table#valueenum) | `Record` | - |
 | request | Enumerate data from network requests | `()=>Promise<{[key:string`\|`number]:any}>` | - |
 
 ```tsx | pure
@@ -358,6 +365,75 @@ Customize options：
 />
 ```
 
+### ProFormTreeSelect
+
+Same as [tree-select](https://ant.design/components/tree-select/). Both request and valueEnum are supported to generate options.
+
+> Requesting remote data is more complicated, see [here](/components/field#remote data) for details.
+
+> Why support valueEnum when you have options? valueEnum can be used with tables, descriptions, and has engineering advantages.
+
+| parameters | description | type | default |
+| --- | --- | --- | --- |
+| valueEnum | Enumeration of current values [valueEnum](/components/table#valueenum) | `Record` | - |
+| request | Enumerate data from network requests | `()=>Promise<{[key:string`\|`number]:any}>` | - |
+
+```tsx | pure
+<ProFormTreeSelect
+  name="name"
+  placeholder="Please select"
+  allowClear
+  width={330}
+  secondary
+  request={async () => {
+    return [
+      {
+        title: 'Node1',
+        value: '0-0',
+        children: [
+          {
+            title: 'Child Node1',
+            value: '0-0-0',
+          },
+        ],
+      },
+      {
+        title: 'Node2',
+        value: '0-1',
+        children: [
+          {
+            title: 'Child Node3',
+            value: '0-1-0',
+          },
+          {
+            title: 'Child Node4',
+            value: '0-1-1',
+          },
+          {
+            title: 'Child Node5',
+            value: '0-1-2',
+          },
+        ],
+      },
+    ];
+  }}
+  // tree-select args
+  fieldProps={{
+    showArrow: false,
+    filterTreeNode: true,
+    showSearch: true,
+    dropdownMatchSelectWidth: false,
+    labelInValue: true,
+    autoClearSearchValue: true,
+    multiple: true,
+    treeNodeFilterProp: 'title',
+    fieldNames: {
+      label: 'title',
+    },
+  }}
+/>
+```
+
 ### ProFormDigit
 
 Same as [inputNumber](https://ant.design/components/input-number/). It comes with a formatting (retains 2 decimal places, minimum value is 0), you can turn it off if needed.
@@ -376,4 +452,71 @@ If you want to change the number of decimal places.
   max={10}
   fieldProps={{ precision: 0 }}
 />
+```
+
+### ProFormMoney
+
+ProFormMoney's input box for entering amounts supports the display of currency symbols based on global internationalization, negative input, custom currency symbols, and more.
+
+```tsx | pure
+<ProFormMoney
+  label="The minimum limit is 0"
+  name="amount1"
+  locale="en-US"
+  initialValue={22.22}
+  min={0}
+/>
+<ProFormMoney
+  label="There is no limit to the amount size"
+  name="amount2"
+  locale="en-GB"
+  initialValue={22.22}
+/>
+<ProFormMoney
+  label="Currency symbols follow global internationalization"
+  name="amount3"
+  initialValue={22.22}
+/>
+<ProFormMoney
+  label="Custom currency symbols"
+  name="amount4"
+  initialValue={22.22}
+  customSymbol="💰"
+/>
+```
+
+| parameters | description | type | default |
+| --- | --- | --- | --- |
+| locale | The internationalized region values set separately show different currency symbols depending on the region, as detailed in the region directory below | `string` | `zh-Hans-CN` |
+| customSymbol | Custom amount symbol | `string` | - |
+| numberPopoverRender | Custom Popover's value, false, can close his | `((props: InputNumberProps, defaultText: string) => React.ReactNode)` \| `boolean` | false |
+| numberFormatOptions | The configuration of NumberFormat, where the documentation can view the of the [mdn](https://developer.mozilla.org/zh-CN/docs/web/JavaScript/Reference/Global_Objects/Intl/NumberFormat)) | NumberFormatOptions | - |
+| min | The minimum value is | `number` | - |
+| max | The maximum value is | `number` | - |
+
+#### Below is a table of regional codes and currency symbols
+
+```json
+{
+"ar-EG": "$",
+"zh-CN": "¥",
+"en-US": "$",
+"en-GB": "£",
+"vi-VN": "₫",
+"it-IT": "€",
+"ja-JP": "¥",
+"es-ES": "€",
+"ru-RU": "₽",
+"sr-RS": "RSD",
+"ms-MY": "RM",
+"zh-TW": "NT$"
+"fr-FR": "€",
+"pt-BR": "R$",
+"ko-KR": "₩",
+"id-ID": "RP",
+"de-DE": "€",
+"fa-IR": "تومان",
+"tr-TR": "₺",
+"pl-PL": "zł",
+}
 ```
