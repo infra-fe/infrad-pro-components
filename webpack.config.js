@@ -51,7 +51,6 @@ tailPkgs.forEach((pkg) => {
         antd: 'infrad',
         'antd/*': 'infrad/*',
         'antd/**/*': 'infrad/**/*',
-        'infrad-pro-card': 'infrad-pro-',
       },
     },
     optimization: isCI
