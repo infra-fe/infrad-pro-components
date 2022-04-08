@@ -223,7 +223,7 @@ function EditableTable<
       if (Array.isArray(rowKeyName) && rowKeyName.length === 0) {
         const rowData = formRef.current?.getFieldsValue?.();
         if (Array.isArray(rowData)) return rowData;
-        return Object.keys(rowData || {}).map((key) => rowData[key]);
+        return Object.keys(rowData || {}).map((key) => (rowData || {})[key]);
       }
       return formRef.current?.getFieldValue(rowKeyName) as DataType[];
     };

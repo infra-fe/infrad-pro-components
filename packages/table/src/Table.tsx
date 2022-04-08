@@ -248,6 +248,7 @@ function TableRender<T extends Record<string, any>, U, ValueType>(
           {toolbarDom}
           {alertDom}
           <ProForm
+            // @ts-ignore
             onInit={(_, form) => {
               counter.setEditorTableForm(form);
             }}
@@ -262,6 +263,7 @@ function TableRender<T extends Record<string, any>, U, ValueType>(
             key="table"
             submitter={false}
             omitNil={false}
+            // @ts-ignore
             dateFormatter={props.dateFormatter}
             contentRender={(items: React.ReactNode) => {
               if (counter.editableForm) return items;
