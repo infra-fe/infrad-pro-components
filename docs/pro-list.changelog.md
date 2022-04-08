@@ -9,6 +9,91 @@ group:
 
 # Change Log
 
+## @ant-design/pro-list@1.21.48
+
+`2022-04-07`
+
+- fix(list): fix pro list prefix no work error. [50b9e54](https://github.com/ant-design/pro-components/commit/50b9e54)
+
+## @ant-design/pro-list@1.21.44
+
+`2022-03-22`
+
+- fix(list): avatar shrink when card width is not enough (#4879). [#4879](https://github.com/ant-design/pro-components/pull/#4879) [@DerrickTel](https://github.com/DerrickTel)
+
+## @ant-design/pro-list@1.21.43
+
+`2022-03-18`
+
+- fix(list): fix ghost style padding error. [94027ed](https://github.com/ant-design/pro-components/commit/94027ed)
+
+## @ant-design/pro-list@1.21.22
+
+`2022-02-08`
+
+- fix(list): 修复 ProList 传入 grid 属性时不触发 onRow 内配置事件的问题 (#4558). [#4558](https://github.com/ant-design/pro-components/pull/#4558) [@kiner-tang](https://github.com/kiner-tang)
+
+## @ant-design/pro-list@1.21.20
+
+`2022-01-21`
+
+- fix(list): 修复卡片列表 hover 失效问题 (#4511). [#4511](https://github.com/ant-design/pro-components/pull/#4511) [@kiner-tang](https://github.com/kiner-tang)
+
+## @ant-design/pro-list@1.20.0
+
+`2021-11-18`
+
+- feat(list): support list.itemCardProps (#4061). [#4061](https://github.com/ant-design/pro-components/pull/#4061) [@chenshuai2144](https://github.com/chenshuai2144)
+
+## @ant-design/pro-list@1.18.0
+
+`2021-11-08`
+
+- feat(list): card list support rowSelection (#3949). [#3949](https://github.com/ant-design/pro-components/pull/#3949) [@chenshuai2144](https://github.com/chenshuai2144)
+
+## @ant-design/pro-list@1.17.7
+
+`2021-11-02`
+
+- fix(list): fix list style error (#3943). [#3943](https://github.com/ant-design/pro-components/pull/#3943) [@chenshuai2144](https://github.com/chenshuai2144)
+
+## @ant-design/pro-list@1.16.2
+
+`2021-10-09`
+
+- 🐛 fix(list): fix list rerender error [#3800](https://github.com/ant-design/pro-components/pull/3800) [@chenshuai2144](https://github.com/chenshuai2144)
+
+## @ant-design/pro-list@1.16.1
+
+`2021-10-09`
+
+- 🐛 fix(list): fix when cardActionProps=actions no run render funtions [#3791](https://github.com/ant-design/pro-components/pull/3791) [@chenshuai2144](https://github.com/chenshuai2144)
+
+## @ant-design/pro-list@1.16.0
+
+`2021-10-08`
+
+- 💥 feat(list): add cardlist operate [#3746](https://github.com/ant-design/pro-components/pull/3746) [@liuxulian](https://github.com/liuxulian)
+
+## @ant-design/pro-list@1.15.0
+
+`2021-10-08`
+
+- 🐛 fix(form): fix form list preserve problem [#3766](https://github.com/ant-design/pro-components/pull/3766) [@chenshuai2144](https://github.com/chenshuai2144)
+- 💥 feat(list): prolist support rowClassName [#3784](https://github.com/ant-design/pro-components/pull/3784) [@xiaohanxu-nick](https://github.com/xiaohanxu-nick)
+
+## @ant-design/pro-list@1.14.1
+
+`2021-09-17`
+
+- 🐛 fix(list): title blank placeholder of card [#3680](https://github.com/ant-design/pro-components/pull/3680) [@liuxulian](https://github.com/liuxulian)
+
+## @ant-design/pro-list@1.14.0
+
+`2021-09-16`
+
+- 💥 feat(list): card list support selected [#3666](https://github.com/ant-design/pro-components/pull/3666) [@liuxulian](https://github.com/liuxulian)
+
 ## @ant-design/pro-list@1.11.0
 
 `2021-08-03`

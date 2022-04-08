@@ -1,21 +1,18 @@
-﻿import type { ReactNode } from 'react';
-import React, { useContext, useRef, useMemo } from 'react';
-import type { ButtonProps } from 'infrad';
-import omit from 'omit.js';
-import { Button, Form, Tooltip, ConfigProvider } from 'infrad';
-import type { FormListFieldData, FormListOperation, FormListProps } from 'infrad/lib/form/FormList';
+﻿import { CopyOutlined, DeleteOutlined } from '@ant-design/icons';
+import { ProFormContext } from 'infrad-pro-utils';
+import { ConfigProvider, Form } from 'infrad';
 import type { LabelTooltipType } from 'infrad/lib/form/FormItemLabel';
+import type { FormListFieldData, FormListOperation, FormListProps } from 'infrad/lib/form/FormList';
 import type { NamePath } from 'infrad/lib/form/interface';
-import { DeleteOutlined, PlusOutlined, CopyOutlined } from 'infra-design-icons';
-
+import type { ReactNode } from 'react';
+import { useEffect } from 'react';
+import React, { useContext, useImperativeHandle, useMemo, useRef } from 'react';
 import './index.less';
-import get from 'rc-util/lib/utils/get';
-import { runFunction } from 'infrad-pro-utils';
-
-type IconConfig = {
-  Icon?: React.FC<any>;
-  tooltipText?: string;
-};
+import { noteOnce } from 'rc-util/lib/warning';
+import { useGridHelpers } from '../../helpers';
+import type { ProFormGridConfig } from '../../interface';
+import type { ChildrenItemFunction, FormListActionGuard, ProFromListCommonProps } from './ListItem';
+import { ProFormListContainer } from './ListContainer';
 
 const FormListContext = React.createContext<
   | (FormListFieldData & {
@@ -24,72 +21,69 @@ const FormListContext = React.createContext<
   | Record<string, any>
 >({});
 
-type ChildrenFunction = (
-  fields: FormListFieldData[],
-  operation: FormListOperation,
-  meta: {
-    errors: React.ReactNode[];
-  },
-) => React.ReactNode;
-
-export type ProFormListProps = Omit<FormListProps, 'children'> & {
-  creatorButtonProps?:
-    | false
-    | (ButtonProps & {
-        creatorButtonText?: ReactNode;
-        position?: 'top' | 'bottom';
-      });
-  creatorRecord?: Record<string, any> | (() => Record<string, any>);
-  label?: ReactNode;
-  tooltip?: LabelTooltipType;
-  actionRender?: (
-    field: FormListFieldData,
-    action: FormListOperation,
-    defaultActionDom: ReactNode[],
-  ) => ReactNode[];
-  children: ReactNode | ChildrenFunction;
-  /** 自定义Item，可以用来将 action 放到别的地方 */
-  itemRender?: (
-    doms: { listDom: ReactNode; action: ReactNode },
-    listMeta: {
-      field: FormListFieldData;
-      fields: FormListFieldData[];
-      index: number;
-      operation: FormListOperation;
-      record: Record<string, any>;
+export type ProFormListProps = Omit<FormListProps, 'children'> &
+  ProFromListCommonProps & {
+    label?: ReactNode;
+    tooltip?: LabelTooltipType;
+    actionGuard?: FormListActionGuard;
+    children?: ReactNode | ChildrenItemFunction;
+    fieldExtraRender?: (
+      fieldAction: FormListOperation,
       meta: {
-        errors: React.ReactNode[];
-      };
-    },
-  ) => ReactNode;
-  copyIconProps?: IconConfig | false;
-  deleteIconProps?: IconConfig | false;
-  actionRef?: React.MutableRefObject<FormListOperation | undefined>;
-};
+        errors?: React.ReactNode[];
+        warnings?: React.ReactNode[];
+      },
+    ) => React.ReactNode;
+    /**
+     * @name 获取到 list 操作实例
+     * @description 可用删除，新增，移动等操作
+     *
+     * @example  actionRef?.current.add?.({},1);
+     * @example  actionRef?.current.remove?.(1);
+     * @example  actionRef?.current.move?.(1,2);
+     */
+    actionRef?: React.MutableRefObject<FormListOperation | undefined>;
+    /** 放在div上面的属性 */
+    style?: React.CSSProperties;
+  } & Pick<ProFormGridConfig, 'colProps' | 'rowProps'>;
 
 const ProFormList: React.FC<ProFormListProps> = ({
-  children,
   actionRender,
   creatorButtonProps,
   label,
+  alwaysShowItemLabel,
   tooltip,
   creatorRecord,
   itemRender,
   rules,
+  itemContainerRender,
+  fieldExtraRender,
   copyIconProps = {
     Icon: CopyOutlined,
     tooltipText: '复制此行',
   },
+  children,
   deleteIconProps = {
     Icon: DeleteOutlined,
     tooltipText: '删除此行',
   },
+  actionRef,
+  style,
+  prefixCls,
+  actionGuard,
+  min,
+  max,
+  colProps,
+  rowProps,
   ...rest
 }) => {
-  const actionRef = useRef<FormListOperation>();
+  const actionRefs = useRef<FormListOperation>();
   const context = useContext(ConfigProvider.ConfigContext);
   const listContext = useContext(FormListContext);
   const baseClassName = context.getPrefixCls('pro-form-list');
+
+  const { ColWrapper, RowWrapper } = useGridHelpers({ colProps, rowProps });
+
   // 处理 list 的嵌套
   const name = useMemo(() => {
     if (listContext.name === undefined) {
@@ -98,159 +92,72 @@ const ProFormList: React.FC<ProFormListProps> = ({
     return [listContext.name, rest.name].flat(1);
   }, [listContext.name, rest.name]);
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  useImperativeHandle(actionRef, () => actionRefs.current, [actionRefs.current]);
+  const proFormContext = useContext(ProFormContext);
+
+  useEffect(() => {
+    noteOnce(!!proFormContext.formRef, `ProFormList 必须要放到 ProForm 中,否则会造成行为异常。`);
+    noteOnce(
+      !!proFormContext.formRef,
+      `Proformlist must be placed in ProForm, otherwise it will cause abnormal behavior.`,
+    );
+  }, [proFormContext.formRef]);
+
+  if (!proFormContext.formRef) return null;
+
   return (
-    <Form.Item
-      label={label}
-      tooltip={tooltip}
-      rules={rules}
-      shouldUpdate={(prevValues, nextValues) => {
-        return get(prevValues, name) !== get(nextValues, name);
-      }}
-    >
-      {({ getFieldValue }) => {
-        return (
-          <div className={baseClassName}>
-            <Form.List rules={rules} {...rest} name={name}>
-              {(fields, action, meta) => {
-                // 将 action 暴露给外部
-                actionRef.current = action;
+    <ColWrapper>
+      <div className={baseClassName} style={style}>
+        <Form.Item
+          label={label}
+          prefixCls={prefixCls}
+          tooltip={tooltip}
+          style={style}
+          {...rest}
+          name={undefined}
+          rules={undefined}
+        >
+          <Form.List rules={rules} {...rest} name={name}>
+            {(fields, action, meta) => {
+              // 将 action 暴露给外部
+              actionRefs.current = action;
 
-                // 生成按钮
-                const creatorButton = creatorButtonProps !== false && (
-                  <Button
-                    className={`${baseClassName}-creator-button-${
-                      creatorButtonProps?.position || 'bottom'
-                    }`}
-                    type="dashed"
-                    block
-                    icon={<PlusOutlined />}
-                    {...omit(creatorButtonProps || {}, ['position', 'creatorButtonText'])}
-                    onClick={() => {
-                      let index;
-                      // 如果是顶部，加到第一个，如果不是，为空就是最后一个
-                      if (creatorButtonProps?.position === 'top') index = 0;
-
-                      action.add(runFunction(creatorRecord), index);
-                    }}
+              return (
+                <RowWrapper>
+                  <ProFormListContainer
+                    name={name}
+                    originName={rest.name}
+                    copyIconProps={copyIconProps}
+                    deleteIconProps={deleteIconProps}
+                    formInstance={proFormContext.formRef!.current!}
+                    prefixCls={baseClassName}
+                    meta={meta}
+                    fields={fields}
+                    itemContainerRender={itemContainerRender}
+                    itemRender={itemRender}
+                    fieldExtraRender={fieldExtraRender}
+                    creatorButtonProps={creatorButtonProps}
+                    creatorRecord={creatorRecord}
+                    actionRender={actionRender}
+                    action={action}
+                    actionGuard={actionGuard}
+                    alwaysShowItemLabel={alwaysShowItemLabel}
+                    min={min}
+                    max={max}
+                    count={fields.length}
                   >
-                    {creatorButtonProps?.creatorButtonText || '添加一行数据'}
-                  </Button>
-                );
-                if (typeof children === 'function') {
-                  return (children as ChildrenFunction)(fields, action, meta);
-                }
-                return (
-                  <>
-                    <div
-                      style={{
-                        width: 'max-content',
-                        maxWidth: '100%',
-                      }}
-                    >
-                      {creatorButtonProps !== false &&
-                        creatorButtonProps?.position === 'top' &&
-                        creatorButton}
-                      {fields.map((field, index) => {
-                        const defaultActionDom: React.ReactNode[] = [];
-                        if (copyIconProps) {
-                          const { Icon = CopyOutlined, tooltipText } = copyIconProps as IconConfig;
-                          defaultActionDom.push(
-                            <Tooltip title={tooltipText} key="copy">
-                              <Icon
-                                className={`${baseClassName}-action-icon`}
-                                onClick={() => {
-                                  action.add(
-                                    getFieldValue(
-                                      [listContext.listName, rest.name, field.name]
-                                        .filter((item) => item !== undefined)
-                                        .flat(1),
-                                    ),
-                                  );
-                                }}
-                              />
-                            </Tooltip>,
-                          );
-                        }
-                        if (deleteIconProps) {
-                          const { Icon = DeleteOutlined, tooltipText } = deleteIconProps;
-                          defaultActionDom.push(
-                            <Tooltip title={tooltipText} key="delete">
-                              <Icon
-                                className={`${baseClassName}-action-icon`}
-                                onClick={() => action.remove(field.name)}
-                              />
-                            </Tooltip>,
-                          );
-                        }
-
-                        const actions =
-                          actionRender?.(field, action, defaultActionDom) || defaultActionDom;
-
-                        const dom =
-                          actions.length > 0 ? (
-                            <div className={`${baseClassName}-action`}>{actions}</div>
-                          ) : null;
-
-                        const contentDom = itemRender?.(
-                          {
-                            listDom: <div className={`${baseClassName}-container`}>{children}</div>,
-                            action: dom,
-                          },
-                          {
-                            field,
-                            index,
-                            record: getFieldValue(
-                              [listContext.listName, rest.name, field.name]
-                                .filter((item) => item !== undefined)
-                                .flat(1),
-                            ),
-                            fields,
-                            operation: action,
-                            meta,
-                          },
-                        ) || (
-                          <div
-                            className={`${baseClassName}-item`}
-                            style={{
-                              display: 'flex',
-                              alignItems: 'flex-end',
-                            }}
-                          >
-                            <div className={`${baseClassName}-container`}>{children}</div>
-                            {dom}
-                          </div>
-                        );
-
-                        return (
-                          <FormListContext.Provider
-                            key={field.name}
-                            value={{
-                              ...field,
-                              listName: [listContext.listName, rest.name, field.name]
-                                .filter((item) => item !== undefined)
-                                .flat(1),
-                            }}
-                          >
-                            {contentDom}
-                          </FormListContext.Provider>
-                        );
-                      })}
-                      {creatorButtonProps !== false &&
-                        creatorButtonProps?.position !== 'top' &&
-                        creatorButton}
-                    </div>
-                    <Form.ErrorList errors={meta.errors} />
-                  </>
-                );
-              }}
-            </Form.List>
-          </div>
-        );
-      }}
-    </Form.Item>
+                    {children}
+                  </ProFormListContainer>
+                  <Form.ErrorList errors={meta.errors} />
+                </RowWrapper>
+              );
+            }}
+          </Form.List>
+        </Form.Item>
+      </div>
+    </ColWrapper>
   );
 };
 
-export { FormListContext };
-
-export default ProFormList;
+export { FormListContext, ProFormList };

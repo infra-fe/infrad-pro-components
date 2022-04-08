@@ -12,8 +12,8 @@ import ProForm, {
   ProFormText,
 } from 'infrad-pro-form';
 import React from 'react';
-import { SmileOutlined } from 'infra-design-icons';
-import LightWrapper from '../BaseForm/LightWrapper';
+import { SmileOutlined } from '@ant-design/icons';
+import { LightWrapper } from '../BaseForm';
 
 export default () => (
   <ConfigProvider locale={enUS}>

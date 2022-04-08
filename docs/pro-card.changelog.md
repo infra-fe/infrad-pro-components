@@ -10,6 +10,81 @@ group:
 
 # Change Log
 
+## @ant-design/pro-card@1.19.0
+
+`2022-03-25`
+
+- feat(card): add collapsibleIconRender for custom render icon (#4894). [#4894](https://github.com/ant-design/pro-components/pull/#4894) [@ruoqianfengshao](https://github.com/ruoqianfengshao)
+
+## @ant-design/pro-card@1.18.25
+
+`2022-01-21`
+
+- chore(card): remove useless frontmatter from demos (#4499). [#4499](https://github.com/ant-design/pro-components/pull/#4499) [@PeachScript](https://github.com/PeachScript)
+- fix(card): 修复 ProList 卡片模式 actions 区域事件冒泡导致点击选中卡片的问题 (#4495). [#4495](https://github.com/ant-design/pro-components/pull/#4495) [@kiner-tang](https://github.com/kiner-tang)
+
+## @ant-design/pro-card@1.18.23
+
+`2022-01-11`
+
+- fix(card): checkcard add vertical-align. [eff9e2e](https://github.com/ant-design/pro-components/commit/eff9e2e)
+
+## @ant-design/pro-card@1.18.21
+
+`2022-01-05`
+
+- fix(card): ProCard A 嵌套在 ProCard B 中遍历生成时，在 ProCard A 上设置 key 值无效，会导致组件重新渲染 #4368 (#4372). [#4372](https://github.com/ant-design/pro-components/pull/#4372) [@2724635499](https://github.com/2724635499)
+
+## @ant-design/pro-card@1.18.4
+
+`2021-11-23`
+
+- fix(card): add more var. [3ea6376](https://github.com/ant-design/pro-components/commit/3ea6376)
+- fix(card): add more var. [898a090](https://github.com/ant-design/pro-components/commit/898a090)
+- fix(card): add more var. [3caad81](https://github.com/ant-design/pro-components/commit/3caad81)
+
+## @ant-design/pro-card@1.16.0
+
+`2021-10-26`
+
+- feat(card): support check card (#3752). [#3752](https://github.com/ant-design/pro-components/pull/#3752) [@rdmclin2](https://github.com/rdmclin2)
+
+## @ant-design/pro-card@1.15.3
+
+`2021-10-12`
+
+- 🐛 fix(card): fix card ehen theme change no change color error [#3804](https://github.com/ant-design/pro-components/pull/3804) [@chenshuai2144](https://github.com/chenshuai2144)
+
+## @ant-design/pro-card@1.15.2
+
+`2021-10-09`
+
+- 🐛 fix(card): Divider disappeared in Firefox [#3794](https://github.com/ant-design/pro-components/pull/3794) [@DerrickTel](https://github.com/DerrickTel)
+
+## @ant-design/pro-card@1.15.1
+
+`2021-10-09`
+
+- 🐛 fix(list): fix when cardActionProps=actions no run render funtions [#3791](https://github.com/ant-design/pro-components/pull/3791) [@chenshuai2144](https://github.com/chenshuai2144)
+
+## @ant-design/pro-card@1.15.0
+
+`2021-10-08`
+
+- 💥 feat(list): add cardlist operate [#3746](https://github.com/ant-design/pro-components/pull/3746) [@liuxulian](https://github.com/liuxulian)
+
+## @ant-design/pro-card@1.14.20
+
+`2021-09-16`
+
+- 💥 feat(list): card list support selected [#3666](https://github.com/ant-design/pro-components/pull/3666) [@liuxulian](https://github.com/liuxulian)
+
+## @ant-design/pro-card@1.14.4
+
+`2021-07-01`
+
+- 🐛 fix(card): support chrome under 85 that not support rowgap [#3112](https://github.com/ant-design/pro-components/pull/3112) [@rdmclin2](https://github.com/rdmclin2)
+
 ## @ant-design/pro-card@1.13.0
 
 `2021-05-25`

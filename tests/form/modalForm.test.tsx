@@ -54,7 +54,7 @@ describe('ModalForm', () => {
     act(() => {
       wrapper.find('button#new').simulate('click');
     });
-    await waitForComponentToPaint(wrapper);
+    await waitForComponentToPaint(wrapper, 200);
     expect(fn).toBeCalledWith(true);
 
     act(() => {
@@ -148,7 +148,7 @@ describe('ModalForm', () => {
         visible: false,
       });
     });
-    await waitForComponentToPaint(wrapper);
+    await waitForComponentToPaint(wrapper, 2000);
 
     expect(wrapper.find('input#test').exists()).toBeFalsy();
   });
@@ -171,6 +171,7 @@ describe('ModalForm', () => {
     });
     await waitForComponentToPaint(wrapper);
     expect(fn).toBeCalledWith(false);
+    expect(fn).toBeCalledTimes(2);
   });
 
   it('📦 modal visible=true simulate onVisibleChange', async () => {
@@ -203,7 +204,7 @@ describe('ModalForm', () => {
     await waitForComponentToPaint(wrapper);
 
     act(() => {
-      wrapper.find('.ant-modal-footer button.ant-btn').at(0).simulate('click');
+      wrapper.find('.ant-modal-footer').update().find('button.ant-btn').at(0).simulate('click');
     });
     expect(fn).toBeCalledWith(false);
   });
@@ -243,7 +244,7 @@ describe('ModalForm', () => {
         <ProFormText name="name" />
       </ModalForm>,
     );
-    await waitForComponentToPaint(wrapper);
+    await waitForComponentToPaint(wrapper, 500);
 
     act(() => {
       wrapper.find('button.ant-btn-primary').simulate('click');
@@ -265,7 +266,7 @@ describe('ModalForm', () => {
         <ProFormText name="name" />
       </ModalForm>,
     );
-    await waitForComponentToPaint(wrapper);
+    await waitForComponentToPaint(wrapper, 500);
 
     act(() => {
       wrapper.find('button.ant-btn-primary').simulate('click');
@@ -290,5 +291,108 @@ describe('ModalForm', () => {
     await waitForComponentToPaint(wrapper);
 
     expect(wrapper.find('.ant-modal-footer').length).toBe(0);
+  });
+
+  it('📦 ModalForm close no rerender from', async () => {
+    const wrapper = mount(
+      <ModalForm
+        initialValues={{
+          name: '1234',
+        }}
+        trigger={<Button id="new">新建</Button>}
+      >
+        <ProFormText
+          name="name"
+          fieldProps={{
+            id: 'test',
+          }}
+        />
+      </ModalForm>,
+    );
+    await waitForComponentToPaint(wrapper);
+
+    act(() => {
+      wrapper.find('button#new').simulate('click');
+    });
+
+    await waitForComponentToPaint(wrapper, 300);
+    act(() => {
+      wrapper
+        .find('.ant-input#test')
+        .at(0)
+        .simulate('change', {
+          target: {
+            value: 'test',
+          },
+        });
+    });
+    await waitForComponentToPaint(wrapper);
+    expect(wrapper.find('input#test').props().value).toEqual('test');
+    await waitForComponentToPaint(wrapper);
+
+    act(() => {
+      wrapper.find('.ant-modal-close').simulate('click');
+    });
+    await waitForComponentToPaint(wrapper);
+    act(() => {
+      wrapper.find('button#new').simulate('click');
+    });
+    await waitForComponentToPaint(wrapper);
+
+    expect(wrapper.find('input#test').props().value).toEqual('test');
+  });
+
+  it('📦 ModalForm destroyOnClose close will rerender from', async () => {
+    const wrapper = mount(
+      <ModalForm
+        modalProps={{
+          getContainer: false,
+          destroyOnClose: true,
+        }}
+        initialValues={{
+          name: '1234',
+        }}
+        trigger={<Button id="new">新建</Button>}
+      >
+        <ProFormText
+          name="name"
+          fieldProps={{
+            id: 'test',
+          }}
+        />
+      </ModalForm>,
+    );
+    await waitForComponentToPaint(wrapper);
+    act(() => {
+      wrapper.find('button#new').simulate('click');
+    });
+
+    await waitForComponentToPaint(wrapper, 300);
+    act(() => {
+      wrapper
+        .find('.ant-input#test')
+        .at(0)
+        .simulate('change', {
+          target: {
+            value: '1111',
+          },
+        });
+    });
+
+    await waitForComponentToPaint(wrapper);
+    expect(wrapper.find('input#test').props().value).toEqual('1111');
+
+    await waitForComponentToPaint(wrapper);
+
+    act(() => {
+      wrapper.find('.ant-modal-close').simulate('click');
+    });
+    await waitForComponentToPaint(wrapper);
+    act(() => {
+      wrapper.find('button#new').simulate('click');
+    });
+    await waitForComponentToPaint(wrapper);
+
+    expect(wrapper.find('input#test').props().value).toEqual('1234');
   });
 });

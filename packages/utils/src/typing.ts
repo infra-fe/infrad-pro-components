@@ -1,8 +1,14 @@
+import type { InputProps } from 'infrad';
 import type { FormInstance, FormItemProps } from 'infrad/lib/form';
 import type { LabelTooltipType } from 'infrad/lib/form/FormItemLabel';
 import type { NamePath } from 'infrad/lib/form/interface';
 import type { Moment } from 'moment';
 import type { ReactNode } from 'react';
+import type {
+  ProFieldValueType,
+  ProFieldValueTypeWithFieldProps,
+  ValueTypeWithFieldProps,
+} from './types';
 import type { UseEditableUtilType } from './useEditableArray';
 
 export type PageInfo = {
@@ -11,67 +17,7 @@ export type PageInfo = {
   current: number;
 };
 
-/**
- * @param textarea 文本框
- * @param password 密码框
- * @param money 金额 option 操作 需要返回一个数组
- * @param date 日期 YYYY-MM-DD
- * @param dateWeek 周选择器
- * @param dateMonth 月选择器
- * @param dateQuarter 季度选择器
- * @param dateYear 年选择器
- * @param dateRange 日期范围 YYYY-MM-DD[]
- * @param dateTime 日期和时间 YYYY-MM-DD HH:mm:ss
- * @param dateTimeRange 范围日期和时间 YYYY-MM-DD HH:mm:ss[]
- * @param time: 时间 HH:mm:ss
- * @param timeRange: 时间区间 HH:mm:ss[]
- * @param index：序列
- * @param indexBorder：序列
- * @param progress: 进度条
- * @param percent: 百分比
- * @param digit 数值
- * @param second 秒速
- * @param fromNow 相对于当前时间
- * @param avatar 头像
- * @param code 代码块
- * @param image 图片设置
- * @param jsonCode Json 的代码块，格式化了一下
- * @param color 颜色选择器
- */
-export type ProFieldValueType =
-  | 'text'
-  | 'password'
-  | 'money'
-  | 'textarea'
-  | 'option'
-  | 'date'
-  | 'dateWeek'
-  | 'dateMonth'
-  | 'dateQuarter'
-  | 'dateYear'
-  | 'dateRange'
-  | 'dateTimeRange'
-  | 'dateTime'
-  | 'time'
-  | 'timeRange'
-  | 'select'
-  | 'checkbox'
-  | 'rate'
-  | 'radio'
-  | 'radioButton'
-  | 'index'
-  | 'indexBorder'
-  | 'progress'
-  | 'percent'
-  | 'digit'
-  | 'second'
-  | 'avatar'
-  | 'code'
-  | 'switch'
-  | 'fromNow'
-  | 'image'
-  | 'jsonCode'
-  | 'color';
+export type { ProFieldValueType, ProFieldValueTypeWithFieldProps };
 
 export type RequestOptionsType = {
   label?: React.ReactNode;
@@ -86,7 +32,6 @@ export type ProFieldRequestData<U = any> = (params: U, props: any) => Promise<Re
 
 export type ProFieldValueEnumType = ProSchemaValueEnumMap | ProSchemaValueEnumObj;
 
-// function return type
 export type ProFieldValueObjectType = {
   type: 'progress' | 'money' | 'percent' | 'image';
   status?: 'normal' | 'active' | 'success' | 'exception' | undefined;
@@ -126,9 +71,10 @@ export type ProFieldTextType = React.ReactNode | React.ReactNode[] | Moment | Mo
 
 export type SearchTransformKeyFn = (
   value: any,
-  field: string,
-  object: any,
+  namePath: string,
+  allValues: any,
 ) => string | Record<string, any>;
+export type SearchConvertKeyFn = (value: any, field: NamePath) => string | Record<string, any>;
 
 export type ProTableEditableFnType<T> = (_: any, record: T, index: number) => boolean;
 
@@ -143,11 +89,12 @@ export type ProSchemaComponentTypes =
   | undefined;
 
 /** 操作类型 */
+// eslint-disable-next-line @typescript-eslint/ban-types
 export type ProCoreActionType<T = {}> = {
   /** @name 刷新 */
-  reload: (resetPageIndex?: boolean) => void;
+  reload: (resetPageIndex?: boolean) => Promise<void>;
   /** @name 刷新并清空，只清空页面，不包括表单 */
-  reloadAndRest?: () => void;
+  reloadAndRest?: () => Promise<void>;
   /** @name 重置任何输入项，包括表单 */
   reset?: () => void;
   /** @name 清空选择 */
@@ -160,7 +107,12 @@ export type ProCoreActionType<T = {}> = {
 > &
   T;
 
-type ProSchemaValueType<ValueType> = (ValueType | ProFieldValueType) | ProFieldValueObjectType;
+/** @deprecated */
+export type ProSchemaValueType<ValueType> =
+  | (ValueType | ProFieldValueType)
+  | ProFieldValueObjectType;
+
+export type ProSchemaFieldProps<T> = Record<string, any> | T | Partial<InputProps>;
 
 /** 各个组件公共支持的 render */
 export type ProSchema<
@@ -168,6 +120,7 @@ export type ProSchema<
   ExtraProps = unknown,
   ComponentsType = ProSchemaComponentTypes,
   ValueType = 'text',
+  ExtraFormItemProps = unknown,
 > = {
   /** @name 确定这个列的唯一值,一般用于 dataIndex 重复的情况 */
   key?: React.Key;
@@ -177,11 +130,6 @@ export type ProSchema<
    * @name 与实体映射的key
    */
   dataIndex?: string | number | (string | number)[];
-
-  /** 选择如何渲染相应的模式 */
-  valueType?:
-    | ((entity: Entity, type: ComponentsType) => ProSchemaValueType<ValueType>)
-    | ProSchemaValueType<ValueType>;
 
   /**
    * 支持 ReactNode 和 方法
@@ -212,28 +160,9 @@ export type ProSchema<
     | ProSchemaValueEnumObj
     | ProSchemaValueEnumMap;
 
-  /** 自定义的 fieldProps render */
-  fieldProps?:
-    | ((
-        form: FormInstance<any>,
-        config: ProSchema<Entity, ExtraProps> & {
-          type: ComponentsType;
-          isEditable?: boolean;
-          rowKey?: string;
-          rowIndex: number;
-          entity: Entity;
-        },
-      ) => Record<string, any>)
-    | Record<string, any>
-    | {
-        placeholder?: string;
-        maxLength?: number;
-        [key: string]: any;
-      };
-
   /** @name 自定义的 formItemProps */
   formItemProps?:
-    | FormItemProps
+    | (FormItemProps & ExtraFormItemProps)
     | ((
         form: FormInstance<any>,
         config: ProSchema<Entity, ExtraProps> & {
@@ -243,7 +172,7 @@ export type ProSchema<
           rowIndex: number;
           entity: Entity;
         },
-      ) => FormItemProps);
+      ) => FormItemProps & ExtraFormItemProps);
 
   /**
    * 修改的数据是会被 valueType 消费
@@ -299,8 +228,12 @@ export type ProSchema<
 
   /** @name 从服务器请求枚举 */
   request?: ProFieldRequestData;
+  /** @name request防抖动时间 默认10 单位ms */
+  debounceTime?: number;
   /** @name 从服务器请求的参数，改变了会触发 reload */
-  params?: Record<string, any>;
+  params?:
+    | ((record: Entity, column: ProSchema<Entity, ExtraProps>) => Record<string, any>)
+    | Record<string, any>;
   /** @name 依赖字段的name，暂时只在拥有 request 的项目中生效，会自动注入到 params 中 */
   dependencies?: NamePath[];
 
@@ -314,7 +247,8 @@ export type ProSchema<
   hideInSearch?: boolean;
   /** 设置到 ProField 上面的 Props，内部属性 */
   proFieldProps?: ProFieldProps;
-} & ExtraProps;
+} & ExtraProps &
+  ValueTypeWithFieldProps<Entity, ComponentsType, ExtraProps, ValueType>;
 
 export interface ProFieldProps {
   light?: boolean;
@@ -324,4 +258,5 @@ export interface ProFieldProps {
   /** 这个属性可以设置useSwr的key */
   proFieldKey?: string;
   render?: any;
+  readonly?: boolean;
 }

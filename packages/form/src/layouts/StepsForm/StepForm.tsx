@@ -1,9 +1,10 @@
 import React, { useContext, useRef, useEffect, useImperativeHandle } from 'react';
-import type { FormProps, FormInstance, StepProps } from 'infrad';
+import type { FormProps, FormInstance } from 'infrad';
+import type { StepProps } from 'rc-steps/lib/Step';
 import { noteOnce } from 'rc-util/lib/warning';
 
 import type { CommonFormProps } from '../../BaseForm';
-import BaseForm from '../../BaseForm';
+import { BaseForm } from '../../BaseForm';
 import { StepsFormProvide } from './index';
 
 export type StepFormProps<T = Record<string, any>> = {
@@ -35,6 +36,7 @@ function StepForm<T = Record<string, any>>({
         context?.unRegForm(restProps.name);
       }
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   if (context && context?.formArrayRef) {
@@ -59,7 +61,8 @@ function StepForm<T = Record<string, any>>({
           context?.setLoading(false);
           return;
         }
-        context?.next();
+
+        if (!context?.lastStep) context?.next();
       }}
       layout="vertical"
       {...restProps}

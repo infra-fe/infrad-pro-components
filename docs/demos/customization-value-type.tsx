@@ -2,6 +2,7 @@ import React, { useContext, useRef, useState } from 'react';
 import type { ProFormColumnsType } from 'infrad-pro-form';
 import { BetaSchemaForm } from 'infrad-pro-form';
 import ProProvider from 'infrad-pro-provider';
+import type { InputRef } from 'infrad';
 import { Input, Space, Tag } from 'infrad';
 import ProTable from 'infrad-pro-table';
 import ProDescriptions from 'infrad-pro-descriptions';
@@ -35,7 +36,7 @@ const TagList: React.FC<{
     }[],
   ) => void;
 }> = ({ value, onChange }) => {
-  const ref = useRef<Input | null>(null);
+  const ref = useRef<InputRef | null>(null);
   const [newTags, setNewTags] = useState<
     {
       key: string;

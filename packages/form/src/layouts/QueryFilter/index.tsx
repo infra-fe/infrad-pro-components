@@ -2,6 +2,7 @@
 import type { ReactElement } from 'react';
 import { useContext } from 'react';
 import React, { useMemo } from 'react';
+import type { FormItemProps } from 'infrad';
 import { Row, Col, Form, Divider, ConfigProvider } from 'infrad';
 import type { FormInstance, FormProps } from 'infrad/lib/form/Form';
 import RcResizeObserver from 'rc-resize-observer';
@@ -10,7 +11,7 @@ import { isBrowser, useMountMergeState } from 'infrad-pro-utils';
 import useMergedState from 'rc-util/lib/hooks/useMergedState';
 
 import type { CommonFormProps } from '../../BaseForm';
-import BaseForm from '../../BaseForm';
+import { BaseForm } from '../../BaseForm';
 import type { ActionsProps } from './Actions';
 import Actions from './Actions';
 import classNames from 'classnames';
@@ -60,8 +61,13 @@ const getSpanConfig = (
       layout,
     };
   }
+
   const spanConfig = span
-    ? Object.keys(span).map((key) => [CONFIG_SPAN_BREAKPOINTS[key], 24 / span[key], 'horizontal'])
+    ? ['xs', 'sm', 'md', 'lg', 'xl', 'xxl'].map((key) => [
+        CONFIG_SPAN_BREAKPOINTS[key],
+        24 / span[key],
+        'horizontal',
+      ])
     : BREAKPOINTS[layout || 'default'];
 
   const breakPoint = (spanConfig || BREAKPOINTS.default).find(
@@ -208,39 +214,75 @@ const QueryFilterContent: React.FC<{
   // totalSpan 统计控件占的位置，计算 offset 保证查询按钮在最后一列
   let totalSpan = 0;
   let itemLength = 0;
+  //首个表单项是否占满第一行
+  let firstRowFull = false;
+  // totalSize 统计控件占的份数
+  let totalSize = 0;
 
   // for split compute
   let currentSpan = 0;
-  const doms = flatMapItems(items, props.ignoreRules).map(
-    (item: React.ReactNode, index: number) => {
+  const doms = flatMapItems(items, props.ignoreRules)
+    .map((item, index): { itemDom: React.ReactNode; hidden: boolean; colSpan: number } => {
       // 如果 formItem 自己配置了 hidden，默认使用它自己的
-      const colSize = React.isValidElement<any>(item) ? item?.props?.colSize : 1;
+      const colSize = React.isValidElement<any>(item) ? item?.props?.colSize ?? 1 : 1;
       const colSpan = Math.min(spanSize.span * (colSize || 1), 24);
       // 计算总的 totalSpan 长度
       totalSpan += colSpan;
+      // 计算总的 colSize 长度
+      totalSize += colSize;
+
+      if (index === 0) {
+        firstRowFull =
+          colSpan === 24 && !(item as ReactElement<{ hidden: boolean }>)?.props?.hidden;
+      }
+
       const hidden: boolean =
         (item as ReactElement<{ hidden: boolean }>)?.props?.hidden ||
         // 如果收起了
         (collapsed &&
-          // 如果 超过显示长度 且 总长度超过了 24
-          index >= showLength - 1 &&
+          (firstRowFull ||
+            // 如果 超过显示长度 且 总长度超过了 24
+            totalSize >= showLength - 1) &&
           !!index &&
           totalSpan >= 24);
 
       itemLength += 1;
 
-      // 每一列的key, 一般是存在的
       const itemKey = (React.isValidElement(item) && (item.key || `${item.props?.name}`)) || index;
 
       if (React.isValidElement(item) && hidden) {
         if (!props.preserve) {
-          return null;
+          return {
+            itemDom: null,
+            colSpan,
+            hidden: true,
+          };
         }
-        return React.cloneElement(item, {
+        return {
+          itemDom: React.cloneElement(item, {
+            hidden: true,
+            key: itemKey || index,
+          }),
           hidden: true,
-          key: itemKey || index,
-        });
+          colSpan,
+        };
       }
+
+      return {
+        itemDom: item,
+        colSpan,
+        hidden: false,
+      };
+    })
+    .map((itemProps, index: number) => {
+      const { itemDom, colSpan } = itemProps;
+      const hidden: boolean = (itemDom as ReactElement<{ hidden: boolean }>)?.props?.hidden;
+
+      if (hidden) return itemDom;
+
+      // 每一列的key, 一般是存在的
+      const itemKey =
+        (React.isValidElement(itemDom) && (itemDom.key || `${itemDom.props?.name}`)) || index;
 
       if (24 - (currentSpan % 24) < colSpan) {
         // 如果当前行空余位置放不下，那么折行
@@ -252,9 +294,10 @@ const QueryFilterContent: React.FC<{
 
       const colItem = (
         <Col key={itemKey} span={colSpan}>
-          {item}
+          {itemDom}
         </Col>
       );
+
       if (split && currentSpan % 24 === 0 && index < itemLength - 1) {
         return [
           colItem,
@@ -264,12 +307,11 @@ const QueryFilterContent: React.FC<{
         ];
       }
       return colItem;
-    },
-  );
+    });
 
   /** 是否需要展示 collapseRender */
   const needCollapseRender = useMemo(() => {
-    if (totalSpan < 24 || itemLength < showLength) {
+    if (totalSpan < 24 || totalSize < showLength) {
       return false;
     }
     return true;
@@ -346,9 +388,22 @@ function QueryFilter<T = Record<string, any>>(props: QueryFilterProps<T>) {
     return Math.max(1, 24 / spanSize.span);
   }, [defaultColsNumber, spanSize.span]);
 
-  const labelFlexStyle = useMemo(() => {
+  /** 计算最大宽度防止溢出换行 */
+  const formItemFixStyle: FormItemProps<any> | undefined = useMemo(() => {
     if (labelWidth && spanSize.layout !== 'vertical' && labelWidth !== 'auto') {
-      return `0 0 ${labelWidth}px`;
+      return {
+        labelCol: {
+          flex: `0 0 ${labelWidth}px`,
+        },
+        wrapperCol: {
+          style: {
+            maxWidth: `calc(100% - ${labelWidth}px)`,
+          },
+        },
+        style: {
+          flexWrap: 'nowrap',
+        },
+      };
     }
     return undefined;
   }, [spanSize.layout, labelWidth]);
@@ -363,6 +418,7 @@ function QueryFilter<T = Record<string, any>>(props: QueryFilterProps<T>) {
       }}
     >
       <BaseForm
+        isKeyPressSubmit
         preserve={preserve}
         {...rest}
         className={classNames(baseClassName, rest.className)}
@@ -374,11 +430,7 @@ function QueryFilter<T = Record<string, any>>(props: QueryFilterProps<T>) {
             width: '100%',
           },
         }}
-        formItemProps={{
-          labelCol: {
-            flex: labelFlexStyle,
-          },
-        }}
+        formItemProps={formItemFixStyle}
         groupProps={{
           titleStyle: {
             display: 'inline-block',
@@ -409,4 +461,4 @@ function QueryFilter<T = Record<string, any>>(props: QueryFilterProps<T>) {
   );
 }
 
-export default QueryFilter;
+export { QueryFilter };

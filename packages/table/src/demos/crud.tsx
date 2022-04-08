@@ -6,6 +6,7 @@ import ProDescriptions from 'infrad-pro-descriptions';
 import type { ProColumns } from 'infrad-pro-table';
 import ProTable, { TableDropdown } from 'infrad-pro-table';
 import request from 'umi-request';
+import ProCard from 'infrad-pro-card';
 
 type GithubIssueItem = {
   url: string;
@@ -113,7 +114,7 @@ const columns: ProColumns<GithubIssueItem>[] = [
 export default () => {
   const [type, setType] = useState('table');
   return (
-    <>
+    <ProCard>
       <Tabs activeKey={type} onChange={(e) => setType(e)}>
         <Tabs.TabPane tab="table" key="table" />
         <Tabs.TabPane tab="form" key="form" />
@@ -163,6 +164,6 @@ export default () => {
           }}
         />
       )}
-    </>
+    </ProCard>
   );
 };

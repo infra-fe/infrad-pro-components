@@ -16,7 +16,7 @@ nav:
 | --- | --- | --- |
 | `key` | `React.key` | 确定这个列的唯一值,一般用于 dataIndex 重复的情况 |
 | `dataIndex` | `React.key` \| `React.key[]` | 与实体映射的 key，数组会被转化 `[a,b] => Entity.a.b` |
-| `valueType` | `ProFieldValueType` | 数据的渲渲染方式，我们自带了一部分，你可以可以自定义 valueType |
+| `valueType` | `ProFieldValueType` | 数据的渲渲染方式，我们自带了一部分，你也可以自定义 valueType |
 | `title` | `ReactNode` \|`(props,type,dom)=> ReactNode` | 标题的内容，在 form 中是 label |
 | `tooltip` | `string` | 会在 title 旁边展示一个 icon，鼠标浮动之后展示 |
 | `valueEnum` | `(Entity)=> ValueEnum` \| `ValueEnum` | 支持 object 和 Map，Map 是支持其他基础类型作为 key |
@@ -31,8 +31,96 @@ nav:
 | `hideInTable` | `boolean` | 在 Table 中隐藏 |
 | `hideInSearch` | `boolean` | 在 Table 的查询表单中隐藏 |
 | `hideInDescriptions` | `boolean` | 在 descriptions 中隐藏 |
+| `rowProps` | [RowProps](https://ant.design/components/grid/#Row) | 在开启 `grid` 模式时传递给 Row，仅在`ProFormGroup`, `ProFormList`, `ProFormFieldSet` 中有效 |
+| `colProps` | [ColProps](https://ant.design/components/grid/#Col) | 在开启 `grid` 模式时传递给 Col |
 
-## valueType
+## TypeScript 定义
+
+```tsx | pure
+export type ProSchema<T = unknown, U = string, Extra = unknown> = {
+  /** @name 确定这个列的唯一值 */
+  key?: React.ReactText;
+  /**
+   * 支持一个数组，[a,b] 会转化为 obj.a.b
+   *
+   * @name 与实体映射的key
+   */
+  dataIndex?: string | number | (string | number)[];
+  /** 选择如何渲染相应的模式 */
+  valueType?: ((entity: T, type: ProSchemaComponentTypes) => U) | U;
+
+  /**
+   * 支持 ReactNode 和 方法
+   *
+   * @name 标题
+   */
+  title?:
+    | ((
+        schema: ProSchema<T, U, Extra>,
+        type: ProSchemaComponentTypes,
+        dom: React.ReactNode,
+      ) => React.ReactNode)
+    | React.ReactNode;
+
+  /** @name 展示一个 icon，hover 是展示一些提示信息 */
+  tooltip?: string | LabelTooltipType;
+
+  /** @deprecated 你可以使用 tooltip，这个更改是为了与 antd 统一 */
+  tip?: string;
+
+  render?: (
+    dom: React.ReactNode,
+    entity: T,
+    index: number,
+    action: ProCoreActionType,
+    schema: ProSchema<T, U, Extra>,
+  ) => React.ReactNode;
+
+  /**
+   * 返回一个node，会自动包裹 value 和 onChange
+   *
+   * @name 自定义编辑模式
+   */
+  renderFormItem?: (
+    item: ProSchema<T, U, Extra>,
+    config: {
+      index?: number;
+      value?: any;
+      onSelect?: (value: any) => void;
+      type: ProSchemaComponentTypes;
+      defaultRender: (newItem: ProSchema<T, U, Extra>) => JSX.Element | null;
+    },
+    form: FormInstance,
+  ) => React.ReactNode;
+
+  /**
+   * 必须要返回 string
+   *
+   * @name 自定义 render
+   */
+  renderText?: (text: any, record: T, index: number, action: ProCoreActionType) => any;
+
+  fieldProps?: any;
+  /** @name 映射值的类型 */
+  valueEnum?: ProSchemaValueEnumObj | ProSchemaValueEnumMap;
+
+  /** @name 从服务器请求枚举 */
+  request?: ProFieldRequestData<ProSchema>;
+
+  /** @name 从服务器请求的参数，改变了会触发 reload */
+  params?: {
+    [key: string]: any;
+  };
+  /** @name 隐藏在 descriptions */
+  hideInDescriptions?: boolean;
+} & Extra;
+```
+
+## valueType 列表
+
+<code src="./demos/valueType.tsx" height="154" title="schema 表单" />
+
+### API
 
 valueType 是 ProComponents 的灵魂，ProComponents 会根据 valueType 来映射成不同的表单项。以下是支持的常见表单项：
 
@@ -53,6 +141,7 @@ valueType 是 ProComponents 的灵魂，ProComponents 会根据 valueType 来映
 | `timeRange`     | 时间区间                     |
 | `text`          | 文本框                       |
 | `select`        | 下拉框                       |
+| `treeSelect`    | 树形下拉框                   |
 | `checkbox`      | 多选框                       |
 | `rate`          | 星级组件                     |
 | `radio`         | 单选框                       |
@@ -68,6 +157,7 @@ valueType 是 ProComponents 的灵魂，ProComponents 会根据 valueType 来映
 | `image`         | 图片                         |
 | `jsonCode`      | 代码框，但是带了 json 格式化 |
 | `color`         | 颜色选择器                   |
+| `cascader`      | 级联选择器                   |
 
 这里 demo 可以来了解一下各个 valueType 的展示效果。
 
@@ -110,15 +200,11 @@ return { type: 'money', locale: 'en-Us' };
 return { type: 'percent', showSymbol: true | false, precision: 2 };
 ```
 
-### valueType 查看
-
-<code src="./demos/valueType.tsx" height="154px" title="schema 表单" />
-
 如果我们带的 valueType 不能满足需求，我们可以用自定义 valueType 来自定义业务组件。
 
 ### 自定义 valueType
 
-<code src="./demos/customization-value-type.tsx" height="154px" title="schema 表单" />
+<code src="./demos/customization-value-type.tsx" height="154" title="schema 表单" />
 
 ### valueEnum
 
@@ -178,7 +264,9 @@ interface IValueEnum {
 
 ## 远程数据
 
-对于 `select`, `checkbox`, `radio`, `radioButton` 这四个 valueType,我们统一支持了 `request`,`params`,`fieldProps.options`，`valueEnum` 来支持远程数据，这几个属性分别有不同的用法。
+支持组件 `Select`, `TreeSelect`, `Cascader`, `Checkbox`, `Radio`, `RadioButton`
+
+支持参数 `request`,`params`,`fieldProps.options`, `valueEnum` 来支持远程数据，这几个属性分别有不同的用法。
 
 ### `valueEnum`
 
@@ -308,6 +396,8 @@ export default () => (
 
 ### `request` 和 `params`
 
+> 可以使用 debounceTime 调整请求防抖时间，默认为 10ms
+
 大部分时候我们是从网络中获取数据，但是获取写一个 hooks 来请求数据还是比较繁琐的，同时还要定义一系列状态，所以我们提供了 `request` 和 `params` 来获取数据。
 
 - `request` 是一个 promise,需要返回一个 options 相同的数据
@@ -326,6 +416,7 @@ const request = async () => [
   label="Select"
   params={{}}
   valueType="select"
+  debounceTime={1000}
   request={request}
   placeholder="Please select a country"
 />;

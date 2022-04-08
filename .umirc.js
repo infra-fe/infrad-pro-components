@@ -19,7 +19,7 @@ const alias = pkgList.reduce((pre, pkg) => {
 console.log(`🌼 alias list \n${chalk.blue(Object.keys(alias).join('\n'))}`);
 
 const tailPkgList = pkgList
-  .map((path) => [join('packages', path, 'src'), join('packages', path, 'src', 'components')])
+  .map((path) => [join('packages', path, 'src')])
   .reduce((acc, val) => acc.concat(val), []);
 
 const isProduction = process.env.NODE_ENV === 'production';
@@ -76,12 +76,18 @@ export default {
       name: 'theme-color',
       content: '#1890ff',
     },
+    {
+      name: 'google-site-verification',
+      content: '9LDp--DeEC-xOggsHl_t1MlR_1_2O972JpSUu8NZKMU',
+    },
   ],
-  alias: process.env === 'development' ? alias : {},
+  alias,
   // 用于切换 antd 暗黑模式
   // antd: {
   //   dark: true,
   // },
+  headScripts: ['https://gw.alipayobjects.com/os/antfincdn/fdj3WlJd5c/darkreader.js'],
+  externals: { darkreader: 'window.DarkReader' },
   resolve: {
     includes: [...tailPkgList, 'docs'],
   },
@@ -111,8 +117,6 @@ export default {
       }
     : false,
   hash: true,
-  ssr: isDeploy ? {} : undefined,
-  exportStatic: {},
   targets: {
     chrome: 80,
     firefox: false,
@@ -122,11 +126,9 @@ export default {
   },
   theme: {
     '@s-site-menu-width': '258px',
+    '@root-entry-name': 'variable',
   },
   ignoreMomentLocale: true,
-  headScripts: ['https://gw.alipayobjects.com/os/antfincdn/fdj3WlJd5c/darkreader.js'],
-  links: process.env.NODE_ENV === 'development' ? ['./node_modules/infrad/dist/antd.css'] : [],
-  externals: { darkreader: 'window.DarkReader' },
   menus: {
     '/components': [
       {
@@ -137,10 +139,11 @@ export default {
         title: '布局',
         children: [
           'layout',
-          'PageContainer/index',
+          'components/PageContainer/index',
           'card',
-          'WaterMark/index',
-          'StatisticCard/index',
+          'components/WaterMark/index',
+          'components/StatisticCard/index',
+          'components/CheckCard/index',
           'header',
         ],
       },
@@ -148,17 +151,24 @@ export default {
         title: '数据录入',
         children: [
           'form',
-          'FieldSet/index',
-          'Group/index',
-          'SchemaForm/index',
-          'QueryFilter/index',
-          'StepsForm/index',
-          'ModalForm/index',
+          'components/FieldSet/index',
+          'components/Group/index',
+          'components/Dependency/index',
+          'components/SchemaForm/index',
+          'components/QueryFilter/index',
+          'components/StepsForm/index',
+          'components/ModalForm/index',
         ],
       },
       {
         title: '数据展示',
-        children: ['table', 'EditableTable/index', 'list', 'description'],
+        children: [
+          'table',
+          'components/EditableTable/index',
+          'components/DragSortTable/index',
+          'list',
+          'description',
+        ],
       },
       {
         title: '通用',
@@ -172,23 +182,31 @@ export default {
       },
       {
         title: 'Layout',
-        children: ['layout', 'PageContainer/index', 'card', 'header'],
+        children: [
+          'layout',
+          'components/PageContainer/index',
+          'components/DragSortTable/index',
+          'list',
+          'card',
+          'header',
+        ],
       },
       {
         title: 'Data entry',
         children: [
           'form',
-          'FieldSet/index',
-          'Group/index',
-          'SchemaForm/index',
-          'QueryFilter/index',
-          'StepsForm/index',
-          'ModalForm/index',
+          'components/FieldSet/index',
+          'components/Group/index',
+          'components/Dependency/index',
+          'components/SchemaForm/index',
+          'components/QueryFilter/index',
+          'components/StepsForm/index',
+          'components/ModalForm/index',
         ],
       },
       {
         title: 'Data Display',
-        children: ['table', 'EditableTable/index', 'list', 'description'],
+        children: ['table', 'components/EditableTable/index', 'list', 'description'],
       },
       {
         title: 'General',
@@ -196,7 +214,8 @@ export default {
       },
     ],
   },
+  ssr: isDeploy ? {} : undefined,
   webpack5: {},
+  exportStatic: {},
   mfsu: !isDeploy ? {} : undefined,
-  fastRefresh: {},
 };

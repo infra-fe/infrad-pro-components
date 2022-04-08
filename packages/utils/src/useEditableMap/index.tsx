@@ -5,7 +5,6 @@ import useMergedState from 'rc-util/lib/hooks/useMergedState';
 import type { FormInstance } from 'infrad';
 import { useIntl } from 'infrad-pro-provider';
 import { message } from 'infrad';
-import ReactDOM from 'react-dom';
 import type {
   ActionRenderConfig,
   ActionTypeText,
@@ -94,10 +93,8 @@ function useEditableMap<RecordType>(
    */
   const cancelEditable = (recordKey: RecordKey) => {
     // 防止多次渲染
-    ReactDOM.unstable_batchedUpdates(() => {
-      editableKeysSet.delete(recordKeyToString(recordKey));
-      setEditableRowKeys(Array.from(editableKeysSet));
-    });
+    editableKeysSet.delete(recordKeyToString(recordKey));
+    setEditableRowKeys(Array.from(editableKeysSet));
     return true;
   };
 

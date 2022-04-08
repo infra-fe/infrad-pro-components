@@ -1,6 +1,6 @@
 import React from 'react';
-import { Button, Tooltip } from 'infrad';
-import { QuestionCircleOutlined } from 'infra-design-icons';
+import { Tooltip } from 'infrad';
+import { QuestionCircleOutlined } from '@ant-design/icons';
 import type { ProColumns } from 'infrad-pro-table';
 import ProTable, { TableDropdown } from 'infrad-pro-table';
 import moment from 'moment';
@@ -29,6 +29,11 @@ const columns: ProColumns<TableListItem>[] = [
     title: '应用名称',
     dataIndex: 'name',
     render: (_) => <a>{_}</a>,
+    formItemProps: {
+      lightProps: {
+        labelFormatter: (value) => `app-${value}`,
+      },
+    },
   },
   {
     title: '日期范围',
@@ -104,13 +109,6 @@ export default () => {
         filterType: 'light',
       }}
       dateFormatter="string"
-      headerTitle="表格标题"
-      toolBarRender={() => [
-        <Button key="show">查看日志</Button>,
-        <Button type="primary" key="primary">
-          创建应用
-        </Button>,
-      ]}
     />
   );
 };

@@ -1,6 +1,7 @@
 ﻿import type { ProSchemaComponentTypes, UseEditableUtilType } from 'infrad-pro-utils';
 import type { ProFieldEmptyText } from 'infrad-pro-field';
-import type { TableColumnType } from 'infrad';
+import type { TableColumnType, TableProps } from 'infrad';
+import { Table } from 'infrad';
 import { runFunction } from 'infrad-pro-utils';
 import { omitBoolean, omitUndefinedAndEmptyArr } from 'infrad-pro-utils';
 import { proFieldParsingValueEnumToArray } from 'infrad-pro-field';
@@ -17,14 +18,31 @@ import { defaultOnFilter, renderColumnsTitle, columnRender } from './columnRende
  * @param map
  * @param columnEmptyText
  */
-export function genProColumnToColumn<T>(props: {
-  columns: ProColumns<T, any>[];
-  counter: ReturnType<typeof useContainer>;
-  columnEmptyText: ProFieldEmptyText;
-  type: ProSchemaComponentTypes;
-  editableUtils: UseEditableUtilType;
-}): (TableColumnType<T> & { index?: number })[] {
-  const { columns, counter, columnEmptyText, type, editableUtils } = props;
+export function genProColumnToColumn<T>(
+  params: {
+    columns: ProColumns<T, any>[];
+    counter: ReturnType<typeof useContainer>;
+    columnEmptyText: ProFieldEmptyText;
+    type: ProSchemaComponentTypes;
+    editableUtils: UseEditableUtilType;
+  } & Pick<TableProps<T>, 'rowKey' | 'childrenColumnName'>,
+): (TableColumnType<T> & {
+  index?: number;
+  isExtraColumns?: boolean;
+  extraColumn?: typeof Table.EXPAND_COLUMN | typeof Table.SELECTION_COLUMN;
+})[] {
+  const {
+    columns,
+    counter,
+    columnEmptyText,
+    type,
+    editableUtils,
+    rowKey = 'id',
+    childrenColumnName = 'children',
+  } = params;
+
+  const subNameRecord = new Map();
+
   return columns
     .map((columnProps, columnsIndex) => {
       const {
@@ -45,6 +63,17 @@ export function genProColumnToColumn<T>(props: {
           ...columnProps,
         };
       }
+      const isExtraColumns =
+        columnProps === Table.EXPAND_COLUMN || columnProps === Table.SELECTION_COLUMN;
+      if (isExtraColumns) {
+        return {
+          index: columnsIndex,
+          isExtraColumns: true,
+          hideInTable: false,
+          hideInSetting: true,
+          extraColumn: columnProps,
+        };
+      }
       const config = counter.columnsMap[columnKey] || { fixed: columnProps.fixed };
 
       const genOnFilter = () => {
@@ -53,6 +82,8 @@ export function genProColumnToColumn<T>(props: {
         }
         return omitBoolean(onFilter);
       };
+
+      let keyName: React.Key = rowKey as string;
 
       const tempColumns = {
         index: columnsIndex,
@@ -67,16 +98,31 @@ export function genProColumnToColumn<T>(props: {
               ).filter((valueItem) => valueItem && valueItem.value !== 'all')
             : filters,
         onFilter: genOnFilter(),
-        ellipsis: false,
         fixed: config.fixed,
         width: columnProps.width || (columnProps.fixed ? 200 : undefined),
         children: (columnProps as ProColumnGroupType<T, any>).children
           ? genProColumnToColumn({
-              ...props,
+              ...params,
               columns: (columnProps as ProColumnGroupType<T, any>)?.children,
             })
           : undefined,
         render: (text: any, rowData: T, index: number) => {
+          if (typeof rowKey === 'function') {
+            keyName = rowKey(rowData, index);
+          }
+
+          let uniqueKey: any;
+          if (Reflect.has(rowData as any, keyName)) {
+            uniqueKey = rowData[keyName];
+            const parentInfo = subNameRecord.get(uniqueKey) || [];
+            rowData[childrenColumnName]?.forEach((item: any) => {
+              const itemUniqueKey = item[keyName];
+              if (!subNameRecord.has(itemUniqueKey)) {
+                subNameRecord.set(itemUniqueKey, parentInfo.concat([index, childrenColumnName]));
+              }
+            });
+          }
+
           const renderProps = {
             columnProps,
             text,
@@ -85,8 +131,10 @@ export function genProColumnToColumn<T>(props: {
             columnEmptyText,
             counter,
             type,
+            subName: subNameRecord.get(uniqueKey),
             editableUtils,
           };
+
           return columnRender<T>(renderProps);
         },
       };
@@ -94,5 +142,7 @@ export function genProColumnToColumn<T>(props: {
     })
     .filter((item) => !item.hideInTable) as unknown as (TableColumnType<T> & {
     index?: number;
+    isExtraColumns?: boolean;
+    extraColumn?: typeof Table.EXPAND_COLUMN | typeof Table.SELECTION_COLUMN;
   })[];
 }

@@ -43,6 +43,10 @@ export default () => {
             message: '此项是必填项',
           },
           {
+            message: '必须包含数字',
+            pattern: /[0-9]/,
+          },
+          {
             max: 16,
             whitespace: true,
             message: '最长为 16 位',
@@ -92,6 +96,9 @@ export default () => {
         headerTitle="可编辑表格"
         columns={columns}
         rowKey="id"
+        scroll={{
+          x: 960,
+        }}
         value={dataSource}
         onChange={setDataSource}
         recordCreatorProps={{

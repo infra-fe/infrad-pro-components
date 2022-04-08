@@ -28,7 +28,7 @@ const { yParser } = require('@umijs/utils');
           url: 'https://github.com/infra-fe/infrad-pro-components',
         },
         browserslist: ['last 2 versions', 'Firefox ESR', '> 1%', 'ie >= 11'],
-        keywords: ['antd', 'admin', 'ant-design', 'ant-design-pro'],
+        keywords: ['infrad', 'admin', 'ant-design', 'ant-design-pro'],
         authors: [
           'chencheng <sorrycc@gmail.com> (https://github.com/sorrycc)',
           'chenshuai2144 <qixian.cs@outlook.com> (https://github.com/chenshuai2144)',

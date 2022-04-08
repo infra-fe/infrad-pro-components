@@ -35,6 +35,14 @@ export type BaseMenuProps = {
   style?: React.CSSProperties;
   theme?: MenuTheme;
   formatMessage?: (message: MessageDescriptor) => string;
+
+  /**
+   * @name 处理父级菜单的 props，可以复写菜单的点击功能，一般用于埋点
+   * @see 子级的菜单要使用 menuItemRender 来处理
+   *
+   * @example 使用 a 标签跳转到特殊的地址 subMenuItemRender={(item, defaultDom) => { return <a onClick={()=> history.push(item.path) }>{defaultDom}</a> }}
+   * @example 增加埋点 subMenuItemRender={(item, defaultDom) => { return <a onClick={()=> log.click(item.name) }>{defaultDom}</a> }}
+   */
   subMenuItemRender?: WithFalse<
     (
       item: MenuDataItem & {
@@ -43,6 +51,14 @@ export type BaseMenuProps = {
       defaultDom: React.ReactNode,
     ) => React.ReactNode
   >;
+
+  /**
+   * @name 处理菜单的 props，可以复写菜单的点击功能，一般结合 Router 框架使用
+   * @see 非子级的菜单要使用 subMenuItemRender 来处理
+   *
+   * @example 使用 a 标签 menuItemRender={(item, defaultDom) => { return <a onClick={()=> history.push(item.path) }>{defaultDom}</a> }}
+   * @example 使用 Link 标签 menuItemRender={(item, defaultDom) => { return <Link to={item.path}>{defaultDom}</Link> }}
+   */
   menuItemRender?: WithFalse<
     (
       item: MenuDataItem & {
@@ -53,6 +69,12 @@ export type BaseMenuProps = {
       menuProps: BaseMenuProps,
     ) => React.ReactNode
   >;
+
+  /**
+   * @name 处理 menuData 的方法，与 menuDataRender 不同，postMenuData处理完成后会直接渲染，不再进行国际化和拼接处理
+   *
+   * @example 增加菜单图标 postMenuData={(menuData) => { return menuData.map(item => { return { ...item, icon: <Icon type={item.icon} /> } }) }}
+   */
   postMenuData?: (menusData?: MenuDataItem[]) => MenuDataItem[];
 } & Partial<RouterTypes<Route>> &
   Omit<MenuProps, 'openKeys' | 'onOpenChange' | 'title'> &
@@ -99,7 +121,7 @@ class MenuUtil {
 
   /** Get SubMenu or Item */
   getSubMenuOrItem = (item: MenuDataItem, isChildren: boolean): React.ReactNode => {
-    if (Array.isArray(item.children) && item && item.children.length > 0) {
+    if (Array.isArray(item.routes) && item && item.routes.length > 0) {
       const name = this.getIntlName(item);
       const { subMenuItemRender, prefixCls, menu, iconPrefixes } = this.props;
       //  get defaultTitle by menuItemRender
@@ -121,7 +143,7 @@ class MenuUtil {
       const MenuComponents: React.ElementType = menu?.type === 'group' ? ItemGroup : SubMenu;
       return (
         <MenuComponents title={title} key={item.key || item.path} onTitleClick={item.onTitleClick}>
-          {this.getNavMenuItems(item.children, true)}
+          {this.getNavMenuItems(item.routes, true)}
         </MenuComponents>
       );
     }
@@ -177,7 +199,7 @@ class MenuUtil {
         <span
           title={name}
           onClick={() => {
-            window.open(itemPath);
+            window?.open?.(itemPath);
           }}
           className={`${prefixCls}-menu-item ${prefixCls}-menu-item-link`}
         >
@@ -195,6 +217,7 @@ class MenuUtil {
         isMobile,
         replace: itemPath === location.pathname,
         onClick: () => onCollapse && onCollapse(true),
+        children: undefined,
       };
       return menuItemRender(renderItemProps, defaultItem, this.props);
     }

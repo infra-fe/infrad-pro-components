@@ -1,9 +1,9 @@
 {
-  "name": "infrad-pro-list",
-  "version": "1.14.3",
+  "name": "@ant-design/pro-list",
+  "version": "1.21.48",
   "description": "🏆 Use Ant Design List like a Pro!",
   "keywords": [
-    "antd",
+    "infrad",
     "admin",
     "ant-design",
     "ant-design-pro"
@@ -32,11 +32,13 @@
     "ie >= 11"
   ],
   "dependencies": {
+    "@ant-design/icons": "^4.0.0",
+    "infrad-pro-card": "1.19.2",
+    "infrad-pro-field": "1.34.2",
+    "infrad-pro-table": "2.71.1",
+    "@babel/runtime": "^7.16.3",
     "classnames": "^2.2.6",
     "infra-design-icons": "^4.0.0",
-    "infrad-pro-card": "^1.15.2",
-    "infrad-pro-field": "^1.22.2",
-    "infrad-pro-table": "^2.52.2",
     "moment": "^2.24.0",
     "rc-resize-observer": "^1.0.0",
     "rc-util": "^4.19.0",
@@ -44,7 +46,7 @@
     "use-media-antd-query": "1.0.6"
   },
   "peerDependencies": {
-    "infrad": "^4.16.12",
+    "infrad": ">=4.18.0",
     "react": ">=16.9.0"
   },
   "publishConfig": {

@@ -1,6 +1,6 @@
 import './BasicLayout.less';
 import type { CSSProperties } from 'react';
-import { useCallback, useRef } from 'react';
+import { useCallback } from 'react';
 import React, { useContext, useEffect, useMemo, useState } from 'react';
 import type { BreadcrumbProps as AntdBreadcrumbProps } from 'infrad/lib/breadcrumb';
 import { Layout, ConfigProvider } from 'infrad';
@@ -8,14 +8,9 @@ import classNames from 'classnames';
 import warning from 'warning';
 import useMergedState from 'rc-util/lib/hooks/useMergedState';
 import useAntdMediaQuery from 'use-media-antd-query';
-import {
-  useDeepCompareEffect,
-  useDocumentTitle,
-  isBrowser,
-  useMountMergeState,
-} from 'infrad-pro-utils';
+import { useDocumentTitle, isBrowser, useMountMergeState } from 'infrad-pro-utils';
 import Omit from 'omit.js';
-import useSWR, { mutate } from 'swr';
+import useSWR from 'swr';
 import { getMatchMenu } from '@umijs/route-utils';
 
 import type { HeaderViewProps } from './Header';
@@ -26,8 +21,7 @@ import { getPageTitleInfo } from './getPageTitle';
 import type { ProSettings } from './defaultSettings';
 import defaultSettings from './defaultSettings';
 import type { LocaleType } from './locales';
-import getLocales from './locales';
-import type { BaseMenuProps } from './components/SiderMenu/BaseMenu';
+import { gLocaleObject } from './locales';
 import Footer from './Footer';
 import RouteContext from './RouteContext';
 import SiderMenu from './components/SiderMenu';
@@ -41,7 +35,7 @@ import compatibleLayout from './utils/compatibleLayout';
 import useCurrentMenuLayoutProps from './utils/useCurrentMenuLayoutProps';
 import { clearMenuItem } from './utils/utils';
 import type { WaterMarkProps } from './components/WaterMark';
-import { stringify } from 'use-json-comparison';
+import { ConfigProviderWrap } from 'infrad-pro-provider';
 
 let layoutIndex = 0;
 
@@ -49,73 +43,180 @@ export type LayoutBreadcrumbProps = {
   minLength?: number;
 };
 
-export type BasicLayoutProps = Partial<RouterTypes<Route>> &
-  SiderMenuProps &
-  HeaderViewProps & {
-    pure?: boolean;
-    /** @name logo url */
-    logo?: React.ReactNode | WithFalse<() => React.ReactNode>;
+type GlobalTypes = Omit<
+  Partial<RouterTypes<Route>> & SiderMenuProps & HeaderViewProps,
+  'collapsed'
+>;
 
-    /** @name 页面切换的时候触发 */
-    onPageChange?: (location?: RouterTypes<Route>['location']) => void;
+export type BasicLayoutProps = GlobalTypes & {
+  /**
+   * @name 简约模式，设置了之后不渲染的任何 layout 的东西，但是会有 context，可以获取到当前菜单。
+   *
+   * @example pure={true}
+   */
+  pure?: boolean;
+  /**
+   * @name logo 的配置，可以配置url，React 组件 和 false
+   *
+   * @example 设置 logo 为网络地址  logo="https://avatars1.githubusercontent.com/u/8186664?s=460&v=4"
+   * @example 设置 logo 为组件  logo={<img src="https://avatars1.githubusercontent.com/u/8186664?s=460&v=4"/>}
+   * @example 设置 logo 为 false 不显示 logo  logo={false}
+   * @example 设置 logo 为 方法  logo={()=> <img src="https://avatars1.githubusercontent.com/u/8186664?s=460&v=4"/> }
+   * */
+  logo?: React.ReactNode | WithFalse<() => React.ReactNode>;
 
-    loading?: boolean;
+  /**
+   * @name 页面切换的时候触发
+   *
+   * @example 获取切换的页面地址 onPageChange={(location) => { console.log("切换到："+location.pathname) }}
+   *
+   * */
+  onPageChange?: (location?: RouterTypes<Route>['location']) => void;
 
-    locale?: LocaleType;
+  /**
+   * @name layout 的 loading 效果，设置完成之后只展示一个 loading
+   *
+   * @example loading={true}
+   */
+  loading?: boolean;
 
-    onCollapse?: (collapsed: boolean) => void;
+  /**
+   * @name layout
+   *
+   * @description "zh-CN" | "zh-TW" | "en-US" | "it-IT" | "ko-KR"
+   * @example 中文 layout="zh-CN"
+   * @example 英文 layout="en-US"
+   */
+  locale?: LocaleType;
 
-    footerRender?: WithFalse<
-      (props: HeaderViewProps, defaultDom: React.ReactNode) => React.ReactNode
-    >;
+  /**
+   * @name 是否收起 layout 是严格受控的，可以 设置为 true，一直收起
+   *
+   * @example collapsed={true}
+   */
+  collapsed?: boolean;
 
-    breadcrumbRender?: WithFalse<
-      (routers: AntdBreadcrumbProps['routes']) => AntdBreadcrumbProps['routes']
-    >;
+  /**
+   * @name 收起和展开的时候触发事件
+   *
+   * @example onCollapse=(collapsed)=>{ setCollapsed(collapsed) };
+   */
+  onCollapse?: (collapsed: boolean) => void;
 
-    menuItemRender?: BaseMenuProps['menuItemRender'];
-    pageTitleRender?: WithFalse<
-      (
-        props: GetPageTitleProps,
-        defaultPageTitle?: string,
-        info?: {
-          // 页面标题
-          title: string;
-          // locale 的 title
-          id: string;
-          // 页面标题不带默认的 title
-          pageName: string;
-        },
-      ) => string
-    >;
-    menuDataRender?: (menuData: MenuDataItem[]) => MenuDataItem[];
-    itemRender?: AntdBreadcrumbProps['itemRender'];
+  /**
+   * @name 页脚的配置
+   *
+   * @example 不展示dom footerRender={false}
+   * @example 使用 layout 的  DefaultFooter   footerRender={() => (<DefaultFooter copyright="这是一条测试文案"/>}
+   */
+  footerRender?: WithFalse<
+    (props: HeaderViewProps, defaultDom: React.ReactNode) => React.ReactNode
+  >;
 
-    formatMessage?: (message: MessageDescriptor) => string;
-    /** 是否禁用移动端模式，有的管理系统不需要移动端模式，此属性设置为true即可 */
-    disableMobile?: boolean;
-    contentStyle?: CSSProperties;
-    isChildrenLayout?: boolean;
+  /**
+   * @name 设置 PageHeader 的面包屑，只能处理数据
+   *
+   * @example 手动设置 breadcrumbRender={(routers = []) => [ { path: '/', breadcrumbName: '主页'} ]
+   * @example 增加一项 breadcrumbRender={(routers = []) => { return [{ path: '/', breadcrumbName: '主页'} ,...routers ]}
+   * @example 删除首页 breadcrumbRender={(routers = []) => { return routers.filter(item => item.path !== '/')}
+   * @example 不显示面包屑 breadcrumbRender={false}
+   */
+  breadcrumbRender?: WithFalse<
+    (routers: AntdBreadcrumbProps['routes']) => AntdBreadcrumbProps['routes']
+  >;
 
-    className?: string;
+  /**
+   * @name 设置页面的标题
+   * @example 根据页面的路由设置标题 pageTitleRender={(props) => { return props.location.pathname }}
+   * @example 不显示标题 pageTitleRender={false}
+   * @example 根据默认的标题设置 pageTitleRender={(props,defaultPageTitle) => { return defaultPageTitle + '这是一个测试标题' }}
+   * @example 根据 info 来自己组合标题 pageTitleRender={(props,defaultPageTitle,info) => { return info.title + "-" + info.pageName }
+   */
+  pageTitleRender?: WithFalse<
+    (
+      props: GetPageTitleProps,
+      defaultPageTitle?: string,
+      info?: {
+        // 页面标题
+        title: string;
+        // locale 的 title
+        id: string;
+        // 页面标题不带默认的 title
+        pageName: string;
+      },
+    ) => string
+  >;
+  /**
+   * @name 处理 menuData 的数据，可以动态的控制数据
+   * @see 尽量不要用异步数据来处理，否则可能造成更新不及时，如果异步数据推荐使用 menu.request 和 params。
+   *
+   * @example 删除一些菜单 menuDataRender=((menuData) => { return menuData.filter(item => item.name !== 'test') })
+   * @example 增加一些菜单 menuDataRender={(menuData) => { return menuData.concat({ path: '/test', name: '测试', icon: 'smile' }) }}
+   * @example 修改菜单 menuDataRender={(menuData) => { return menuData.map(item => { if (item.name === 'test') { item.name = '测试' } return item }) }}
+   * @example 打平数据 menuDataRender={(menuData) => { return menuData.reduce((pre, item) => { return pre.concat(item.children || []) }, []) }}
+   */
+  menuDataRender?: (menuData: MenuDataItem[]) => MenuDataItem[];
 
-    /** 兼用 content的 margin */
-    disableContentMargin?: boolean;
+  /**
+   * @name 处理每个面包屑的配置，需要直接返回 dom
+   * @description (route: Route, params: any, routes: Array<Route>, paths: Array<string>) => React.ReactNode
+   *
+   * @example 设置 disabled： itemRender={(route, params, routes, paths) => { return <Button disabled>{route.breadcrumbName}</Button> }}
+   * @example 拼接 path： itemRender={(route, params, routes, paths) => { return <a href={paths.join('/')}>{route.breadcrumbName}</Button> }}
+   */
+  itemRender?: AntdBreadcrumbProps['itemRender'];
 
-    /** PageHeader 的 BreadcrumbProps 配置，会透传下去 */
-    breadcrumbProps?: AntdBreadcrumbProps & LayoutBreadcrumbProps;
-    /** @name 水印的相关配置 */
-    waterMarkProps?: WaterMarkProps;
+  formatMessage?: (message: MessageDescriptor) => string;
+  /** @name 是否禁用移动端模式
+   *
+   * @see 有的管理系统不需要移动端模式，此属性设置为true即可
+   * @example disableMobile={true}
+   *  */
+  disableMobile?: boolean;
 
-    /** @name 操作菜单重新刷新 */
-    actionRef?: React.MutableRefObject<
-      | {
-          reload: () => void;
-        }
-      | undefined
-    >;
-    ErrorBoundary?: any;
-  };
+  /**
+   * content 的样式
+   *
+   * @example 背景颜色为红色 contentStyle={{ backgroundColor: 'red '}}
+   */
+  contentStyle?: CSSProperties;
+
+  className?: string;
+
+  /**
+   * @name 取消 content的 margin
+   *
+   * @example 取消内容的 margin  disableContentMargin={true}
+   * */
+  disableContentMargin?: boolean;
+
+  /** PageHeader 的 BreadcrumbProps 配置，会透传下去 */
+  breadcrumbProps?: AntdBreadcrumbProps & LayoutBreadcrumbProps;
+
+  /** @name 水印的相关配置 */
+  waterMarkProps?: WaterMarkProps;
+
+  /**
+   * @name 操作菜单重新刷新
+   *
+   * @example  重新获取菜单 actionRef.current.reload();
+   * */
+  actionRef?: React.MutableRefObject<
+    | {
+        reload: () => void;
+      }
+    | undefined
+  >;
+
+  /**
+   * @name 错误处理组件
+   *
+   * @example ErrorBoundary={<MyErrorBoundary/>}
+   */
+  ErrorBoundary?: any;
+
+  isChildrenLayout?: boolean;
+};
 
 const headerRender = (
   props: BasicLayoutProps & {
@@ -140,7 +241,7 @@ const footerRender = (props: BasicLayoutProps): React.ReactNode => {
 };
 
 const renderSiderMenu = (props: BasicLayoutProps, matchMenuKeys: string[]): React.ReactNode => {
-  const { layout, isMobile, openKeys, splitMenus, menuRender } = props;
+  const { layout, navTheme, isMobile, openKeys, splitMenus, menuRender } = props;
   if (props.menuRender === false || props.pure) {
     return null;
   }
@@ -150,7 +251,7 @@ const renderSiderMenu = (props: BasicLayoutProps, matchMenuKeys: string[]): Reac
   if (splitMenus && (openKeys !== false || layout === 'mix') && !isMobile) {
     const [key] = matchMenuKeys;
     if (key) {
-      menuData = props.menuData?.find((item) => item.key === key)?.children || [];
+      menuData = props.menuData?.find((item) => item.key === key)?.routes || [];
     } else {
       menuData = [];
     }
@@ -163,27 +264,27 @@ const renderSiderMenu = (props: BasicLayoutProps, matchMenuKeys: string[]): Reac
   if (layout === 'top' && !isMobile) {
     return <SiderMenu matchMenuKeys={matchMenuKeys} {...props} hide />;
   }
-  if (menuRender) {
-    const defaultDom = (
-      <SiderMenu
-        matchMenuKeys={matchMenuKeys}
-        {...props}
-        // 这里走了可以少一次循环
-        menuData={clearMenuData}
-      />
-    );
 
-    return menuRender(props, defaultDom);
-  }
-
-  return (
+  const defaultDom = (
     <SiderMenu
       matchMenuKeys={matchMenuKeys}
       {...props}
+      style={
+        navTheme === 'realDark'
+          ? {
+              boxShadow: '0 2px 8px 0 rgba(0, 0, 0, 65%)',
+            }
+          : {}
+      }
       // 这里走了可以少一次循环
       menuData={clearMenuData}
     />
   );
+  if (menuRender) {
+    return menuRender(props, defaultDom);
+  }
+
+  return defaultDom;
 };
 
 const defaultPageTitleRender = (
@@ -280,32 +381,20 @@ const BasicLayout: React.FC<BasicLayoutProps> = (props) => {
           ...restParams,
         });
       }
-      const locales = getLocales();
+      const locales = gLocaleObject();
       return locales[id] ? locales[id] : (defaultMessage as string);
     },
     [propsFormatMessage],
   );
 
-  const [menuInfoData, setMenuInfoData] = useMergedState<{
-    breadcrumb?: Record<string, MenuDataItem>;
-    breadcrumbMap?: Map<string, MenuDataItem>;
-    menuData?: MenuDataItem[];
-  }>(() => getMenuData(route?.routes || [], menu, formatMessage, menuDataRender));
-
-  const { breadcrumb = {}, breadcrumbMap, menuData = [] } = menuInfoData || {};
-
-  const swrKey = useMemo(() => {
-    if (!menu?.params) return [defaultId];
-    return [defaultId, menu?.params];
-  }, [defaultId, stringify(menu?.params)]);
-
-  const preData = useRef<MenuDataItem[] | undefined>(undefined);
-
-  const { data } = useSWR(
-    swrKey,
+  const { data, mutate } = useSWR(
+    () => {
+      if (!menu?.params) return [defaultId, {}];
+      return [defaultId, menu?.params];
+    },
     async (_, params) => {
       setMenuLoading(true);
-      const msg = await menu?.request?.(params || {}, route?.routes || []);
+      const msg = await menu?.request?.(params, route?.routes || []);
       setMenuLoading(false);
       return msg;
     },
@@ -315,38 +404,25 @@ const BasicLayout: React.FC<BasicLayoutProps> = (props) => {
       revalidateOnReconnect: false,
     },
   );
-  preData.current = data;
 
-  // params 更新的时候重新请求
-  useEffect(() => {
-    if (!preData.current) {
-      return;
-    }
-    mutate(swrKey);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [swrKey]);
+  const menuInfoData = useMemo<{
+    breadcrumb?: Record<string, MenuDataItem>;
+    breadcrumbMap?: Map<string, MenuDataItem>;
+    menuData?: MenuDataItem[];
+  }>(
+    () => getMenuData(data || route?.routes || [], menu, formatMessage, menuDataRender),
+    [formatMessage, menu, menuDataRender, data, route?.routes],
+  );
+
+  const { breadcrumb = {}, breadcrumbMap, menuData = [] } = menuInfoData || {};
 
   if (actionRef && menu?.request) {
     actionRef.current = {
       reload: () => {
-        mutate(swrKey);
+        mutate();
       },
     };
   }
-
-  useDeepCompareEffect(() => {
-    if (!menu?.request || !data?.length) {
-      return;
-    }
-    const menuDataMap = getMenuData(
-      data || route?.routes || [],
-      menu,
-      formatMessage,
-      menuDataRender,
-    );
-    setMenuInfoData(menuDataMap);
-  }, [data, menu?.request, menu?.loading, route?.routes]);
-
   const matchMenus = useMemo(() => {
     return getMatchMenu(location.pathname || '/', menuData || [], true);
   }, [location.pathname, menuData]);
@@ -376,19 +452,6 @@ const BasicLayout: React.FC<BasicLayoutProps> = (props) => {
   const colSize = useAntdMediaQuery();
 
   const isMobile = (colSize === 'sm' || colSize === 'xs') && !props.disableMobile;
-
-  /** 如果 menuRender 不存在，可以做一下性能优化 只要 routers 没有更新就不需要重新计算 */
-  useDeepCompareEffect(() => {
-    if (menu?.loading || menu?.request) {
-      return () => null;
-    }
-    const infoData = getMenuData(route?.routes || [], menu, formatMessage, menuDataRender);
-    // 稍微慢一点 render，不然会造成性能问题，看起来像是菜单的卡顿
-    const animationFrameId = requestAnimationFrame(() => {
-      setMenuInfoData(infoData);
-    });
-    return () => window.cancelAnimationFrame && window.cancelAnimationFrame(animationFrameId);
-  }, [menu?.loading, menu?.request, route?.routes, location?.pathname, menuDataRender]);
 
   // If it is a fix menu, calculate padding
   // don't need padding in phone mode
@@ -441,7 +504,7 @@ const BasicLayout: React.FC<BasicLayoutProps> = (props) => {
       menuData,
       onCollapse,
       isMobile,
-      theme: (navTheme || 'dark').toLocaleLowerCase().includes('dark') ? 'dark' : 'light',
+      theme: navTheme === 'dark' ? 'dark' : 'light',
       collapsed,
     },
     matchMenuKeys,
@@ -456,7 +519,7 @@ const BasicLayout: React.FC<BasicLayoutProps> = (props) => {
       isMobile,
       collapsed,
       onCollapse,
-      theme: (navTheme || 'dark').toLocaleLowerCase().includes('dark') ? 'dark' : 'light',
+      theme: navTheme === 'dark' ? 'dark' : 'light',
     },
     matchMenuKeys,
   );
@@ -509,7 +572,6 @@ const BasicLayout: React.FC<BasicLayoutProps> = (props) => {
   }, [location.pathname, location.pathname?.search]);
 
   const [hasFooterToolbar, setHasFooterToolbar] = useState(false);
-
   useDocumentTitle(pageTitleInfo, props.title || false);
 
   return (
@@ -536,7 +598,7 @@ const BasicLayout: React.FC<BasicLayoutProps> = (props) => {
         }}
       >
         {props.pure ? (
-          children
+          <ConfigProviderWrap autoClearCache>{children}</ConfigProviderWrap>
         ) : (
           <div className={className}>
             <Layout

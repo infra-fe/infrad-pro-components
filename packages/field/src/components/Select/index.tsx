@@ -15,10 +15,16 @@ import type {
   ProFieldValueEnumType,
   ProSchemaValueEnumMap,
   ProSchemaValueEnumObj,
+  RequestOptionsType,
 } from 'infrad-pro-utils';
 
-import { useDeepCompareEffect, useMountMergeState } from 'infrad-pro-utils';
-import useSWR, { mutate } from 'swr';
+import {
+  nanoid,
+  useDeepCompareEffect,
+  useMountMergeState,
+  useDebounceValue,
+} from 'infrad-pro-utils';
+
 import { useIntl } from 'infrad-pro-provider';
 
 import LightSelect from './LightSelect';
@@ -27,14 +33,16 @@ import type { ProFieldStatusType } from '../Status';
 import TableStatus, { ProFieldBadgeColor } from '../Status';
 import type { ProFieldFC } from '../../index';
 import './index.less';
+import useSWR from 'swr';
 
-let testId = 0;
+type SelectOptionType = Partial<RequestOptionsType>[];
 
 export type FieldSelectProps<FieldProps = any> = {
   text: string;
   /** 值的枚举，如果存在枚举，Search 中会生成 select */
   valueEnum?: ProFieldValueEnumType;
-
+  /** 防抖动时间 默认10 单位ms */
+  debounceTime?: number;
   /** 从服务器读取选项 */
   request?: ProFieldRequestData;
   /** 重新触发的时机 */
@@ -116,33 +124,41 @@ const Highlight: React.FC<{
   label: string;
   words: string[];
 }> = ({ label, words }) => {
-  const REG_LIST = '.^$*+-?()[]{}\\|';
   const { getPrefixCls } = useContext(ConfigProvider.ConfigContext);
   const lightCls = getPrefixCls('pro-select-item-option-content-light');
   const optionCls = getPrefixCls('pro-select-item-option-content');
-  const reg = new RegExp(
-    words
-      .map((word) => {
-        return word
-          .split('')
-          .map((w) => (REG_LIST.includes(w) ? `\\${w}` : w))
-          .join('');
-      })
-      .join('|'),
+  const matchKeywordsRE = new RegExp(
+    words.map((word) => word.replace(/[-[\]/{}()*+?.\\^$|]/g, '\\$&')).join('|'),
     'gi',
   );
-  const token = label.replace(reg, '#@$&#');
-  const elements = token.split('#').map((x) =>
-    x[0] === '@'
-      ? React.createElement(
-          'span',
-          {
-            className: lightCls,
-          },
-          x.slice(1),
-        )
-      : x,
-  );
+
+  let matchText = label;
+
+  const elements: React.ReactNode[] = [];
+
+  while (matchText.length) {
+    const match = matchKeywordsRE.exec(matchText);
+    if (!match) {
+      elements.push(matchText);
+      break;
+    }
+
+    const start = match.index;
+    const matchLength = match[0].length + start;
+
+    elements.push(
+      matchText.slice(0, start),
+      React.createElement(
+        'span',
+        {
+          className: lightCls,
+        },
+        matchText.slice(start, matchLength),
+      ),
+    );
+    matchText = matchText.slice(matchLength);
+  }
+
   return React.createElement(
     'div',
     {
@@ -209,16 +225,14 @@ function filerByItem(
  */
 export const proFieldParsingValueEnumToArray = (
   valueEnumParams: ProFieldValueEnumType,
-): {
-  value: string | number;
-  text: string;
-}[] => {
-  const enumArray: {
-    value: string | number;
-    text: string;
-    /** 是否禁用 */
-    disabled?: boolean;
-  }[] = [];
+): SelectOptionType => {
+  const enumArray: Partial<
+    RequestOptionsType & {
+      text: string;
+      /** 是否禁用 */
+      disabled?: boolean;
+    }
+  >[] = [];
   const valueEnum = ObjToMap(valueEnumParams);
 
   valueEnum.forEach((_, key) => {
@@ -235,6 +249,7 @@ export const proFieldParsingValueEnumToArray = (
       enumArray.push({
         text: value?.text as unknown as string,
         value: key,
+        label: value?.text as unknown as string,
         disabled: value.disabled,
       });
       return;
@@ -250,17 +265,20 @@ export const proFieldParsingValueEnumToArray = (
 export const useFieldFetchData = (
   props: FieldSelectProps & {
     proFieldKey?: React.Key;
+    defaultKeyWords?: string;
+    cacheForSwr?: boolean;
   },
-): [boolean, SelectProps<any>['options'], (keyWord?: string) => void, () => void] => {
-  const [keyWords, setKeyWords] = useState<string | undefined>(undefined);
+): [boolean, SelectOptionType, (keyWord?: string) => void, () => void] => {
+  const { cacheForSwr } = props;
+
+  const [keyWords, setKeyWords] = useState<string | undefined>(props.defaultKeyWords);
   /** Key 是用来缓存请求的，如果不在是有问题 */
   const [cacheKey] = useState(() => {
     if (props.proFieldKey) {
       return props.proFieldKey.toString();
     }
     if (props.request) {
-      testId += 1;
-      return testId.toString();
+      return nanoid();
     }
     return 'no-fetch';
   });
@@ -276,7 +294,7 @@ export const useFieldFetchData = (
     }));
   }, []);
 
-  const [options, setOptions] = useMountMergeState<SelectProps<any>['options']>(
+  const [options, setOptions] = useMountMergeState<SelectOptionType>(
     () => {
       if (props.valueEnum) {
         return getOptionsFormValueEnum(props.valueEnum);
@@ -294,72 +312,84 @@ export const useFieldFetchData = (
     setOptions(getOptionsFormValueEnum(props.valueEnum));
   }, [props.valueEnum]);
 
-  const [loading, setLoading] = useMountMergeState(false);
+  const swrKey = useDebounceValue(
+    [proFieldKeyRef.current, props.params, keyWords] as const,
+    props.debounceTime ?? props?.fieldProps?.debounceTime ?? 0,
+    [props.params, keyWords],
+  );
 
-  const fetchData = async () => {
-    if (!props.request) {
-      return [];
-    }
-    setLoading(true);
-    const loadData = await props.request({ ...props.params, keyWords }, props);
-    setLoading(false);
-    return loadData;
-  };
+  const {
+    data,
+    mutate: setLocaleData,
+    isValidating,
+  } = useSWR(
+    () => {
+      if (!props.request) {
+        return null;
+      }
 
-  const key = useMemo(() => {
-    if (!props.request) {
-      return 'no-fetch';
-    }
-    if (!props.params && !keyWords) {
-      return proFieldKeyRef.current;
-    }
-    return [proFieldKeyRef.current, JSON.stringify({ ...props.params, keyWords })];
-  }, [keyWords, props.params, props.request]);
+      return swrKey;
+    },
+    (_, params, kw) =>
+      props.request!(
+        {
+          ...params,
+          keyWords: kw,
+        },
+        props,
+      ),
+    {
+      revalidateIfStale: !cacheForSwr,
+      revalidateOnFocus: !cacheForSwr,
+      revalidateOnReconnect: !cacheForSwr,
+      shouldRetryOnError: false,
+    },
+  );
 
-  const { data, mutate: setLocaleData } = useSWR(key, fetchData, {
-    revalidateOnFocus: false,
-    shouldRetryOnError: false,
-    revalidateOnReconnect: false,
-  });
+  const resOptions = useMemo(() => {
+    const opt = options?.map((item) => {
+      if (typeof item === 'string') {
+        return {
+          label: item,
+          value: item,
+        };
+      }
+      if (item?.optionType === 'optGroup' && (item.children || item.options)) {
+        const childrenOptions = [...(item.children || []), ...(item.options || [])].filter(
+          (mapItem) => {
+            return filerByItem(mapItem, keyWords);
+          },
+        );
+        return {
+          ...item,
+          children: childrenOptions,
+          options: childrenOptions,
+        };
+      }
+      return item;
+    });
+
+    // filterOption 为 true 时 filter数据, filterOption 默认为true
+    if (props.fieldProps?.filterOption === true || props.fieldProps?.filterOption === undefined) {
+      return opt?.filter((item) => {
+        if (!item) return false;
+        if (!keyWords) return true;
+        return filerByItem(item as any, keyWords);
+      });
+    }
+
+    return opt;
+  }, [options, keyWords, props.fieldProps?.filterOption]);
 
   return [
-    loading,
-    props.request
-      ? (data as SelectProps<any>['options'])
-      : options
-          ?.map((item) => {
-            if (typeof item === 'string') {
-              return {
-                label: item,
-                value: item,
-              };
-            }
-            if (item?.optionType === 'optGroup' && (item.children || item.options)) {
-              const childrenOptions = [...(item.children || []), ...(item.options || [])].filter(
-                (mapItem) => {
-                  return filerByItem(mapItem, keyWords);
-                },
-              );
-              return {
-                ...item,
-                children: childrenOptions,
-                options: childrenOptions,
-              };
-            }
-            return item;
-          })
-          ?.filter((item) => {
-            if (!item) return false;
-            if (!keyWords) return true;
-            return filerByItem(item as any, keyWords);
-          }),
+    isValidating,
+    props.request ? (data as SelectOptionType) : resOptions,
     (fetchKeyWords?: string) => {
       setKeyWords(fetchKeyWords);
-      mutate(key);
     },
     () => {
       setKeyWords(undefined);
-      setLocaleData(async () => [], false);
+      setLocaleData([], false);
     },
   ];
 };
@@ -369,7 +399,9 @@ export const useFieldFetchData = (
  *
  * @param
  */
-const FieldSelect: ProFieldFC<FieldSelectProps> = (props, ref) => {
+const FieldSelect: ProFieldFC<
+  FieldSelectProps & Pick<SelectProps, 'fieldNames' | 'style' | 'className'>
+> = (props, ref) => {
   const {
     mode,
     valueEnum,
@@ -391,10 +423,7 @@ const FieldSelect: ProFieldFC<FieldSelectProps> = (props, ref) => {
   const inputRef = useRef();
   const intl = useIntl();
   const keyWordsRef = useRef<string>('');
-
-  useEffect(() => {
-    testId += 1;
-  }, []);
+  const { fieldNames } = fieldProps;
 
   useEffect(() => {
     keyWordsRef.current = fieldProps?.searchValue;
@@ -407,19 +436,35 @@ const FieldSelect: ProFieldFC<FieldSelectProps> = (props, ref) => {
     fetchData: () => fetchData(),
   }));
 
-  if (mode === 'read') {
-    const optionsValueEnum: ProSchemaValueEnumObj = options?.length
-      ? options?.reduce((pre: any, cur) => {
-          return { ...pre, [cur.value]: cur.label };
-        }, {})
-      : undefined;
-    // 如果有 label 直接就用 label
-    // @ts-ignore
-    if (rest.text?.label) {
-      // @ts-ignore
-      return rest.text?.label;
-    }
+  const optionsValueEnum = useMemo(() => {
+    if (mode !== 'read') return;
 
+    const {
+      label: labelPropsName = 'label',
+      value: valuePropsName = 'value',
+      options: optionsPropsName = 'options',
+    } = fieldNames || {};
+
+    const valuesMap = new Map();
+
+    const traverseOptions = (_options: typeof options) => {
+      if (!_options?.length) {
+        return valuesMap;
+      }
+      const length = _options.length;
+      let i = 0;
+      while (i < length) {
+        const cur = _options[i++];
+        valuesMap.set(cur[valuePropsName], cur[labelPropsName]);
+        traverseOptions(cur[optionsPropsName]);
+      }
+      return valuesMap;
+    };
+
+    return traverseOptions(options);
+  }, [fieldNames, mode, options]);
+
+  if (mode === 'read') {
     const dom = (
       <>
         {proFieldParsingText(
@@ -456,8 +501,10 @@ const FieldSelect: ProFieldFC<FieldSelectProps> = (props, ref) => {
       return (
         <SearchSelect
           key="SearchSelect"
+          className={rest.className}
           style={{
             minWidth: 100,
+            ...rest.style,
           }}
           bordered={bordered}
           id={id}

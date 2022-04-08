@@ -1,24 +1,53 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import type { UploadProps, ButtonProps } from 'infrad';
 import { Upload, Button } from 'infrad';
-import { UploadOutlined } from 'infra-design-icons';
+import { UploadOutlined } from '@ant-design/icons';
 import type { ProFormFieldItemProps } from '../../interface';
-import createField from '../../BaseForm/createField';
+import { createField } from '../../BaseForm/createField';
 
 export type ProFormDraggerProps = ProFormFieldItemProps<UploadProps> & {
+  /**
+   * @name  上传文件的图标
+   * @default UploadOutlined
+   *
+   * @example 改成笑脸图标  icon={<SmileOutlined/>}
+   */
   icon?: React.ReactNode;
+  /**
+   * @name 按钮文字
+   * @default 单击上传
+   *
+   * @example  title="上传"
+   * @example  title={<div>上传</div>}
+   */
   title?: React.ReactNode;
-  name?: UploadProps['name'];
-  listType?: UploadProps['listType'];
-  action?: UploadProps['action'];
-  accept?: UploadProps['accept'];
+  /**
+   * @name 最大的文件数量，到达数量之后上传按钮会失效
+   *
+   * @example max=2
+   */
   max?: number;
+
+  /**
+   * @name 上传组件的 fileList，为了配合form，改成了这个名字
+   * @default []
+   *
+   * example:value={ [{uid: '-1', name: 'xxx.png', status: 'done', url: 'http://www.baidu.com/xxx.png'}] }
+   */
   value?: UploadProps['fileList'];
-  onChange?: UploadProps['onChange'];
+  /**
+   * @name 上传按钮的配置
+   *
+   * @example 按钮修改为主色 buttonProps={{ type:"primary" }}
+   */
   buttonProps?: ButtonProps;
+
+  /**
+   * @name 是否禁用按钮
+   * @example  disabled={true}
+   */
   disabled?: ButtonProps['disabled'];
-  fileList?: UploadProps['fileList'];
-};
+} & Pick<UploadProps, 'name' | 'listType' | 'action' | 'accept' | 'fileList' | 'onChange'>;
 
 /**
  * 上传按钮组件
@@ -35,21 +64,23 @@ const ProFormUploadButton: React.ForwardRefRenderFunction<any, ProFormDraggerPro
     title = '单击上传',
     max,
     icon = <UploadOutlined />,
-    value,
     buttonProps,
     onChange,
     disabled,
     proFieldProps,
-    fileList,
+    ...restProps
   },
   ref,
 ) => {
+  const value = useMemo(() => {
+    return restProps.fileList ?? restProps.value;
+  }, [restProps.fileList, restProps.value]);
+
   // 如果配置了 max ，并且 超过了文件列表的大小，就不展示按钮
   const showUploadButton =
     (max === undefined || !value || value?.length < max) && proFieldProps?.mode !== 'read';
 
   const isPictureCard = (listType ?? fieldProps?.listType) === 'picture-card';
-
   return (
     <Upload
       action={action}
@@ -58,13 +89,11 @@ const ProFormUploadButton: React.ForwardRefRenderFunction<any, ProFormDraggerPro
       // 'fileList' 改成和 ant.design 文档中 Update 组件 默认 file字段一样
       name={name || 'file'}
       listType={listType || 'picture'}
-      fileList={fileList ?? value}
+      fileList={value}
       {...fieldProps}
       onChange={(info) => {
         onChange?.(info);
-        if (fieldProps?.onChange) {
-          fieldProps?.onChange(info);
-        }
+        fieldProps?.onChange?.(info);
       }}
     >
       {showUploadButton &&

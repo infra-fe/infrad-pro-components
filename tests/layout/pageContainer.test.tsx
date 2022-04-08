@@ -1,6 +1,7 @@
 import { render, mount } from 'enzyme';
-import React from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import type { BasicLayoutProps } from 'infrad-pro-layout';
+import { render as libraryRender } from '@testing-library/react';
 import BasicLayout, { PageContainer, FooterToolbar } from 'infrad-pro-layout';
 import { act } from 'react-dom/test-utils';
 import { waitForComponentToPaint } from '../util';
@@ -14,6 +15,27 @@ describe('PageContainer', () => {
   it('💄 config is null', async () => {
     const html = render(<PageContainer />);
     expect(html).toMatchSnapshot();
+  });
+
+  it('💄 title,ghost,header,breadcrumbRender = false', async () => {
+    const html = mount(
+      <PageContainer title={false} ghost={false} header={undefined} breadcrumbRender={false}>
+        qixian
+      </PageContainer>,
+    );
+    expect(html.find('.ant-page-header').exists()).toBeFalsy();
+  });
+
+  it('💄 pageContainer support breadcrumbRender', async () => {
+    const html = mount(
+      <PageContainer breadcrumbRender={() => <div>这里是面包屑</div>}>content</PageContainer>,
+    );
+    expect(html.find('.has-breadcrumb').at(0).find('div div').text()).toBe('这里是面包屑');
+  });
+
+  it('💄 pageContainer support tabBarExtraContent', async () => {
+    const html = mount(<PageContainer tabBarExtraContent="测试">content</PageContainer>);
+    expect(html.find('.ant-tabs-extra-content').at(0).find('div').text()).toBe('测试');
   });
 
   it('⚡️ support footer', async () => {
@@ -215,7 +237,7 @@ describe('PageContainer', () => {
     });
   });
 
-  it('🐲 prolayout support breadcrumbProps', async () => {
+  it('🐲 pro-layout support breadcrumbProps', async () => {
     const wrapper = render(
       <BasicLayout
         breadcrumbProps={{
@@ -325,5 +347,66 @@ describe('PageContainer', () => {
     expect(wrapper?.find('.custom-className').hostNodes().length).toBe(1);
     const html = wrapper.render();
     expect(html).toMatchSnapshot();
+  });
+
+  it('🌛 PageContainer with custom loading', async () => {
+    const App = () => {
+      const loadingDom = useMemo(
+        () => (
+          <div id="customLoading" style={{ color: 'red', padding: '30px', textAlign: 'center' }}>
+            自定义加载...
+          </div>
+        ),
+        [],
+      );
+      const [loading, setLoading] = useState<React.ReactNode | false>(loadingDom);
+      useEffect(() => {
+        setTimeout(() => {
+          setLoading(false);
+        }, 1000);
+      }, []);
+      return (
+        <PageContainer
+          loading={loading}
+          className="custom-className"
+          header={{
+            title: '页面标题',
+          }}
+        />
+      );
+    };
+
+    const wrapper = mount(<App />);
+    await waitForComponentToPaint(wrapper);
+    expect(wrapper.find('#customLoading').length).toBe(1);
+    const html = wrapper.render();
+    expect(html).toMatchSnapshot();
+    await waitForComponentToPaint(wrapper, 1000);
+
+    expect(wrapper.find('#customLoading').length).toBe(0);
+  });
+
+  it('🐛 breadcrumbRender and restProps?.header?.breadcrumbRender', async () => {
+    const html = libraryRender(
+      <PageContainer
+        className="custom-className"
+        breadcrumbRender={false}
+        header={{
+          breadcrumbRender: () => 'diss',
+        }}
+      />,
+    );
+
+    expect(html.container.innerText).toBe(undefined);
+
+    html.rerender(
+      <PageContainer
+        className="custom-className"
+        header={{
+          breadcrumbRender: () => 'diss',
+        }}
+      />,
+    );
+    expect(html.container.getElementsByClassName('has-breadcrumb')[0].innerHTML).toBe('diss');
   });
 });

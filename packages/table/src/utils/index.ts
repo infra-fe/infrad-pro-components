@@ -47,7 +47,6 @@ export function mergePagination<T>(
         'pagination.total.total',
         '条/总共',
       )} ${all} ${intl.getMessage('pagination.total.item', '条')}`,
-    showSizeChanger: true,
     total,
     ...(defaultPagination as TablePaginationConfig),
     current,
@@ -87,7 +86,9 @@ export function useActionType<T>(
     reload: async (resetPageIndex?: boolean) => {
       // 如果为 true，回到第一页
       if (resetPageIndex) {
-        await props.onCleanSelected();
+        await action.setPageInfo({
+          current: 1,
+        });
       }
       action?.reload();
     },

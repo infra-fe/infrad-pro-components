@@ -1,5 +1,5 @@
 export default {
-  moneySymbol: '$',
+  moneySymbol: 'NT$',
   form: {
     lightFilter: {
       more: '更多篩選',
@@ -58,5 +58,8 @@ export default {
   switch: {
     open: '打開',
     close: '關閉',
+  },
+  loginForm: {
+    submitText: '登入',
   },
 };

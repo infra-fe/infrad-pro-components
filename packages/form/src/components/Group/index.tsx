@@ -1,11 +1,12 @@
-import React, { useContext } from 'react';
+import React, { useCallback, useContext, useMemo } from 'react';
 import { Space, ConfigProvider } from 'infrad';
-import { RightOutlined } from 'infra-design-icons';
+import { RightOutlined } from '@ant-design/icons';
 import FieldContext from '../../FieldContext';
 import type { GroupProps } from '../../interface';
 import './index.less';
 import { LabelIconTip, useMountMergeState } from 'infrad-pro-utils';
 import classNames from 'classnames';
+import { useGridHelpers } from '../../helpers';
 
 const Group: React.FC<GroupProps> = React.forwardRef((props, ref: any) => {
   const { groupProps } = React.useContext(FieldContext);
@@ -24,15 +25,20 @@ const Group: React.FC<GroupProps> = React.forwardRef((props, ref: any) => {
     titleRender,
     spaceProps,
     extra,
+    autoFocus,
   } = {
     ...groupProps,
     ...props,
   };
+
   const [collapsed, setCollapsed] = useMountMergeState(() => defaultCollapsed || false, {
     value: props.collapsed,
     onChange: props.onCollapse,
   });
   const { getPrefixCls } = useContext(ConfigProvider.ConfigContext);
+
+  const { ColWrapper, RowWrapper } = useGridHelpers(props);
+
   const className = getPrefixCls('pro-form-group');
 
   const collapsibleButton = collapsible && (
@@ -59,25 +65,48 @@ const Group: React.FC<GroupProps> = React.forwardRef((props, ref: any) => {
       tooltip={tooltip}
     />
   );
-  const titleDom = titleRender ? titleRender(label, props) : label;
-  const hiddenChildren: React.ReactNode[] = [];
-  const renderChild = React.Children.toArray(children).map((element) => {
-    if (React.isValidElement(element) && element?.props?.hidden) {
-      hiddenChildren.push(element);
-      return null;
-    }
-    return element;
-  });
 
-  return (
-    <div
-      className={classNames(className, {
-        [`${className}-twoLine`]: labelLayout === 'twoLine',
-      })}
-      style={style}
-      ref={ref}
-    >
-      {hiddenChildren.length > 0 && (
+  const Wrapper = useCallback(
+    ({ children: dom }) => (
+      <Space
+        {...spaceProps}
+        className={`${className}-container`}
+        size={size}
+        align={align}
+        direction={direction}
+        style={{
+          rowGap: 0,
+          ...spaceProps?.style,
+        }}
+      >
+        {dom}
+      </Space>
+    ),
+    [align, className, direction, size, spaceProps],
+  );
+
+  const titleDom = titleRender ? titleRender(label, props) : label;
+  const [childrenDoms, hiddenDoms] = useMemo(() => {
+    const hiddenChildren: React.ReactNode[] = [];
+    const childrenList = React.Children.toArray(children).map((element, index) => {
+      if (React.isValidElement(element) && element?.props?.hidden) {
+        hiddenChildren.push(element);
+        return null;
+      }
+      if (index === 0 && React.isValidElement(element) && autoFocus) {
+        return React.cloneElement(element, {
+          ...(element.props as any),
+          autoFocus,
+        });
+      }
+      return element;
+    });
+
+    return [
+      <RowWrapper key="children" Wrapper={Wrapper}>
+        {childrenList}
+      </RowWrapper>,
+      hiddenChildren.length > 0 ? (
         <div
           style={{
             display: 'none',
@@ -85,48 +114,48 @@ const Group: React.FC<GroupProps> = React.forwardRef((props, ref: any) => {
         >
           {hiddenChildren}
         </div>
-      )}
-      {(title || tooltip || extra) && (
-        <div
-          className={`${className}-title`}
-          style={titleStyle}
-          onClick={() => {
-            setCollapsed(!collapsed);
-          }}
-        >
-          {extra ? (
-            <div
-              style={{
-                display: 'flex',
-                width: '100%',
-                alignItems: 'center',
-                justifyContent: 'space-between',
-              }}
-            >
-              {titleDom}
-              <span onClick={(e) => e.stopPropagation()}>{extra}</span>
-            </div>
-          ) : (
-            titleDom
-          )}
-        </div>
-      )}
-      {collapsible && collapsed ? null : (
-        <Space
-          {...spaceProps}
-          className={`${className}-container`}
-          size={size}
-          align={align}
-          direction={direction}
-          style={{
-            rowGap: 0,
-            ...spaceProps?.style,
-          }}
-        >
-          {renderChild}
-        </Space>
-      )}
-    </div>
+      ) : null,
+    ];
+  }, [children, RowWrapper, Wrapper, autoFocus]);
+
+  return (
+    <ColWrapper>
+      <div
+        className={classNames(className, {
+          [`${className}-twoLine`]: labelLayout === 'twoLine',
+        })}
+        style={style}
+        ref={ref}
+      >
+        {hiddenDoms}
+        {(title || tooltip || extra) && (
+          <div
+            className={`${className}-title`}
+            style={titleStyle}
+            onClick={() => {
+              setCollapsed(!collapsed);
+            }}
+          >
+            {extra ? (
+              <div
+                style={{
+                  display: 'flex',
+                  width: '100%',
+                  alignItems: 'center',
+                  justifyContent: 'space-between',
+                }}
+              >
+                {titleDom}
+                <span onClick={(e) => e.stopPropagation()}>{extra}</span>
+              </div>
+            ) : (
+              titleDom
+            )}
+          </div>
+        )}
+        {collapsible && collapsed ? null : childrenDoms}
+      </div>
+    </ColWrapper>
   );
 });
 

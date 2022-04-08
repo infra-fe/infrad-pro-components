@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { message } from 'infrad';
+import { Input, message } from 'infrad';
 import ProForm, { ProFormText } from 'infrad-pro-form';
 import type { ProColumns } from 'infrad-pro-table';
 import { EditableProTable } from 'infrad-pro-table';
@@ -64,6 +64,10 @@ const columns: ProColumns<DataSourceType>[] = [
   {
     title: '描述',
     dataIndex: 'decs',
+    renderFormItem: (_, { record }) => {
+      console.log('----===>', record);
+      return <Input addonBefore={(record as any)?.addonBefore} />;
+    },
   },
   {
     title: '操作',
@@ -116,6 +120,8 @@ export default () => {
             position: 'top',
             record: () => ({
               id: Date.now(),
+              addonBefore: 'ccccccc',
+              decs: 'testdesc',
             }),
           }}
           editable={{

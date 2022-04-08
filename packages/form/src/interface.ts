@@ -1,9 +1,37 @@
-import type { SpaceProps } from 'infrad';
-import type { ReactNode } from 'react';
-import type { ProFormItemProps } from './components/FormItem';
+import type { FormItemProps, RowProps, SpaceProps } from 'infrad';
+import type { ProFormItemProps } from './components';
+import type { ProFormInstance } from './BaseForm';
 import type { LabelTooltipType } from 'infrad/lib/form/FormItemLabel';
 import type React from 'react';
-import type { ProFieldProps, SearchTransformKeyFn } from 'infrad-pro-utils';
+import type {
+  ProFieldProps,
+  ProFieldValueType,
+  ProSchema,
+  SearchConvertKeyFn,
+} from 'infrad-pro-utils';
+import type { ColProps } from 'infrad/lib/grid/col';
+
+export interface ProFormGridConfig {
+  /**
+   * open grid layout
+   * @default false
+   */
+  grid?: boolean;
+  /**
+   * only works when grid is enabled
+   *
+   * When passing the `span` attribute, the default value is empty
+   * @default
+   * { xs: 24 }
+   */
+  colProps?: ColProps;
+  /**
+   * only works when grid is enabled
+   * @default
+   * { gutter: 8 }
+   */
+  rowProps?: RowProps;
+}
 
 export type ProFormItemCreateConfig = {
   /** 自定义类型 */
@@ -41,8 +69,10 @@ export type ExtendsProps = {
    */
   readonly?: boolean;
 
-  /** @name 提交时转化值，一般用于数组类型 */
-  transform?: SearchTransformKeyFn;
+  /**
+   * @name 获取时转化值，一般用于将数据格式化为组件接收的格式
+   */
+  convertValue?: SearchConvertKeyFn;
 
   /**
    * 给 protable 开的口子
@@ -78,26 +108,28 @@ export type GroupProps = {
   defaultCollapsed?: boolean;
   /** 折叠修改的事件 */
   onCollapse?: (collapsed: boolean) => void;
-};
+  /** 自定选中一个input，只能有一个生效 */
+  autoFocus?: boolean;
+} & ProFormGridConfig;
 
 export type FieldProps = {
   style?: React.CSSProperties;
   width?: string;
-  format?: string;
 };
 
 export type LightFilterFooterRender =
   | ((
       onConfirm?: (e?: React.MouseEvent) => void,
       onClear?: (e?: React.MouseEvent) => void,
-    ) => JSX.Element)
+    ) => JSX.Element | false)
   | false;
 
 export type ProFormFieldItemProps<T = Record<string, any>> = {
   fieldProps?: FieldProps & T;
   placeholder?: string | string[];
   secondary?: boolean;
-  allowClear?: boolean;
+  /** 是否使用 swr 来缓存 缓存可能导致数据更新不及时，请谨慎使用，尤其是页面中多个组件 name相同 */
+  cacheForSwr?: boolean;
   disabled?: boolean;
   /**
    * @type auto 使用组件默认的宽度
@@ -113,5 +145,14 @@ export type ProFormFieldItemProps<T = Record<string, any>> = {
 
   /** QueryFilter 上的footer */
   footerRender?: LightFilterFooterRender;
-} & ProFormItemProps &
+} & Omit<ProFormItemProps, 'valueType'> &
+  Pick<ProFormGridConfig, 'colProps'> &
   ExtendsProps;
+
+/**
+ * load remote data props
+ */
+export type ProFormFieldRemoteProps = Pick<
+  ProSchema,
+  'debounceTime' | 'request' | 'valueEnum' | 'params'
+>;

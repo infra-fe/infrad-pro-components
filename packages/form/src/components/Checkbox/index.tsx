@@ -2,18 +2,15 @@ import React from 'react';
 import type { CheckboxProps } from 'infrad';
 import { Checkbox } from 'infrad';
 import ProFormField from '../Field';
-import type { ProSchema } from 'infrad-pro-utils';
 import { runFunction } from 'infrad-pro-utils';
 import type { CheckboxGroupProps } from 'infrad/lib/checkbox';
-import type { ProFormFieldItemProps } from '../../interface';
-import createField from '../../BaseForm/createField';
+import type { ProFormFieldItemProps, ProFormFieldRemoteProps } from '../../interface';
+import { createField } from '../../BaseForm/createField';
 
 export type ProFormCheckboxGroupProps = ProFormFieldItemProps<CheckboxGroupProps> & {
   layout?: 'horizontal' | 'vertical';
   options?: CheckboxGroupProps['options'];
-  valueEnum?: ProSchema['valueEnum'];
-  request?: ProSchema['request'];
-};
+} & ProFormFieldRemoteProps;
 
 const CheckboxGroup: React.FC<ProFormCheckboxGroupProps> = React.forwardRef(
   ({ options, fieldProps, proFieldProps, valueEnum, ...rest }, ref) => (

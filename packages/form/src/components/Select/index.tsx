@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import type { SelectProps } from 'infrad';
 import ProFormField from '../Field';
-import type { ProSchema } from 'infrad-pro-utils';
 import { runFunction } from 'infrad-pro-utils';
-import type { ProFormFieldItemProps } from '../../interface';
+import type { ProFormFieldItemProps, ProFormFieldRemoteProps } from '../../interface';
+import FieldContext from '../../FieldContext';
 
 export type ProFormSelectProps<T = any> = ProFormFieldItemProps<
   SelectProps<T> & {
@@ -23,14 +23,11 @@ export type ProFormSelectProps<T = any> = ProFormFieldItemProps<
     optionItemRender?: (item: T) => React.ReactNode;
   }
 > & {
-  valueEnum?: ProSchema['valueEnum'];
-  params?: ProSchema['params'];
-  request?: ProSchema['request'];
   options?: SelectProps<any>['options'] | string[];
   mode?: SelectProps<any>['mode'] | 'single';
   showSearch?: SelectProps<any>['showSearch'];
   readonly?: boolean;
-};
+} & ProFormFieldRemoteProps;
 
 /**
  * 选择框
@@ -53,6 +50,8 @@ const ProFormSelectComponents = React.forwardRef<any, ProFormSelectProps<any>>(
     },
     ref,
   ) => {
+    const context = useContext(FieldContext);
+
     return (
       <ProFormField<any>
         mode="edit"
@@ -66,6 +65,7 @@ const ProFormSelectComponents = React.forwardRef<any, ProFormSelectProps<any>>(
             options,
             mode,
             showSearch,
+            getPopupContainer: context.getPopupContainer,
             ...fieldProps,
           } as SelectProps<any>
         }
@@ -94,9 +94,9 @@ const SearchSelect = React.forwardRef<any, ProFormSelectProps<any>>(
       showArrow: false,
       autoClearSearchValue: true,
       optionLabelProp: 'label',
-      filterOption: false,
       ...fieldProps,
     };
+    const context = useContext(FieldContext);
     return (
       <ProFormField<any>
         mode="edit"
@@ -105,7 +105,7 @@ const SearchSelect = React.forwardRef<any, ProFormSelectProps<any>>(
         params={params}
         valueType="select"
         filedConfig={{ customLightMode: true }}
-        fieldProps={props}
+        fieldProps={{ getPopupContainer: context.getPopupContainer, ...props }}
         ref={ref}
         proFieldProps={proFieldProps}
         {...rest}
@@ -129,5 +129,9 @@ const WrappedProFormSelect = ProFormSelect as (<T = any>(
 };
 
 WrappedProFormSelect.SearchSelect = ProFormSearchSelect;
+
+// @ts-ignore
+// eslint-disable-next-line no-param-reassign
+WrappedProFormSelect.displayName = 'ProFormComponent';
 
 export default WrappedProFormSelect;

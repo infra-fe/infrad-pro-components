@@ -113,4 +113,41 @@ describe('Table valueEnum', () => {
       expect(html.render()).toMatchSnapshot();
     });
   });
+
+  it('🎏 dynamic request', async () => {
+    const request = jest.fn();
+    const html = mount(
+      <ProTable
+        size="small"
+        columns={[
+          {
+            title: '状态',
+            dataIndex: 'status',
+            valueEnum: {},
+            fieldProps: {
+              open: true,
+            },
+            request: async (_, config) => {
+              request(config.record);
+              return [];
+            },
+          },
+        ]}
+        rowKey="key"
+        request={async () => {
+          return {
+            data: [
+              {
+                status: 2,
+                key: '1',
+              },
+            ],
+          };
+        }}
+      />,
+    );
+    await waitForComponentToPaint(html, 1200);
+
+    expect(request).toHaveBeenCalledTimes(1);
+  });
 });

@@ -3,6 +3,16 @@ import type { ProFormColumnsType } from 'infrad-pro-form';
 import { BetaSchemaForm } from 'infrad-pro-form';
 import ProProvider from 'infrad-pro-provider';
 import { Input, Space, Tag } from 'infrad';
+import type { InputRef } from 'infrad';
+
+declare module 'infrad-pro-utils' {
+  interface ProFieldValueTypeWithFieldProps {
+    tags: Record<string, any>;
+    link: {
+      customField: string;
+    };
+  }
+}
 
 const valueEnum = {
   0: 'close',
@@ -32,7 +42,7 @@ const TagList: React.FC<{
     }[],
   ) => void;
 }> = ({ value, onChange }) => {
-  const ref = useRef<Input | null>(null);
+  const ref = useRef<InputRef | null>(null);
   const [newTags, setNewTags] = useState<
     {
       key: string;
@@ -74,7 +84,7 @@ const TagList: React.FC<{
   );
 };
 
-const columns: ProFormColumnsType<TableListItem, 'link' | 'tags'>[] = [
+const columns: ProFormColumnsType<TableListItem>[] = [
   {
     title: '标签',
     valueType: 'group',
@@ -141,7 +151,7 @@ export default () => {
         },
       }}
     >
-      <BetaSchemaForm<TableListItem, 'link' | 'tags'>
+      <BetaSchemaForm<TableListItem>
         initialValues={{
           key: 1,
           name: `TradeCode 1`,

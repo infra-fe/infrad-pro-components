@@ -2,18 +2,15 @@ import React from 'react';
 import type { RadioProps, RadioGroupProps } from 'infrad';
 import { Radio } from 'infrad';
 import ProField from '../Field';
-import type { ProSchema } from 'infrad-pro-utils';
 import { runFunction } from 'infrad-pro-utils';
-import type { ProFormFieldItemProps } from '../../interface';
-import createField from '../../BaseForm/createField';
+import type { ProFormFieldItemProps, ProFormFieldRemoteProps } from '../../interface';
+import { createField } from '../../BaseForm/createField';
 
 export type ProFormRadioGroupProps = ProFormFieldItemProps<RadioGroupProps> & {
   layout?: 'horizontal' | 'vertical';
   radioType?: 'button' | 'radio';
   options?: RadioGroupProps['options'];
-  valueEnum?: ProSchema['valueEnum'];
-  request?: ProSchema['request'];
-};
+} & ProFormFieldRemoteProps;
 
 const RadioGroup: React.FC<ProFormRadioGroupProps> = React.forwardRef(
   ({ fieldProps, options, radioType, layout, proFieldProps, valueEnum, ...rest }, ref: any) => {
@@ -66,5 +63,9 @@ const WrappedProFormRadio: typeof ProFormRadio & {
 WrappedProFormRadio.Group = RadioGroup;
 
 WrappedProFormRadio.Button = Radio.Button;
+
+// @ts-ignore
+// eslint-disable-next-line no-param-reassign
+WrappedProFormRadio.displayName = 'ProFormComponent';
 
 export default WrappedProFormRadio;

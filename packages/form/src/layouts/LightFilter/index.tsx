@@ -1,15 +1,21 @@
-import React, { useState, useContext, useEffect, useMemo } from 'react';
+import React, {
+  useState,
+  useImperativeHandle,
+  useRef,
+  useContext,
+  useEffect,
+  useMemo,
+} from 'react';
 import type { FormProps } from 'infrad';
 import type { SizeType } from 'infrad/lib/config-provider/SizeContext';
 import classNames from 'classnames';
-import { Form, ConfigProvider } from 'infrad';
+import { ConfigProvider } from 'infrad';
 import { FilterDropdown, FieldLabel } from 'infrad-pro-utils';
 import { useIntl } from 'infrad-pro-provider';
-import { FilterOutlined } from 'infra-design-icons';
+import { FilterOutlined } from '@ant-design/icons';
 import omit from 'omit.js';
-
-import type { CommonFormProps } from '../../BaseForm';
-import BaseForm from '../../BaseForm';
+import type { CommonFormProps, ProFormInstance } from '../../BaseForm';
+import { BaseForm } from '../../BaseForm';
 import './index.less';
 import type { LightFilterFooterRender } from '../../interface';
 
@@ -31,7 +37,7 @@ const LightFilterContainer: React.FC<{
   items: React.ReactNode[];
   prefixCls: string;
   size?: SizeType;
-  values?: Record<string, any>;
+  values: Record<string, any>;
   onValuesChange: (values: Record<string, any>) => void;
   collapse?: boolean;
   collapseLabel?: React.ReactNode;
@@ -46,7 +52,7 @@ const LightFilterContainer: React.FC<{
     collapseLabel,
     onValuesChange,
     bordered,
-    values = {},
+    values,
     footerRender,
   } = props;
   const intl = useIntl();
@@ -76,7 +82,7 @@ const LightFilterContainer: React.FC<{
       outsideItems: outsideItemsArr,
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [props.items.length]);
+  }, [props.items]);
 
   const collapseLabelRender = () => {
     if (collapseLabel) {
@@ -183,6 +189,7 @@ function LightFilter<T = Record<string, any>>(props: LightFilterProps<T>) {
     initialValues,
     onValuesChange,
     form: userForm,
+    formRef: userFormRef,
     bordered,
     ignoreRules,
     footerRender,
@@ -190,31 +197,32 @@ function LightFilter<T = Record<string, any>>(props: LightFilterProps<T>) {
   } = props;
   const { getPrefixCls } = useContext(ConfigProvider.ConfigContext);
   const prefixCls = getPrefixCls('pro-form');
-  const [form] = Form.useForm();
-  const realForm = userForm || form;
   const [values, setValues] = useState<Record<string, any>>(() => {
     return { ...initialValues };
   });
+  const formRef = useRef<ProFormInstance>();
+
+  useImperativeHandle(userFormRef, () => formRef.current);
+
   return (
     <BaseForm
       size={size}
       initialValues={initialValues}
-      form={realForm}
+      form={userForm}
       contentRender={(items) => {
         return (
           <LightFilterContainer
             prefixCls={prefixCls}
             items={items.flatMap((item: any) => {
-              if (item?.type.displayName === 'ProForm-Group') {
-                return item.props.children;
-              }
+              /** 如果是 ProFormGroup，直接拼接dom */
+              if (item?.type.displayName === 'ProForm-Group') return item.props.children;
               return item;
             })}
             size={size}
             bordered={bordered}
             collapse={collapse}
             collapseLabel={collapseLabel}
-            values={values}
+            values={values || {}}
             footerRender={footerRender}
             onValuesChange={(newValues: any) => {
               const newAllValues = {
@@ -222,8 +230,8 @@ function LightFilter<T = Record<string, any>>(props: LightFilterProps<T>) {
                 ...newValues,
               };
               setValues(newAllValues);
-              realForm.setFieldsValue(newAllValues);
-              realForm.submit();
+              formRef.current?.setFieldsValue(newAllValues);
+              formRef.current?.submit();
               if (onValuesChange) {
                 onValuesChange(newValues, newAllValues);
               }
@@ -231,6 +239,7 @@ function LightFilter<T = Record<string, any>>(props: LightFilterProps<T>) {
           />
         );
       }}
+      formRef={formRef}
       formItemProps={{
         colon: false,
         labelAlign: 'left',
@@ -243,13 +252,11 @@ function LightFilter<T = Record<string, any>>(props: LightFilterProps<T>) {
       {...omit(reset, ['labelWidth'] as any[])}
       onValuesChange={(_, allValues) => {
         setValues(allValues);
-        if (onValuesChange) {
-          onValuesChange(_, allValues);
-        }
-        realForm.submit();
+        onValuesChange?.(_, allValues);
+        formRef.current?.submit();
       }}
     />
   );
 }
 
-export default LightFilter;
+export { LightFilter };

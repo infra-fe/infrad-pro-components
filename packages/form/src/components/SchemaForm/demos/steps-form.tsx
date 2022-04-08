@@ -1,6 +1,8 @@
 ﻿import React from 'react';
-import type { ProFormColumnsType } from 'infrad-pro-form';
+import type { FormInstance, ProFormColumnsType } from 'infrad-pro-form';
 import { BetaSchemaForm } from 'infrad-pro-form';
+import { useRef } from 'react';
+import { message } from 'infrad';
 
 const valueEnum = {
   all: { text: '全部', status: 'Default' },
@@ -163,9 +165,10 @@ const columns: ProFormColumnsType<DataItem>[][] = [
 ];
 
 export default () => {
+  const formRef = useRef<FormInstance>();
+
   return (
     <BetaSchemaForm<DataItem>
-      trigger={<a>点击我</a>}
       layoutType="StepsForm"
       steps={[
         {
@@ -178,8 +181,19 @@ export default () => {
           title: '第三步',
         },
       ]}
+      onCurrentChange={(current) => {
+        console.log('current: ', current);
+      }}
+      formRef={formRef}
       onFinish={async (values) => {
-        console.log(values);
+        return new Promise((resolve) => {
+          console.log(values);
+          message.success('提交成功');
+          setTimeout(() => {
+            resolve(true);
+            formRef.current?.resetFields();
+          }, 2000);
+        });
       }}
       columns={columns}
     />

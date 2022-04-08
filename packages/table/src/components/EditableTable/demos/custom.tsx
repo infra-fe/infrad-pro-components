@@ -4,8 +4,9 @@ import { EditableProTable } from 'infrad-pro-table';
 import type { ActionType } from 'infrad-pro-table';
 import ProCard from 'infrad-pro-card';
 import { Button, Input, Space, Tag, Form } from 'infrad';
-import { PlusOutlined } from 'infra-design-icons';
+import { PlusOutlined } from '@ant-design/icons';
 import { ProFormField } from 'infrad-pro-form';
+import type { InputRef } from 'infrad';
 
 const waitTime = (time: number = 100) => {
   return new Promise((resolve) => {
@@ -27,7 +28,7 @@ const TagList: React.FC<{
     }[],
   ) => void;
 }> = ({ value, onChange }) => {
-  const ref = useRef<Input | null>(null);
+  const ref = useRef<InputRef | null>(null);
   const [newTags, setNewTags] = useState<
     {
       key: string;
@@ -204,6 +205,9 @@ export default () => {
 
       <EditableProTable<DataSourceType>
         rowKey="id"
+        scroll={{
+          x: 960,
+        }}
         actionRef={actionRef}
         headerTitle="可编辑表格"
         maxLength={5}
