@@ -98,6 +98,7 @@
     "gh-pages": "^3.1.0",
     "glob": "^7.1.6",
     "identity-obj-proxy": "^3.0.0",
+    "infrad": "^4.19.3",
     "inquirer": "^8.0.0",
     "jest": "^27.3.1",
     "jest-canvas-mock": "^2.3.1",
@@ -202,8 +203,5 @@
       "webpack": false,
       "running": false
     }
-  ],
-  "peerDependencies": {
-    "infrad": "^4.19.3"
-  }
+  ]
 }

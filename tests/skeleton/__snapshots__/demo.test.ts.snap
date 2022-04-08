@@ -804,7 +804,7 @@ exports[`skeleton demos 📸 renders ./packages/skeleton/src/demos/list.static.t
               >
                 <div
                   class="ant-space-item"
-                  style="margin-right: 8px;"
+                  style="margin-right: 16px;"
                 >
                   <div
                     class="ant-skeleton ant-skeleton-element ant-skeleton-active"
@@ -823,7 +823,7 @@ exports[`skeleton demos 📸 renders ./packages/skeleton/src/demos/list.static.t
                   >
                     <div
                       class="ant-space-item"
-                      style="margin-right: 8px;"
+                      style="margin-right: 16px;"
                     >
                       <div
                         class="ant-skeleton ant-skeleton-element ant-skeleton-active"
@@ -1321,7 +1321,7 @@ exports[`skeleton demos 📸 renders ./packages/skeleton/src/demos/list.tsx corr
               >
                 <div
                   class="ant-space-item"
-                  style="margin-right: 8px;"
+                  style="margin-right: 16px;"
                 >
                   <div
                     class="ant-skeleton ant-skeleton-element ant-skeleton-active"
@@ -1340,7 +1340,7 @@ exports[`skeleton demos 📸 renders ./packages/skeleton/src/demos/list.tsx corr
                   >
                     <div
                       class="ant-space-item"
-                      style="margin-right: 8px;"
+                      style="margin-right: 16px;"
                     >
                       <div
                         class="ant-skeleton ant-skeleton-element ant-skeleton-active"
@@ -1747,7 +1747,7 @@ exports[`skeleton demos 📸 renders ./packages/skeleton/src/demos/result.tsx co
             >
               <div
                 class="ant-space-item"
-                style="margin-right: 8px;"
+                style="margin-right: 16px;"
               >
                 <div
                   class="ant-skeleton ant-skeleton-element ant-skeleton-active"

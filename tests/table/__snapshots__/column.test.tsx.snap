@@ -131,11 +131,11 @@ exports[`Table ColumnSetting 🎏 config provide render 1`] = `
                     >
                       <div
                         class="qixian-space qixian-space-horizontal qixian-space-align-center"
-                        style="flex-wrap: wrap; margin-bottom: -8px;"
+                        style="flex-wrap: wrap; margin-bottom: -16px;"
                       >
                         <div
                           class="qixian-space-item"
-                          style="margin-right: 8px; padding-bottom: 8px;"
+                          style="margin-right: 16px; padding-bottom: 16px;"
                         >
                           <button
                             class="qixian-btn qixian-btn-default"
@@ -148,7 +148,7 @@ exports[`Table ColumnSetting 🎏 config provide render 1`] = `
                         </div>
                         <div
                           class="qixian-space-item"
-                          style="padding-bottom: 8px;"
+                          style="padding-bottom: 16px;"
                         >
                           <button
                             class="qixian-btn qixian-btn-primary"
@@ -753,21 +753,21 @@ exports[`Table ColumnSetting 🎏 config provide render 1`] = `
                     unselectable="on"
                   >
                     <span
-                      aria-label="down"
-                      class="anticon anticon-down qixian-select-suffix"
+                      aria-label="arrow-down"
+                      class="anticon anticon-arrow-down qixian-select-suffix"
                       role="img"
                     >
                       <svg
                         aria-hidden="true"
-                        data-icon="down"
+                        data-icon="arrow-down"
                         fill="currentColor"
                         focusable="false"
                         height="1em"
-                        viewBox="64 64 896 896"
+                        viewBox="0 0 16 16"
                         width="1em"
                       >
                         <path
-                          d="M884 256h-75c-5.1 0-9.9 2.5-12.9 6.6L512 654.2 227.9 262.6c-3-4.1-7.8-6.6-12.9-6.6h-75c-6.5 0-10.3 7.4-6.5 12.7l352.6 486.1c12.8 17.6 39 17.6 51.7 0l352.6-486.1c3.9-5.3.1-12.7-6.4-12.7z"
+                          d="M8.25 9.19L4.28 5.22a.75.75 0 00-1.06 1.06l4.5 4.5c.3.3.77.3 1.06 0l4.5-4.5a.75.75 0 00-1.06-1.06L8.25 9.19z"
                         />
                       </svg>
                     </span>
@@ -1034,11 +1034,11 @@ exports[`Table ColumnSetting 🎏 extra columns 1`] = `
                     >
                       <div
                         class="ant-space ant-space-horizontal ant-space-align-center"
-                        style="flex-wrap: wrap; margin-bottom: -8px;"
+                        style="flex-wrap: wrap; margin-bottom: -16px;"
                       >
                         <div
                           class="ant-space-item"
-                          style="margin-right: 8px; padding-bottom: 8px;"
+                          style="margin-right: 16px; padding-bottom: 16px;"
                         >
                           <button
                             class="ant-btn ant-btn-default"
@@ -1051,7 +1051,7 @@ exports[`Table ColumnSetting 🎏 extra columns 1`] = `
                         </div>
                         <div
                           class="ant-space-item"
-                          style="padding-bottom: 8px;"
+                          style="padding-bottom: 16px;"
                         >
                           <button
                             class="ant-btn ant-btn-primary"

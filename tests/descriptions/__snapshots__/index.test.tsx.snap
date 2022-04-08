@@ -107,21 +107,21 @@ exports[`descriptions 🏊‍♂️ ProDescriptions support order 1`] = `
                     class="ant-progress-text"
                   >
                     <span
-                      aria-label="check-circle"
-                      class="anticon anticon-check-circle"
+                      aria-label="success-filled"
+                      class="anticon anticon-success-filled"
                       role="img"
                     >
                       <svg
                         aria-hidden="true"
-                        data-icon="check-circle"
+                        data-icon="success-filled"
                         fill="currentColor"
                         focusable="false"
                         height="1em"
-                        viewBox="64 64 896 896"
+                        viewBox="0 0 16 16"
                         width="1em"
                       >
                         <path
-                          d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm193.5 301.7l-210.6 292a31.8 31.8 0 01-51.7 0L318.5 484.9c-3.8-5.3 0-12.7 6.5-12.7h46.9c10.2 0 19.9 4.9 25.9 13.3l71.2 98.8 157.2-218c6-8.3 15.6-13.3 25.9-13.3H699c6.5 0 10.3 7.4 6.5 12.7z"
+                          d="M8 1a7 7 0 110 14A7 7 0 018 1zm3.15 4.93L7.1 9.98 4.85 7.73a.5.5 0 10-.7.71l2.6 2.6c.19.2.5.2.7 0l4.4-4.4a.5.5 0 00-.7-.71z"
                         />
                       </svg>
                     </span>
@@ -169,21 +169,21 @@ exports[`descriptions 🏊‍♂️ ProDescriptions support order 1`] = `
                     class="ant-progress-text"
                   >
                     <span
-                      aria-label="close-circle"
-                      class="anticon anticon-close-circle"
+                      aria-label="close-fullfiled"
+                      class="anticon anticon-close-fullfiled"
                       role="img"
                     >
                       <svg
                         aria-hidden="true"
-                        data-icon="close-circle"
+                        data-icon="close-fullfiled"
                         fill="currentColor"
                         focusable="false"
                         height="1em"
-                        viewBox="64 64 896 896"
+                        viewBox="0 0 16 16"
                         width="1em"
                       >
                         <path
-                          d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm165.4 618.2l-66-.3L512 563.4l-99.3 118.4-66.1.3c-4.4 0-8-3.5-8-8 0-1.9.7-3.7 1.9-5.2l130.1-155L340.5 359a8.32 8.32 0 01-1.9-5.2c0-4.4 3.6-8 8-8l66.1.3L512 464.6l99.3-118.4 66-.3c4.4 0 8 3.5 8 8 0 1.9-.7 3.7-1.9 5.2L553.5 514l130 155c1.2 1.5 1.9 3.3 1.9 5.2 0 4.4-3.6 8-8 8z"
+                          d="M8 1a7 7 0 110 14A7 7 0 018 1zm0 6.3L5.88 5.16a.5.5 0 00-.77.64l.06.07L7.3 8l-2.12 2.12a.5.5 0 00.64.77l.07-.06L8 8.7l2.12 2.12a.5.5 0 00.77-.64l-.06-.07L8.7 8l2.12-2.12a.5.5 0 00-.64-.77l-.07.06L8 7.3 5.88 5.17 8 7.3z"
                         />
                       </svg>
                     </span>
