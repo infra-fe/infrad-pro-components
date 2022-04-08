@@ -34,14 +34,14 @@
   ],
   "dependencies": {
     "@ant-design/icons": "^4.0.0",
-    "infrad-pro-provider": "1.6.2",
-    "infrad-pro-utils": "1.38.2",
     "@babel/runtime": "^7.16.3",
     "@umijs/route-utils": "^2.0.1",
     "@umijs/ssr-darkreader": "^4.9.44",
     "@umijs/use-params": "^1.0.9",
     "classnames": "^2.2.6",
     "infra-design-icons": "^4.0.0",
+    "infrad-pro-provider": "1.6.2",
+    "infrad-pro-utils": "1.38.2",
     "lodash.merge": "^4.6.2",
     "omit.js": "^2.0.2",
     "path-to-regexp": "2.4.0",
@@ -63,5 +63,6 @@
   "authors": [
     "chencheng <sorrycc@gmail.com> (https://github.com/sorrycc)",
     "chenshuai2144 <qixian.cs@outlook.om> (https://github.com/chenshuai2144)"
-  ]
+  ],
+  "gitHead": "115bbb89a4d2b3a69730e5665b9659973f6fd266"
 }

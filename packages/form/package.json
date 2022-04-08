@@ -34,12 +34,12 @@
   ],
   "dependencies": {
     "@ant-design/icons": "^4.2.1",
-    "infrad-pro-field": "1.34.2",
-    "infrad-pro-provider": "1.6.2",
-    "infrad-pro-utils": "1.38.2",
     "@babel/runtime": "^7.16.3",
     "@umijs/use-params": "^1.0.9",
     "classnames": "^2.2.6",
+    "infrad-pro-field": "1.34.2",
+    "infrad-pro-provider": "1.6.2",
+    "infrad-pro-utils": "1.38.2",
     "lodash": "^4.17.21",
     "omit.js": "^2.0.2",
     "rc-resize-observer": "^1.1.0",
@@ -59,5 +59,6 @@
   "authors": [
     "chenshuai2144 <qixian.cs@outlook.com> (https://github.com/chenshuai2144)",
     "yutingzhao1991 <yutingzhao1991@sina.com> (https://github.com/yutingzhao1991)"
-  ]
+  ],
+  "gitHead": "115bbb89a4d2b3a69730e5665b9659973f6fd266"
 }

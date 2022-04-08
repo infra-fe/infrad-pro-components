@@ -29,12 +29,12 @@
   ],
   "dependencies": {
     "@ant-design/icons": "^4.2.1",
-    "infrad-pro-provider": "1.6.2",
-    "infrad-pro-utils": "1.38.2",
     "@babel/runtime": "^7.16.3",
     "@chenshuai2144/sketch-color": "^1.0.8",
     "classnames": "^2.2.6",
     "infra-design-icons": "^4.2.1",
+    "infrad-pro-provider": "1.6.2",
+    "infrad-pro-utils": "1.38.2",
     "lodash.tonumber": "^4.0.3",
     "moment": "^2.27.0",
     "omit.js": "^2.0.2",
@@ -49,5 +49,6 @@
   "peerDependencies": {
     "infrad": ">=4.18.0",
     "react": ">=16.9.0"
-  }
+  },
+  "gitHead": "115bbb89a4d2b3a69730e5665b9659973f6fd266"
 }
