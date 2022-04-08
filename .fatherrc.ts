@@ -28,10 +28,9 @@ if (type === 'lib') {
   config = {
     cjs: { type: 'babel', lazy: true },
     esm: false,
-    runtimeHelpers: true,
+    runtimeHelpers: false,
     pkgs: [...headPkgs, ...tailPkgs],
     extraBabelPlugins: [
-      ['babel-plugin-import', { libraryName: 'antd', libraryDirectory: 'es', style: true }, 'antd'],
       [
         'babel-plugin-import',
         { libraryName: 'infrad', libraryDirectory: 'es', style: true },
@@ -47,11 +46,15 @@ if (type === 'es') {
     esm: {
       type: 'babel',
     },
-    runtimeHelpers: true,
+    runtimeHelpers: false,
     pkgs: [...headPkgs, ...tailPkgs],
     extraBabelPlugins: [
       [require('./scripts/replaceLib')],
-      ['babel-plugin-import', { libraryName: 'antd', libraryDirectory: 'es', style: true }, 'antd'],
+      [
+        'babel-plugin-import',
+        { libraryName: 'infrad', libraryDirectory: 'es', style: true },
+        'infrad',
+      ],
     ],
   };
 }
