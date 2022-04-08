@@ -32,6 +32,11 @@ if (type === 'lib') {
     pkgs: [...headPkgs, ...tailPkgs],
     extraBabelPlugins: [
       ['babel-plugin-import', { libraryName: 'antd', libraryDirectory: 'es', style: true }, 'antd'],
+      [
+        'babel-plugin-import',
+        { libraryName: 'infrad', libraryDirectory: 'es', style: true },
+        'infrad',
+      ],
     ],
   };
 }

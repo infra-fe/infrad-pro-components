@@ -1,11 +1,12 @@
-import React, { ReactNode } from 'react';
+import type { ReactNode } from 'react';
+import type React from 'react';
 
 export type GlobalHeaderProps = {
   className?: string;
   prefixCls?: string;
   style?: React.CSSProperties;
   /** 是否登录 */
-  isLogin?: Boolean;
+  isLogin?: boolean;
   /** Logo */
   logo?: React.ReactElement;
   /** 页面tittle */
@@ -31,7 +32,7 @@ export type GlobalHeaderProps = {
   /** 未登录状态子标题 */
   subTitle?: string;
   /** 是否有更新 */
-  hasNotice?: Boolean;
+  hasNotice?: boolean;
   /** 右上角自定义扩展 */
   extra?: React.ReactNode;
 };

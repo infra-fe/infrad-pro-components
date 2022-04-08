@@ -1,8 +1,9 @@
-import React, { ReactNode, useState, useEffect } from 'react';
+import type { ReactNode } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Menu, Dropdown } from 'infrad';
 import classNames from 'classnames';
 import { IArrowDown, IArrowUp } from 'infra-design-icons';
-import { CustomizedNode, CustomizedNodeList } from '../typings';
+import type { CustomizedNode, CustomizedNodeList } from '../typings';
 
 export enum LAYOUT_TYPE {
   SELECT = 'select',
@@ -44,6 +45,14 @@ const DropdownMenu: React.FC<IDropdownMenuProps> = (props) => {
     setSelectedMenu(props.selectedKey);
   }, [props.selectedKey]);
 
+  const handleMenuSelect = (key: string | number) => {
+    setDropdownStatus(false);
+    if (key !== 'btn') {
+      setSelectedMenu(key);
+      onMenuChange?.(menuList.find((i) => i.key === key));
+    }
+  };
+
   const menuDom = (
     <Menu
       onClick={(e) => {
@@ -74,14 +83,6 @@ const DropdownMenu: React.FC<IDropdownMenuProps> = (props) => {
       ) : null}
     </Menu>
   );
-
-  const handleMenuSelect = (key: string | number) => {
-    setDropdownStatus(false);
-    if (key !== 'btn') {
-      setSelectedMenu(key);
-      onMenuChange?.(menuList.find((i) => i.key === key));
-    }
-  };
 
   const onVisibleChange = (visible: boolean) => {
     if (visible !== dropdownStatus) {

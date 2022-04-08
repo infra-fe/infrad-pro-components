@@ -3,7 +3,7 @@ import React, { useState, useContext } from 'react';
 import classNames from 'classnames';
 import { Menu, Divider, Input, ConfigProvider } from 'infrad';
 import DropdownMenu, { LAYOUT_TYPE } from './components/DropdownMenu';
-import { GlobalHeaderProps, NavMenu, UserInfo, BusinessMenu } from './typings';
+import type { GlobalHeaderProps, NavMenu, UserInfo, BusinessMenu } from './typings';
 
 const { Search } = Input;
 
@@ -33,6 +33,11 @@ const ProHeader: React.FC<GlobalHeaderProps> = (props) => {
   const headerPrefixCls = prefixCls || getPrefixCls('pro-global-header');
   const headerCls = classNames(className, headerPrefixCls);
 
+  const handleNavChange = (key: string) => {
+    setSelectedNav(key);
+    navMenu?.onNavChange?.(key);
+  };
+
   const logoDom = (
     <span className={`${headerPrefixCls}-logo`} key="logo" onClick={onLogoClick}>
       {logo ? logo : null}
@@ -59,11 +64,6 @@ const ProHeader: React.FC<GlobalHeaderProps> = (props) => {
       </div>
     </>
   );
-
-  const handleNavChange = (key: string) => {
-    setSelectedNav(key);
-    navMenu?.onNavChange?.(key);
-  };
 
   return (
     <div className={headerCls} style={style}>

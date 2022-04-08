@@ -172,14 +172,16 @@ class FormSearch<T, U> extends React.Component<BaseFormProps<T, U> & { ghost?: b
         onReset={this.onReset}
         dateFormatter={dateFormatter}
         search={search}
-        form={{
-          autoFocusFirstInput: false,
-          ...form,
-          extraUrlParams: {
-            ...pageInfo,
-            ...form?.extraUrlParams,
-          },
-        }}
+        form={
+          {
+            autoFocusFirstInput: false,
+            ...form,
+            extraUrlParams: {
+              ...pageInfo,
+              ...form?.extraUrlParams,
+            },
+          } as any
+        }
         action={action}
         bordered={isBordered('search', cardBordered)}
       />
