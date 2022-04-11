@@ -13,12 +13,17 @@ const headPkgs: string[] = [
   'skeleton',
   'layout',
   'form',
+  'descriptions',
   'table',
   'list',
 ];
-const tailPkgs = readdirSync(join(__dirname, 'packages')).filter(
-  (pkg) => pkg.charAt(0) !== '.' && !headPkgs.includes(pkg),
-);
+const tailPkgs =
+  [] ||
+  readdirSync(join(__dirname, 'packages')).filter(
+    (pkg) => pkg.charAt(0) !== '.' && !headPkgs.includes(pkg),
+  );
+
+console.log(5555, tailPkgs);
 
 const type = process.env.BUILD_TYPE;
 
@@ -28,7 +33,7 @@ if (type === 'lib') {
   config = {
     cjs: { type: 'babel', lazy: true },
     esm: false,
-    runtimeHelpers: false,
+    runtimeHelpers: true,
     pkgs: [...headPkgs, ...tailPkgs],
     extraBabelPlugins: [
       [
@@ -46,7 +51,7 @@ if (type === 'es') {
     esm: {
       type: 'babel',
     },
-    runtimeHelpers: false,
+    runtimeHelpers: true,
     pkgs: [...headPkgs, ...tailPkgs],
     extraBabelPlugins: [
       [require('./scripts/replaceLib')],

@@ -34,9 +34,6 @@
   "license": "MIT",
   "bugs": "http://github.com/umijs/plugins/issues",
   "homepage": "https://github.com/ant-design/pro-components/tree/master/packages/header#readme",
-  "peerDependencies": {
-    "umi": "3.x"
-  },
   "publishConfig": {
     "access": "public"
   }

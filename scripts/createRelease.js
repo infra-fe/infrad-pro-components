@@ -52,7 +52,7 @@ const getMds = async (allVersion = false) => {
     }
     console.log(versions.toString());
     versions.map(async (version) => {
-      const versionPkg = `@ant-design/pro-${pkg}@${version}`;
+      const versionPkg = `infrad-pro-${pkg}@${version}`;
       const changeLog = getChangelog(content, versionPkg);
       if (!changeLog) {
         return;
@@ -63,8 +63,8 @@ const getMds = async (allVersion = false) => {
       try {
         const tag = await github.rest.repos
           .getReleaseByTag({
-            owner: 'ant-design',
-            repo: 'pro-components',
+            owner: 'infra-fe',
+            repo: 'infrad-pro-components',
             tag: versionPkg,
           })
           .then(({ data }) => {
@@ -81,9 +81,9 @@ const getMds = async (allVersion = false) => {
         if (!tag.body && tag) {
           github.rest.repos
             .updateRelease({
-              owner: 'ant-design',
+              owner: 'infra-fe',
               release_id,
-              repo: 'pro-components',
+              repo: 'infrad-pro-components',
               tag_name: versionPkg,
               name: versionPkg,
               body: changeLog,
@@ -101,8 +101,8 @@ const getMds = async (allVersion = false) => {
         console.log(versionPkg + '标签创建中');
         github.rest.repos
           .createRelease({
-            owner: 'ant-design',
-            repo: 'pro-components',
+            owner: 'infra-fe',
+            repo: 'infrad-pro-components',
             tag_name: versionPkg,
             name: versionPkg,
             body: changeLog,

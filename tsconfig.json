@@ -23,7 +23,7 @@
       "infrad-pro-descriptions": ["./packages/descriptions/src/index.tsx"],
       "infrad-pro-utils": ["./packages/utils/src/index.tsx"],
       "infrad-pro-card": ["./packages/card/src/index.tsx"],
-      "antd": ["infrad"]
+      "infrad-pro-header": ["./packages/header/src/index.tsx"]
     }
   },
   "include": [
@@ -36,8 +36,8 @@
     "tests",
     "jest.config.js",
     "**/fixtures",
-    "./tests/no-duplicated.ts",
-    "packages/descriptions/src/demos/.tsx"
+    "./tests/no-duplicated.ts"
+    // "packages/descriptions/src/demos/.tsx"
   ],
   "plugins": [{ "transform": "typescript-transform-paths", "afterDeclarations": true }]
 }

@@ -47,11 +47,6 @@ tailPkgs.forEach((pkg) => {
     mode: 'production',
     resolve: {
       extensions: ['.ts', '.tsx', '.json', '.css', '.js', '.less'],
-      alias: {
-        antd: 'infrad',
-        'antd/*': 'infrad/*',
-        'antd/**/*': 'infrad/**/*',
-      },
     },
     optimization: isCI
       ? {
@@ -133,6 +128,7 @@ tailPkgs.forEach((pkg) => {
       {
         react: 'React',
         'react-dom': 'ReactDOM',
+        antd: 'antd',
         infrad: 'infrad',
         moment: 'moment',
         ...externals,
