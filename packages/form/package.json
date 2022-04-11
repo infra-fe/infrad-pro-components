@@ -1,6 +1,6 @@
 {
   "name": "infrad-pro-form",
-  "version": "1.62.1",
+  "version": "1.62.2",
   "description": "infrad-pro-form",
   "keywords": [
     "infrad",
@@ -37,9 +37,9 @@
     "@babel/runtime": "^7.16.3",
     "@umijs/use-params": "^1.0.9",
     "classnames": "^2.2.6",
-    "infrad-pro-field": "1.34.2",
-    "infrad-pro-provider": "1.6.2",
-    "infrad-pro-utils": "1.38.2",
+    "infrad-pro-field": "^1.34.3",
+    "infrad-pro-provider": "^1.6.3",
+    "infrad-pro-utils": "^1.38.3",
     "lodash": "^4.17.21",
     "omit.js": "^2.0.2",
     "rc-resize-observer": "^1.1.0",

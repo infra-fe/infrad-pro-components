@@ -1,6 +1,6 @@
 {
   "name": "infrad-pro-card",
-  "version": "1.19.2",
+  "version": "1.19.3",
   "description": "infrad-pro-card",
   "keywords": [
     "infrad",
@@ -37,7 +37,7 @@
     "@babel/runtime": "^7.16.3",
     "classnames": "^2.2.6",
     "infra-design-icons": "^4.2.1",
-    "infrad-pro-utils": "1.38.2",
+    "infrad-pro-utils": "^1.38.3",
     "omit.js": "^2.0.2",
     "rc-util": "^5.4.0"
   },
