@@ -39,7 +39,7 @@
     "infra-design-icons": "^4.1.0",
     "infrad-pro-card": "1.19.2",
     "infrad-pro-field": "1.34.2",
-    "infrad-pro-form": "1.62.0",
+    "infrad-pro-form": "^1.62.1",
     "infrad-pro-provider": "1.6.2",
     "infrad-pro-utils": "1.38.2",
     "moment": "^2.24.0",
