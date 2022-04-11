@@ -51,7 +51,7 @@ export type CommonFormProps<T = Record<string, any>, U = Record<string, any>> = 
 
   /**
    * @name 表单结束后调用
-   * @description 支持异步操作，更加方便
+   * @description 支持异步操作
    *
    * @example onFinish={async (values) => { await save(values); return true }}
    */
