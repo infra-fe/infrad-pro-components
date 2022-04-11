@@ -36,5 +36,6 @@
   "homepage": "https://github.com/ant-design/pro-components/tree/master/packages/header#readme",
   "publishConfig": {
     "access": "public"
-  }
+  },
+  "gitHead": "ed2c53d5fb162bf78a7790e1d5455aa2463805ce"
 }
