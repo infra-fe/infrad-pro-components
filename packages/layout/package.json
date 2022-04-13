@@ -1,6 +1,6 @@
 {
   "name": "infrad-pro-layout",
-  "version": "6.34.10",
+  "version": "6.34.11",
   "description": "infrad-pro-layout",
   "keywords": [
     "infrad",
@@ -40,8 +40,8 @@
     "@umijs/use-params": "^1.0.9",
     "classnames": "^2.2.6",
     "infra-design-icons": "^4.0.0",
-    "infrad-pro-provider": "^1.6.3",
-    "infrad-pro-utils": "^1.38.3",
+    "infrad-pro-provider": "^1.6.4",
+    "infrad-pro-utils": "^1.38.4",
     "lodash.merge": "^4.6.2",
     "omit.js": "^2.0.2",
     "path-to-regexp": "2.4.0",

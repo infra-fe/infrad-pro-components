@@ -1,6 +1,6 @@
 {
   "name": "infrad-pro-field",
-  "version": "1.34.3",
+  "version": "1.34.4",
   "description": "原子信息组件，统一 ProForm、ProTable、ProList、Filter 等组件里面的字段定义。",
   "homepage": "https://github.com/ant-design/pro-components/tree/master/packages/plugin-layout#readme",
   "bugs": "https://github.com/ant-design/pro-components/issues",
@@ -33,8 +33,8 @@
     "@chenshuai2144/sketch-color": "^1.0.8",
     "classnames": "^2.2.6",
     "infra-design-icons": "^4.2.1",
-    "infrad-pro-provider": "^1.6.3",
-    "infrad-pro-utils": "^1.38.3",
+    "infrad-pro-provider": "^1.6.4",
+    "infrad-pro-utils": "^1.38.4",
     "lodash.tonumber": "^4.0.3",
     "moment": "^2.27.0",
     "omit.js": "^2.0.2",
