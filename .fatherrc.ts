@@ -16,6 +16,7 @@ const headPkgs: string[] = [
   'descriptions',
   'table',
   'list',
+  'header',
 ];
 const tailPkgs =
   [] ||

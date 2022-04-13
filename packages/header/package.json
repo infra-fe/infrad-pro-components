@@ -37,5 +37,11 @@
   "publishConfig": {
     "access": "public"
   },
-  "gitHead": "ed2c53d5fb162bf78a7790e1d5455aa2463805ce"
+  "gitHead": "ed2c53d5fb162bf78a7790e1d5455aa2463805ce",
+  "dependencies": {
+    "infrad": "^4.19.3"
+  },
+  "peerDependencies": {
+    "infrad": "^4.19.3"
+  }
 }

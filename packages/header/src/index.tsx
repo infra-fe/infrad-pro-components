@@ -5,8 +5,6 @@ import { Menu, Divider, Input, ConfigProvider } from 'infrad';
 import DropdownMenu, { LAYOUT_TYPE } from './components/DropdownMenu';
 import type { GlobalHeaderProps, NavMenu, UserInfo, BusinessMenu } from './typings';
 
-const { Search } = Input;
-
 const ProHeader: React.FC<GlobalHeaderProps> = (props) => {
   const {
     className,
@@ -92,7 +90,7 @@ const ProHeader: React.FC<GlobalHeaderProps> = (props) => {
         {isLogin ? (
           <>
             {searchable ? (
-              <Search
+              <Input.Search
                 placeholder={searchPlaceholder}
                 allowClear
                 style={{ width: 240 }}
