@@ -16,15 +16,12 @@ const headPkgs: string[] = [
   'descriptions',
   'table',
   'list',
-  'header',
 ];
 const tailPkgs =
-  [] ||
+  ['header'] ||
   readdirSync(join(__dirname, 'packages')).filter(
     (pkg) => pkg.charAt(0) !== '.' && !headPkgs.includes(pkg),
   );
-
-console.log(5555, tailPkgs);
 
 const type = process.env.BUILD_TYPE;
 
@@ -34,7 +31,7 @@ if (type === 'lib') {
   config = {
     cjs: { type: 'babel', lazy: true },
     esm: false,
-    runtimeHelpers: true,
+    runtimeHelpers: false,
     pkgs: [...headPkgs, ...tailPkgs],
     extraBabelPlugins: [
       [
@@ -52,7 +49,7 @@ if (type === 'es') {
     esm: {
       type: 'babel',
     },
-    runtimeHelpers: true,
+    runtimeHelpers: false,
     pkgs: [...headPkgs, ...tailPkgs],
     extraBabelPlugins: [
       [require('./scripts/replaceLib')],
