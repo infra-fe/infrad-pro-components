@@ -15,13 +15,13 @@ nav:
 
 ## DEMO
 
-<code src="./demos/base.tsx" />
+<code hideActions='["CSB"]' src="./demos/base.tsx" />
 
-<code src="./demos/base_test.tsx" debug/>
+<code hideActions='["CSB"]' src="./demos/base_test.tsx" debug/>
 
-<code src="./demos/search-value.tsx" debug/>
+<code hideActions='["CSB"]' src="./demos/search-value.tsx" debug/>
 
-<code src="./demos/tree-select-search-value.tsx" debug/>
+<code hideActions='["CSB"]' src="./demos/tree-select-search-value.tsx" debug/>
 
 ## API
 

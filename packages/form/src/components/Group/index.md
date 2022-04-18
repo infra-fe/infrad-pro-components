@@ -188,24 +188,24 @@ name 参数必须要是一个数组，如果是嵌套的结构可以这样配置
 
 ### 联动的 FormList
 
-<code src="./demos/base-use" heigh="174px" title="ProForm.List" />
+<code hideActions='["CSB"]' src="./demos/base-use" heigh="174px" title="ProForm.List" />
 
 ### 可调整的新建按钮位置
 
-<code src="./demos/list.tsx" heigh="174px" title="ProForm.List-position" />
+<code hideActions='["CSB"]' src="./demos/list.tsx" heigh="174px" title="ProForm.List-position" />
 
 ### 表单互相嵌套
 
-<code src="./demos/nested-list.tsx" heigh="174px" title="ProForm.List-ProFormList" />
+<code hideActions='["CSB"]' src="./demos/nested-list.tsx" heigh="174px" title="ProForm.List-ProFormList" />
 
 ### 复杂联动
 
-<code src="./demos/dependency.tsx" heigh="174px" title="ProForm.List-dependency" />
+<code hideActions='["CSB"]' src="./demos/dependency.tsx" heigh="174px" title="ProForm.List-dependency" />
 
 ### 行为守卫
 
-<code src="./demos/pro-form-list.tsx" heigh="1774px" title="行为守卫"/>
+<code hideActions='["CSB"]' src="./demos/pro-form-list.tsx" heigh="1774px" title="行为守卫"/>
 
 ### 增删条目限制
 
-<code src="./demos/countLimit.tsx" heigh="1774px" title="增删条目限制"/>
+<code hideActions='["CSB"]' src="./demos/countLimit.tsx" heigh="1774px" title="增删条目限制"/>

@@ -50,19 +50,19 @@ We have added a footer attribute to make it easier to do things like forms, so y
 
 ### Basic usage
 
-<code src="./demos/basic.tsx" />
+<code hideActions='["CSB"]' src="./demos/basic.tsx" />
 
 ### Fixed table headers
 
-<code src="./demos/fixHeader.tsx" />
+<code hideActions='["CSB"]' src="./demos/fixHeader.tsx" />
 
 ### Hide breadcrumbs
 
-<code src="./demos/hideBreadMenu.tsx">
+<code hideActions='["CSB"]' src="./demos/hideBreadMenu.tsx">
 
 ### page loading
 
-<code src="./demos/loading.tsx" />
+<code hideActions='["CSB"]' src="./demos/loading.tsx" />
 
 ## API
 

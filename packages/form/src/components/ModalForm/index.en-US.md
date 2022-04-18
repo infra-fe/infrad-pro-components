@@ -15,27 +15,27 @@ ModalForm and DrawerForm both provide triggers to reduce state usage, if you nee
 
 ## Modal Forms
 
-<code src="./demos/modal-form.tsx" background="#f5f5f5" height="32px" title="Modal Forms"/>
+<code hideActions='["CSB"]' src="./demos/modal-form.tsx" background="#f5f5f5" height="32px" title="Modal Forms"/>
 
 ## Drawer Forms
 
-<code src="./demos/drawer-form.tsx" background="#f5f5f5" height="32px" title="Drawer Forms"/>
+<code hideActions='["CSB"]' src="./demos/drawer-form.tsx" background="#f5f5f5" height="32px" title="Drawer Forms"/>
 
 ## Nested Drawer Forms
 
-<code src="./demos/drawer-form-nested.tsx" debug background="#f5f5f5" height="32px" title="Drawer Forms"/>
+<code hideActions='["CSB"]' src="./demos/drawer-form-nested.tsx" debug background="#f5f5f5" height="32px" title="Drawer Forms"/>
 
 ## Custom Modal Forms' Button
 
-<code src="./demos/modal-form-submitter.tsx"  background="#f5f5f5" height="32px" title="Custom Modal Forms' Button"/>
+<code hideActions='["CSB"]' src="./demos/modal-form-submitter.tsx"  background="#f5f5f5" height="32px" title="Custom Modal Forms' Button"/>
 
 ## Use visible and onVisibleChange
 
-<code src="./demos/visible-on-visible-change.tsx"  background="#f5f5f5" height="32px" title="Use visible and onVisibleChange"/>
+<code hideActions='["CSB"]' src="./demos/visible-on-visible-change.tsx"  background="#f5f5f5" height="32px" title="Use visible and onVisibleChange"/>
 
 ## Reset Form
 
-<code src="./demos/modal-form-reset.tsx"  background="#f5f5f5" height="32px" title="Reset Form"/>
+<code hideActions='["CSB"]' src="./demos/modal-form-reset.tsx"  background="#f5f5f5" height="32px" title="Reset Form"/>
 
 ## API
 

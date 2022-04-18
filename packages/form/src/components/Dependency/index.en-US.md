@@ -42,7 +42,7 @@ The name parameter must be an array. If it is a nested structure, it can be conf
 
 ### Interdependent Forms
 
-<code src="./demos/dependency.tsx" heigh="174px" title="ProForm.List" />
+<code hideActions='["CSB"]' src="./demos/dependency.tsx" heigh="174px" title="ProForm.List" />
 
 ### Get form dependency values
 
@@ -53,4 +53,4 @@ The following examples demonstrate the order in which dependencies are evaluated
   - `ignoreFormListField` of `<ProFormDependency>` is `true`: according to the dependency declared by `name`, the value is taken from the global (case 2)
   - `ignoreFormListField` of `<ProFormDependency>` is `false`: according to the dependency declared by `name`, the value is taken locally (case 3)
 
-<code src="./demos/dependency2.tsx" heigh="1774px" title="ProForm.List" />
+<code hideActions='["CSB"]' src="./demos/dependency2.tsx" heigh="1774px" title="ProForm.List" />

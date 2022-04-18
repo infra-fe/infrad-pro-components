@@ -25,17 +25,17 @@ return <Skeleton type="list" />;
 
 ### List
 
-<code src="./demos/list.tsx" title="List" />
+<code hideActions='["CSB"]' src="./demos/list.tsx" title="List" />
 
-<code src="./demos/list.static.tsx" title="List" debug />
+<code hideActions='["CSB"]' src="./demos/list.static.tsx" title="List" debug />
 
 ### 结果页
 
-<code src="./demos/result.tsx" title="结果页" />
+<code hideActions='["CSB"]' src="./demos/result.tsx" title="结果页" />
 
 ### 详情页
 
-<code src="./demos/descriptions.tsx" title="详情页" />
+<code hideActions='["CSB"]' src="./demos/descriptions.tsx" title="详情页" />
 
 ## API
 

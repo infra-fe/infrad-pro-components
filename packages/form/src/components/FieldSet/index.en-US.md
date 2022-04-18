@@ -32,27 +32,27 @@ So the props we set for ProFormText are actually for Form.Item, and the fieldPro
 
 ### Full amount of form field
 
-<code src="./demos/components-other.tsx" heigh="774px"/>
+<code hideActions='["CSB"]' src="./demos/components-other.tsx" heigh="774px"/>
 
 ### Query form
 
-<code src="./demos/search-select.tsx" heigh="774px" title=" Query form"/>
+<code hideActions='["CSB"]' src="./demos/search-select.tsx" heigh="774px" title=" Query form"/>
 
 ### Date form
 
-<code src="./demos/datatime.tsx" heigh="774px" title="Date form"/>
+<code hideActions='["CSB"]' src="./demos/datatime.tsx" heigh="774px" title="Date form"/>
 
 ### Upload form
 
-<code src="./demos/upload.tsx" heigh="774px" title="Upload form"/>
+<code hideActions='["CSB"]' src="./demos/upload.tsx" heigh="774px" title="Upload form"/>
 
 ### Structured data
 
-<code src="./demos/form-fieldset.tsx" heigh="774px" title="Structured data"/>
+<code hideActions='["CSB"]' src="./demos/form-fieldset.tsx" heigh="774px" title="Structured data"/>
 
 ### Read-only for form field
 
-<code src="./demos/components-other-readonly.tsx" heigh="774px" debug/>
+<code hideActions='["CSB"]' src="./demos/components-other-readonly.tsx" heigh="774px" debug/>
 
 ## API
 

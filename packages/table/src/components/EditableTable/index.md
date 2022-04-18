@@ -15,27 +15,27 @@ nav:
 
 ### 可编辑表格
 
-<code src="./demos/basic.tsx" background="#f5f5f5" height="420px" title="可编辑表格" />
+<code hideActions='["CSB"]' src="./demos/basic.tsx" background="#f5f5f5" height="420px" title="可编辑表格" />
 
 ### 与 FormItem 配合
 
-<code src="./demos/form-item.tsx" background="#f5f5f5" height="420px" title="与 FormItem 配合" />
+<code hideActions='["CSB"]' src="./demos/form-item.tsx" background="#f5f5f5" height="420px" title="与 FormItem 配合" />
 
 ### 与编辑表格外的内容联动
 
-<code src="./demos/form-linkage.tsx" background="#f5f5f5" height="420px" title="与编辑表格外的内容联动" />
+<code hideActions='["CSB"]' src="./demos/form-linkage.tsx" background="#f5f5f5" height="420px" title="与编辑表格外的内容联动" />
 
 ### 有子列的表格增加
 
-<code src="./demos/children.tsx" background="#f5f5f5" height="420px" title="有子列的表格增加" />
+<code hideActions='["CSB"]' src="./demos/children.tsx" background="#f5f5f5" height="420px" title="有子列的表格增加" />
 
 ### 自定义可编辑表格
 
-<code src="./demos/custom.tsx" background="#f5f5f5" height="420px" title="自定义可编辑表格" />
+<code hideActions='["CSB"]' src="./demos/custom.tsx" background="#f5f5f5" height="420px" title="自定义可编辑表格" />
 
 ### 实时保存的编辑表格
 
-<code src="./demos/real-time-editing.tsx" background="#f5f5f5" height="420px" title="实时保存的编辑表格" />
+<code hideActions='["CSB"]' src="./demos/real-time-editing.tsx" background="#f5f5f5" height="420px" title="实时保存的编辑表格" />
 
 ## API
 
