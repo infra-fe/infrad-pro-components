@@ -55,27 +55,27 @@ const ProFormText = (props) => {
 
 ### 表单项
 
-<code src="./demos/components-other.tsx" heigh="774px" title="表单项"/>
+<code hideActions='["CSB"]' src="./demos/components-other.tsx" heigh="774px" title="表单项"/>
 
 ### 查询表单
 
-<code src="./demos/search-select.tsx" heigh="774px" title="查询表单"/>
+<code hideActions='["CSB"]' src="./demos/search-select.tsx" heigh="774px" title="查询表单"/>
 
 ### 结构化数据
 
-<code src="./demos/form-fieldset.tsx" heigh="774px" title="结构化数据"/>
+<code hideActions='["CSB"]' src="./demos/form-fieldset.tsx" heigh="774px" title="结构化数据"/>
 
 ### 日期表单
 
-<code src="./demos/datatime.tsx" heigh="574px" title="日期表单"/>
+<code hideActions='["CSB"]' src="./demos/datatime.tsx" heigh="574px" title="日期表单"/>
 
 ### 上传表单
 
-<code src="./demos/upload.tsx" heigh="574px" title="上传表单"/>
+<code hideActions='["CSB"]' src="./demos/upload.tsx" heigh="574px" title="上传表单"/>
 
 ### 只读表单
 
-<code src="./demos/components-other-readonly.tsx" heigh="774px"  debug/>
+<code hideActions='["CSB"]' src="./demos/components-other-readonly.tsx" heigh="774px"  debug/>
 
 ## API
 

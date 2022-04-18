@@ -55,37 +55,37 @@ interface RequestData {
 
 ### Basic usage
 
-<code src="./demos/base.tsx" title="Basic definition list" />
+<code hideActions='["CSB"]' src="./demos/base.tsx" title="Basic definition list" />
 
 ### Request data remotely
 
 Display the definition list by requesting interface data
 
-<code src="./demos/request.tsx" title="remote request data" />
+<code hideActions='["CSB"]' src="./demos/request.tsx" title="remote request data" />
 
 ### columns configuration
 
 Display the definition list by requesting interface data and columns
 
-<code src="./demos/columns.tsx" title="columns configuration" />
+<code hideActions='["CSB"]' src="./demos/columns.tsx" title="columns configuration" />
 
 ### format configuration
 
 Format the date according to format
 
-<code src="./demos/format.tsx" title="format configuration" />
+<code hideActions='["CSB"]' src="./demos/format.tsx" title="format configuration" />
 
 ### dataSource configuration data
 
 ProDescriptions supports the same dataSource as Table
 
-<code src="./demos/use-data-source.tsx" title="dataSource configuration data"/>
+<code hideActions='["CSB"]' src="./demos/use-data-source.tsx" title="dataSource configuration data"/>
 
 ### Editable definition list
 
 API is the same as ProTable
 
-<code src="./demos/editable.tsx" title="Editable definition list" />
+<code hideActions='["CSB"]' src="./demos/editable.tsx" title="Editable definition list" />
 
 ## API
 

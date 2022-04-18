@@ -149,41 +149,41 @@ ProForm is the best choice when you want to implement a form quickly but don't w
 
 ### Basic Usage
 
-<code src="./demos/base.tsx" height="548px"/>
+<code hideActions='["CSB"]' src="./demos/base.tsx" height="548px"/>
 
 ### Grid mode
 
 supported in `ProForm`, `SchemaForm`, `ModalForm`, `DrawerForm`, `StepsForm`
 
-<code src="./demos/form-layout-grid.tsx" title="Grid layout" />
+<code hideActions='["CSB"]' src="./demos/form-layout-grid.tsx" title="Grid layout" />
 
 ### Form's layout toggle
 
-<code src="./demos/layout-change.tsx" height="548px"/>
+<code hideActions='["CSB"]' src="./demos/layout-change.tsx" height="548px"/>
 
 ### Login
 
-<code src="./demos/login-form.tsx" height="300px"/>
+<code hideActions='["CSB"]' src="./demos/login-form.tsx" height="300px"/>
 
 ### Interdependent form entries
 
-<code src="./demos/dependency.tsx" height="248px"/>
+<code hideActions='["CSB"]' src="./demos/dependency.tsx" height="248px"/>
 
 ### Sync submission results to url
 
-<code src="./demos/sync-to-url.tsx" height="548px"/>
+<code hideActions='["CSB"]' src="./demos/sync-to-url.tsx" height="548px"/>
 
 ### Fixed footer
 
-<code src="./demos/layout-base.tsx" iframe="764px" />
+<code hideActions='["CSB"]' src="./demos/layout-base.tsx" iframe="764px" />
 
 ### Money
 
-<code src="./demos/money.tsx" height="248px" title="Money" />
+<code hideActions='["CSB"]' src="./demos/money.tsx" height="248px" title="Money" />
 
 ### Form linkage
 
-<code src="./demos/linkage-customization.tsx" heigh="1774px" />
+<code hideActions='["CSB"]' src="./demos/linkage-customization.tsx" heigh="1774px" />
 
 ## Layouts API
 

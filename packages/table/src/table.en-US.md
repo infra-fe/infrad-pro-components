@@ -26,53 +26,53 @@ When your forms need to interact with the server or need multiple cell styles, P
 
 ### Querying a table
 
-<code src="./demos/single.tsx" background="#f5f5f5" height="500px" />
+<code hideActions='["CSB"]' src="./demos/single.tsx" background="#f5f5f5" height="500px" />
 
-<code src="./demos/dataSource.tsx" background="#f5f5f5" height="500px" debug/>
+<code hideActions='["CSB"]' src="./demos/dataSource.tsx" background="#f5f5f5" height="500px" debug/>
 
 ### Downgrade to a normal table
 
-<code src="./demos/normal.tsx" background="#f5f5f5" height="400px"/>
+<code hideActions='["CSB"]' src="./demos/normal.tsx" background="#f5f5f5" height="400px"/>
 
 ### Lightweight filter replacement query form
 
-<code src="./demos/lightfilter.tsx" background="#f5f5f5" height="400px"/>
+<code hideActions='["CSB"]' src="./demos/lightfilter.tsx" background="#f5f5f5" height="400px"/>
 
 ### Forms without ToolBar
 
-<code src="./demos/no-title.tsx" height="350px"/>
+<code hideActions='["CSB"]' src="./demos/no-title.tsx" height="350px"/>
 
 ### Nested tables
 
-<code src="./demos/table-nested.tsx" background="#f5f5f5" height="400px"/>
+<code hideActions='["CSB"]' src="./demos/table-nested.tsx" background="#f5f5f5" height="400px"/>
 
 ### Left and right structure
 
-<code src="./demos/split.tsx" background="#f5f5f5" height="500px"/>
+<code hideActions='["CSB"]' src="./demos/split.tsx" background="#f5f5f5" height="500px"/>
 
 ### Batch manipulation of tables
 
-<code src="./demos/batchOption.tsx" background="#f5f5f5" height="420px"/>
+<code hideActions='["CSB"]' src="./demos/batchOption.tsx" background="#f5f5f5" height="420px"/>
 
 ### Manipulating query forms with formRef
 
-<code src="./demos/form.tsx" background="#f5f5f5" height="320px"/>
+<code hideActions='["CSB"]' src="./demos/form.tsx" background="#f5f5f5" height="320px"/>
 
 ### RTL (النسخة العربية)
 
 RTL means right-to-left.
 
-<code src="./demos/rtl_table.tsx" background="#f5f5f5" height="500px"/>
+<code hideActions='["CSB"]' src="./demos/rtl_table.tsx" background="#f5f5f5" height="500px"/>
 
 ### Controlled table settings columns
 
 You can hide some columns by default, but in the action column you can select
 
-<code src="./demos/columnsStateMap.tsx" background="#f5f5f5" height="300px"/>
+<code hideActions='["CSB"]' src="./demos/columnsStateMap.tsx" background="#f5f5f5" height="300px"/>
 
 ### Tables polling network data
 
-<code src="./demos/pollinga.tsx" background="#f5f5f5" height="360px"/>
+<code hideActions='["CSB"]' src="./demos/pollinga.tsx" background="#f5f5f5" height="360px"/>
 
 ### Search form customization
 
@@ -111,27 +111,27 @@ The definition of `renderFormItem`, the exact value of which can be seen by open
   ) => JSX.Element | false | null;
 ```
 
-<code src="./demos/linkage_form.tsx" background="#f5f5f5" height="310px"/>
+<code hideActions='["CSB"]' src="./demos/linkage_form.tsx" background="#f5f5f5" height="310px"/>
 
 ### Form action customization
 
-<code src="./demos/search_option.tsx" background="#f5f5f5" height="310px"/>
+<code hideActions='["CSB"]' src="./demos/search_option.tsx" background="#f5f5f5" height="310px"/>
 
 ### Toolbar Customization
 
 Configure toolbar rendering using the `toolbar` property extension.
 
-<code src="./demos/listToolBar.tsx" background="#f5f5f5" height="450px"/>
+<code hideActions='["CSB"]' src="./demos/listToolBar.tsx" background="#f5f5f5" height="450px"/>
 
 ### Required Inquiry Form
 
 Try to use initialValue to solve the problem, required fields are more frustrating
 
-<code src="./demos/open-rules.tsx"  height="350px"/>
+<code hideActions='["CSB"]' src="./demos/open-rules.tsx"  height="350px"/>
 
 ### Form body customization
 
-<code src="./demos/renderTable.tsx" background="#f5f5f5" height="500px"/>
+<code hideActions='["CSB"]' src="./demos/renderTable.tsx" background="#f5f5f5" height="500px"/>
 
 ### Internationalization-related configuration
 
@@ -187,31 +187,31 @@ import { ConfigProvider } from 'infrad-pro-provide';
 </ConfigProvider>;
 ```
 
-<code src="./demos/intl.tsx" background="#f5f5f5" height="320px"/>
+<code hideActions='["CSB"]' src="./demos/intl.tsx" background="#f5f5f5" height="320px"/>
 
 ### Table using self-contained keyWords search
 
-<code src="./demos/search.tsx" background="#f5f5f5" height="200px"/>
+<code hideActions='["CSB"]' src="./demos/search.tsx" background="#f5f5f5" height="200px"/>
 
 ### Value type examples
 
 #### valueType - Date class
 
-<code src="./demos/valueTypeDate.tsx" background="#f5f5f5" height="350px"/>
+<code hideActions='["CSB"]' src="./demos/valueTypeDate.tsx" background="#f5f5f5" height="350px"/>
 
 #### valueType - numeric class
 
-<code src="./demos/valueTypeNumber.tsx" background="#f5f5f5" height="350px"/>
+<code hideActions='["CSB"]' src="./demos/valueTypeNumber.tsx" background="#f5f5f5" height="350px"/>
 
 #### valueType - Style Classes
 
-<code src="./demos/valueType.tsx" background="#f5f5f5" height="680px"/>
+<code hideActions='["CSB"]' src="./demos/valueType.tsx" background="#f5f5f5" height="680px"/>
 
 #### valueType - Selection Classes
 
-<code src="./demos/valueType_select.tsx" background="#f5f5f5" heigh="462px"/>
+<code hideActions='["CSB"]' src="./demos/valueType_select.tsx" background="#f5f5f5" heigh="462px"/>
 
-<code src="./demos/config-provider.tsx" debug background="#f5f5f5" heigh="462px"/>
+<code hideActions='["CSB"]' src="./demos/config-provider.tsx" debug background="#f5f5f5" heigh="462px"/>
 
 ## API
 
@@ -459,15 +459,15 @@ Toolbar section for customizing forms.
 
 #### Code Demo
 
-<code src="./demos/ListToolBar/basic.tsx" background="#f0f2f5"/>
+<code hideActions='["CSB"]' src="./demos/ListToolBar/basic.tsx" background="#f0f2f5"/>
 
-<code src="./demos/ListToolBar/no-title.tsx" background="#f0f2f5"/>
+<code hideActions='["CSB"]' src="./demos/ListToolBar/no-title.tsx" background="#f0f2f5"/>
 
-<code src="./demos/ListToolBar/multipleLine.tsx" background="#f0f2f5"/>
+<code hideActions='["CSB"]' src="./demos/ListToolBar/multipleLine.tsx" background="#f0f2f5"/>
 
-<code src="./demos/ListToolBar/tabs.tsx" background="#f0f2f5"/>
+<code hideActions='["CSB"]' src="./demos/ListToolBar/tabs.tsx" background="#f0f2f5"/>
 
-<code src="./demos/ListToolBar/menu.tsx" background="#f0f2f5"/>
+<code hideActions='["CSB"]' src="./demos/ListToolBar/menu.tsx" background="#f0f2f5"/>
 
 #### ListToolBarProps
 

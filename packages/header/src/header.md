@@ -13,15 +13,15 @@ nav:
 
 ### 基本使用
 
-<code src="./demos/basic.tsx" iframe="500px" title="基本使用" desc="基本使用" />
+<code hideActions='["CSB"]' src="./demos/basic.tsx" iframe="500px" title="基本使用" desc="基本使用" />
 
 ### 未登录状态
 
-<code src="./demos/unlogin.tsx" iframe="500px" title="基本使用" desc="基本使用" />
+<code hideActions='["CSB"]' src="./demos/unlogin.tsx" iframe="500px" title="基本使用" desc="基本使用" />
 
 ### 自定义右上角
 
-<code src="./demos/extra.tsx" iframe="500px" title="自定义右上角" desc="自定义右上角" />
+<code hideActions='["CSB"]' src="./demos/extra.tsx" iframe="500px" title="自定义右上角" desc="自定义右上角" />
 
 ## API
 
